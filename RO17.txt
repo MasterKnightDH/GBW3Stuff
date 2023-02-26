@@ -1,0 +1,2287 @@
+ RO17:4000 F0 82            ld   a,(ff00+82)
+ RO17:4002 F5               push af
+ RO17:4003 3E 04            ld   a,04
+ RO17:4005 E0 82            ld   (ff00+82),a
+ RO17:4007 E0 70            ld   (ff00+70),a
+ RO17:4009 CD 67 2E         call 2E67           // Handles clear-up of all sprite portions and entire ($C400) table, sets ($C00E) to 1
+ RO17:400C AF               xor  a
+ RO17:400D EA C8 C4         ld   (C4C8),a
+ RO17:4010 EA C9 C4         ld   (C4C9),a
+ RO17:4013 EA CA C4         ld   (C4CA),a
+ RO17:4016 EA CB C4         ld   (C4CB),a
+ RO17:4019 EA CC C4         ld   (C4CC),a
+ RO17:401C EA CD C4         ld   (C4CD),a
+ RO17:401F EA CE C4         ld   (C4CE),a
+ RO17:4022 EA CF C4         ld   (C4CF),a
+ RO17:4025 EA D0 C4         ld   (C4D0),a
+ RO17:4028 EA D1 C4         ld   (C4D1),a
+ RO17:402B EA D2 C4         ld   (C4D2),a
+ RO17:402E EA D3 C4         ld   (C4D3),a
+ RO17:4031 EA D4 C4         ld   (C4D4),a
+ RO17:4034 EA D5 C4         ld   (C4D5),a
+ RO17:4037 EA D6 C4         ld   (C4D6),a
+ RO17:403A EA D7 C4         ld   (C4D7),a
+ RO17:403D EA D8 C4         ld   (C4D8),a
+ RO17:4040 EA D9 C4         ld   (C4D9),a
+ RO17:4043 EA DA C4         ld   (C4DA),a
+ RO17:4046 EA DB C4         ld   (C4DB),a       // Empties ($C4C8) to ($C4DB)
+ RO17:4049 EA 2E DB         ld   (DB2E),a
+ RO17:404C EA 2F DB         ld   (DB2F),a
+ RO17:404F 21 AC D3         ld   hl,D3AC
+ RO17:4052 01 80 07         ld   bc,0780
+ RO17:4055 AF               xor  a
+ RO17:4056 CD 79 3B         call 3B79           // (HL ~ HL+BC-1) = A
+ RO17:4059 AF               xor  a
+ RO17:405A EA 2C DB         ld   (DB2C),a
+ RO17:405D F1               pop  af
+ RO17:405E E0 82            ld   (ff00+82),a
+ RO17:4060 E0 70            ld   (ff00+70),a
+ RO17:4062 C9               ret                 // Clear all sprites in $C300 table, empties ($C4C8~$C4DB), WRA4($DB2C), WRA4($DB2E) 2 byte, and WRA4($D3AC~$DB2B)
+ RO17:4063 F0 82            ld   a,(ff00+82)
+ RO17:4065 F5               push af
+ RO17:4066 3E 04            ld   a,04
+ RO17:4068 E0 82            ld   (ff00+82),a
+ RO17:406A E0 70            ld   (ff00+70),a
+ RO17:406C C5               push bc
+ RO17:406D F5               push af
+ RO17:406E 7C               ld   a,h
+ RO17:406F EA 2E DB         ld   (DB2E),a
+ RO17:4072 7D               ld   a,l
+ RO17:4073 EA 2F DB         ld   (DB2F),a
+ RO17:4076 FA 2C DB         ld   a,(DB2C)
+ RO17:4079 CD 75 44         call 4475           // HL = $D3AC + A * 32
+ RO17:407C FA 2E DB         ld   a,(DB2E)
+ RO17:407F 22               ldi  (hl),a
+ RO17:4080 23               inc  hl
+ RO17:4081 FA 2F DB         ld   a,(DB2F)
+ RO17:4084 22               ldi  (hl),a
+ RO17:4085 23               inc  hl
+ RO17:4086 FA CC C4         ld   a,(C4CC)
+ RO17:4089 22               ldi  (hl),a
+ RO17:408A FA CD C4         ld   a,(C4CD)
+ RO17:408D 22               ldi  (hl),a
+ RO17:408E FA CE C4         ld   a,(C4CE)
+ RO17:4091 22               ldi  (hl),a
+ RO17:4092 FA CF C4         ld   a,(C4CF)
+ RO17:4095 22               ldi  (hl),a
+ RO17:4096 F1               pop  af
+ RO17:4097 C1               pop  bc
+ RO17:4098 E5               push hl
+ RO17:4099 3E 20            ld   a,20
+ RO17:409B CD E8 2D         call 2DE8           // A = number of already active sprites; $Dxx5~$DxxB prepared (B is ROM Block of Sprite, C is base Character Tile # / 2 with bit 7 determining VRAM Bank; and DE is pointer to sprite stats modification tables pointers)
+ RO17:409E E1               pop  hl             // 9th byte
+ RO17:409F 22               ldi  (hl),a
+ RO17:40A0 EA D0 C4         ld   (C4D0),a
+ RO17:40A3 FA D1 C4         ld   a,(C4D1)
+ RO17:40A6 22               ldi  (hl),a
+ RO17:40A7 FA D2 C4         ld   a,(C4D2)
+ RO17:40AA 22               ldi  (hl),a
+ RO17:40AB FA D3 C4         ld   a,(C4D3)
+ RO17:40AE 22               ldi  (hl),a
+ RO17:40AF FA D4 C4         ld   a,(C4D4)
+ RO17:40B2 22               ldi  (hl),a
+ RO17:40B3 FA D5 C4         ld   a,(C4D5)
+ RO17:40B6 22               ldi  (hl),a
+ RO17:40B7 FA D6 C4         ld   a,(C4D6)
+ RO17:40BA 22               ldi  (hl),a
+ RO17:40BB FA D7 C4         ld   a,(C4D7)
+ RO17:40BE 22               ldi  (hl),a
+ RO17:40BF FA D8 C4         ld   a,(C4D8)
+ RO17:40C2 22               ldi  (hl),a
+ RO17:40C3 FA D9 C4         ld   a,(C4D9)
+ RO17:40C6 22               ldi  (hl),a
+ RO17:40C7 FA DA C4         ld   a,(C4DA)
+ RO17:40CA 22               ldi  (hl),a
+ RO17:40CB FA DB C4         ld   a,(C4DB)
+ RO17:40CE 22               ldi  (hl),a
+ RO17:40CF FA 2C DB         ld   a,(DB2C)
+ RO17:40D2 3C               inc  a
+ RO17:40D3 EA 2C DB         ld   (DB2C),a
+ RO17:40D6 F1               pop  af
+ RO17:40D7 E0 82            ld   (ff00+82),a
+ RO17:40D9 E0 70            ld   (ff00+70),a
+ RO17:40DB FA D0 C4         ld   a,(C4D0)
+ RO17:40DE C9               ret                 // WRA4($D3AC + A * 32) 20 byte holds: H, ?, L, ?, ($C4CC) 4 byte, number of already active sprites, ($C4D1) 11 byte; A and ($C4D0) both hold number of already active sprites; WRA4($DB2C) incremented; $Dxx5~$DxxB prepared with sprite info
+ RO17:40DF F0 82            ld   a,(ff00+82)
+ RO17:40E1 F5               push af
+ RO17:40E2 3E 04            ld   a,04
+ RO17:40E4 E0 82            ld   (ff00+82),a
+ RO17:40E6 E0 70            ld   (ff00+70),a
+ RO17:40E8 FA 2C DB         ld   a,(DB2C)
+ RO17:40EB FE 00            cp   a,00
+ RO17:40ED 28 20            jr   z,410F
+ RO17:40EF AF               xor  a
+ RO17:40F0 EA 2D DB         ld   (DB2D),a
+ RO17:40F3 EA DE C4         ld   (C4DE),a
+ RO17:40F6 EA C7 C4         ld   (C4C7),a
+ RO17:40F9 FA 2C DB         ld   a,(DB2C)       // Loop begins here
+ RO17:40FC 4F               ld   c,a
+ RO17:40FD FA 2D DB         ld   a,(DB2D)
+ RO17:4100 B9               cp   c
+ RO17:4101 28 0C            jr   z,410F         // Ends once all sprite advanced behavior is handled for the frame
+ RO17:4103 CD B1 42         call 42B1           // Sprite advanced behavior: may exist with standard behavior possibly moving from starting location after timer 1, then despawns or follows specific instruction after timer 2
+ RO17:4106 FA 2D DB         ld   a,(DB2D)
+ RO17:4109 3C               inc  a
+ RO17:410A EA 2D DB         ld   (DB2D),a
+ RO17:410D 18 EA            jr   40F9
+ RO17:410F F1               pop  af
+ RO17:4110 E0 82            ld   (ff00+82),a
+ RO17:4112 E0 70            ld   (ff00+70),a
+ RO17:4114 C9               ret                 // Handles all sprite advanced behavior for the frame with sprites needing to spawn first
+ RO17:4115 FA AB C4         ld   a,(C4AB)
+ RO17:4118 FE 00            cp   a,00
+ RO17:411A 28 29            jr   z,4145         // Ends immediately for potential anti-air
+ RO17:411C 16 03            ld   d,03
+ RO17:411E CD 4B 29         call 294B           // A = Pseudo RNG result / 256 % 4
+ RO17:4121 E0 96            ld   (ff00+96),a
+ RO17:4123 AF               xor  a
+ RO17:4124 E0 95            ld   (ff00+95),a    // Intended Scroll 0, 0~3
+ RO17:4126 3E FF            ld   a,FF
+ RO17:4128 CD 4B 29         call 294B           // A = Pseudo RNG result / 256 % 256
+ RO17:412B E6 01            and  a,01
+ RO17:412D FE 00            cp   a,00
+ RO17:412F 28 0D            jr   z,413E         // Branches on odd number
+ RO17:4131 18 00            jr   4133
+ RO17:4133 F0 96            ld   a,(ff00+96)
+ RO17:4135 87               add  a
+ RO17:4136 4F               ld   c,a            // C = 2Y
+ RO17:4137 F0 96            ld   a,(ff00+96)
+ RO17:4139 91               sub  c              // A = Y - 2Y
+ RO17:413A E0 96            ld   (ff00+96),a
+ RO17:413C 18 07            jr   4145
+ RO17:413E F0 96            ld   a,(ff00+96)
+ RO17:4140 4F               ld   c,a
+ RO17:4141 AF               xor  a              // A = 0, C = Y
+ RO17:4142 91               sub  c              // A = 0 - Y
+ RO17:4143 E0 96            ld   (ff00+96),a
+ RO17:4145 C9               ret                 // Intended Scroll set to 0, -3~0
+ RO17:4146 F0 82            ld   a,(ff00+82)
+ RO17:4148 F5               push af
+ RO17:4149 3E 04            ld   a,04
+ RO17:414B E0 82            ld   (ff00+82),a
+ RO17:414D E0 70            ld   (ff00+70),a
+ RO17:414F FA 2C DB         ld   a,(DB2C)
+ RO17:4152 FE 00            cp   a,00
+ RO17:4154 28 20            jr   z,4176         // Ends immediately if no advanced sprite behavior to handle
+ RO17:4156 AF               xor  a
+ RO17:4157 EA 2D DB         ld   (DB2D),a
+ RO17:415A EA DE C4         ld   (C4DE),a
+ RO17:415D EA C7 C4         ld   (C4C7),a
+ RO17:4160 FA 2C DB         ld   a,(DB2C)       // Loop begins here
+ RO17:4163 4F               ld   c,a
+ RO17:4164 FA 2D DB         ld   a,(DB2D)
+ RO17:4167 B9               cp   c
+ RO17:4168 28 0C            jr   z,4176
+ RO17:416A CD DF 41         call 41DF           // Sprite advanced behavior: behaves normally without moving during timer 1, standard behavior possibly moving from starting location or nonexistant after timer 1, then despawns or follows specific instruction after timer 2
+ RO17:416D FA 2D DB         ld   a,(DB2D)
+ RO17:4170 3C               inc  a
+ RO17:4171 EA 2D DB         ld   (DB2D),a
+ RO17:4174 18 EA            jr   4160
+ RO17:4176 F1               pop  af
+ RO17:4177 E0 82            ld   (ff00+82),a
+ RO17:4179 E0 70            ld   (ff00+70),a
+ RO17:417B C9               ret                 // Handles all sprite advanced behavior (normal non-moving behavior during timer 1) for the current frame
+ RO17:417C FA 2D DB         ld   a,(DB2D)
+ RO17:417F CD 75 44         call 4475           // HL = $D3AC + A * 32
+ RO17:4182 06 00            ld   b,00
+ RO17:4184 3E 08            ld   a,08
+ RO17:4186 4F               ld   c,a
+ RO17:4187 09               add  hl,bc
+ RO17:4188 7E               ld   a,(hl)
+ RO17:4189 FE FF            cp   a,FF
+ RO17:418B C9               ret                 // Zero Flag On if no valid sprite advanced behavior data
+ RO17:418C FA CC C4         ld   a,(C4CC)
+ RO17:418F 47               ld   b,a
+ RO17:4190 FA CD C4         ld   a,(C4CD)
+ RO17:4193 4F               ld   c,a
+ RO17:4194 FA C8 C4         ld   a,(C4C8)
+ RO17:4197 67               ld   h,a
+ RO17:4198 FA C9 C4         ld   a,(C4C9)
+ RO17:419B 6F               ld   l,a
+ RO17:419C 09               add  hl,bc
+ RO17:419D 7C               ld   a,h
+ RO17:419E EA C8 C4         ld   (C4C8),a
+ RO17:41A1 7D               ld   a,l
+ RO17:41A2 EA C9 C4         ld   (C4C9),a       // ($C4CC) 2 byte added to ($C4C8) 2 byte
+ RO17:41A5 FA CE C4         ld   a,(C4CE)
+ RO17:41A8 47               ld   b,a
+ RO17:41A9 FA CF C4         ld   a,(C4CF)
+ RO17:41AC 4F               ld   c,a
+ RO17:41AD FA CA C4         ld   a,(C4CA)
+ RO17:41B0 67               ld   h,a
+ RO17:41B1 FA CB C4         ld   a,(C4CB)
+ RO17:41B4 6F               ld   l,a
+ RO17:41B5 09               add  hl,bc
+ RO17:41B6 7C               ld   a,h
+ RO17:41B7 EA CA C4         ld   (C4CA),a
+ RO17:41BA 7D               ld   a,l
+ RO17:41BB EA CB C4         ld   (C4CB),a       // ($C4CE) 2 byte added to ($C4CA) 2 byte
+ RO17:41BE FA C8 C4         ld   a,(C4C8)
+ RO17:41C1 47               ld   b,a
+ RO17:41C2 FA CA C4         ld   a,(C4CA)
+ RO17:41C5 4F               ld   c,a
+ RO17:41C6 FA D0 C4         ld   a,(C4D0)
+ RO17:41C9 CD AE 2E         call 2EAE           // WRA4($D001 + A * 16) = C; WRA4($D002 + A * 16) = B
+ RO17:41CC C9               ret                 // Sprite location updated during advanced behavior
+ RO17:41CD FA D3 C4         ld   a,(C4D3)
+ RO17:41D0 67               ld   h,a
+ RO17:41D1 FA D4 C4         ld   a,(C4D4)
+ RO17:41D4 6F               ld   l,a
+ RO17:41D5 2B               dec  hl
+ RO17:41D6 7C               ld   a,h
+ RO17:41D7 EA D3 C4         ld   (C4D3),a
+ RO17:41DA 7D               ld   a,l
+ RO17:41DB EA D4 C4         ld   (C4D4),a
+ RO17:41DE C9               ret                 // Decrement ($C4D3) 2 byte, HL = new ($C4D3)
+ RO17:41DF FA 2D DB         ld   a,(DB2D)
+ RO17:41E2 CD 75 44         call 4475           // HL = $D3AC + A * 32
+ RO17:41E5 E5               push hl
+ RO17:41E6 54               ld   d,h
+ RO17:41E7 5D               ld   e,l
+ RO17:41E8 06 00            ld   b,00
+ RO17:41EA 3E 08            ld   a,08
+ RO17:41EC 4F               ld   c,a
+ RO17:41ED 09               add  hl,bc
+ RO17:41EE 7E               ld   a,(hl)
+ RO17:41EF FE FF            cp   a,FF
+ RO17:41F1 CA AF 42         jp   z,42AF
+ RO17:41F4 62               ld   h,d
+ RO17:41F5 6B               ld   l,e            // HL = $D3AC + A * 32
+ RO17:41F6 CD D3 43         call 43D3           // HL 20 byte placed in ($C4C8) 20 byte
+ RO17:41F9 FA D1 C4         ld   a,(C4D1)
+ RO17:41FC 67               ld   h,a
+ RO17:41FD FA D2 C4         ld   a,(C4D2)
+ RO17:4200 6F               ld   l,a
+ RO17:4201 11 00 00         ld   de,0000
+ RO17:4204 CD CA 29         call 29CA           // Carry Flag active if DE < HL, A = 0 if DE = HL
+ RO17:4207 28 1B            jr   z,4224         // Branch for first timer hitting 0
+ RO17:4209 FA D1 C4         ld   a,(C4D1)
+ RO17:420C 67               ld   h,a
+ RO17:420D FA D2 C4         ld   a,(C4D2)
+ RO17:4210 6F               ld   l,a
+ RO17:4211 2B               dec  hl
+ RO17:4212 7C               ld   a,h
+ RO17:4213 EA D1 C4         ld   (C4D1),a
+ RO17:4216 7D               ld   a,l
+ RO17:4217 EA D2 C4         ld   (C4D2),a
+ RO17:421A FA DE C4         ld   a,(C4DE)
+ RO17:421D 3C               inc  a
+ RO17:421E EA DE C4         ld   (C4DE),a
+ RO17:4221 C3 A3 42         jp   42A3
+ RO17:4224 FA DB C4         ld   a,(C4DB)
+ RO17:4227 FE 00            cp   a,00
+ RO17:4229 28 07            jr   z,4232
+ RO17:422B CD 44 38         call 3844
+ RO17:422E AF               xor  a
+ RO17:422F EA DB C4         ld   (C4DB),a       // Designated sound plays once
+ RO17:4232 FA D3 C4         ld   a,(C4D3)
+ RO17:4235 67               ld   h,a
+ RO17:4236 FA D4 C4         ld   a,(C4D4)
+ RO17:4239 6F               ld   l,a
+ RO17:423A 11 00 00         ld   de,0000
+ RO17:423D CD CA 29         call 29CA           // Carry Flag active if DE < HL, A = 0 if DE = HL
+ RO17:4240 20 3F            jr   nz,4281        // Branches for second timer still active
+ RO17:4242 FA D5 C4         ld   a,(C4D5)
+ RO17:4245 67               ld   h,a
+ RO17:4246 FA D6 C4         ld   a,(C4D6)
+ RO17:4249 6F               ld   l,a
+ RO17:424A 11 00 00         ld   de,0000
+ RO17:424D CD CA 29         call 29CA           // Carry Flag active if DE < HL, A = 0 if DE = HL
+ RO17:4250 28 1D            jr   z,426F         // Branches for no ending instruction
+ RO17:4252 FA D0 C4         ld   a,(C4D0)
+ RO17:4255 4F               ld   c,a
+ RO17:4256 FA D5 C4         ld   a,(C4D5)
+ RO17:4259 67               ld   h,a
+ RO17:425A FA D6 C4         ld   a,(C4D6)
+ RO17:425D 6F               ld   l,a
+ RO17:425E FA D7 C4         ld   a,(C4D7)
+ RO17:4261 47               ld   b,a
+ RO17:4262 CD 80 02         call 0280           // CALL B:(HL)
+ RO17:4265 FA DE C4         ld   a,(C4DE)
+ RO17:4268 3C               inc  a
+ RO17:4269 EA DE C4         ld   (C4DE),a
+ RO17:426C C3 A3 42         jp   42A3
+ RO17:426F FA D0 C4         ld   a,(C4D0)
+ RO17:4272 FE FF            cp   a,FF
+ RO17:4274 CA A3 42         jp   z,42A3
+ RO17:4277 CD 1F 2E         call 2E1F           // Handles clear-up of sprite
+ RO17:427A 3E FF            ld   a,FF
+ RO17:427C EA D0 C4         ld   (C4D0),a
+ RO17:427F 18 22            jr   42A3
+ RO17:4281 FA DA C4         ld   a,(C4DA)
+ RO17:4284 FE 01            cp   a,01
+ RO17:4286 20 08            jr   nz,4290
+ RO17:4288 FA D0 C4         ld   a,(C4D0)
+ RO17:428B CD 5F 2F         call 2F5F           // set 0,($D000 + A * 16) WRAM bank 4
+ RO17:428E 18 06            jr   4296
+ RO17:4290 FA D0 C4         ld   a,(C4D0)
+ RO17:4293 CD 45 2F         call 2F45           // res 0,($D000 + A * 16) WRAM bank 4
+ RO17:4296 CD CD 41         call 41CD           // Decrement ($C4D3) 2 byte, HL = new ($C4D3)
+ RO17:4299 CD 8C 41         call 418C           // Sprite location updated during advanced behavior
+ RO17:429C FA DE C4         ld   a,(C4DE)
+ RO17:429F 3C               inc  a
+ RO17:42A0 EA DE C4         ld   (C4DE),a
+ RO17:42A3 E1               pop  hl             // HL = $D3AC + A * 32
+ RO17:42A4 CD 24 44         call 4424           // ($C4C8) 20 byte placed in HL 20 byte
+ RO17:42A7 FA C7 C4         ld   a,(C4C7)
+ RO17:42AA 3C               inc  a
+ RO17:42AB EA C7 C4         ld   (C4C7),a
+ RO17:42AE C9               ret  
+ RO17:42AF E1               pop  hl             // HL = $D3AC + A * 32
+ RO17:42B0 C9               ret                 // Sprite advanced behavior: behaves normally without moving during timer 1, standard behavior possibly moving from starting location or nonexistant after timer 1, then despawns or follows specific instruction after timer 2
+ RO17:42B1 CD 7C 41         call 417C           // Zero Flag On if no valid sprite advanced behavior data
+ RO17:42B4 CA D2 43         jp   z,43D2         // Ends immediately if no sprite is available
+ RO17:42B7 FA 2D DB         ld   a,(DB2D)
+ RO17:42BA CD 75 44         call 4475           // HL = $D3AC + A * 32
+ RO17:42BD E5               push hl
+ RO17:42BE CD D3 43         call 43D3           // HL 20 byte placed in ($C4C8) 20 byte
+ RO17:42C1 FA D1 C4         ld   a,(C4D1)
+ RO17:42C4 67               ld   h,a
+ RO17:42C5 FA D2 C4         ld   a,(C4D2)
+ RO17:42C8 6F               ld   l,a
+ RO17:42C9 11 00 00         ld   de,0000
+ RO17:42CC CD CA 29         call 29CA           // Carry Flag active if DE < HL, A = 0 if DE = HL
+ RO17:42CF 28 27            jr   z,42F8         // 10th and 11th bytes hold a maximim 65535 frame timer for spawning the sprite and everything
+ RO17:42D1 FA D1 C4         ld   a,(C4D1)
+ RO17:42D4 67               ld   h,a
+ RO17:42D5 FA D2 C4         ld   a,(C4D2)
+ RO17:42D8 6F               ld   l,a
+ RO17:42D9 2B               dec  hl
+ RO17:42DA 7C               ld   a,h
+ RO17:42DB EA D1 C4         ld   (C4D1),a
+ RO17:42DE 7D               ld   a,l
+ RO17:42DF EA D2 C4         ld   (C4D2),a
+ RO17:42E2 FA DE C4         ld   a,(C4DE)
+ RO17:42E5 3C               inc  a
+ RO17:42E6 EA DE C4         ld   (C4DE),a
+ RO17:42E9 FA D0 C4         ld   a,(C4D0)
+ RO17:42EC CD 11 2F         call 2F11           // set 1,WRA4[$D000 + A * 16] (Sprite's update timer needs to pause)
+ RO17:42EF FA D0 C4         ld   a,(C4D0)
+ RO17:42F2 CD 5F 2F         call 2F5F           // set 0,($D000 + A * 16) WRAM bank 4 (Hide Sprite)
+ RO17:42F5 C3 C7 43         jp   43C7           // Jumps to ending stuff (spawn wait portion)
+ RO17:42F8 FA DB C4         ld   a,(C4DB)
+ RO17:42FB FE 00            cp   a,00
+ RO17:42FD 28 07            jr   z,4306         // Last byte is clearly a pre-timed sound value
+ RO17:42FF CD 44 38         call 3844
+ RO17:4302 AF               xor  a
+ RO17:4303 EA DB C4         ld   (C4DB),a       // Sound is started only once for the sprite
+ RO17:4306 FA D3 C4         ld   a,(C4D3)
+ RO17:4309 67               ld   h,a
+ RO17:430A FA D4 C4         ld   a,(C4D4)
+ RO17:430D 6F               ld   l,a
+ RO17:430E 11 00 00         ld   de,0000
+ RO17:4311 CD CA 29         call 29CA           // Carry Flag active if DE < HL, A = 0 if DE = HL
+ RO17:4314 20 38            jr   nz,434E        // Awaiting ending instruction branch
+ RO17:4316 FA D5 C4         ld   a,(C4D5)
+ RO17:4319 67               ld   h,a
+ RO17:431A FA D6 C4         ld   a,(C4D6)
+ RO17:431D 6F               ld   l,a
+ RO17:431E 11 00 00         ld   de,0000
+ RO17:4321 CD CA 29         call 29CA           // Carry Flag active if DE < HL, A = 0 if DE = HL
+ RO17:4324 28 16            jr   z,433C         // No ending instruction branch
+ RO17:4326 FA D0 C4         ld   a,(C4D0)
+ RO17:4329 4F               ld   c,a            // C is sprite number
+ RO17:432A FA D5 C4         ld   a,(C4D5)
+ RO17:432D 67               ld   h,a
+ RO17:432E FA D6 C4         ld   a,(C4D6)
+ RO17:4331 6F               ld   l,a
+ RO17:4332 FA D7 C4         ld   a,(C4D7)
+ RO17:4335 47               ld   b,a            // 16th byte is ROM Block of instruction indicated by 14th and 15th bytes
+ RO17:4336 CD 80 02         call 0280           // CALL B:(HL)
+ RO17:4339 C3 C7 43         jp   43C7           // Ending instruction done
+ RO17:433C FA D0 C4         ld   a,(C4D0)
+ RO17:433F FE FF            cp   a,FF
+ RO17:4341 CA C7 43         jp   z,43C7         // Ending stuff if no sprite
+ RO17:4344 CD 1F 2E         call 2E1F           // Handles clear-up of sprite
+ RO17:4347 3E FF            ld   a,FF
+ RO17:4349 EA D0 C4         ld   (C4D0),a
+ RO17:434C 18 79            jr   43C7           // No ending instruction done
+ RO17:434E FA D0 C4         ld   a,(C4D0)       // Comes here from awaiting ending instruction
+ RO17:4351 CD 2B 2F         call 2F2B           // res 1,WRA4[$D000 + A * 16] (Unpauses Sprite's update timer)
+ RO17:4354 FA D0 C4         ld   a,(C4D0)
+ RO17:4357 CD 45 2F         call 2F45           // res 0,($D000 + A * 16) WRAM bank 4 (Reveals Sprite)
+ RO17:435A FA DA C4         ld   a,(C4DA)
+ RO17:435D FE 01            cp   a,01           // 19th byte determines if Sprite should be disabled
+ RO17:435F 20 08            jr   nz,4369
+ RO17:4361 FA D0 C4         ld   a,(C4D0)
+ RO17:4364 CD 5F 2F         call 2F5F           // set 0,($D000 + A * 16) WRAM bank 4 (Hides Sprite)
+ RO17:4367 18 06            jr   436F
+ RO17:4369 FA D0 C4         ld   a,(C4D0)
+ RO17:436C CD 45 2F         call 2F45           // res 0,($D000 + A * 16) WRAM bank 4 (Reveals Sprite)
+ RO17:436F FA D3 C4         ld   a,(C4D3)
+ RO17:4372 67               ld   h,a
+ RO17:4373 FA D4 C4         ld   a,(C4D4)
+ RO17:4376 6F               ld   l,a
+ RO17:4377 2B               dec  hl
+ RO17:4378 7C               ld   a,h
+ RO17:4379 EA D3 C4         ld   (C4D3),a
+ RO17:437C 7D               ld   a,l
+ RO17:437D EA D4 C4         ld   (C4D4),a       // Instruction timer went down
+ RO17:4380 FA CC C4         ld   a,(C4CC)
+ RO17:4383 47               ld   b,a
+ RO17:4384 FA CD C4         ld   a,(C4CD)
+ RO17:4387 4F               ld   c,a
+ RO17:4388 FA C8 C4         ld   a,(C4C8)
+ RO17:438B 67               ld   h,a
+ RO17:438C FA C9 C4         ld   a,(C4C9)
+ RO17:438F 6F               ld   l,a
+ RO17:4390 09               add  hl,bc
+ RO17:4391 7C               ld   a,h
+ RO17:4392 EA C8 C4         ld   (C4C8),a
+ RO17:4395 7D               ld   a,l
+ RO17:4396 EA C9 C4         ld   (C4C9),a       // ($C4CC) added to ($C4C8)
+ RO17:4399 FA CE C4         ld   a,(C4CE)
+ RO17:439C 47               ld   b,a
+ RO17:439D FA CF C4         ld   a,(C4CF)
+ RO17:43A0 4F               ld   c,a
+ RO17:43A1 FA CA C4         ld   a,(C4CA)
+ RO17:43A4 67               ld   h,a
+ RO17:43A5 FA CB C4         ld   a,(C4CB)
+ RO17:43A8 6F               ld   l,a
+ RO17:43A9 09               add  hl,bc
+ RO17:43AA 7C               ld   a,h
+ RO17:43AB EA CA C4         ld   (C4CA),a
+ RO17:43AE 7D               ld   a,l
+ RO17:43AF EA CB C4         ld   (C4CB),a       // ($C4CE) added to ($C4CA)
+ RO17:43B2 FA C8 C4         ld   a,(C4C8)
+ RO17:43B5 47               ld   b,a
+ RO17:43B6 FA CA C4         ld   a,(C4CA)
+ RO17:43B9 4F               ld   c,a
+ RO17:43BA FA D0 C4         ld   a,(C4D0)
+ RO17:43BD CD AE 2E         call 2EAE           // WRA4($D001 + A * 16) = C; WRA4($D002 + A * 16) = B
+ RO17:43C0 FA DE C4         ld   a,(C4DE)
+ RO17:43C3 3C               inc  a
+ RO17:43C4 EA DE C4         ld   (C4DE),a
+ RO17:43C7 E1               pop  hl             // HL = $D3AC + A * 32
+ RO17:43C8 CD 24 44         call 4424           // ($C4C8) 20 byte placed in HL 20 byte
+ RO17:43CB FA C7 C4         ld   a,(C4C7)
+ RO17:43CE 3C               inc  a
+ RO17:43CF EA C7 C4         ld   (C4C7),a
+ RO17:43D2 C9               ret                 // Sprite advanced behavior: may exist with standard behavior possibly moving from starting location after timer 1, then despawns or follows specific instruction after timer 2
+ RO17:43D3 2A               ldi  a,(hl)
+ RO17:43D4 EA C8 C4         ld   (C4C8),a
+ RO17:43D7 2A               ldi  a,(hl)
+ RO17:43D8 EA C9 C4         ld   (C4C9),a
+ RO17:43DB 2A               ldi  a,(hl)
+ RO17:43DC EA CA C4         ld   (C4CA),a
+ RO17:43DF 2A               ldi  a,(hl)
+ RO17:43E0 EA CB C4         ld   (C4CB),a
+ RO17:43E3 2A               ldi  a,(hl)
+ RO17:43E4 EA CC C4         ld   (C4CC),a
+ RO17:43E7 2A               ldi  a,(hl)
+ RO17:43E8 EA CD C4         ld   (C4CD),a
+ RO17:43EB 2A               ldi  a,(hl)
+ RO17:43EC EA CE C4         ld   (C4CE),a
+ RO17:43EF 2A               ldi  a,(hl)
+ RO17:43F0 EA CF C4         ld   (C4CF),a
+ RO17:43F3 2A               ldi  a,(hl)
+ RO17:43F4 EA D0 C4         ld   (C4D0),a
+ RO17:43F7 2A               ldi  a,(hl)
+ RO17:43F8 EA D1 C4         ld   (C4D1),a
+ RO17:43FB 2A               ldi  a,(hl)
+ RO17:43FC EA D2 C4         ld   (C4D2),a
+ RO17:43FF 2A               ldi  a,(hl)
+ RO17:4400 EA D3 C4         ld   (C4D3),a
+ RO17:4403 2A               ldi  a,(hl)
+ RO17:4404 EA D4 C4         ld   (C4D4),a
+ RO17:4407 2A               ldi  a,(hl)
+ RO17:4408 EA D5 C4         ld   (C4D5),a
+ RO17:440B 2A               ldi  a,(hl)
+ RO17:440C EA D6 C4         ld   (C4D6),a
+ RO17:440F 2A               ldi  a,(hl)
+ RO17:4410 EA D7 C4         ld   (C4D7),a
+ RO17:4413 2A               ldi  a,(hl)
+ RO17:4414 EA D8 C4         ld   (C4D8),a
+ RO17:4417 2A               ldi  a,(hl)
+ RO17:4418 EA D9 C4         ld   (C4D9),a
+ RO17:441B 2A               ldi  a,(hl)
+ RO17:441C EA DA C4         ld   (C4DA),a
+ RO17:441F 2A               ldi  a,(hl)
+ RO17:4420 EA DB C4         ld   (C4DB),a
+ RO17:4423 C9               ret                 // HL 20 byte placed in ($C4C8) 20 byte
+ RO17:4424 FA C8 C4         ld   a,(C4C8)
+ RO17:4427 22               ldi  (hl),a
+ RO17:4428 FA C9 C4         ld   a,(C4C9)
+ RO17:442B 22               ldi  (hl),a
+ RO17:442C FA CA C4         ld   a,(C4CA)
+ RO17:442F 22               ldi  (hl),a
+ RO17:4430 FA CB C4         ld   a,(C4CB)
+ RO17:4433 22               ldi  (hl),a
+ RO17:4434 FA CC C4         ld   a,(C4CC)
+ RO17:4437 22               ldi  (hl),a
+ RO17:4438 FA CD C4         ld   a,(C4CD)
+ RO17:443B 22               ldi  (hl),a
+ RO17:443C FA CE C4         ld   a,(C4CE)
+ RO17:443F 22               ldi  (hl),a
+ RO17:4440 FA CF C4         ld   a,(C4CF)
+ RO17:4443 22               ldi  (hl),a
+ RO17:4444 FA D0 C4         ld   a,(C4D0)
+ RO17:4447 22               ldi  (hl),a
+ RO17:4448 FA D1 C4         ld   a,(C4D1)
+ RO17:444B 22               ldi  (hl),a
+ RO17:444C FA D2 C4         ld   a,(C4D2)
+ RO17:444F 22               ldi  (hl),a
+ RO17:4450 FA D3 C4         ld   a,(C4D3)
+ RO17:4453 22               ldi  (hl),a
+ RO17:4454 FA D4 C4         ld   a,(C4D4)
+ RO17:4457 22               ldi  (hl),a
+ RO17:4458 FA D5 C4         ld   a,(C4D5)
+ RO17:445B 22               ldi  (hl),a
+ RO17:445C FA D6 C4         ld   a,(C4D6)
+ RO17:445F 22               ldi  (hl),a
+ RO17:4460 FA D7 C4         ld   a,(C4D7)
+ RO17:4463 22               ldi  (hl),a
+ RO17:4464 FA D8 C4         ld   a,(C4D8)
+ RO17:4467 22               ldi  (hl),a
+ RO17:4468 FA D9 C4         ld   a,(C4D9)
+ RO17:446B 22               ldi  (hl),a
+ RO17:446C FA DA C4         ld   a,(C4DA)
+ RO17:446F 22               ldi  (hl),a
+ RO17:4470 FA DB C4         ld   a,(C4DB)
+ RO17:4473 22               ldi  (hl),a
+ RO17:4474 C9               ret                 // ($C4C8) 20 byte placed in HL 20 byte
+ RO17:4475 07               rlca 
+ RO17:4476 07               rlca 
+ RO17:4477 07               rlca 
+ RO17:4478 07               rlca 
+ RO17:4479 07               rlca                // A = A%8 * 32 + A/8
+ RO17:447A 4F               ld   c,a
+ RO17:447B E6 1F            and  a,1F
+ RO17:447D 67               ld   h,a
+ RO17:447E 79               ld   a,c
+ RO17:447F E6 E0            and  a,E0
+ RO17:4481 6F               ld   l,a            // HL = A * 32
+ RO17:4482 01 AC D3         ld   bc,D3AC
+ RO17:4485 09               add  hl,bc
+ RO17:4486 C9               ret                 // HL = $D3AC + A * 32
+ RO17:4487 E5               push hl
+ RO17:4488 06 0A            ld   b,0A
+ RO17:448A CD 95 29         call 2995           // HL = A * 10
+ RO17:448D 7C               ld   a,h
+ RO17:448E 47               ld   b,a
+ RO17:448F 7D               ld   a,l
+ RO17:4490 4F               ld   c,a            // BC = A * 10
+ RO17:4491 21 CB 47         ld   hl,47CB
+ RO17:4494 09               add  hl,bc          // HL = $47CB + A * 10
+ RO17:4495 2A               ldi  a,(hl)
+ RO17:4496 5F               ld   e,a
+ RO17:4497 7E               ld   a,(hl)
+ RO17:4498 57               ld   d,a
+ RO17:4499 E1               pop  hl
+ RO17:449A 01 60 01         ld   bc,0160
+ RO17:449D CD 50 3B         call 3B50           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1)
+ RO17:44A0 C9               ret                 // Establishes battle screen terrain A graphics' basic tiles in HL
+ RO17:44A1 F0 83            ld   a,(ff00+83)
+ RO17:44A3 F5               push af
+ RO17:44A4 3E 01            ld   a,01
+ RO17:44A6 E0 83            ld   (ff00+83),a
+ RO17:44A8 E0 4F            ld   (ff00+4F),a
+ RO17:44AA 21 D0 88         ld   hl,88D0
+ RO17:44AD 11 B3 6B         ld   de,6BB3
+ RO17:44B0 01 10 03         ld   bc,0310
+ RO17:44B3 CD 50 3B         call 3B50           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1) (HP numbers, borders)
+ RO17:44B6 F1               pop  af
+ RO17:44B7 E0 83            ld   (ff00+83),a
+ RO17:44B9 E0 4F            ld   (ff00+4F),a
+ RO17:44BB 3E 00            ld   a,00
+ RO17:44BD 06 01            ld   b,01
+ RO17:44BF 21 C3 6E         ld   hl,6EC3
+ RO17:44C2 0E 17            ld   c,17
+ RO17:44C4 CD D9 06         call 06D9           // ($C4E0) to ($C4E7) hold ($6EC3) to ($6ECA)
+ RO17:44C7 CD F2 06         call 06F2           // Both BG and Sprite Palette tables are updated
+ RO17:44CA C9               ret                 // Establishes Battle Screen HP values graphics basic information
+ RO17:44CB FA 6A D3         ld   a,(D36A)
+ RO17:44CE FE 00            cp   a,00
+ RO17:44D0 28 19            jr   z,44EB         // Jumps if Red Star is under attack by potential anti-air
+ RO17:44D2 FA 66 D3         ld   a,(D366)
+ RO17:44D5 FE 01            cp   a,01
+ RO17:44D7 28 05            jr   z,44DE         // Continues on if ($D366) is active
+ RO17:44D9 3C               inc  a
+ RO17:44DA EA 66 D3         ld   (D366),a
+ RO17:44DD C9               ret  
+ RO17:44DE AF               xor  a
+ RO17:44DF EA 66 D3         ld   (D366),a
+ RO17:44E2 FA 64 D3         ld   a,(D364)
+ RO17:44E5 FE 00            cp   a,00
+ RO17:44E7 28 15            jr   z,44FE
+ RO17:44E9 18 00            jr   44EB
+ RO17:44EB 3E 00            ld   a,00
+ RO17:44ED EA 64 D3         ld   (D364),a
+ RO17:44F0 21 44 D3         ld   hl,D344
+ RO17:44F3 3E 02            ld   a,02
+ RO17:44F5 06 02            ld   b,02
+ RO17:44F7 CD BC 06         call 06BC           // ($C4F0) to ($C4FF) hold ($D344) to ($D353)
+ RO17:44FA CD F9 06         call 06F9           // BG Palette tables are updated
+ RO17:44FD C9               ret                 // Updates Red Star's terrain palettes entirely on any of the following conditions: potential anti-air hitting Red Star, or $D364 and $D366 are both active (latter would happen every 4 times procedure is called in succession)
+ RO17:44FE 3E 01            ld   a,01
+ RO17:4500 EA 64 D3         ld   (D364),a
+ RO17:4503 FA 68 D3         ld   a,(D368)       // A = Owner # * 2
+ RO17:4506 06 08            ld   b,08
+ RO17:4508 CD 95 29         call 2995           // HL = Owner # * 16
+ RO17:450B 01 DB 72         ld   bc,72DB
+ RO17:450E 09               add  hl,bc
+ RO17:450F E5               push hl
+ RO17:4510 3E 02            ld   a,02
+ RO17:4512 CD BC 29         call 29BC           // HL += A
+ RO17:4515 54               ld   d,h
+ RO17:4516 5D               ld   e,l
+ RO17:4517 21 F2 C4         ld   hl,C4F2
+ RO17:451A 01 02 00         ld   bc,0002
+ RO17:451D CD 59 3B         call 3B59           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1)
+ RO17:4520 E1               pop  hl
+ RO17:4521 3E 08            ld   a,08
+ RO17:4523 CD BC 29         call 29BC           // HL += A
+ RO17:4526 3E 02            ld   a,02
+ RO17:4528 CD BC 29         call 29BC           // HL += A
+ RO17:452B 54               ld   d,h
+ RO17:452C 5D               ld   e,l
+ RO17:452D 21 FA C4         ld   hl,C4FA
+ RO17:4530 01 02 00         ld   bc,0002
+ RO17:4533 CD 59 3B         call 3B59           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1)
+ RO17:4536 CD F9 06         call 06F9           // BG Palette tables are updated
+ RO17:4539 C9               ret                 // Second color of each palette of Red Star's Terrain set to RGB 27,28,29 for the 2nd and 3rd of every 4 procedure calls in sucession if Red Star is under attack by anything other than potential anti-air
+ RO17:453A FA 6B D3         ld   a,(D36B)
+ RO17:453D FE 00            cp   a,00
+ RO17:453F 28 19            jr   z,455A         // Jumps if White Moon is under attack by potential anti-air
+ RO17:4541 FA 67 D3         ld   a,(D367)
+ RO17:4544 FE 01            cp   a,01
+ RO17:4546 28 05            jr   z,454D
+ RO17:4548 3C               inc  a
+ RO17:4549 EA 67 D3         ld   (D367),a
+ RO17:454C C9               ret  
+ RO17:454D AF               xor  a
+ RO17:454E EA 67 D3         ld   (D367),a
+ RO17:4551 FA 65 D3         ld   a,(D365)
+ RO17:4554 FE 00            cp   a,00
+ RO17:4556 28 15            jr   z,456D
+ RO17:4558 18 00            jr   455A
+ RO17:455A 3E 00            ld   a,00
+ RO17:455C EA 65 D3         ld   (D365),a
+ RO17:455F 21 54 D3         ld   hl,D354
+ RO17:4562 3E 04            ld   a,04
+ RO17:4564 06 02            ld   b,02
+ RO17:4566 CD BC 06         call 06BC           // ($C500) to ($C50F) hold ($D354) to ($D363)
+ RO17:4569 CD F9 06         call 06F9           // BG Palette tables are updated
+ RO17:456C C9               ret  
+ RO17:456D 3E 01            ld   a,01
+ RO17:456F EA 65 D3         ld   (D365),a
+ RO17:4572 FA 69 D3         ld   a,(D369)       // A = Owner # * 2
+ RO17:4575 06 08            ld   b,08
+ RO17:4577 CD 95 29         call 2995           // HL = Owner # * 16
+ RO17:457A 01 DB 72         ld   bc,72DB
+ RO17:457D 09               add  hl,bc
+ RO17:457E E5               push hl
+ RO17:457F 3E 02            ld   a,02
+ RO17:4581 CD BC 29         call 29BC           // HL += A
+ RO17:4584 54               ld   d,h
+ RO17:4585 5D               ld   e,l
+ RO17:4586 21 02 C5         ld   hl,C502
+ RO17:4589 01 02 00         ld   bc,0002
+ RO17:458C CD 59 3B         call 3B59           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1)
+ RO17:458F E1               pop  hl
+ RO17:4590 3E 08            ld   a,08
+ RO17:4592 CD BC 29         call 29BC           // HL += A
+ RO17:4595 3E 02            ld   a,02
+ RO17:4597 CD BC 29         call 29BC           // HL += A
+ RO17:459A 54               ld   d,h
+ RO17:459B 5D               ld   e,l
+ RO17:459C 21 0A C5         ld   hl,C50A
+ RO17:459F 01 02 00         ld   bc,0002
+ RO17:45A2 CD 59 3B         call 3B59           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1)
+ RO17:45A5 CD F9 06         call 06F9           // BG Palette tables are updated
+ RO17:45A8 C9               ret                 // Second color of each palette of White Moon's Terrain set to RGB 27,28,29 for the 2nd and 3rd of every 4 procedure calls in sucession if White Moon is under attack by anything other than potential anti-air
+ RO17:45A9 CD CB 44         call 44CB           // Second color of each palette of Red Star's Terrain set to RGB 27,28,29 for the 2nd and 3rd of every 4 procedure calls in sucession if Red Star is under attack by anything other than potential anti-air
+ RO17:45AC CD 3A 45         call 453A           // Second color of each palette of White Moon's Terrain set to RGB 27,28,29 for the 2nd and 3rd of every 4 procedure calls in sucession if White Moon is under attack by anything other than potential anti-air
+ RO17:45AF C9               ret                 // Second color of each palette of each country's Terrain set to RGB 27,28,29 for the 2nd and 3rd of every 4 procedure calls in sucession for each country under attack by anything other than potential anti-air
+ RO17:45B0 F5               push af
+ RO17:45B1 7C               ld   a,h
+ RO17:45B2 EA 64 CC         ld   (CC64),a
+ RO17:45B5 F1               pop  af
+ RO17:45B6 C5               push bc
+ RO17:45B7 06 0A            ld   b,0A
+ RO17:45B9 CD 95 29         call 2995           // HL = A * 10
+ RO17:45BC 7C               ld   a,h
+ RO17:45BD 47               ld   b,a
+ RO17:45BE 7D               ld   a,l
+ RO17:45BF 4F               ld   c,a            // BC = A * 10
+ RO17:45C0 21 CB 47         ld   hl,47CB
+ RO17:45C3 09               add  hl,bc          // HL = $47CB + A * 10
+ RO17:45C4 23               inc  hl
+ RO17:45C5 23               inc  hl             // HL = $47CD + A * 10
+ RO17:45C6 C1               pop  bc
+ RO17:45C7 78               ld   a,b
+ RO17:45C8 EA 52 CC         ld   (CC52),a
+ RO17:45CB 79               ld   a,c
+ RO17:45CC EA 53 CC         ld   (CC53),a
+ RO17:45CF 3E 09            ld   a,09
+ RO17:45D1 EA 56 CC         ld   (CC56),a
+ RO17:45D4 3E 03            ld   a,03
+ RO17:45D6 EA 57 CC         ld   (CC57),a
+ RO17:45D9 2A               ldi  a,(hl)
+ RO17:45DA EA 59 CC         ld   (CC59),a
+ RO17:45DD 2A               ldi  a,(hl)
+ RO17:45DE EA 58 CC         ld   (CC58),a       // Graphics
+ RO17:45E1 3E 17            ld   a,17
+ RO17:45E3 EA 61 CC         ld   (CC61),a
+ RO17:45E6 2A               ldi  a,(hl)
+ RO17:45E7 EA 5B CC         ld   (CC5B),a
+ RO17:45EA 2A               ldi  a,(hl)
+ RO17:45EB E5               push hl
+ RO17:45EC EA 5A CC         ld   (CC5A),a       // Attributes
+ RO17:45EF 3E 17            ld   a,17
+ RO17:45F1 EA 62 CC         ld   (CC62),a
+ RO17:45F4 7A               ld   a,d
+ RO17:45F5 EA 5C CC         ld   (CC5C),a
+ RO17:45F8 7B               ld   a,e
+ RO17:45F9 EA 63 CC         ld   (CC63),a       // ($CC52) - B, C, ?, ?, 9, 3, ($47CB + A * 10 + 3), ($47CB + A * 10 + 2), ($47CB + A * 10 + 5), ($47CB + A * 10 + 4), D, ?, ?, ?, ?, $17, $17, E, H
+ RO17:45FC CD 40 46         call 4640           // Sets up BG graphics tile placements and palette placements based on data in $CC50 bytes group; Horizontal Flip is determined by $CC64
+ RO17:45FF E1               pop  hl
+ RO17:4600 2A               ldi  a,(hl)
+ RO17:4601 4F               ld   c,a
+ RO17:4602 2A               ldi  a,(hl)
+ RO17:4603 47               ld   b,a            // BC holds pointer for property's Palettes
+ RO17:4604 7E               ld   a,(hl)
+ RO17:4605 F5               push af
+ RO17:4606 FA 64 CC         ld   a,(CC64)
+ RO17:4609 FE 01            cp   a,01
+ RO17:460B 28 1A            jr   z,4627
+ RO17:460D 16 02            ld   d,02
+ RO17:460F 60               ld   h,b
+ RO17:4610 69               ld   l,c
+ RO17:4611 F1               pop  af             // A holds 2 for White Moon property, 4 for Neutral property, 0 otherwise
+ RO17:4612 EA 68 D3         ld   (D368),a       // 2 * Owner #, Palette pointer, 2, E, Palette pointer
+ RO17:4615 EF 17 55 47                          // ($C4F0) to ($C4FF) hold given portion of terrain's palette info (first 2 palettes for Red Star property or natural terrain; 3rd and 4th palettes for White Moon property; or 5th and 6th palettes for Neutral property)
+ RO17:4619 11 F0 C4         ld   de,C4F0
+ RO17:461C 21 44 D3         ld   hl,D344
+ RO17:461F 01 10 00         ld   bc,0010
+ RO17:4622 CD 50 3B         call 3B50           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1)
+ RO17:4625 18 18            jr   463F           // Ends immediately for left side
+ RO17:4627 60               ld   h,b            // Meets back here for right side
+ RO17:4628 69               ld   l,c
+ RO17:4629 F1               pop  af             // A holds 2 for White Moon property, 4 for Neutral property, 0 otherwise
+ RO17:462A EA 69 D3         ld   (D369),a
+ RO17:462D 16 04            ld   d,04           // 2 * Owner #, Palette pointer, 4, E, Palette pointer
+ RO17:462F EF 17 55 47                          // ($C500) to ($C50F) hold given portion of terrain's palette info (first 2 palettes for Red Star property or natural terrain; 3rd and 4th palettes for White Moon property; or 5th and 6th palettes for Neutral property)
+ RO17:4633 11 00 C5         ld   de,C500
+ RO17:4636 21 54 D3         ld   hl,D354
+ RO17:4639 01 10 00         ld   bc,0010
+ RO17:463C CD 50 3B         call 3B50           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1)
+ RO17:463F C9               ret                 // Sets up basic terrain graphics at rectangle BC, size 9x3, on battle screen on given side; also sets up $D344 palettes for left side or $D354 palettes for right side (A is terrain, D is first tile within graphics tiles group, E is Palette value modification, and H is side)
+ RO17:4640 F0 80            ld   a,(ff00+80)
+ RO17:4642 F5               push af
+ RO17:4643 AF               xor  a
+ RO17:4644 EA 50 CC         ld   (CC50),a
+ RO17:4647 EA 51 CC         ld   (CC51),a
+ RO17:464A FA 64 CC         ld   a,(CC64)
+ RO17:464D FE 00            cp   a,00
+ RO17:464F 28 02            jr   z,4653
+ RO17:4651 18 09            jr   465C
+ RO17:4653 AF               xor  a
+ RO17:4654 EA 54 CC         ld   (CC54),a
+ RO17:4657 EA 55 CC         ld   (CC55),a
+ RO17:465A 18 0B            jr   4667
+ RO17:465C FA 56 CC         ld   a,(CC56)
+ RO17:465F 3D               dec  a
+ RO17:4660 EA 54 CC         ld   (CC54),a       // Accounts for horizontal flip
+ RO17:4663 AF               xor  a
+ RO17:4664 EA 55 CC         ld   (CC55),a
+ RO17:4667 FA 57 CC         ld   a,(CC57)       // Bigger loop begins here
+ RO17:466A 4F               ld   c,a
+ RO17:466B FA 55 CC         ld   a,(CC55)
+ RO17:466E B9               cp   c
+ RO17:466F D2 4E 47         jp   nc,474E        // Ends immediately after last row
+ RO17:4672 FA 54 CC         ld   a,(CC54)       // Loop begins here
+ RO17:4675 4F               ld   c,a
+ RO17:4676 FA 52 CC         ld   a,(CC52)
+ RO17:4679 81               add  c
+ RO17:467A 47               ld   b,a            // X value established
+ RO17:467B FA 55 CC         ld   a,(CC55)
+ RO17:467E 4F               ld   c,a
+ RO17:467F FA 53 CC         ld   a,(CC53)
+ RO17:4682 81               add  c
+ RO17:4683 4F               ld   c,a            // Y value established
+ RO17:4684 CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO17:4687 E5               push hl
+ RO17:4688 3E 00            ld   a,00
+ RO17:468A E0 83            ld   (ff00+83),a
+ RO17:468C E0 4F            ld   (ff00+4F),a
+ RO17:468E F5               push af
+ RO17:468F FA 61 CC         ld   a,(CC61)
+ RO17:4692 7F               ld   a,a
+ RO17:4693 E0 80            ld   (ff00+80),a
+ RO17:4695 EA 00 20         ld   (2000),a
+ RO17:4698 F1               pop  af
+ RO17:4699 FA 59 CC         ld   a,(CC59)
+ RO17:469C 6F               ld   l,a
+ RO17:469D FA 58 CC         ld   a,(CC58)
+ RO17:46A0 67               ld   h,a            // HL holds graphics tiles pointer
+ RO17:46A1 FA 50 CC         ld   a,(CC50)
+ RO17:46A4 4F               ld   c,a
+ RO17:46A5 FA 51 CC         ld   a,(CC51)
+ RO17:46A8 47               ld   b,a
+ RO17:46A9 09               add  hl,bc
+ RO17:46AA 7E               ld   a,(hl)         // Graphics tile #
+ RO17:46AB F5               push af
+ RO17:46AC FA 5C CC         ld   a,(CC5C)
+ RO17:46AF 4F               ld   c,a
+ RO17:46B0 F1               pop  af
+ RO17:46B1 81               add  c              // Added from group
+ RO17:46B2 E1               pop  hl
+ RO17:46B3 E5               push hl
+ RO17:46B4 CD 1C 0F         call 0F1C           // (HL) = A, increment HL
+ RO17:46B7 3E 01            ld   a,01
+ RO17:46B9 E0 83            ld   (ff00+83),a
+ RO17:46BB E0 4F            ld   (ff00+4F),a
+ RO17:46BD FA 5B CC         ld   a,(CC5B)
+ RO17:46C0 6F               ld   l,a
+ RO17:46C1 FA 5A CC         ld   a,(CC5A)
+ RO17:46C4 67               ld   h,a            // HL holds attributes pointer
+ RO17:46C5 FA 50 CC         ld   a,(CC50)
+ RO17:46C8 4F               ld   c,a
+ RO17:46C9 FA 51 CC         ld   a,(CC51)
+ RO17:46CC 47               ld   b,a
+ RO17:46CD 09               add  hl,bc
+ RO17:46CE 7E               ld   a,(hl)         // Palette #
+ RO17:46CF E1               pop  hl
+ RO17:46D0 CB DF            set  3,a            // VRA1 tiles setup
+ RO17:46D2 F5               push af
+ RO17:46D3 FA 63 CC         ld   a,(CC63)
+ RO17:46D6 4F               ld   c,a
+ RO17:46D7 F1               pop  af
+ RO17:46D8 F5               push af
+ RO17:46D9 E6 07            and  a,07
+ RO17:46DB 81               add  c
+ RO17:46DC E6 07            and  a,07
+ RO17:46DE 57               ld   d,a            // Final Palette #
+ RO17:46DF F1               pop  af
+ RO17:46E0 E6 F8            and  a,F8           // Non-Palette Attributes
+ RO17:46E2 82               add  d              // Final Attributes value aside from Horizontal flip if necessary
+ RO17:46E3 F5               push af
+ RO17:46E4 FA 64 CC         ld   a,(CC64)
+ RO17:46E7 FE 01            cp   a,01
+ RO17:46E9 28 03            jr   z,46EE
+ RO17:46EB F1               pop  af
+ RO17:46EC 18 03            jr   46F1
+ RO17:46EE F1               pop  af
+ RO17:46EF EE 20            xor  a,20           // Horizontal Flip flag complimented for right side
+ RO17:46F1 CD 1C 0F         call 0F1C           // (HL) = A, increment HL
+ RO17:46F4 FA 51 CC         ld   a,(CC51)
+ RO17:46F7 47               ld   b,a
+ RO17:46F8 FA 50 CC         ld   a,(CC50)
+ RO17:46FB 4F               ld   c,a
+ RO17:46FC 03               inc  bc
+ RO17:46FD 78               ld   a,b
+ RO17:46FE EA 51 CC         ld   (CC51),a
+ RO17:4701 79               ld   a,c
+ RO17:4702 EA 50 CC         ld   (CC50),a       // Number of tiles handled incremented
+ RO17:4705 FA 64 CC         ld   a,(CC64)
+ RO17:4708 FE 00            cp   a,00
+ RO17:470A 28 02            jr   z,470E
+ RO17:470C 18 20            jr   472E           // Branches for needed Horizontal Flip
+ RO17:470E FA 54 CC         ld   a,(CC54)
+ RO17:4711 3C               inc  a
+ RO17:4712 EA 54 CC         ld   (CC54),a
+ RO17:4715 FA 56 CC         ld   a,(CC56)
+ RO17:4718 4F               ld   c,a
+ RO17:4719 FA 54 CC         ld   a,(CC54)
+ RO17:471C B9               cp   c
+ RO17:471D DA 72 46         jp   c,4672         // Jumps for continuing row
+ RO17:4720 AF               xor  a
+ RO17:4721 EA 54 CC         ld   (CC54),a
+ RO17:4724 FA 55 CC         ld   a,(CC55)
+ RO17:4727 3C               inc  a
+ RO17:4728 EA 55 CC         ld   (CC55),a
+ RO17:472B C3 67 46         jp   4667           // Cycle finished for no Horizontal Flip needed; would end if that was the last row
+ RO17:472E FA 54 CC         ld   a,(CC54)       // Needed Horizontal Flip returns here
+ RO17:4731 3D               dec  a
+ RO17:4732 EA 54 CC         ld   (CC54),a       // Remember: Horizontal Flip is right to left, not left to right
+ RO17:4735 FA 54 CC         ld   a,(CC54)
+ RO17:4738 FE FF            cp   a,FF
+ RO17:473A C2 72 46         jp   nz,4672        // Jumps for continuing row
+ RO17:473D FA 56 CC         ld   a,(CC56)
+ RO17:4740 3D               dec  a
+ RO17:4741 EA 54 CC         ld   (CC54),a       // Reset to 1 less than maximum for X
+ RO17:4744 FA 55 CC         ld   a,(CC55)
+ RO17:4747 3C               inc  a
+ RO17:4748 EA 55 CC         ld   (CC55),a
+ RO17:474B C3 67 46         jp   4667           // Cycle finished for Horizontal Flip needed; would end if that was the last row
+ RO17:474E F1               pop  af
+ RO17:474F E0 80            ld   (ff00+80),a
+ RO17:4751 EA 00 20         ld   (2000),a
+ RO17:4754 C9               ret                 // Sets up BG graphics tile placements and palette placements based on data in $CC50 bytes group; Horizontal Flip is determined by $CC64
+ RO17:4755 E5               push hl
+ RO17:4756 06 08            ld   b,08
+ RO17:4758 CD 95 29         call 2995           // HL = A * 8
+ RO17:475B 44               ld   b,h
+ RO17:475C 4D               ld   c,l            // BC = A * 8
+ RO17:475D E1               pop  hl
+ RO17:475E 09               add  hl,bc          // HL = HL + A * 8
+ RO17:475F 7A               ld   a,d
+ RO17:4760 06 02            ld   b,02
+ RO17:4762 0E 17            ld   c,17
+ RO17:4764 CD D9 06         call 06D9           // ($C4E0 + D * 8) to ($C4EF + D * 8) hold $17:(HL + A * 8) to $17:(HL + A * 8 + 15)
+ RO17:4767 C9               ret  
+ RO17:4768 E5               push hl
+ RO17:4769 01 00 00         ld   bc,0000
+ RO17:476C FA B5 C4         ld   a,(C4B5)
+ RO17:476F 4F               ld   c,a
+ RO17:4770 21 BD C4         ld   hl,C4BD        // Pseudo RNG results
+ RO17:4773 09               add  hl,bc
+ RO17:4774 7E               ld   a,(hl)         // A = Pseudo RNG Seed's Value
+ RO17:4775 EA D2 C4         ld   (C4D2),a
+ RO17:4778 AF               xor  a
+ RO17:4779 EA D1 C4         ld   (C4D1),a
+ RO17:477C E1               pop  hl
+ RO17:477D C9               ret                 // Sprite's activation timer set to current given attack bullet sprite's Pseudo RNG Seed Value 0~60
+ RO17:477E FE 00            cp   a,00
+ RO17:4780 20 0B            jr   nz,478D
+ RO17:4782 FA DC C4         ld   a,(C4DC)       // Red Star's altitude aim (0 for same, 1 for Surface to Air, 2 for Air to Surface)
+ RO17:4785 EA 30 DB         ld   (DB30),a
+ RO17:4788 FA B3 C4         ld   a,(C4B3)       // Red Star's Used Weapon
+ RO17:478B 18 09            jr   4796
+ RO17:478D FA DD C4         ld   a,(C4DD)       // White Moon's altitude aim (0 for same, 1 for Surface to Air, 2 for Air to Surface)
+ RO17:4790 EA 30 DB         ld   (DB30),a
+ RO17:4793 FA B4 C4         ld   a,(C4B4)       // White Moon's Used Weapon
+ RO17:4796 01 00 00         ld   bc,0000
+ RO17:4799 CD 9D 47         call 479D           // DE holds pointer to sprite stats modification table pointer for weapon's ammo and direction (A is Weapon ID, BC is bytes skipped based on active part)
+ RO17:479C C9               ret                 // DE holds pointer to sprite stats modification table pointer for weapon's ammo and direction for first part for given side A
+ RO17:479D C5               push bc
+ RO17:479E F5               push af
+ RO17:479F 3E 18            ld   a,18
+ RO17:47A1 47               ld   b,a
+ RO17:47A2 F1               pop  af
+ RO17:47A3 CD 95 29         call 2995           // HL = A * 24
+ RO17:47A6 01 D3 49         ld   bc,49D3
+ RO17:47A9 09               add  hl,bc          // HL = $49D3 + A * 24
+ RO17:47AA E5               push hl
+ RO17:47AB FA 30 DB         ld   a,(DB30)
+ RO17:47AE 06 04            ld   b,04
+ RO17:47B0 CD 95 29         call 2995           // HL = ($DB30) * 4
+ RO17:47B3 44               ld   b,h
+ RO17:47B4 4D               ld   c,l
+ RO17:47B5 E1               pop  hl             // HL = $49D3 + A * 24
+ RO17:47B6 09               add  hl,bc          // Adds 4 for Surface-To-Air, or 8 for Air-To-Surface
+ RO17:47B7 FA AD C4         ld   a,(C4AD)
+ RO17:47BA FE 01            cp   a,01
+ RO17:47BC 28 02            jr   z,47C0
+ RO17:47BE 18 04            jr   47C4           // Skips addition of 12 if Red Star
+ RO17:47C0 01 0C 00         ld   bc,000C
+ RO17:47C3 09               add  hl,bc
+ RO17:47C4 C1               pop  bc
+ RO17:47C5 09               add  hl,bc
+ RO17:47C6 2A               ldi  a,(hl)
+ RO17:47C7 5F               ld   e,a
+ RO17:47C8 7E               ld   a,(hl)
+ RO17:47C9 57               ld   d,a
+ RO17:47CA C9               ret                 // DE holds pointer to sprite stats modification table pointer for weapon's ammo and direction (A is Weapon ID, BC is bytes skipped based on active part)
+
+ RO17:47CB 89 4D 53 4D 6E 4D 59 4E 00 00        // Null (defaults to HQ Red)
+ RO17:47D5 89 4D 53 4D 6E 4D 59 4E 00 00        // HQ Red
+ RO17:47DF CF 4E 99 4E B4 4E 2F 50 00 00        // City Red
+ RO17:47E9 A5 50 6F 50 8A 50 C5 51 00 00        // Ruined City Red
+ RO17:47F3 3B 52 05 52 20 52 3B 53 00 00        // Factory Red
+ RO17:47FD B1 53 7B 53 96 53 B1 54 00 00        // Ruined Factory Red
+ RO17:4807 27 55 F1 54 0C 55 17 56 00 00        // Airport Red
+ RO17:4811 8D 56 57 56 72 56 7D 57 00 00        // Ruined Airport Red
+ RO17:481B F3 57 BD 57 D8 57 E3 58 00 00        // Simple Airport Red
+ RO17:4825 59 59 23 59 3E 59 59 5A 00 00        // Harbor Red
+ RO17:482F CF 5A 99 5A B4 5A 9F 5B 00 00        // Ruined Harbor Red
+ RO17:4839 15 5C DF 5B FA 5B 05 5D 00 00        // Communication Tower Red
+ RO17:4843 89 4D 53 4D 6E 4D 59 4E 02 00        // HQ White
+ RO17:484D CF 4E 99 4E B4 4E 2F 50 02 00        // City White
+ RO17:4857 A5 50 6F 50 8A 50 C5 51 02 00        // Ruined City White
+ RO17:4861 3B 52 05 52 20 52 3B 53 02 00        // Factory White
+ RO17:486B B1 53 7B 53 96 53 B1 54 02 00        // Ruined Factory White
+ RO17:4875 27 55 F1 54 0C 55 17 56 02 00        // Airport White
+ RO17:487F 8D 56 57 56 72 56 7D 57 02 00        // Ruined Airport White
+ RO17:4889 F3 57 BD 57 D8 57 E3 58 02 00        // Simple Airport White
+ RO17:4893 59 59 23 59 3E 59 59 5A 02 00        // Harbor White
+ RO17:489D CF 5A 99 5A B4 5A 9F 5B 02 00        // Ruined Harbor White
+ RO17:48A7 15 5C DF 5B FA 5B 05 5D 02 00        // Communication Tower White
+ RO17:48B1 CF 4E 99 4E B4 4E 2F 50 04 00        // City Neutral
+ RO17:48BB A5 50 6F 50 8A 50 C5 51 04 00        // Ruined City Neutral
+ RO17:48C5 3B 52 05 52 20 52 3B 53 04 00        // Factory Neutral
+ RO17:48CF B1 53 7B 53 96 53 B1 54 04 00        // Ruined Factory Neutral
+ RO17:48D9 27 55 F1 54 0C 55 17 56 04 00        // Airport Neutral
+ RO17:48E3 8D 56 57 56 72 56 7D 57 04 00        // Ruined Airport Neutral
+ RO17:48ED 59 59 23 59 3E 59 59 5A 04 00        // Harbor Neutral
+ RO17:48F7 CF 5A 99 5A B4 5A 9F 5B 04 00        // Ruined Harbor Neutral
+ RO17:4901 15 5C DF 5B FA 5B 05 5D 04 00        // Communication Tower Neutral
+ RO17:490B 7B 5D 45 5D 60 5D 0B 5E 00 00        // Plains
+ RO17:4915 81 5E 4B 5E 66 5E 11 5F 00 00        // Road
+ RO17:491F 87 5F 51 5F 6C 5F 27 60 00 00        // Bridge
+ RO17:4929 9D 60 67 60 82 60 3D 61 00 00        // Bridge (2)
+ RO17:4933 B3 61 7D 61 98 61 A3 62 00 00        // Mountain
+ RO17:493D 19 63 E3 62 FE 62 F9 63 00 00        // Forest
+ RO17:4947 6F 64 39 64 54 64 FF 64 00 00        // Wasteland
+ RO17:4951 75 65 3F 65 5A 65 35 66 00 00        // Desert
+ RO17:495B AB 66 75 66 90 66 0B 67 00 00        // River
+ RO17:4965 81 67 4B 67 66 67 31 68 00 00        // Sea
+ RO17:496F A7 68 71 68 8C 68 07 69 00 00        // Beach
+ RO17:4979 81 67 4B 67 66 67 31 68 00 00        // 43
+ RO17:4983 81 67 4B 67 66 67 31 68 00 00        // 44
+ RO17:498D 81 67 4B 67 66 67 31 68 00 00        // 45
+ RO17:4997 81 67 4B 67 66 67 31 68 00 00        // 46
+ RO17:49A1 81 67 4B 67 66 67 31 68 00 00        // 47
+ RO17:49AB 81 67 4B 67 66 67 31 68 00 00        // 48
+ RO17:49B5 81 67 4B 67 66 67 31 68 00 00        // 49
+ RO17:49BF 7D 69 47 69 62 69 1D 6A 00 00        // Skies
+ RO17:49C9 93 6A 5D 6A 78 6A 73 6B 00 00        // Underwater
+
+ RO17:49D3 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70
+ RO17:49EB 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70
+ RO17:4A03 00 70 00 70 05 70 05 70 00 70 00 70 00 70 00 70 0A 70 0A 70 05 70 05 70      // Machine Gun B
+ RO17:4A1B 00 70 00 70 05 70 05 70 0A 70 0A 70 00 70 00 70 0A 70 0A 70 05 70 05 70      // Machine Gun A
+ RO17:4A33 0F 70 0F 70 19 70 19 70 1E 70 1E 70 14 70 14 70 1E 70 1E 70 19 70 19 70      // HMG B
+ RO17:4A4B 23 70 23 70 2D 70 2D 70 32 70 32 70 28 70 28 70 32 70 32 70 2D 70 2D 70      // HMG Bx4
+ RO17:4A63 73 70 73 70 7D 70 7D 70 D3 70 D3 70 78 70 78 70 82 70 82 70 D8 70 D8 70      // HMG A
+ RO17:4A7B 87 70 87 70 91 70 91 70 00 70 00 70 8C 70 8C 70 96 70 96 70 00 70 00 70      // HMG S
+ RO17:4A93 9B 70 A5 70 00 70 00 70 00 70 00 70 A0 70 AA 70 00 70 00 70 00 70 00 70      // Grenade
+ RO17:4AAB 5F 70 5F 70 00 70 00 70 00 70 00 70 64 70 64 70 00 70 00 70 00 70 00 70      // Tank Cannon B
+ RO17:4AC3 69 70 69 70 00 70 00 70 00 70 00 70 6E 70 6E 70 00 70 00 70 00 70 00 70      // Tank Cannon A
+ RO17:4ADB 69 70 69 70 00 70 00 70 00 70 00 70 6E 70 6E 70 00 70 00 70 00 70 00 70      // Tank Cannon S
+ RO17:4AF3 9B 70 A5 70 00 70 00 70 00 70 00 70 A0 70 AA 70 00 70 00 70 00 70 00 70      // Cannon B
+ RO17:4B0B 9B 70 A5 70 00 70 00 70 00 70 00 70 A0 70 AA 70 00 70 00 70 00 70 00 70      // Cannon A
+ RO17:4B23 41 70 4B 70 00 70 00 70 00 70 00 70 46 70 50 70 00 70 00 70 00 70 00 70      // Rockets B
+ RO17:4B3B 41 70 4B 70 00 70 00 70 00 70 00 70 46 70 50 70 00 70 00 70 00 70 00 70      // Rockets A
+ RO17:4B53 37 70 37 70 00 70 00 70 00 70 00 70 3C 70 3C 70 00 70 00 70 00 70 00 70      // Anti-Tank B
+ RO17:4B6B 37 70 37 70 00 70 00 70 4B 70 4B 70 3C 70 3C 70 00 70 00 70 50 70 50 70      // Anti-Tank A
+ RO17:4B83 00 70 00 70 00 70 00 70 AF 70 AF 70 00 70 00 70 00 70 00 70 AF 70 AF 70      // Bombs
+ RO17:4B9B 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70      // Anti-City Missile
+ RO17:4BB3 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70      // Anti-City Bomb
+ RO17:4BCB 00 70 00 70 BE 70 BE 70 00 70 00 70 00 70 00 70 C3 70 C3 70 00 70 00 70      // Surface-To-Air B
+ RO17:4BE3 00 70 00 70 BE 70 BE 70 00 70 00 70 00 70 00 70 C3 70 C3 70 00 70 00 70      // Surface-To-Air A
+ RO17:4BFB 00 70 00 70 BE 70 BE 70 00 70 00 70 00 70 00 70 C3 70 C3 70 00 70 00 70      // Surface-To-Air S
+ RO17:4C13 B4 70 B4 70 00 70 00 70 00 70 00 70 B9 70 B9 70 00 70 00 70 00 70 00 70      // Air-To-Air B
+ RO17:4C2B B4 70 B4 70 00 70 00 70 00 70 00 70 B9 70 B9 70 00 70 00 70 00 70 00 70      // Air-To-Air A
+ RO17:4C43 B4 70 B4 70 00 70 00 70 00 70 00 70 B9 70 B9 70 00 70 00 70 00 70 00 70      // Air-To-Air S
+ RO17:4C5B BE 70 B4 70 00 70 00 70 00 70 00 70 C3 70 B9 70 00 70 00 70 00 70 00 70      // Anti-Ship Missile
+ RO17:4C73 55 70 55 70 00 70 00 70 55 70 55 70 5A 70 5A 70 00 70 00 70 5A 70 5A 70      // Direct Torpedo
+ RO17:4C8B 55 70 55 70 00 70 00 70 55 70 55 70 5A 70 5A 70 00 70 00 70 5A 70 5A 70      // Torpedo
+ RO17:4CA3 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70      // Supplies
+ RO17:4CBB 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70 00 70      // Materials
+ RO17:4CD3 00 70 00 70 00 70 00 70 4B 70 4B 70 00 70 00 70               ld   (hl),b
+ RO17:4CE3 00 70 00 70 50 70 50 70      // Air-To-Surface Missile
+
+ RO17:4CEB 10 07            <corrupted stop>
+ RO17:4CED 10 07            <corrupted stop>
+ RO17:4CEF 10 08            <corrupted stop>
+ RO17:4CF1 10 03            <corrupted stop>
+ RO17:4CF3 10 07            <corrupted stop>
+ RO17:4CF5 10 07            <corrupted stop>
+ RO17:4CF7 10 07            <corrupted stop>
+ RO17:4CF9 10 07            <corrupted stop>
+ RO17:4CFB 10 07            <corrupted stop>
+ RO17:4CFD 10 07            <corrupted stop>
+ RO17:4CFF 10 07            <corrupted stop>
+ RO17:4D01 10 07            <corrupted stop>
+ RO17:4D03 10 07            <corrupted stop>
+ RO17:4D05 10 07            <corrupted stop>
+ RO17:4D07 10 07            <corrupted stop>
+ RO17:4D09 10 07            <corrupted stop>
+ RO17:4D0B 10 07            <corrupted stop>
+ RO17:4D0D 10 07            <corrupted stop>
+ RO17:4D0F 10 07            <corrupted stop>
+ RO17:4D11 10 07            <corrupted stop>
+ RO17:4D13 10 07            <corrupted stop>
+ RO17:4D15 10 07            <corrupted stop>
+ RO17:4D17 10 07            <corrupted stop>
+ RO17:4D19 10 07            <corrupted stop>
+ RO17:4D1B 10 07            <corrupted stop>
+ RO17:4D1D 10 07            <corrupted stop>
+ RO17:4D1F 10 07            <corrupted stop>
+ RO17:4D21 10 07            <corrupted stop>
+ RO17:4D23 10 07            <corrupted stop>
+ RO17:4D25 10 07            <corrupted stop>
+ RO17:4D27 10 07            <corrupted stop>
+ RO17:4D29 10 07            <corrupted stop>
+ RO17:4D2B 10 07            <corrupted stop>
+ RO17:4D2D 10 07            <corrupted stop>
+ RO17:4D2F 10 07            <corrupted stop>
+ RO17:4D31 3A 18
+ RO17:4D33 28 20
+ RO17:4D35 38 20
+ RO17:4D37 40 20
+ RO17:4D39 10 07               rlca 
+ RO17:4D3B 10 07            <corrupted stop>
+ RO17:4D3D 10 07            <corrupted stop>
+ RO17:4D3F 10 07            <corrupted stop>
+ RO17:4D41 10 07            <corrupted stop>
+ RO17:4D43 30 0A            jr   nc,4D4F
+ RO17:4D45 30 0A            jr   nc,4D51
+ RO17:4D47 30 10            jr   nc,4D59
+ RO17:4D49 20 10            jr   nz,4D5B
+ RO17:4D4B 30 07            jr   nc,4D54
+ RO17:4D4D 30 07            jr   nc,4D56
+ RO17:4D4F 2A 10
+ RO17:4D51 20 10
+
+HQ:
+ RO17:4D53 09 0A 00 00 00 0B 0C 00 00
+ RO17:4D5C 00 00 02 03 04 03 02 00 00
+ RO17:4D65 01 05 06 07 08 07 06 05 01
+
+ RO17:4D6E 01 01 01 01 01 01 01 01 01
+ RO17:4D77 01 01 00 00 00 20 20 21 01
+ RO17:4D80 00 01 00 00 00 20 20 21 00
+
+ RO17:4D89 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:4D99 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:4DA9 FF 00 FF 00 FF 00 FF 00 FE 00 AC 01 AC 00 AD 01
+ RO17:4DB9 FF 00 FF 00 FF 00 FF 00 78 00 38 82 39 03 80 80
+ RO17:4DC9 C3 00 81 3C 00 66 18 5A 00 00 00 66 99 FF 00 00
+ RO17:4DD9 FE 00 FE 00 FE 00 FF 54 FF 54 FF 54 FF 54 00 00
+ RO17:4DE9 00 00 00 FF 00 00 7F 7F 00 6A 00 7F 00 6A 00 00
+ RO17:4DF9 00 1F 00 C0 0B 0B E0 EA 00 AA 00 EA 00 AA 00 00
+ RO17:4E09 00 FF 00 00 81 81 00 3C 81 81 81 BD 81 BD 00 00
+ RO17:4E19 FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:4E29 FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:4E39 FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:4E49 FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+
+ RO17:4E59 E7 1C 6E 62 1F 28 11 14
+ RO17:4E61 E7 1C 6E 62 BD 77 C6 59
+ RO17:4E69 E7 1C 6E 62 5A 6B 31 46
+ RO17:4E71 E7 1C 6E 62 BD 77 C6 59
+ RO17:4E79 E7 1C 6E 62 EC 03 80 02
+ RO17:4E81 E7 1C 6E 62 BD 77 C6 59
+ RO17:4E89 E7 1F AE 60 10 7C 1F 7C
+ RO17:4E91 1F 40 10 42 18 63 FF 7F
+
+City:
+ RO17:4E99 0F 10 00 11 12 00 13 14 15
+ RO17:4EA2 00 00 00 00 00 0E 04 05 06
+ RO17:4EAB 02 03 0A 0B 0C 0D 07 08 09
+
+ RO17:4EB4 01 01 00 01 01 00 01 01 01
+ RO17:4EBD 00 00 00 00 00 01 00 00 00
+ RO17:4EC6 00 00 01 01 01 01 00 00 00
+
+ RO17:4ECF FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:4EDF FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:4EEF E0 00 E0 0F E0 0A E0 0F E0 0A E0 0F E0 0A 00 00
+ RO17:4EFF 0F 00 0F E0 00 A0 0E EE 00 A0 0E EE 00 A0 00 00
+ RO17:4F0F FE 00 FC 01 A8 00 A8 03 00 03 02 7A 01 03 78 7B
+ RO17:4F1F 7F 00 3F 80 00 00 00 FE 00 FE 80 AA 54 FE 00 FE
+ RO17:4F2F FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 03 00
+ RO17:4F3F 00 7A 01 03 78 7B 00 7A 01 03 78 7B 00 7A 00 00
+ RO17:4F4F 00 AA D4 FE 00 FE 28 AA 54 FE 02 FE 02 AA 00 00
+ RO17:4F5F FB F8 FB F8 AB A8 FB F8 FB F8 AB A8 FB F8 00 00
+ RO17:4F6F FF 00 FF 00 FF 00 FF 00 FF C0 FF C0 FF D8 00 00
+ RO17:4F7F FF 00 FF 00 FF 00 FF 00 FF 00 FF 60 FF 68 00 00
+ RO17:4F8F FF 00 FF 00 FF 00 FF 01 FF 01 FF 81 FF 99 00 00
+ RO17:4F9F FF 1D FF 1D FF 1D FF 9F FF 9F FF FF FF FF 00 00
+ RO17:4FAF FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 08 FF 09
+ RO17:4FBF FF 00 FF 00 E0 1F C0 3F C0 3F E0 1F F1 0E FF 00
+ RO17:4FCF FF 00 FF 00 8F 70 03 FC 00 FF 33 CC FF 00 FF 00
+ RO17:4FDF FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:4FEF FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:4FFF FF 00 FF 00 FC 03 E0 1F 80 7F E5 1A FF 00 FF 00
+ RO17:500F FF 00 1F E0 0F F0 03 FC 00 FF 81 7E FF 00 FF 00
+ RO17:501F FF 00 FF 00 FF 00 FF 00 7F 80 DF 20 FF 00 FF 00
+
+ RO17:502F E7 1C 6E 62 1F 28 11 14
+ RO17:5037 E7 1C 6E 62 BD 77 C6 59
+ RO17:503F E7 1C 6E 62 5A 6B 31 46
+ RO17:5047 E7 1C 6E 62 BD 77 C6 59
+ RO17:504F E7 1C 6E 62 EC 03 80 02
+ RO17:5057 E7 1C 6E 62 BD 77 C6 59
+ RO17:505F 00 7E 00 7C 10 7C 1F 7C
+ RO17:5067 1F 40 10 42 18 63 FF 7F
+
+Ruined City:
+ RO17:506F 00 0D 0E 00 00 0F 10 11 00
+ RO17:5078 00 00 00 00 00 00 04 05 00
+ RO17:5081 02 03 09 0A 0B 0C 06 07 08
+
+ RO17:508A 00 01 01 00 00 01 01 01 00
+ RO17:5093 00 00 00 00 00 00 00 00 00
+ RO17:509C 00 00 01 01 01 01 00 00 00
+
+ RO17:50A5 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:50B5 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:50C5 FE 00 FE 00 FE 00 FC 01 F8 02 E0 07 E0 0A 00 00
+ RO17:50D5 0F 00 0F E0 01 A0 0E EE 00 80 0E AE 00 20 00 00
+ RO17:50E5 FE 00 FC 01 F8 00 F8 03 F8 03 FA 02 F9 03 F8 03
+ RO17:50F5 7F 00 3F 80 3F 00 BF 80 BF 80 8F 80 6F E0 97 D0
+ RO17:5105 F8 00 1A 02 69 63 10 72 01 03 78 7B 28 7A 00 00
+ RO17:5115 88 A8 D6 FE 02 7E AA AA BE BE 1A 5E 0A AA 00 00
+ RO17:5125 FF 00 FF 00 3F 00 9F 80 D3 C0 AB A8 FB F8 00 00
+ RO17:5135 FF 00 FF 00 FF 00 FF 00 FF C0 FF C0 FF D8 00 00
+ RO17:5145 FF 00 FF 00 FF 00 FF 00 FF 00 FF 60 FF 68 00 00
+ RO17:5155 FF 00 FF 00 FF 00 FF 01 FF 01 FF 81 FF 99 00 00
+ RO17:5165 FF 00 FF 01 FF 05 FF 0F FF 8F FF AF FF FF 00 00
+ RO17:5175 FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:5185 FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:5195 FF 00 FF 00 FC 03 E0 1F 80 7F E5 1A FF 00 FF 00
+ RO17:51A5 FF 00 1F E0 0F F0 03 FC 00 FF 81 7E FF 00 FF 00
+ RO17:51B5 FF 00 FF 00 FF 00 FF 00 7F 80 DF 20 FF 00 FF 00
+
+ RO17:51C5 E7 1C 6E 62 1F 28 11 14
+ RO17:51CD E7 1C 6E 62 BD 77 C6 59
+ RO17:51D5 E7 1C 6E 62 5A 6B 31 46
+ RO17:51DD E7 1C 6E 62 BD 77 C6 59
+ RO17:51E5 E7 1C 6E 62 EC 03 80 02
+ RO17:51ED E7 1C 6E 62 BD 77 C6 59
+ RO17:51F5 00 7E 00 7C 10 7C 1F 7C
+ RO17:51FD 1F 40 10 42 18 63 FF 7F
+
+Factory:
+ RO17:5205 0D 0E 0F 00 0B 0C 00 00 00
+ RO17:520E 00 00 02 03 04 00 02 03 08
+ RO17:5217 01 0A 05 06 07 0A 05 06 09
+
+ RO17:5220 01 01 01 00 01 01 00 00 00
+ RO17:5229 00 00 00 00 00 00 00 00 00
+ RO17:5232 01 01 00 00 00 01 00 00 00
+
+ RO17:523B FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:524B FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:525B FF 00 FF 00 FB 00 EA 00 E8 00 CA 02 A2 26 22 6E
+ RO17:526B FF 00 FF 00 BB 00 AA 00 88 00 AA 22 22 66 22 EE
+ RO17:527B C0 00 C2 1E C2 1E C2 1E E1 00 ED 0C E5 0C E5 0C
+ RO17:528B 00 7F 3C 7F 00 00 66 66 08 7F 08 7F 00 7F 00 00
+ RO17:529B 02 FE 82 FE 00 00 66 66 8A FE 0A FE 0A FE 00 00
+ RO17:52AB E5 0C E5 0C E5 0C E5 0C 00 00 FE FE 02 FE 00 00
+ RO17:52BB FF 00 FF 00 FF 00 FF 00 FF 00 AB 00 03 00 AB A8
+ RO17:52CB AB A8 FB F8 FB F8 03 00 FB F8 FB F8 FB F8 00 00
+ RO17:52DB FF 15 FF 15 FF 3F FF 3F FF 3F FF 3F FF 3F 00 00
+ RO17:52EB FF 00 FF 00 FF 00 FF 00 FF 00 FC 03 F8 07 F9 06
+ RO17:52FB FF 00 FE 01 91 6E 07 F8 1F E0 5F A0 FF 00 FF 00
+ RO17:530B FF 00 FF 00 FC 03 E0 1F 80 7F E5 1A FF 00 FF 00
+ RO17:531B FF 00 1F E0 0F F0 03 FC 00 FF 81 7E FF 00 FF 00
+ RO17:532B FF 00 FF 00 FF 00 FF 00 7F 80 DF 20 FF 00 FF 00
+
+ RO17:533B E7 1C 6E 62 1F 28 11 14
+ RO17:5343 E7 1C 6E 62 BD 77 C6 59
+ RO17:534B E7 1C 6E 62 5A 6B 31 46
+ RO17:5353 E7 1C 6E 62 BD 77 C6 59
+ RO17:535B E7 1C 6E 62 EC 03 80 02
+ RO17:5363 E7 1C 6E 62 BD 77 C6 59
+ RO17:536B 00 7E 00 7C 10 7C 1F 7C
+ RO17:5373 1F 40 10 42 18 63 FF 7F
+
+Ruined Factory:
+ RO17:537B 0A 0B 0C 00 00 0D 0E 00 00
+ RO17:5384 00 00 02 03 06 00 02 03 08
+ RO17:538D 01 0F 04 05 07 0F 04 05 09
+
+ RO17:5396 01 01 01 00 00 01 01 00 00
+ RO17:539F 00 00 00 00 00 00 00 00 00
+ RO17:53A8 01 01 00 00 00 01 00 00 00
+
+ RO17:53B1 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:53C1 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:53D1 FF 00 FF 00 FF 00 FE 00 FC 00 DC 00 AA 22 22 62
+ RO17:53E1 FF 00 FF 00 FF 00 FF 00 FF 00 BF 00 3F 00 1F C0
+ RO17:53F1 00 7F 3C 7F 00 00 66 66 00 75 08 7B 00 7D 00 00
+ RO17:5401 07 E0 80 F8 00 00 66 66 8A FE 08 F8 02 F6 00 00
+ RO17:5411 FF 00 FF 00 FF 00 FF 00 FF 00 EF 00 E7 00 E9 08
+ RO17:5421 ED 0C E5 0C E5 0C E5 0C E0 00 DE 1E 02 3E 00 00
+ RO17:5431 FF 00 FF 00 FF 00 FF 00 FF 00 FB 00 F3 00 FB 08
+ RO17:5441 EB 08 F3 00 EB 08 03 00 DB D8 DB D8 BB B8 00 00
+ RO17:5451 FF 00 FF 00 FC 03 E0 1F 80 7F E5 1A FF 00 FF 00
+ RO17:5461 FF 00 1F E0 0F F0 03 FC 00 FF 81 7E FF 00 FF 00
+ RO17:5471 FF 00 FF 00 FF 00 FF 00 7F 80 DF 20 FF 00 FF 00
+ RO17:5481 FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:5491 FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+ RO17:54A1 FF 01 FF 01 FF 05 FF 27 FF 3F FF 3F FF 3F 00 00
+
+ RO17:54B1 E7 1C 6E 62 1F 28 11 14
+ RO17:54B9 E7 1C 6E 62 BD 77 C6 59
+ RO17:54C1 E7 1C 6E 62 5A 6B 31 46
+ RO17:54C9 E7 1C 6E 62 BD 77 C6 59
+ RO17:54D1 E7 1C 6E 62 EC 03 80 02
+ RO17:54D9 E7 1C 6E 62 BD 77 C6 59
+ RO17:54E1 00 7E 00 7C 10 7C 1F 7C
+ RO17:54E9 1F 40 10 42 18 63 FF 7F
+
+Airport:
+ RO17:54F1 00 0A 0B 00 00 00 0C 0D 0E
+ RO17:54FA 00 00 00 00 08 02 03 00 00
+ RO17:5503 01 07 07 07 09 04 05 06 06
+
+ RO17:550C 00 01 01 00 00 00 01 01 01
+ RO17:5515 00 00 00 00 01 00 00 00 00
+ RO17:551E 01 01 01 01 01 00 00 00 00
+
+ RO17:5527 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:5537 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:5547 D7 00 D7 00 80 00 94 3E 80 00 DD 1C C1 00 DD 1C
+ RO17:5557 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 DF 00 D7 00
+ RO17:5567 DD 1C C1 1C 00 00 00 7F 00 2A 7F 7F 00 7F 00 00
+ RO17:5577 D7 00 D7 00 03 00 0B F8 0B A8 FB F8 0B F8 00 00
+ RO17:5587 FF 00 FF 00 FF 00 B7 00 93 00 A5 24 92 36 00 00
+ RO17:5597 FF 00 FF 08 FF 1C FF 08 FF 08 FF 08 FF 08 00 00
+ RO17:55A7 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 03 FF 03
+ RO17:55B7 FF 53 FF 53 FF 53 FF 53 FF 53 FF 53 FF 53 00 00
+ RO17:55C7 FF 00 F6 09 E0 1F C0 3F F8 07 FF 00 FF 00 FF 00
+ RO17:55D7 FF 00 7F 80 3F C0 0F F0 FF 00 FF 00 FF 00 FF 00
+ RO17:55E7 FF 00 FF 00 FC 03 E0 1F 80 7F E5 1A FF 00 FF 00
+ RO17:55F7 FF 00 1F E0 0F F0 03 FC 00 FF 81 7E FF 00 FF 00
+ RO17:5607 FF 00 FF 00 FF 00 FF 00 7F 80 DF 20 FF 00 FF 00
+
+ RO17:5617 E7 1C 6E 62 1F 28 11 14
+ RO17:561F E7 1C 6E 62 BD 77 C6 59
+ RO17:5627 E7 1C 6E 62 5A 6B 31 46
+ RO17:562F E7 1C 6E 62 BD 77 C6 59
+ RO17:5637 E7 1C 6E 62 EC 03 80 02
+ RO17:563F E7 1C 6E 62 BD 77 C6 59
+ RO17:5647 00 7E 00 7C 10 7C 1F 7C
+ RO17:564F 1F 40 10 42 18 63 FF 7F
+
+Ruined Airport:
+ RO17:5657 00 00 00 00 00 00 0A 0B 00
+ RO17:5660 0C 0D 0E 00 00 02 00 00 00
+ RO17:5669 01 07 03 03 09 04 05 06 08
+
+ RO17:5672 00 00 00 00 00 00 01 01 00
+ RO17:567B 01 01 01 00 00 00 00 00 00
+ RO17:5684 01 01 01 01 01 00 00 00 00
+
+ RO17:568D FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:569D FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:56AD FF 00 FF 00 FF 00 FF 00 CF 00 D7 10 C1 00 DD 1C
+ RO17:56BD FF 00 FF 00 FF 00 FF 00 FF 08 FF 08 FF 08 00 00
+ RO17:56CD DD 1C C1 1C 00 00 00 77 00 2A 6F 6F 00 5F 00 00
+ RO17:56DD FF 00 FF 00 7F 00 3F 80 0F 80 73 70 0B B8 00 00
+ RO17:56ED FF 00 FF 00 FF 00 F7 00 F3 00 C5 04 92 36 00 00
+ RO17:56FD FF 00 FF 08 FF 1C FF 08 FF 08 FF 08 FF 08 00 00
+ RO17:570D FF 00 FF 00 FF 00 F7 00 D3 00 A5 24 B6 36 00 00
+ RO17:571D FF 40 FF 41 FF 43 FF 53 FF 53 FF 53 FF 53 00 00
+ RO17:572D FF 00 F6 09 E0 1F C0 3F F8 07 FF 00 FF 00 FF 00
+ RO17:573D FF 00 7F 80 3F C0 0F F0 FF 00 FF 00 FF 00 FF 00
+ RO17:574D FF 00 FF 00 FC 03 E0 1F 80 7F E5 1A FF 00 FF 00
+ RO17:575D FF 00 1F E0 0F F0 03 FC 00 FF 81 7E FF 00 FF 00
+ RO17:576D FF 00 FF 00 FF 00 FF 00 7F 80 DF 20 FF 00 FF 00
+
+ RO17:577D E7 1C 6E 62 1F 28 11 14
+ RO17:5785 E7 1C 6E 62 BD 77 C6 59
+ RO17:578D E7 1C 6E 62 5A 6B 31 46
+ RO17:5795 E7 1C 6E 62 BD 77 C6 59
+ RO17:579D E7 1C 6E 62 EC 03 80 02
+ RO17:57A5 E7 1C 6E 62 BD 77 C6 59
+ RO17:57AD 00 7E 00 7C 10 7C 1F 7C
+ RO17:57B5 1F 40 10 42 18 63 FF 7F
+
+Simple Airport:
+ RO17:57BD 0B 0C 00 0D 0E 00 00 00 00
+ RO17:57C6 00 00 00 00 00 02 00 03 00
+ RO17:57CF 08 08 01 09 0A 04 05 06 07
+
+ RO17:57D8 01 01 00 01 01 00 00 00 00
+ RO17:57E1 00 00 00 00 00 00 00 00 00
+ RO17:57EA 01 01 01 01 01 00 00 00 00
+
+ RO17:57F3 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:5803 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:5813 80 00 80 3E 80 00 AA 2A 80 3E 80 00 DD 1C C1 1C
+ RO17:5823 FF 00 FF 00 FF 00 FF 00 FF 00 5F 00 5F 00 5F 00
+ RO17:5833 00 00 00 7F 00 00 D7 17 C0 15 C0 17 C0 14 00 00
+ RO17:5843 00 00 00 FF 00 00 FF FF 00 55 00 FF 00 44 00 00
+ RO17:5853 01 00 01 FC 01 00 D7 D0 07 50 07 D0 07 50 00 00
+ RO17:5863 FF 00 FF 00 FF 00 B7 00 93 00 81 24 92 36 00 00
+ RO17:5873 FF 08 FF 1C FF 08 FF 08 FF 08 FF 08 FF 08 00 00
+ RO17:5883 FF 00 FF 00 FF 00 FF 00 FF 1C FF 1C FF 1C 00 00
+ RO17:5893 FF 07 FF 07 FF 07 FF 07 FF E7 FF E7 FF E7 00 00
+ RO17:58A3 FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:58B3 FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:58C3 FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:58D3 FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+
+ RO17:58E3 E7 1C 6E 62 1F 28 11 14
+ RO17:58EB E7 1C 6E 62 BD 77 C6 59
+ RO17:58F3 E7 1C 6E 62 5A 6B 31 46
+ RO17:58FB E7 1C 6E 62 BD 77 C6 59
+ RO17:5903 E7 1C 6E 62 EC 03 80 02
+ RO17:590B E7 1C 6E 62 BD 77 C6 59
+ RO17:5913 E7 1C 6E 62 10 7C 1F 7C
+ RO17:591B 1F 40 10 42 18 63 FF 7F
+
+Harbor:
+ RO17:5923 00 00 00 02 03 04 05 00 00
+ RO17:592C 01 01 06 07 08 09 0A 0B 01
+ RO17:5935 0C 0D 0E 0F 0C 0D 0E 0F 0C
+
+ RO17:593E 00 00 00 00 00 00 00 00 00
+ RO17:5947 00 00 00 00 00 00 00 00 00
+ RO17:5950 01 01 01 01 01 01 01 01 01
+
+ RO17:5959 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:5969 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:5979 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 1F 00 1F 40
+ RO17:5989 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 11 00 11 44
+ RO17:5999 FF 00 FF 00 80 00 8C 2F 80 00 B7 30 84 00 A5 31
+ RO17:59A9 FF 00 FF 00 1F 00 1F 40 1F 00 7F 00 7F 00 37 80
+ RO17:59B9 FF 00 FF 00 E0 00 C0 1F BF 3F 80 00 80 2A 00 00
+ RO17:59C9 1F 40 1F 40 0F 00 07 F0 FB F8 03 00 03 A8 00 00
+ RO17:59D9 15 44 10 40 10 47 10 45 50 47 53 47 53 47 00 00
+ RO17:59E9 A6 30 07 00 0F A0 0F 20 0F A0 87 80 63 78 00 00
+ RO17:59F9 77 00 F3 00 C1 04 D1 18 00 00 00 7F 7F 7F 00 00
+ RO17:5A09 FF 00 FF 00 FF 00 7F 00 3F 00 3F 80 7F 00 00 00
+ RO17:5A19 FF FF 4C FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:5A29 FF FF 12 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:5A39 FF FF 08 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:5A49 FF FF 04 FF 60 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+
+ RO17:5A59 E7 1C 6E 62 1F 28 11 14
+ RO17:5A61 E7 1C A6 59 2A 6A 0F 7F
+ RO17:5A69 E7 1C 6E 62 5A 6B 31 46
+ RO17:5A71 E7 1C A6 59 2A 6A 0F 7F
+ RO17:5A79 E7 1C 6E 62 EC 03 80 02
+ RO17:5A81 E7 1C A6 59 2A 6A 0F 7F
+ RO17:5A89 00 7E 00 7C 10 7C 1F 7C
+ RO17:5A91 1F 40 10 42 18 63 FF 7F
+
+Ruined Harbor:
+ RO17:5A99 00 00 00 00 00 02 03 00 00
+ RO17:5AA2 01 01 04 05 06 07 08 01 01
+ RO17:5AAB 09 0A 0B 0C 09 0A 0B 0C 09
+
+ RO17:5AB4 00 00 00 00 00 00 00 00 00
+ RO17:5ABD 00 00 00 00 00 00 00 00 00
+ RO17:5AC6 01 01 01 01 01 01 01 01 01
+
+ RO17:5ACF FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:5ADF FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:5AEF FF 00 FF 00 9F 00 87 00 83 00 B5 34 82 02 A5 31
+ RO17:5AFF FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 7F 00
+ RO17:5B0F FF 00 FF 00 F6 00 F4 01 F2 02 A0 00 80 0A 00 00
+ RO17:5B1F 3F 00 1F 40 0F 00 07 F0 7B 78 03 00 03 20 00 00
+ RO17:5B2F FF 00 3F 00 1E 40 18 41 50 47 53 47 53 47 00 00
+ RO17:5B3F A6 30 07 00 0E A0 0F 20 0F A0 87 80 62 78 00 00
+ RO17:5B4F 7F 00 7F 00 FF 00 F9 00 B1 04 05 4C 8B 98 00 00
+ RO17:5B5F FF FF 4C FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:5B6F FF FF 12 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:5B7F FF FF 08 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:5B8F FF FF 04 FF 60 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+
+ RO17:5B9F E7 1C 6E 62 1F 28 11 14
+ RO17:5BA7 E7 1C A6 59 2A 6A 0F 7F
+ RO17:5BAF E7 1C 6E 62 5A 6B 31 46
+ RO17:5BB7 E7 1C A6 59 2A 6A 0F 7F
+ RO17:5BBF E7 1C 6E 62 EC 03 80 02
+ RO17:5BC7 E7 1C A6 59 2A 6A 0F 7F
+ RO17:5BCF 00 7E 00 7C 10 7C 1F 7C
+ RO17:5BD7 1F 40 10 42 18 63 FF 7F
+
+Communication Tower:
+ RO17:5BDF 00 00 00 00 0D 0E 02 03 00
+ RO17:5BE8 00 0B 0C 00 00 00 04 05 00
+ RO17:5BF1 01 01 01 01 08 09 06 07 0A
+
+ RO17:5BFA 00 00 00 00 01 01 00 00 00
+ RO17:5C03 00 01 01 00 00 00 00 00 00
+ RO17:5C0C 01 01 01 01 01 01 00 00 01
+
+ RO17:5C15 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:5C25 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:5C35 FF 00 FF 00 C8 00 C0 17 E2 0B C1 15 C9 19 C7 1F
+ RO17:5C45 FF 00 FF 00 FF 00 7F 00 3F 80 3F 80 3F 80 3F 80
+ RO17:5C55 E0 0F F0 00 FA 02 E0 02 F8 00 F1 07 F1 07 C0 00
+ RO17:5C65 7F 00 FF 00 FF 00 3F 00 FF 00 7F 00 7F 00 1F 00
+ RO17:5C75 CA 1F C0 00 EF 0F E0 0F 80 00 88 3F 80 22 00 00
+ RO17:5C85 9F C0 15 00 B5 80 35 80 05 00 80 E0 0E 2E 00 00
+ RO17:5C95 FF 08 FF 1C FF 08 FF 08 FF 08 FF 08 FF 08 00 00
+ RO17:5CA5 FF 00 FF 00 FF 07 FF 07 FF 37 FF 37 FF 37 00 00
+ RO17:5CB5 FF 00 FF 00 FF 00 FF 20 FF 20 FF 78 FF 78 00 00
+ RO17:5CC5 FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:5CD5 FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:5CE5 FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:5CF5 FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+
+ RO17:5D05 E7 1C 6E 62 1F 28 B3 00
+ RO17:5D0D E7 1C 6E 62 BD 77 C6 59
+ RO17:5D15 E7 1C 6E 62 5A 6B 31 46
+ RO17:5D1D E7 1C 6E 62 BD 77 C6 59
+ RO17:5D25 E7 1C 6E 62 EC 03 80 02
+ RO17:5D2D E7 1C 6E 62 BD 77 C6 59
+ RO17:5D35 E7 1C 6E 62 10 7C 1F 7C
+ RO17:5D3D 1F 40 10 42 18 63 FF 7F
+
+Plains:
+ RO17:5D45 02 03 00 00 00 00 06 07 08
+ RO17:5D4E 00 00 00 04 05 00 00 00 00
+ RO17:5D57 01 01 01 01 01 01 01 01 01
+
+ RO17:5D60 01 01 00 00 00 00 01 01 01
+ RO17:5D69 00 00 00 01 01 00 00 00 00
+ RO17:5D72 01 01 01 01 01 01 01 01 01
+
+ RO17:5D7B FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:5D8B FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:5D9B FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:5DAB FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:5DBB FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:5DCB FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+ RO17:5DDB FF 00 F0 0F E1 1E 80 7F C0 3F F3 0C FF 00 FF 00
+ RO17:5DEB FF 00 7E 81 18 E7 10 EF 00 FF 04 FB C7 38 FF 00
+ RO17:5DFB FF 00 FF 00 7F 80 17 E8 7F 80 FF 00 FF 00 FF 00
+
+ RO17:5E0B E7 1C 6E 62 FF 00 B3 00
+ RO17:5E13 E7 1C 6E 62 BD 77 C6 59
+ RO17:5E1B E7 1C 6E 62 5A 6B 31 46
+ RO17:5E23 E7 1C 6E 62 BD 77 C6 59
+ RO17:5E2B 8C 31 6E 62 D6 36 EF 21
+ RO17:5E33 8C 31 6E 62 BD 77 C6 59
+ RO17:5E3B E7 1C 6E 62 10 7C 1F 7C
+ RO17:5E43 1F 40 10 42 18 63 FF 7F
+
+Road:
+ RO17:5E4B 05 06 00 00 00 07 08 00 00
+ RO17:5E54 02 03 02 03 02 03 02 03 02
+ RO17:5E5D 04 04 04 04 04 04 04 04 04
+
+ RO17:5E66 01 01 00 00 00 01 01 00 00
+ RO17:5E6F 00 00 00 00 00 00 00 00 00
+ RO17:5E78 00 00 00 00 00 00 00 00 00
+
+ RO17:5E81 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:5E91 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:5EA1 FF 00 FF 00 FF 00 FF 00 00 00 FF FF 00 00 E3 08
+ RO17:5EB1 FF 00 F7 00 F7 00 F7 00 00 00 FF FF 00 00 E3 08
+ RO17:5EC1 00 00 00 FF 00 FF 66 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:5ED1 FF 00 FC 03 F0 0F C0 3F E0 1F F3 0C FF 00 FF 00
+ RO17:5EE1 FF 00 FF 00 7F 80 1F E0 7F 80 FF 00 FF 00 FF 00
+ RO17:5EF1 FF 00 FF 00 F8 07 C0 3F 00 FF CF 30 F8 07 FF 00
+ RO17:5F01 FF 00 1F E0 2B D4 01 FE 00 FF 01 FE E7 18 FF 00
+
+ RO17:5F11 E7 1C 6E 62 10 42 9C 73
+ RO17:5F19 E7 1C 6E 62 BD 77 C6 59
+ RO17:5F21 E7 1C 6E 62 10 42 9C 73
+ RO17:5F29 E7 1C A6 59 2A 6A 0F 7F
+ RO17:5F31 E7 1C 6E 62 F6 01 70 01
+ RO17:5F39 E7 1C 6E 62 C0 02 C6 61
+ RO17:5F41 E7 1C 6E 62 10 7C 1F 7C
+ RO17:5F49 1F 40 10 42 18 63 FF 7F
+
+Bridge:
+ RO17:5F51 00 06 07 00 00 00 08 09 00
+ RO17:5F5A 02 03 02 02 03 02 02 03 02
+ RO17:5F63 04 05 04 04 05 04 04 05 04
+
+ RO17:5F6C 01 01 01 01 01 01 01 01 01
+ RO17:5F75 00 00 20 00 00 20 00 00 20
+ RO17:5F7E 00 00 20 00 00 20 00 00 20
+
+ RO17:5F87 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:5F97 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:5FA7 FC 00 F3 03 EC 0C D2 10 A6 20 A6 20 56 40 56 40
+ RO17:5FB7 00 00 FF FF 00 00 DB 00 DB 00 DB 00 DB 00 DB 00
+ RO17:5FC7 00 00 FF FF 00 00 00 FF 00 00 C3 18 DB 18 00 00
+ RO17:5FD7 00 00 FF FF 00 00 00 FF 00 00 FF 00 FF 00 00 00
+ RO17:5FE7 FF 00 FC 03 F0 0F C0 3F E0 1F F3 0C FF 00 FF 00
+ RO17:5FF7 FF 00 FF 00 7F 80 1F E0 7F 80 FF 00 FF 00 FF 00
+ RO17:6007 FF 00 FF 00 F8 07 C0 3F 00 FF CF 30 F8 07 FF 00
+ RO17:6017 FF 00 1F E0 2B D4 01 FE 00 FF 01 FE E7 18 FF 00
+
+ RO17:6027 E7 1C 6E 62 10 42 9C 73
+ RO17:602F E7 1C 6E 62 BD 77 C6 59
+ RO17:6037 E7 1C 6E 62 10 42 9C 73
+ RO17:603F E7 1C A6 59 2A 6A 0F 7F
+ RO17:6047 E7 1C 6E 62 F6 01 70 01
+ RO17:604F E7 1C 6E 62 C0 02 C6 61
+ RO17:6057 E7 1C 6E 62 10 7C 1F 7C
+ RO17:605F 1F 40 10 42 18 63 FF 7F
+
+Bridge (2):
+ RO17:6067 00 06 07 00 00 00 08 09 00
+ RO17:6070 02 03 02 02 03 02 02 03 02
+ RO17:6079 04 05 04 04 05 04 04 05 04
+
+ RO17:6082 01 01 01 01 01 01 01 01 01
+ RO17:608B 00 00 20 00 00 20 00 00 20
+ RO17:6094 00 00 20 00 00 20 00 00 20
+
+ RO17:609D FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:60AD FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:60BD FC 00 F3 03 EC 0C D2 10 A6 20 A6 20 56 40 56 40
+ RO17:60CD 00 00 FF FF 00 00 DB 00 DB 00 DB 00 DB 00 DB 00
+ RO17:60DD 00 00 FF FF 00 00 00 FF 00 00 C3 18 DB 18 00 00
+ RO17:60ED 00 00 FF FF 00 00 00 FF 00 00 FF 00 FF 00 00 00
+ RO17:60FD FF 00 FC 03 F0 0F C0 3F E0 1F F3 0C FF 00 FF 00
+ RO17:610D FF 00 FF 00 7F 80 1F E0 7F 80 FF 00 FF 00 FF 00
+ RO17:611D FF 00 FF 00 F8 07 C0 3F 00 FF CF 30 F8 07 FF 00
+ RO17:612D FF 00 1F E0 2B D4 01 FE 00 FF 01 FE E7 18 FF 00
+
+ RO17:613D E7 1C 6E 62 10 42 9C 73
+ RO17:6145 E7 1C 6E 62 BD 77 C6 59
+ RO17:614D E7 1C 6E 62 10 42 9C 73
+ RO17:6155 E7 1C A6 59 2A 6A 0F 7F
+ RO17:615D E7 1C 6E 62 F6 01 70 01
+ RO17:6165 E7 1C 6E 62 C0 02 C6 61
+ RO17:616D E7 1C 6E 62 10 7C 1F 7C
+ RO17:6175 1F 40 10 42 18 63 FF 7F
+
+Mountain:
+ RO17:617D 00 0B 0C 00 00 00 0D 0E 00
+ RO17:6186 00 00 00 00 00 02 03 00 00
+ RO17:618F 01 08 09 0A 04 05 06 07 01
+
+ RO17:6198 01 01 01 01 01 01 01 01 01
+ RO17:61A1 01 01 01 01 01 00 00 01 01
+ RO17:61AA 01 01 01 01 00 00 00 00 01
+
+ RO17:61B3 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:61C3 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:61D3 FF 00 FF 00 FF 00 FF 00 FF 00 FE 00 F8 01 F0 07
+ RO17:61E3 FF 00 FF 00 FF 00 FF 00 3F 00 5F C0 2F E0 17 F0
+ RO17:61F3 FF 00 FB 00 F1 00 E4 04 C8 08 B8 3B 21 27 00 00
+ RO17:6203 E2 0F C6 1F CE 1F 2A 3B 13 F3 22 E2 C0 C0 00 00
+ RO17:6213 0B F8 04 BC 4C DD 48 CB E2 E6 E5 ED 19 19 00 00
+ RO17:6223 3F 00 1F C0 4F E0 E7 F0 73 F8 B1 BC 06 06 00 00
+ RO17:6233 FF 00 FF 00 FF 06 FF 0F FF 1F FF 3F FF 7F 00 00
+ RO17:6243 FF 00 FF 00 FF 00 FF 80 FF C0 FF E3 FF FF 00 00
+ RO17:6253 FF 00 FF 00 FF 00 FF 30 FF F8 FF FE FF FF 00 00
+ RO17:6263 FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:6273 FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:6283 FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:6293 FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+
+ RO17:62A3 E7 1C 6E 62 F6 01 70 01
+ RO17:62AB E7 1C 6E 62 BD 77 C6 59
+ RO17:62B3 E7 1C 6E 62 4C 1E C9 1D
+ RO17:62BB E7 1C A6 59 2A 6A 0F 7F
+ RO17:62C3 E7 1C 6E 62 F6 01 70 01
+ RO17:62CB E7 1C 6E 62 C0 02 30 01
+ RO17:62D3 E7 1C 6E 62 10 7C 1F 7C
+ RO17:62DB 1F 40 10 42 18 63 FF 7F
+
+Forest:
+ RO17:62E3 0A 0B 00 00 00 00 0C 0D 00
+ RO17:62EC 02 03 04 00 00 02 03 04 00
+ RO17:62F5 05 06 07 08 09 05 06 07 01
+
+ RO17:62FE 01 01 01 01 01 01 01 01 01
+ RO17:6307 00 00 00 01 01 00 00 00 01
+ RO17:6310 00 00 00 01 01 00 00 00 01
+
+ RO17:6319 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:6329 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:6339 FF 00 FF 00 FF 00 FF 00 FF 00 DD 00 88 22 88 22
+ RO17:6349 FF 00 FF 00 FF 00 FF 00 EF 00 45 10 00 92 08 BA
+ RO17:6359 FF 00 FF 00 FF 00 FF 00 FF 00 B7 00 43 48 63 68
+ RO17:6369 10 75 10 75 10 75 10 75 30 76 A8 22 89 00 00 00
+ RO17:6379 51 D7 51 D7 51 D7 51 D7 9A 9A 9A 9A 24 00 00 00
+ RO17:6389 45 5C 4D 5C 45 5C 45 5C 4D 5C 4B 08 83 00 00 00
+ RO17:6399 FF 00 FF 00 FF 10 FF 54 FF FC FF FE FF FF 00 00
+ RO17:63A9 FF 00 FF 02 FF 17 FF B7 FF FF FF FF FF FF 00 00
+ RO17:63B9 FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:63C9 FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:63D9 FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:63E9 FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+
+ RO17:63F9 E7 1C 6E 62 4C 1E C9 1D
+ RO17:6401 E7 1C 6E 62 BD 77 C6 59
+ RO17:6409 E7 1C 6E 62 4C 1E C9 1D
+ RO17:6411 E7 1C A6 59 2A 6A 0F 7F
+ RO17:6419 E7 1C 6E 62 F6 01 70 01
+ RO17:6421 E7 1C 6E 62 C0 02 30 01
+ RO17:6429 E7 1C 6E 62 10 7C 1F 7C
+ RO17:6431 1F 40 10 42 18 63 FF 7F
+
+Wasteland:
+ RO17:6439 00 00 07 08 00 00 05 06 00
+ RO17:6442 00 02 00 00 00 00 00 02 00
+ RO17:644B 01 03 01 04 01 01 01 03 01
+
+ RO17:6454 01 01 01 01 01 01 01 01 01
+ RO17:645D 01 00 01 01 01 01 01 00 01
+ RO17:6466 01 00 01 00 01 01 01 00 01
+
+ RO17:646F FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:647F FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:648F FF 00 FF 00 FF 00 F7 00 F7 00 77 00 AB 08 88 22
+ RO17:649F 8B 08 EF 08 C7 10 C6 10 D1 10 D7 10 B3 30 00 00
+ RO17:64AF DF 00 DB 00 C7 00 EF 00 E7 00 C7 10 D7 10 00 00
+ RO17:64BF FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:64CF FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:64DF FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:64EF FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+
+ RO17:64FF E7 1C 6E 62 F6 01 70 01
+ RO17:6507 E7 1C 6E 62 BD 77 C6 59
+ RO17:650F E7 1C 6E 62 4C 1E C9 1D
+ RO17:6517 E7 1C A6 59 2A 6A 0F 7F
+ RO17:651F E7 1C 6E 62 F6 01 70 01
+ RO17:6527 E7 1C 6E 62 C0 02 30 01
+ RO17:652F E7 1C 6E 62 10 7C 1F 7C
+ RO17:6537 1F 40 10 42 18 63 FF 7F
+
+Desert:
+ RO17:653F 00 08 09 00 0A 0B 00 00 00
+ RO17:6548 00 06 00 00 00 00 07 00 06
+ RO17:6551 02 03 04 05 02 03 04 05 02
+
+ RO17:655A 01 01 01 01 01 01 01 01 01
+ RO17:6563 01 01 01 01 01 01 01 01 01
+ RO17:656C 00 00 00 00 00 00 00 00 00
+
+ RO17:6575 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:6585 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:6595 FF FF 44 FF 10 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:65A5 FF FF 99 FF 20 FF 02 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:65B5 FF FF 44 FF 10 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:65C5 FF FF 99 FF 20 FF 02 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:65D5 FF 00 FF 00 FF 00 FF 00 FF 00 FF 20 FF 70 FF F9
+ RO17:65E5 FF 00 FF 00 FF 00 FF 00 FF 00 FF 42 FF 6B FF FF
+ RO17:65F5 FF 00 F1 0E E0 1F 80 7F E0 1F FE 01 FF 00 FF 00
+ RO17:6605 FF 00 FF 00 0F F0 02 FD 1F E0 7F 80 FF 00 FF 00
+ RO17:6615 FF 00 FF 00 E3 1C F0 0F 80 7F DC 23 F3 0C FF 00
+ RO17:6625 FF 00 FF 00 8F 70 03 FC 00 FF 33 CC 7F 80 FF 00
+
+ RO17:6635 E7 1C 3D 43 BC 2E 16 1E
+ RO17:663D E7 1C 6E 62 BD 77 C6 59
+ RO17:6645 E7 1C 6E 62 C0 02 C6 61
+ RO17:664D E7 1C A6 59 2A 6A 0F 7F
+ RO17:6655 E7 1C 6E 62 F6 01 70 01
+ RO17:665D E7 1C 6E 62 C0 02 C6 61
+ RO17:6665 E7 1C 6E 62 10 7C 1F 7C
+ RO17:666D 1F 40 10 42 18 63 FF 7F
+
+River:
+ RO17:6675 00 00 00 00 00 00 00 00 00
+ RO17:667E 04 05 04 05 04 05 04 05 04
+ RO17:6687 02 03 02 03 02 03 02 03 02
+
+ RO17:6690 01 01 01 01 01 01 01 01 01
+ RO17:6699 01 01 01 01 01 01 01 01 01
+ RO17:66A2 00 00 00 00 00 00 00 00 00
+
+ RO17:66AB FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:66BB FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:66CB 00 00 AF FF FD FF D7 FF 7E FF FB FF AE FF FD FF
+ RO17:66DB 00 00 75 FF DE FF 6B FF FF FF AD FF F7 FF FE FF
+ RO17:66EB FF 00 FF 00 FF 00 FF 00 FF 20 FD A0 C8 82 00 37
+ RO17:66FB FF 00 FF 00 FF 40 FF 40 FF E4 97 94 01 68 00 FE
+
+ RO17:670B E7 1C A6 59 2A 6A 0F 7F
+ RO17:6713 E7 1C 6E 62 C0 02 C6 61
+ RO17:671B E7 1C 6E 62 C0 02 C6 61
+ RO17:6723 E7 1C A6 59 2A 6A 0F 7F
+ RO17:672B E7 1C 6E 62 F6 01 70 01
+ RO17:6733 E7 1C 6E 62 C0 02 C6 61
+ RO17:673B E7 1C 6E 62 10 7C 1F 7C
+ RO17:6743 1F 40 10 42 18 63 FF 7F
+
+Sea:
+ RO17:674B 00 00 00 00 00 00 00 00 00
+ RO17:6754 00 00 06 07 08 09 0A 00 00
+ RO17:675D 02 03 04 05 02 03 04 05 02
+
+ RO17:6766 00 00 00 00 00 00 00 00 00
+ RO17:676F 00 00 00 00 00 00 00 00 00
+ RO17:6778 01 01 01 01 01 01 01 01 01
+
+ RO17:6781 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:6791 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:67A1 FF FF 4C FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:67B1 FF FF 12 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:67C1 FF FF 08 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:67D1 FF FF 04 FF 60 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:67E1 FF 00 FF 00 FF 00 FF 00 FF 00 FC 00 F1 03 00 00
+ RO17:67F1 FF 00 FF 00 FF 00 FF 00 0F 00 03 F0 CD FC 00 00
+ RO17:6801 FF 00 FF 00 FF 00 FF 00 F8 00 F0 07 EE 0F 00 00
+ RO17:6811 FF 00 F1 00 C0 0E 80 3F 00 7F 36 BE 7F 7F 00 00
+ RO17:6821 FF 00 FF 00 7F 00 0F 80 07 F0 03 F8 3D 7C 00 00
+
+ RO17:6831 E7 1C 6E 62 C0 02 30 01
+ RO17:6839 E7 1C A6 59 2A 6A 0F 7F
+ RO17:6841 E7 1C 6E 62 4C 1E C9 1D
+ RO17:6849 E7 1C A6 59 2A 6A 0F 7F
+ RO17:6851 E7 1C 6E 62 F6 01 70 01
+ RO17:6859 E7 1C 6E 62 C0 02 30 01
+ RO17:6861 E7 1C 6E 62 10 7C 1F 7C
+ RO17:6869 1F 40 10 42 18 63 FF 7F
+
+Beach:
+ RO17:6871 00 00 00 00 00 00 00 00 00
+ RO17:687A 04 05 04 05 04 05 04 05 04
+ RO17:6883 02 03 02 03 02 03 02 03 02
+
+ RO17:688C 01 01 01 01 01 01 01 01 01
+ RO17:6895 01 01 01 01 01 01 01 01 01
+ RO17:689E 00 00 00 00 00 00 00 00 00
+
+ RO17:68A7 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:68B7 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00
+ RO17:68C7 00 00 FF FF FF FF CC FF 21 FF 00 FF 00 FF 00 FF
+ RO17:68D7 00 00 FF FF FF FF 99 FF 02 FF 20 FF 00 FF 00 FF
+ RO17:68E7 FF 00 FF 00 FF 00 FF 00 FF 00 39 00 46 C6 98 FF
+ RO17:68F7 FF 00 FF 00 FF 00 FF 00 FF 00 C6 00 29 39 C1 FF
+
+ RO17:6907 E7 1C A6 59 2A 6A 0F 7F
+ RO17:690F E7 1C 6E 62 F6 01 70 01
+ RO17:6917 E7 1C 6E 62 C0 02 C6 61
+ RO17:691F E7 1C A6 59 2A 6A 0F 7F
+ RO17:6927 E7 1C 6E 62 F6 01 70 01
+ RO17:692F E7 1C 6E 62 C0 02 C6 61
+ RO17:6937 E7 1C 6E 62 10 7C 1F 7C
+ RO17:693F 1F 40 10 42 18 63 FF 7F
+
+Skies:
+ RO17:6947 01 02 03 04 00 00 00 00 00
+ RO17:6950 00 00 00 00 00 05 06 07 00
+ RO17:6959 00 00 08 09 00 00 00 00 00
+
+ RO17:6962 01 01 01 01 00 00 00 00 00
+ RO17:696B 00 00 00 00 00 01 01 01 00
+ RO17:6974 00 00 01 01 00 00 00 00 00
+
+ RO17:697D FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:698D FF 00 FF 00 FF 00 E3 1C 80 7F F0 0F FC 03 FF 00
+ RO17:699D FF 00 FF 00 C3 3C 80 7F 00 FF 71 8E FF 00 FF 00
+ RO17:69AD FF 00 FF 00 7F 80 3F C0 08 F7 67 98 FF 00 FF 00
+ RO17:69BD FF 00 FF 00 FF 00 FF 00 4F B0 FF 00 FF 00 FF 00
+ RO17:69CD FF 00 FF 00 FF 00 F8 07 E0 1F 44 BB F8 07 FF 00
+ RO17:69DD FF 00 FF 00 FF 00 7E 81 08 F7 00 FF C3 3C FF 00
+ RO17:69ED FF 00 FF 00 FF 00 3F C0 0F F0 23 DC FF 00 FF 00
+ RO17:69FD FF 00 FF 00 FC 03 E0 1F 80 7F D8 27 FD 02 FF 00
+ RO17:6A0D FF 00 FF 00 7F 80 07 F8 01 FE 7F 80 FF 00 FF 00
+
+ RO17:6A1D E7 1C 6E 62 FF 00 B3 00
+ RO17:6A25 E7 1C 6E 62 BD 77 C6 59
+ RO17:6A2D E7 1C 6E 62 5A 6B 31 46
+ RO17:6A35 E7 1C 6E 62 BD 77 C6 59
+ RO17:6A3D 8C 31 6E 62 D6 36 EF 21
+ RO17:6A45 8C 31 6E 62 BD 77 C6 59
+ RO17:6A4D E7 1C 6E 62 10 7C 1F 7C
+ RO17:6A55 1F 40 10 42 18 63 FF 7F
+
+Underwater:
+ RO17:6A5D 00 01 00 02 03 04 00 00 05
+ RO17:6A66 06 08 06 06 06 0B 06 06 06
+ RO17:6A6F 07 09 0A 07 07 0C 0D 07 07
+
+ RO17:6A78 01 01 01 01 01 01 01 01 01
+ RO17:6A81 00 00 00 00 00 00 00 00 00
+ RO17:6A8A 00 00 00 00 00 00 00 00 00
+
+ RO17:6A93 FF FF 00 FF 00 FF 00 FF FF 00 00 FF FF 00 FF 00
+ RO17:6AA3 FF FF 00 FF 02 FF 00 FF FF 10 00 FF FF 00 FF 00
+ RO17:6AB3 FF FF 08 FF 14 FF 08 FF FF 01 00 FF FF 00 FF 00
+ RO17:6AC3 FF FF 00 FF 10 FF 00 FF FF 00 00 FF FF 00 FF 00
+ RO17:6AD3 FF FF 00 FF 04 FF 0A FF FF 44 00 FF FF 00 FF 00
+ RO17:6AE3 FF FF 00 FF 40 FF 00 FF FF 00 00 FF FF 00 FF 00
+ RO17:6AF3 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO17:6B03 FF 00 00 FF FF 00 00 FF 00 FF FF FF FF FF 00 00
+ RO17:6B13 FF 00 FF 00 EF 00 E7 00 F3 00 FB 00 FB 00 F3 00
+ RO17:6B23 E7 00 00 C7 CF 00 00 9F 00 9F 9F 9F 9F 9F 00 00
+ RO17:6B33 F7 00 00 FB FB 00 00 F3 00 F7 EF EF EF EF 00 00
+ RO17:6B43 FF 00 FF 00 FF 00 FF 00 FF 00 FB 00 F7 00 E7 00
+ RO17:6B53 E7 00 00 E7 F3 00 00 F3 00 F3 F3 F3 F7 F7 00 00
+ RO17:6B63 FF 00 00 FF BF 00 00 3F 00 3F 3F 3F 9F 9F 00 00
+
+ RO17:6B73 84 34 80 59 00 51 A0 40
+ RO17:6B7B E7 1C E0 65 40 6A EA 7F
+ RO17:6B83 E7 1C 80 59 00 51 A0 40
+ RO17:6B8B E7 1C E0 65 40 6A EA 7F
+ RO17:6B93 E7 1C 80 59 00 51 A0 40
+ RO17:6B9B E7 1C E0 65 40 6A EA 7F
+ RO17:6BA3 E7 1C 6E 62 10 7C 1F 7C
+ RO17:6BAB 1F 40 10 42 18 63 FF 7F
+-
+HP Display Window stuff:
+ RO17:6BB3 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO17:6BC3 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+
+ RO17:6BD3 00 FF 00 FF 3F C0 7F 80 7C 83 7C 83 7C 83 7C 83
+ RO17:6BE3 00 FF 00 FF FC 03 FE 01 3E C1 3E C1 3E C1 3E C1
+ RO17:6BF3 7C 83 7C 83 7C 83 7C 83 7C 83 7F 80 3F C0 00 FF
+ RO17:6C03 3E C1 3E C1 3E C1 3E C1 3E C1 FE 01 FC 03 00 FF
+
+ RO17:6C13 00 FF 00 FF 03 FC 1F E0 1F E0 07 F8 07 F8 07 F8
+ RO17:6C23 00 FF 00 FF C0 3F C0 3F C0 3F C0 3F C0 3F C0 3F
+ RO17:6C33 07 F8 07 F8 07 F8 07 F8 07 F8 07 F8 07 F8 00 FF
+ RO17:6C43 C0 3F C0 3F C0 3F C0 3F C0 3F C0 3F C0 3F 00 FF
+
+ RO17:6C53 00 FF 00 FF 3F C0 7F 80 40 BF 00 FF 1F E0 7F 80
+ RO17:6C63 00 FF 00 FF FC 03 FE 01 3E C1 3E C1 FE 01 FE 01
+ RO17:6C73 7F 80 7F 80 7C 83 7C 83 7C 83 7F 80 7F 80 00 FF
+ RO17:6C83 FE 01 FC 03 00 FF 00 FF 02 FD FE 01 FE 01 00 FF
+ 
+ RO17:6C93 00 FF 00 FF 3F C0 7F 80 40 BF 00 FF 00 FF 0F F0
+ RO17:6CA3 00 FF 00 FF FC 03 FE 01 3E C1 3E C1 3E C1 FC 03
+ RO17:6CB3 0F F0 00 FF 00 FF 00 FF 40 BF 7F 80 3F C0 00 FF
+ RO17:6CC3 FC 03 3E C1 3E C1 3E C1 3E C1 FE 01 FC 03 00 FF
+
+ RO17:6CD3 00 FF 00 FF 03 FC 07 F8 0E F1 1C E3 38 C7 70 8F
+ RO17:6CE3 00 FF 00 FF F8 07 F8 07 F8 07 F8 07 F8 07 F8 07
+ RO17:6CF3 FF 00 FF 00 FF 00 FF 00 00 FF 00 FF 00 FF 00 FF
+ RO17:6D03 FF 00 FF 00 FF 00 FF 00 F8 07 F8 07 F8 07 00 FF
+
+ RO17:6D13 00 FF 00 FF 7F 80 7F 80 7E 81 7E 81 7F 80 7F 80
+ RO17:6D23 00 FF 00 FF FE 01 FE 01 00 FF 00 FF FC 03 FE 01
+ RO17:6D33 00 FF 00 FF 00 FF 00 FF 40 BF 7F 80 7F 80 00 FF
+ RO17:6D43 3E C1 3E C1 3E C1 3E C1 3E C1 FE 01 FC 03 00 FF
+
+ RO17:6D53 00 FF 00 FF 3F C0 7F 80 7C 83 7C 83 7F 80 7F 80
+ RO17:6D63 00 FF 00 FF FE 01 FE 01 02 FD 00 FF FC 03 FE 01
+ RO17:6D73 7C 83 7C 83 7C 83 7C 83 7C 83 7F 80 3F C0 00 FF
+ RO17:6D83 3E C1 3E C1 3E C1 3E C1 3E C1 FE 01 FC 03 00 FF
+
+ RO17:6D93 00 FF 00 FF 7F 80 7F 80 00 FF 00 FF 01 FE 03 FC
+ RO17:6DA3 00 FF 00 FF FC 03 FC 03 7C 83 F8 07 F0 0F E0 1F
+ RO17:6DB3 03 FC 07 F8 0F F0 0F F0 1F E0 1F E0 3F C0 00 FF
+ RO17:6DC3 E0 1F C0 3F 80 7F 80 7F 80 7F 00 FF 00 FF 00 FF
+
+ RO17:6DD3 00 FF 00 FF 3F C0 7F 80 7C 83 7C 83 7C 83 3F C0
+ RO17:6DE3 00 FF 00 FF FC 03 FE 01 3E C1 3E C1 3E C1 FC 03
+ RO17:6DF3 3F C0 7C 83 7C 83 7C 83 7C 83 7F 80 3F C0 00 FF
+ RO17:6E03 FC 03 3E C1 3E C1 3E C1 3E C1 FE 01 FC 03 00 FF
+
+ RO17:6E13 00 FF 00 FF 3F C0 7F 80 7C 83 7C 83 7C 83 7C 83
+ RO17:6E23 00 FF 00 FF FC 03 FE 01 3E C1 3E C1 3E C1 3E C1
+ RO17:6E33 7F 80 3F C0 00 FF 00 FF 00 FF 3F C0 3F C0 00 FF
+ RO17:6E43 FE 01 FE 01 3E C1 3E C1 3E C1 FE 01 FC 03 00 FF
+
+ RO17:6E53 00 FF 00 FF 39 C6 FB 04 FB 04 7B 84 7B 84 7B 84
+ RO17:6E63 00 FF 00 FF FE 01 FF 00 CF 30 CF 30 CF 30 CF 30
+ RO17:6E73 7B 84 7B 84 7B 84 7B 84 7B 84 7B 84 79 86 00 FF
+ RO17:6E83 CF 30 CF 30 CF 30 CF 30 CF 30 FF 00 FE 01 00 FF
+
+ RO17:6E93 FF 00 FF 7F C0 7F C0 7F CF 70 CF 70 CF 70 CF 71
+ RO17:6EA3 FF 00 FF FF 00 FF 00 FF FF 00 FF 00 FF 00 FF FF
+ RO17:6EB3 CF 71 CF 71 CF 71 CF 71 CF 71 CF 71 CF 71 CF 71
+
+ RO17:6EC3 00 00 00 69 FF 7F 00 00
+
+ RO17:6ECB FF 7F B5 56 6B 2D 00 00
+ RO17:6ED3 FF 7F 6C 03 08 02 00 00
+ RO17:6EDB 00 69 9F 00 FF 7F 00 00
+ RO17:6EE3 10 42 6B 2D C6 18 00 00
+ RO17:6EEB 9F 53 DF 02 74 01 00 00
+ RO17:6EF3 F0 63 C0 4A 60 25 00 00
+ RO17:6EFB 1F 7C 1F 7C 1F 7C 1F 7C
+
+ RO17:6F03 01
+ RO17:6F04 FC FC 00 00
+ RO17:6F08 01
+ RO17:6F09 FC FC 01 00
+ RO17:6F0D 01
+ RO17:6F0E FC FC 01 20
+ RO17:6F12 01
+ RO17:6F13 FC FC 02 00
+ RO17:6F17 01
+ RO17:6F18 FC FC 02 20
+ RO17:6F1C 01
+ RO17:6F1D FC FC 03 00
+ RO17:6F21 01
+ RO17:6F22 FC FC 03 20
+ RO17:6F26 01
+ RO17:6F27 FC FB 04 00
+ RO17:6F2B 01
+ RO17:6F2C FC FD 04 20
+ RO17:6F30 01
+ RO17:6F31 FC FC 05 00
+ RO17:6F35 01
+ RO17:6F36 FC FC 05 20
+ RO17:6F3A 01
+ RO17:6F3B FC FC 0D 00
+ RO17:6F3F 01
+ RO17:6F40 FC FC 0D 20
+ RO17:6F44 01
+ RO17:6F45 FC FC 0E 00
+ RO17:6F49 01
+ RO17:6F4A FC FC 0E 20
+ RO17:6F4E 01
+ RO17:6F4F FC FC 0E 40
+ RO17:6F53 01
+ RO17:6F54 FC FC 0E 60
+ RO17:6F58 01
+ RO17:6F59 FC FC 06 00
+ RO17:6F5D 01
+ RO17:6F5E FC FC 06 20
+ RO17:6F62 01
+ RO17:6F63 FC FC 07 00
+ RO17:6F67 01
+ RO17:6F68 FC FC 07 20
+ RO17:6F6C 01
+ RO17:6F6D FC FC 08 00
+ RO17:6F71 01
+ RO17:6F72 FC FC 08 20
+ RO17:6F76 01
+ RO17:6F77 FC FC 09 00
+ RO17:6F7B 01
+ RO17:6F7C FC FC 09 20
+ RO17:6F80 01
+ RO17:6F81 FC FC 16 00
+ RO17:6F85 01
+ RO17:6F86 FC FC 16 20
+ RO17:6F8A 01
+ RO17:6F8B FC FC 0C 00
+ RO17:6F8F 01
+ RO17:6F90 FC FC 0C 20
+ RO17:6F94 01
+ RO17:6F95 FC FC 0C 40
+ RO17:6F99 01
+ RO17:6F9A FC FC 0C 60
+ RO17:6F9E 01
+ RO17:6F9F FC FC 0B 00
+ RO17:6FA3 01
+ RO17:6FA4 FC FC 0B 20
+
+ RO17:6FA8 02
+ RO17:6FA9 FC 00 12 00
+ RO17:6FAD FC F8 11 00
+
+ RO17:6FB1 02
+ RO17:6FB2 FC F8 12 20
+ RO17:6FB6 FC 00 11 20
+
+ RO17:6FBA 03
+ RO17:6FBB 00 F8 15 00
+ RO17:6FBF F8 00 14 00
+ RO17:6FC3 F8 F8 13 00
+
+ RO17:6FC7 03
+ RO17:6FC8 00 00 15 20
+ RO17:6FCC F8 F8 14 20
+ RO17:6FD0 F8 00 13 20
+
+ RO17:6FD4 02
+ RO17:6FD5 00 FC 10 00
+ RO17:6FD9 F8 FC 0F 00
+
+ RO17:6FDD 01
+ RO17:6FDE FC FC 0A 00
+ RO17:6FE2 01
+ RO17:6FE3 FC FC 0A 20
+
+ RO17:6FE7 01
+ RO17:6FE8 FC FC 17 00
+ RO17:6FEC 01
+ RO17:6FED FC FC 18 00
+ RO17:6FF1 01
+ RO17:6FF2 FC FC 19 00
+
+ RO17:6FF6 01
+ RO17:6FF7 FC FC 07 40
+ RO17:6FFB 01
+ RO17:6FFC FC FC 07 60
+
+ RO17:7000 03 6F 01 00 00
+ RO17:7005 08 6F 01 00 00
+ RO17:700A 0D 6F 01 00 00
+ RO17:700F 12 6F 01 00 00
+ RO17:7014 17 6F 01 00 00
+ RO17:7019 1C 6F 01 00 00
+ RO17:701E 21 6F 01 00 00
+ RO17:7023 26 6F 01 00 00
+ RO17:7028 2B 6F 01 00 00
+ RO17:702D 30 6F 01 00 00
+ RO17:7032 35 6F 01 00 00
+ RO17:7037 3A 6F 01 00 00
+ RO17:703C 3F 6F 01 00 00
+ RO17:7041 44 6F 01 00 00
+ RO17:7046 49 6F 01 00 00
+ RO17:704B 4E 6F 01 00 00
+ RO17:7050 53 6F 01 00 00
+ RO17:7055 80 6F 01 00 00
+ RO17:705A 85 6F 01 00 00
+ RO17:705F DD 6F 01 00 00
+ RO17:7064 E2 6F 01 00 00
+ RO17:7069 9E 6F 01 00 00
+ RO17:706E A3 6F 01 00 00
+ RO17:7073 58 6F 01 00 00
+ RO17:7078 5D 6F 01 00 00
+ RO17:707D 62 6F 01 00 00
+ RO17:7082 67 6F 01 00 00
+ RO17:7087 6C 6F 01 00 00
+ RO17:708C 71 6F 01 00 00
+ RO17:7091 76 6F 01 00 00
+ RO17:7096 7B 6F 01 00 00
+ RO17:709B 8A 6F 01 00 00
+ RO17:70A0 8F 6F 01 00 00
+ RO17:70A5 94 6F 01 00 00
+ RO17:70AA 99 6F 01 00 00
+ RO17:70AF D4 6F 01 00 00
+ RO17:70B4 A8 6F 01 00 00
+ RO17:70B9 B1 6F 01 00 00
+ RO17:70BE BA 6F 01 00 00
+ RO17:70C3 C7 6F 01 00 00
+
+ RO17:70C8 E7 6F 06
+ RO17:70CB EC 6F 05
+ RO17:70CE F1 6F 04 00 00
+
+ RO17:70D3 F6 6F 01 00 00
+ RO17:70D8 FB 6F 01 00 00
+
+ RO17:70DD 00 70               ld   (hl),b
+ RO17:70DF 05 70               ld   (hl),b
+ RO17:70E1 0A 70               ld   (hl),b
+ RO17:70E3 0F 70               ld   (hl),b
+ RO17:70E5 14 70               ld   (hl),b
+ RO17:70E7 19 70               ld   (hl),b
+ RO17:70E9 1E 70            ld   e,70
+ RO17:70EB 23 70               ld   (hl),b
+ RO17:70ED 28 70            jr   z,715F
+ RO17:70EF 2D 70               ld   (hl),b
+ RO17:70F1 32 70               ld   (hl),b
+ RO17:70F3 37 70               ld   (hl),b
+ RO17:70F5 3C 70               ld   (hl),b
+ RO17:70F7 41 70               ld   (hl),b
+ RO17:70F9 46 70               ld   (hl),b
+ RO17:70FB 4B 70               ld   (hl),b
+ RO17:70FD 50 70               ld   (hl),b
+ RO17:70FF 55 70               ld   (hl),b
+ RO17:7101 5A 70               ld   (hl),b
+ RO17:7103 5F 70               ld   (hl),b
+ RO17:7105 64 70               ld   (hl),b
+ RO17:7107 69 70               ld   (hl),b
+ RO17:7109 6E 70               ld   (hl),b
+ RO17:710B 73 70               ld   (hl),b
+ RO17:710D 78 70               ld   (hl),b
+ RO17:710F 7D 70               ld   (hl),b
+ RO17:7111 82 70               ld   (hl),b
+ RO17:7113 87 70               ld   (hl),b
+ RO17:7115 8C 70               ld   (hl),b
+ RO17:7117 91 70               ld   (hl),b
+ RO17:7119 96 70               ld   (hl),b
+ RO17:711B 9B 70               ld   (hl),b
+ RO17:711D A0 70               ld   (hl),b
+ RO17:711F A5 70               ld   (hl),b
+ RO17:7121 AA 70               ld   (hl),b
+ RO17:7123 AF 70               ld   (hl),b
+ RO17:7125 B4 70               ld   (hl),b
+ RO17:7127 B9 70               ld   (hl),b
+ RO17:7129 BE 70               ld   (hl),b
+ RO17:712B C3 70
+ RO17:712D C8 70               ld   (hl),b
+ RO17:712F D3 70               ld   (hl),b
+ RO17:7131 D8 70
+
+ RO17:7133 00 00 00 00 00 00 36 00 00 00 00 00 00 00 00 00
+ RO17:7143 00 00 02 00 04 00 00 00 10 00 20 00 00 00 00 00
+ RO17:7153 00 00 00 00 00 00 1E 00 3C 00 00 00 00 00 00 00
+ RO17:7163 00 00 00 00 08 00 18 00 30 00 20 00 00 00 00 00
+ RO17:7173 00 00 1E 00 3C 00 00 00 00 00 3C 00 78 00 00 00
+ RO17:7183 00 00 18 00 30 00 60 00 06 00 0C 00 18 00 00 00
+ RO17:7193 00 00 00 00 00 00 5C 00 62 1C 5C 00 00 00 00 00
+ RO17:71A3 00 00 00 00 0C 00 14 08 28 10 70 00 20 00 00 00
+ RO17:71B3 5C 00 62 1C 5C 00 00 00 2E 00 31 0E 2E 00 00 00
+ RO17:71C3 18 00 28 10 50 20 E6 00 4A 04 14 08 38 00 10 00
+ RO17:71D3 00 00 00 00 3C 00 32 0C 3E 00 3C 00 00 00 00 00
+ RO17:71E3 00 00 00 00 5E 00 79 06 7F 00 5E 00 00 00 00 00
+ RO17:71F3 00 00 0E 00 1A 04 36 08 6C 10 38 00 10 00 00 00
+ RO17:7203 00 00 F0 00 7E 00 41 3E 7E 00 F0 00 00 00 00 00
+ RO17:7213 00 00 06 00 0A 04 34 08 68 10 D8 20 30 00 20 00
+
+ RO17:7223 00 00 00 00 44 00 7C 00 6C 10 6C 10 28 10 28 10
+ RO17:7233 28 10 28 10 28 10 38 00 28 10 10 00 00 00 00 00
+ 
+ RO17:7243 00 00 00 00 1E 00 0F 00 08 07 0F 00 1E 00 00 00
+ RO17:7253 00 00 00 00 00 00 FC 00 0A F4 FC 00 00 00 00 00
+ 
+ RO17:7263 00 00 00 00 00 00 00 00 00 00 00 00 01 00 06 01
+ RO17:7273 00 00 00 00 00 00 30 00 50 20 E0 00 40 80 80 00
+ RO17:7283 0D 02 1B 04 2E 00 04 00 08 00 00 00 00 00 00 00
+
+ RO17:7293 00 00 20 00 7E 00 81 7E 7E 00 20 00 00 00 00 00
+ RO17:72A3 40 40 08 3E 0E 7E 1E 7F 1E 7E 8C BE 00 0C 20 20
+ RO17:72B3 00 00 10 14 02 02 00 18 18 38 1A 3A 00 08 00 00
+ RO17:72C3 00 00 00 00 00 10 18 3C 30 38 00 10 00 04 00 00
+
+ RO17:72D3 52 4A 00 00 50 1D FF 7F
+
+ RO17:72DB E7 1C 9B 77 1F 28 11 14
+ RO17:72E3 E7 1C 9B 77 BD 77 C6 59
+ RO17:72EB E7 1C 9B 77 5A 6B 31 46
+ RO17:72F3 E7 1C 9B 77 BD 77 C6 59
+ RO17:72FB E7 1C 9B 77 EC 03 80 02
+ RO17:7303 E7 1C 9B 77 BD 77 C6 59
+ RO17:730B E7 1F AE 60 10 7C 1F 7C
+ RO17:7313 1F 40 10 42 18 63 FF 7F
+
+ RO17:731B 3E 00            ld   a,00
+ RO17:731D E0 83            ld   (ff00+83),a
+ RO17:731F E0 4F            ld   (ff00+4F),a
+ RO17:7321 C5               push bc
+ RO17:7322 CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO17:7325 01 0E 00         ld   bc,000E
+ RO17:7328 3E 10            ld   a,10
+ RO17:732A CD 84 3B         call 3B84           // VRA0(HL ~ HL+BC-1) = 16
+ RO17:732D 3E 01            ld   a,01
+ RO17:732F E0 83            ld   (ff00+83),a
+ RO17:7331 E0 4F            ld   (ff00+4F),a
+ RO17:7333 C1               pop  bc
+ RO17:7334 CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO17:7337 01 0E 00         ld   bc,000E
+ RO17:733A 3E 08            ld   a,08
+ RO17:733C CD 84 3B         call 3B84           // VRA1(HL ~ HL+BC-1) = 8
+ RO17:733F 3E 00            ld   a,00
+ RO17:7341 E0 83            ld   (ff00+83),a
+ RO17:7343 E0 4F            ld   (ff00+4F),a
+ RO17:7345 C9               ret                 // Establishes 14 underscore characters at coordinates BC
+ RO17:7346 06 05            ld   b,05
+ RO17:7348 CD 95 29         call 2995           // HL = A * 5
+ RO17:734B 44               ld   b,h
+ RO17:734C 4D               ld   c,l
+ RO17:734D 21 5A DA         ld   hl,DA5A
+ RO17:7350 09               add  hl,bc
+ RO17:7351 C9               ret                 // HL is starting address of unit A on Unit list
+ RO17:7352 06 05            ld   b,05
+ RO17:7354 CD 95 29         call 2995           // HL = A * 5
+ RO17:7357 44               ld   b,h
+ RO17:7358 4D               ld   c,l
+ RO17:7359 21 54 DB         ld   hl,DB54
+ RO17:735C 09               add  hl,bc
+ RO17:735D C9               ret                 // HL is starting address of unit A on secondary list on Unit List
+ RO17:735E 01 04 02         ld   bc,0204
+ RO17:7361 87               add  a
+ RO17:7362 81               add  c
+ RO17:7363 4F               ld   c,a            // C = 2A + 4
+ RO17:7364 C5               push bc
+ RO17:7365 3E 00            ld   a,00
+ RO17:7367 E0 83            ld   (ff00+83),a
+ RO17:7369 E0 4F            ld   (ff00+4F),a
+ RO17:736B AF               xor  a
+ RO17:736C 11 02 02         ld   de,0202
+ RO17:736F EF 15 D3 6A                          // Empties VRA0 map tiles in rectangle 2~3,4~5 + 2A
+ RO17:7373 3E 01            ld   a,01
+ RO17:7375 E0 83            ld   (ff00+83),a
+ RO17:7377 E0 4F            ld   (ff00+4F),a
+ RO17:7379 C1               pop  bc
+ RO17:737A C5               push bc
+ RO17:737B AF               xor  a
+ RO17:737C 11 02 02         ld   de,0202
+ RO17:737F EF 15 D3 6A                          // Empties VRA1 map tiles in rectangle 2~3,4~5 + 2A
+ RO17:7383 3E 00            ld   a,00
+ RO17:7385 E0 83            ld   (ff00+83),a
+ RO17:7387 E0 4F            ld   (ff00+4F),a
+ RO17:7389 C1               pop  bc
+ RO17:738A C5               push bc
+ RO17:738B AF               xor  a
+ RO17:738C 11 01 10         ld   de,1001
+ RO17:738F EF 15 D3 6A                          // Empties VRA0 map tiles in rectangle 2~17,4 + 2A
+ RO17:7393 3E 01            ld   a,01
+ RO17:7395 E0 83            ld   (ff00+83),a
+ RO17:7397 E0 4F            ld   (ff00+4F),a
+ RO17:7399 C1               pop  bc
+ RO17:739A AF               xor  a
+ RO17:739B 11 01 10         ld   de,1001
+ RO17:739E EF 15 D3 6A                          // Empties VRA1 map tiles in rectangle 2~17,4 + 2A
+ RO17:73A2 C9               ret                 // Empties unit information row A on Unit List
+ RO17:73A3 FA 5B DC         ld   a,(DC5B)
+ RO17:73A6 FE 00            cp   a,00
+ RO17:73A8 20 08            jr   nz,73B2
+ RO17:73AA FA 54 DC         ld   a,(DC54)
+ RO17:73AD CD 5F 2F         call 2F5F           // set 0,($D000 + A * 16) WRAM bank 4
+ RO17:73B0 18 06            jr   73B8
+ RO17:73B2 FA 54 DC         ld   a,(DC54)
+ RO17:73B5 CD 45 2F         call 2F45           // res 0,($D000 + A * 16) WRAM bank 4
+ RO17:73B8 FA 5B DC         ld   a,(DC5B)
+ RO17:73BB 3C               inc  a
+ RO17:73BC C6 06            add  a,06
+ RO17:73BE 4F               ld   c,a
+ RO17:73BF FA 66 DC         ld   a,(DC66)
+ RO17:73C2 B9               cp   c
+ RO17:73C3 30 08            jr   nc,73CD
+ RO17:73C5 FA 55 DC         ld   a,(DC55)
+ RO17:73C8 CD 5F 2F         call 2F5F           // set 0,($D000 + A * 16) WRAM bank 4
+ RO17:73CB 18 06            jr   73D3
+ RO17:73CD FA 55 DC         ld   a,(DC55)
+ RO17:73D0 CD 45 2F         call 2F45           // res 0,($D000 + A * 16) WRAM bank 4
+ RO17:73D3 C9               ret                 // Toggle Unit List screen's Pointing Up/Down Mini-Arrows
+

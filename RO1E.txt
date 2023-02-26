@@ -1,0 +1,3513 @@
+ RO1E:4000 12
+ RO1E:4001 08 0C 12 02
+ RO1E:4005 08 04 11 02
+ RO1E:4009 08 FC 10 02
+ RO1E:400D 08 F4 0F 02
+ RO1E:4011 08 EC 0E 02
+ RO1E:4015 00 0C 0D 02
+ RO1E:4019 00 04 0C 02
+ RO1E:401D 00 FC 0B 02
+ RO1E:4021 00 F4 0A 05
+ RO1E:4025 00 EC 09 02
+ RO1E:4029 F8 0C 08 02
+ RO1E:402D F8 04 07 02
+ RO1E:4031 F8 FC 06 02
+ RO1E:4035 F8 F4 05 05
+ RO1E:4039 F8 EC 04 02
+ RO1E:403D F0 0C 03 02
+ RO1E:4041 F0 04 02 02
+ RO1E:4045 F0 FC 01 02
+
+ RO1E:4049 12
+ RO1E:404A 07 F4 14 02
+ RO1E:404E 07 EC 13 02
+ RO1E:4052 07 0C 16 02
+ RO1E:4056 07 04 15 02
+ RO1E:405A 07 FC 10 02
+ RO1E:405E FF 0C 0D 02
+ RO1E:4062 FF 04 0C 02
+ RO1E:4066 FF FC 0B 02
+ RO1E:406A FF F4 0A 05
+ RO1E:406E FF EC 09 02
+ RO1E:4072 F7 0C 08 02
+ RO1E:4075 F7 04 07 02
+ RO1E:407A F7 FC 06 02
+ RO1E:407E F7 F4 05 05
+ RO1E:4082 F7 EC 04 02
+ RO1E:4086 EF 0C 03 02
+ RO1E:408A EF 04 02 02
+ RO1E:408E EF FC 01 02
+
+ RO1E:4092 12
+ RO1E:4093 06 0C 1A 02
+ RO1E:4097 06 04 19 02
+ RO1E:409B 06 F4 18 02
+ RO1E:409F 06 EC 17 02
+ RO1E:40A3 06 FC 10 02
+ RO1E:40A7 FE 0C 0D 02
+ RO1E:40AB FE 04 0C 02
+ RO1E:40AF FE FC 0B 02
+ RO1E:40B3 FE F4 0A 05
+ RO1E:40B7 FE EC 09 02
+ RO1E:40BB F6 0C 08 02
+ RO1E:40BF F6 04 07 02
+ RO1E:40C3 F6 FC 06 02
+ RO1E:40C7 F6 F4 05 05
+ RO1E:40CB F6 EC 04 02
+ RO1E:40CF EE 0C 03 02
+ RO1E:40D3 EE 04 02 02
+ RO1E:40D7 EE FC 01 02
+
+ RO1E:40DB 12
+ RO1E:40DC 08 EC 12 22               ldi  (hl),a
+ RO1E:40E0 08 F4 11 22               ldi  (hl),a
+ RO1E:40E4 08 FC 10 22               ldi  (hl),a
+ RO1E:40E8 08 04 0F 22               ldi  (hl),a
+ RO1E:40EC 08 0C 0E 22               ldi  (hl),a
+ RO1E:40F0 00 EC 0D 22               ldi  (hl),a
+ RO1E:40F4 00 F4 0C 22               ldi  (hl),a
+ RO1E:40F8 00 FC 0B 22               ldi  (hl),a
+ RO1E:40FC 00 04 0A 25               dec  h
+ RO1E:4100 00 0C 09 22               ldi  (hl),a
+ RO1E:4104 F8 EC 08 22
+ RO1E:4108 F8 F4 07 22               ldi  (hl),a
+ RO1E:410C F8 FC 06 22            ld   b,22
+ RO1E:4110 F8 04 05 25               dec  h
+ RO1E:4114 F8 0C 04 22               ldi  (hl),a
+ RO1E:4118 F0 EC 03 22               ldi  (hl),a
+ RO1E:411C F0 F4 02 22               ldi  (hl),a
+ RO1E:4120 F0 FC 01 22
+
+ RO1E:4124 12
+ RO1E:4125 07 04 14 22               ldi  (hl),a
+ RO1E:4129 07 0C 13 22               ldi  (hl),a
+ RO1E:412D 07 EC 16 22            ld   d,22
+ RO1E:4131 07 F4 15 22               ldi  (hl),a
+ RO1E:4135 07 FC 10 22            <corrupted stop>
+ RO1E:4139 FF EC 0D 22               ldi  (hl),a
+ RO1E:413D FF F4 0C 22               ldi  (hl),a
+ RO1E:4141 FF FC 0B 22               ldi  (hl),a
+ RO1E:4145 FF 04 0A 25               dec  h
+ RO1E:4149 FF 0C 09 22               ldi  (hl),a
+ RO1E:414D F7 EC 08 22
+ RO1E:4151 F7 F4 07 22               ldi  (hl),a
+ RO1E:4155 F7 FC 06 22            ld   b,22
+ RO1E:4159 F7 04 05 25               dec  h
+ RO1E:415D F7 0C 04 22               ldi  (hl),a
+ RO1E:4161 EF EC 03 22               ldi  (hl),a
+ RO1E:4165 EF F4 02 22               ldi  (hl),a
+ RO1E:4169 EF FC 01 22
+
+ RO1E:416D 12
+ RO1E:416E 06 EC 1A 22
+ RO1E:4172 06 F4 19 22
+ RO1E:4176 06 04 18 22
+ RO1E:417A 06 0C 17 22
+ RO1E:417E 06 FC 10 22
+ RO1E:4182 FE EC 0D 22
+ RO1E:4186 FE F4 0C 22
+ RO1E:418A FE FC 0B 22
+ RO1E:418E FE 04 0A 25
+ RO1E:4192 FE 0C 09 22
+ RO1E:4196 F6 EC 08 22
+ RO1E:419A F6 F4 07 22
+ RO1E:419E F6 FC 06 22
+ RO1E:41A2 F6 04 05 25
+ RO1E:41A6 F6 0C 04 22
+ RO1E:41AA EE EC 03 22
+ RO1E:41AE EE F4 02 22
+ RO1E:41B2 EE FC 01 22
+
+ RO1E:41B6 12
+ RO1E:41B7 08 0C 2C 02
+ RO1E:41BB 08 04 2B 02
+ RO1E:41BF 08 FC 2A 02
+ RO1E:41C3 08 F4 29 02
+ RO1E:41C7 08 EC 28 02               ld   (bc),a
+ RO1E:41CB 00 0C 27 02               ld   (bc),a
+ RO1E:41CF 00 04 26 02            ld   h,02
+ RO1E:41D3 00 FC 25 02               ld   (bc),a
+ RO1E:41D7 00 F4 24 05               dec  b
+ RO1E:41DB 00 EC 23 02               ld   (bc),a
+ RO1E:41DF F8 0C 22 02               ld   (bc),a
+ RO1E:41E3 F8 04 21 02
+ RO1E:41E7 F8 FC 20 02
+ RO1E:41EB F8 F4 1F 05
+ RO1E:41EF F8 EC 1E 02
+ RO1E:41F3 F0 0C 1D 02
+ RO1E:41F7 F0 04 1C 02
+ RO1E:41FB F0 FC 1B 02
+
+ RO1E:41FF 12
+ RO1E:4200 07 0C 30 02            jr   nc,4206
+ RO1E:4204 07 04 2F 02               ld   (bc),a
+ RO1E:4208 07 F4 2E 02            ld   l,02
+ RO1E:420C 07 EC 2D 02               ld   (bc),a
+ RO1E:4210 07 FC 2A 02               ld   (bc),a
+ RO1E:4214 FF 0C 27 02               ld   (bc),a
+ RO1E:4218 FF 04 26 02            ld   h,02
+ RO1E:421C FF FC 25 02               ld   (bc),a
+ RO1E:4220 FF F4 24 05               dec  b
+ RO1E:4224 FF EC 23 02               ld   (bc),a
+ RO1E:4228 F7 0C 22 02               ld   (bc),a
+ RO1E:422C F7 04 21 02
+ RO1E:4230 F7 FC 20 02
+ RO1E:4234 F7 F4 1F 05
+ RO1E:4238 F7 EC 1E 02
+ RO1E:423C EF 0C 1D 02
+ RO1E:4240 EF 04 1C 02
+ RO1E:4244 EF FC 1B 02
+
+ RO1E:4248 12
+ RO1E:4249 06 0C 34 02
+ RO1E:424D 06 04 33 02
+ RO1E:4251 06 F4 32 02
+ RO1E:4255 06 EC 31 02
+ RO1E:4259 06 FC 2A 02               ld   (bc),a
+ RO1E:425D FE 0C 27 02               ld   (bc),a
+ RO1E:4261 FE 04 26 02            ld   h,02
+ RO1E:4265 FE FC 25 02               ld   (bc),a
+ RO1E:4269 FE F4 24 05               dec  b
+ RO1E:426D FE EC 23 02               ld   (bc),a
+ RO1E:4271 F6 0C 22 02
+ RO1E:4275 F6 04 21 02
+ RO1E:4279 F6 FC 20 02
+ RO1E:427D F6 F4 1F 05
+ RO1E:4281 F6 EC 1E 02
+ RO1E:4285 EE 0C 1D 02
+ RO1E:4289 EE 04 1C 02
+ RO1E:428D EE FC 1B 02
+
+ RO1E:4291 12
+ RO1E:4292 08 EC 2C 22
+ RO1E:4296 08 F4 2B 22
+ RO1E:429A 08 FC 2A 22
+ RO1E:429E 08 04 29 22
+ RO1E:42A2 08 0C 28 22
+ RO1E:42A6 00 EC 27 22
+ RO1E:42AA 00 F4 26 22
+ RO1E:42AE 00 FC 25 22
+ RO1E:42B2 00 04 24 25
+ RO1E:42B6 00 0C 23 22
+ RO1E:42BA F8 EC 22 22
+ RO1E:42BE F8 F4 21 22
+ RO1E:42C1 F8 FC 20 22
+ RO1E:42C6 F8 04 1F 25
+ RO1E:42CA F8 0C 1E 22
+ RO1E:42CE F0 EC 1D 22
+ RO1E:42D2 F0 F4 1C 22
+ RO1E:42D6 F0 FC 1B 22
+
+ RO1E:42DA 12
+ RO1E:42DB 07 EC 30 22            jr   nc,4301
+ RO1E:42DF 07 F4 2F 22               ldi  (hl),a
+ RO1E:42E3 07 04 2E 22            ld   l,22
+ RO1E:42E7 07 0C 2D 22               ldi  (hl),a
+ RO1E:42EB 07 FC 2A 22               ldi  (hl),a
+ RO1E:42EF FF EC 27 22               ldi  (hl),a
+ RO1E:42F3 FF F4 26 22            ld   h,22
+ RO1E:42F7 FF FC 25 22               ldi  (hl),a
+ RO1E:42FB FF 04 24 25               dec  h
+ RO1E:42FF FF 0C 23 22               ldi  (hl),a
+ RO1E:4303 F7 EC 22 22               ldi  (hl),a
+ RO1E:4307 F7 F4 21 22
+ RO1E:430B F7 FC 20 22
+ RO1E:430F F7 04 1F 25
+ RO1E:4313 F7 0C 1E 22
+ RO1E:4317 EF EC 1D 22
+ RO1E:431B EF F4 1C 22
+ RO1E:431F EF FC 1B 22
+
+ RO1E:4323 12
+ RO1E:4324 06 EC 34 22
+ RO1E:4328 06 F4 33 22
+ RO1E:432C 06 04 32 22
+ RO1E:4330 06 0C 31 22
+ RO1E:4334 06 FC 2A 22               ldi  (hl),a
+ RO1E:4338 FE EC 27 22               ldi  (hl),a
+ RO1E:433C FE F4 26 22            ld   h,22
+ RO1E:4340 FE FC 25 22               ldi  (hl),a
+ RO1E:4344 FE 04 24 25               dec  h
+ RO1E:4348 FE 0C 23 22               ldi  (hl),a
+ RO1E:434C F6 EC 22 22               ldi  (hl),a
+ RO1E:4350 F6 F4 21 22
+ RO1E:4354 F6 FC 20 22
+ RO1E:4358 F6 04 1F 25
+ RO1E:435C F6 0C 1E 22
+ RO1E:4360 EE EC 1D 22
+ RO1E:4364 EE F4 1C 22
+ RO1E:4368 EE FC 1B 22
+
+ RO1E:436C 12
+ RO1E:436D 08 0C 46 02               ld   (bc),a
+ RO1E:4371 08 04 45 02               ld   (bc),a
+ RO1E:4375 08 FC 44 02               ld   (bc),a
+ RO1E:4379 08 F4 43 02               ld   (bc),a
+ RO1E:437D 08 EC 42 02               ld   (bc),a
+ RO1E:4381 00 0C 41 02               ld   (bc),a
+ RO1E:4385 00 04 40 02               ld   (bc),a
+ RO1E:4389 00 FC 3F 02               ld   (bc),a
+ RO1E:438D 00 F4 3E 02            ld   a,02
+ RO1E:4391 00 EC 3D 02               ld   (bc),a
+ RO1E:4395 F8 0C 3C 02               ld   (bc),a
+ RO1E:4399 F8 04 3B 02               ld   (bc),a
+ RO1E:439D F8 FC 3A 02               ld   (bc),a
+ RO1E:43A1 F8 F4 39 02               ld   (bc),a
+ RO1E:43A5 F8 EC 38 02            jr   c,43AB
+ RO1E:43A9 F0 04 37 02               ld   (bc),a
+ RO1E:43AD F0 FC 36 02            ld   (hl),02
+ RO1E:43B1 F0 F4 35 02
+
+ RO1E:43B5 12
+ RO1E:43B6 07 0C 4B 02
+ RO1E:43BA 07 04 4A 02
+ RO1E:43BE 07 F4 49 02               ld   (bc),a
+ RO1E:43C2 07 EC 48 02               ld   (bc),a
+ RO1E:43C6 FF 0C 47 02               ld   (bc),a
+ RO1E:43CA 07 FC 44 02               ld   (bc),a
+ RO1E:43CE FF 04 40 02               ld   (bc),a
+ RO1E:43D2 FF FC 3F 02               ld   (bc),a
+ RO1E:43D6 FF F4 3E 02            ld   a,02
+ RO1E:43DA FF EC 3D 02               ld   (bc),a
+ RO1E:43DE F7 0C 3C 02               ld   (bc),a
+ RO1E:43E2 F7 04 3B 02               ld   (bc),a
+ RO1E:43E6 F7 FC 3A 02               ld   (bc),a
+ RO1E:43EA F7 F4 39 02               ld   (bc),a
+ RO1E:43EE F7 EC 38 02            jr   c,43F4
+ RO1E:43F2 EF 04 37 02               ld   (bc),a
+ RO1E:43F6 EF FC 36 02            ld   (hl),02
+ RO1E:43FA EF F4 35 02
+
+ RO1E:43FE 12
+ RO1E:43FF 06 0C 50 02               ld   (bc),a
+ RO1E:4403 06 04 4F 02               ld   (bc),a
+ RO1E:4407 06 F4 4E 02               ld   (bc),a
+ RO1E:440B 06 EC 4D 02               ld   (bc),a
+ RO1E:440F FE 0C 4C 02               ld   (bc),a
+ RO1E:4413 06 FC 44 02               ld   (bc),a
+ RO1E:4417 FE 04 40 02               ld   (bc),a
+ RO1E:441B FE FC 3F 02
+ RO1E:441F FE F4 3E 02
+ RO1E:4423 FE EC 3D 02
+ RO1E:4427 F6 0C 3C 02
+ RO1E:442B F6 04 3B 02
+ RO1E:442F F6 FC 3A 02
+ RO1E:4433 F6 F4 39 02
+ RO1E:4437 F6 EC 38 02
+ RO1E:443B EE 04 37 02
+ RO1E:443F EE FC 36 02
+ RO1E:4443 EE F4 35 02
+
+ RO1E:4447 12
+ RO1E:4448 08 EC 46 22
+ RO1E:444C 08 F4 45 22
+ RO1E:4450 08 FC 44 22
+ RO1E:4454 08 04 43 22
+ RO1E:4458 08 0C 42 22
+ RO1E:445C 00 EC 41 22
+ RO1E:4460 00 F4 40 22
+ RO1E:4464 00 FC 3F 22
+ RO1E:4468 00 04 3E 22
+ RO1E:446C 00 0C 3D 22
+ RO1E:4470 F8 EC 3C 22
+ RO1E:4474 F8 F4 3B 22
+ RO1E:4478 F8 FC 3A 22
+ RO1E:447C F8 04 39 22
+ RO1E:4480 F8 0C 38 22
+ RO1E:4484 F0 F4 37 22
+ RO1E:4488 F0 FC 36 22
+ RO1E:448C F0 04 35 22
+
+ RO1E:4490 12
+ RO1E:4491 07 EC 4B 22
+ RO1E:4495 07 F4 4A 22
+ RO1E:4499 07 04 49 22
+ RO1E:449D 07 0C 48 22
+ RO1E:44A1 FF EC 47 22
+ RO1E:44A5 07 FC 44 22
+ RO1E:44A9 FF F4 40 22
+ RO1E:44AD FF FC 3F 22
+ RO1E:44B1 FF 04 3E 22
+ RO1E:44B5 FF 0C 3D 22
+ RO1E:44B9 F7 EC 3C 22
+ RO1E:44BD F7 F4 3B 22
+ RO1E:44C1 F7 FC 3A 22
+ RO1E:44C5 F7 04 39 22
+ RO1E:44C9 F7 0C 38 22
+ RO1E:44CD EF F4 37 22
+ RO1E:44D1 EF FC 36 22
+ RO1E:44D5 EF 04 35 22
+
+ RO1E:44D9 12
+ RO1E:44DA 06 EC 50 22
+ RO1E:44DE 06 F4 4F 22
+ RO1E:44E2 06 04 4E 22
+ RO1E:44E6 06 0C 4D 22
+ RO1E:44EA FE EC 4C 22
+ RO1E:44EE 06 FC 44 22
+ RO1E:44F2 FE F4 40 22
+ RO1E:44F6 FE FC 3F 22
+ RO1E:44FA FE 04 3E 22
+ RO1E:44FE FE 0C 3D 22
+ RO1E:4502 F6 EC 3C 22
+ RO1E:4506 F6 F4 3B 22
+ RO1E:450A F6 FC 3A 22
+ RO1E:450E F6 04 39 22
+ RO1E:4512 F6 0C 38 22
+ RO1E:4516 EE F4 37 22
+ RO1E:451A EE FC 36 22
+ RO1E:451E EE 04 35 22
+
+ RO1E:4522 B6 41 0A
+ RO1E:4525 FF 41 0A
+ RO1E:4528 48 42 0A
+ RO1E:452B FF 41 0A 00 00
+
+ RO1E:4530 DB 40 0A
+ RO1E:4533 24 41 0A
+ RO1E:4536 6D 41 0A
+ RO1E:4539 24 41 0A 00 00
+
+ RO1E:453E 00 40 0A
+ RO1E:4541 49 40 0A
+ RO1E:4544 92 40 0A
+ RO1E:4547 49 40 0A 00 00
+
+ RO1E:454C 91 42 0A
+ RO1E:454F DA 42 0A
+ RO1E:4552 23 43 0A
+ RO1E:4555 DA 42 0A 00 00
+
+ RO1E:455A 6C 43 0A
+ RO1E:455D B5 43 0A
+ RO1E:4560 FE 43 0A
+ RO1E:4563 B5 43 0A 00 00
+
+ RO1E:4568 47 44 0A
+ RO1E:456B 90 44 0A
+ RO1E:456E D9 44 0A
+ RO1E:4571 90 44 0A 00 00
+
+ RO1E:4576 24 41 FF 00 00
+
+ RO1E:457B 49 40 FF 00 00
+
+ RO1E:4580 FF 41 FF 00 00
+
+ RO1E:4585 DA 42 FF 00 00
+
+ RO1E:458A B5 43 FF 00 00
+
+ RO1E:458F 90 44 FF 00 00
+
+ RO1E:4594 22 45               ld   b,l
+ RO1E:4596 30 45            jr   nc,45DD
+ RO1E:4598 3E 45            ld   a,45
+ RO1E:459A 4C 45               ld   b,l
+ RO1E:459C 5A 45               ld   b,l
+ RO1E:459E 68 45               ld   b,l
+ RO1E:45A0 76 45               ld   b,l
+ RO1E:45A2 7B 45               ld   b,l
+ RO1E:45A4 80 45               ld   b,l
+ RO1E:45A6 85 45               ld   b,l
+ RO1E:45A8 8A 45
+ RO1E:45AA 8F 45
+
+ RO1E:45AC 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:45BC 00 00 00 00 00 00 00 00 00 00 00 00 7F 00 FF 7F
+ RO1E:45CC 00 00 00 00 00 00 00 00 00 00 00 00 FF 00 FF FF
+ RO1E:45DC 00 00 00 00 00 00 00 00 00 00 00 00 F0 00 F8 F0
+ RO1E:45EC 00 00 00 00 00 00 00 00 01 00 0F 00 1F 0E 3F 1E
+ RO1E:45FC 1F 00 20 1F 60 1F E0 5F E0 DF E0 DF E0 DF E0 DF
+ RO1E:460C FF 7F FF 7F FF 7F FF 7F FF 7F FF 7F 80 7F FF 7F
+ RO1E:461C FF FF FF FF FF FF FF FF FF FF FF FF 00 FF FF FF
+ RO1E:462C F8 F0 F8 F0 F8 F0 F8 F0 F8 F0 F8 F0 08 F0 F8 F0
+ RO1E:463C 3F 1E 3F 1E 3F 1E 3F 1E 3E 1F 31 1F 2F 1F 3F 1F
+ RO1E:464C EF D0 DF AF BF 5F 7F BF FF 00 80 7F 80 7F 80 7F
+ RO1E:465C FF 60 F0 6F FF 69 FF 60 FF 7F FF 00 80 7F FF 7F
+ RO1E:466C FF 70 F8 77 FF 74 FF 70 FF FF FF 00 00 FF FF FF
+ RO1E:467C F8 30 78 B0 F8 B0 F8 30 F8 F0 F8 00 08 F0 F8 F0
+ RO1E:468C 3F 1C 3E 19 3F 13 1F 03 06 01 03 00 00 00 00 00
+ RO1E:469C FF 1F 3F C0 FF 67 7F E0 30 C0 E0 00 00 00 00 00
+ RO1E:46AC FF 7F FF 7F FF 7F FF 00 00 00 00 00 00 00 00 00
+ RO1E:46BC FF F0 F8 E7 FF CD FD 0F 18 07 0F 00 00 00 00 00
+ RO1E:46CC F8 70 F8 30 F8 90 F0 80 C0 00 80 00 00 00 00 00
+ RO1E:46DC 3F 1C 3F 18 3E 11 1D 03 0F 03 06 01 03 00 00 00
+ RO1E:46EC FF 1F FF 00 BF C7 FF 60 58 E0 B0 C0 E0 00 00 00
+ RO1E:46FC FF F0 FF E0 FA C7 F7 0D 3D 0F 1A 07 0F 00 00 00
+ RO1E:470C F8 70 F8 30 F8 10 F0 80 60 80 C0 00 80 00 00 00
+ RO1E:471C 3F 1C 3F 18 3F 10 1F 01 0D 03 0D 03 07 01 03 00
+ RO1E:472C FF 1F FF 00 FF 07 FF C0 D8 60 58 E0 F0 C0 E0 00
+ RO1E:473C FF F0 FF E0 FF C0 FF 07 37 0D 35 0F 1F 07 0F 00
+ RO1E:474C F8 70 F8 30 F8 10 F0 00 60 80 60 80 C0 00 80 00
+ RO1E:475C 00 00 00 00 00 00 00 00 0F 00 0F 06 79 06 FF 76
+ RO1E:476C 00 00 00 00 07 00 0F 07 FF 03 FF FB 07 FB FC F7
+ RO1E:477C 00 00 00 00 E0 00 F0 E0 F0 E0 F0 E0 FE E0 1F EE
+ RO1E:478C 00 00 00 00 00 00 00 00 01 00 0F 00 1F 0E 3F 1E
+ RO1E:479C 1F 00 20 1F 60 1F E0 5F E0 DF E0 DF E0 DF E0 DF
+ RO1E:47AC FF 70 FF 7F FF 7F FF 7F FF 7F FF 7F 80 7F FF 7F
+ RO1E:47BC FB 0F F7 9F EF BF DF BF FF C0 FF FF 00 FF FF FF
+ RO1E:47CC FF EE FF EE FF EE FF EE FF 1E FF FE 01 FE FF FE
+ RO1E:47DC 3F 1E 3F 1E 3F 1E 3F 1E 3E 1F 31 1F 2F 1F 3F 1F
+ RO1E:47EC EF D0 DF AF BF 5F 7F BF FF 00 80 7F 80 7F 80 7F
+ RO1E:47FC FF 40 E0 5F FF 50 FF 40 FF 7F FF 00 80 7F FF 7F
+ RO1E:480C FF 3C 7E BD FF BD FF 3C FF FF FF 00 00 FF FF FF
+ RO1E:481C FF 02 07 FA FF 0A FF 02 FF FE FF 00 01 FE FF FE
+ RO1E:482C 3F 1C 3E 19 3F 13 1F 03 06 01 03 00 00 00 00 00
+ RO1E:483C FF 1F 3F C0 FF 67 7F E0 30 C0 E0 00 00 00 00 00
+ RO1E:484C FF 7F FF 7F FF 7F FF 00 00 00 00 00 00 00 00 00
+ RO1E:485C FF FE FF FC FF F9 FF 01 03 00 01 00 00 00 00 00
+ RO1E:486C FF 0E 1F E6 FF B2 BE F0 18 E0 F0 00 00 00 00 00
+ RO1E:487C 3F 1C 3F 18 3E 11 1D 03 0F 03 06 01 03 00 00 00
+ RO1E:488C FF 1F FF 00 BF C7 FF 60 58 E0 B0 C0 E0 00 00 00
+ RO1E:489C FF FE FF FC FF F8 FE 01 07 01 03 00 01 00 00 00
+ RO1E:48AC FF 0E FF 06 5F E2 FE B0 AC F0 58 E0 F0 00 00 00
+ RO1E:48BC 3F 1C 3F 18 3F 10 1F 01 0D 03 0D 03 07 01 03 00
+ RO1E:48CC FF 1F FF 00 FF 07 FF C0 D8 60 58 E0 F0 C0 E0 00
+ RO1E:48DC FF FE FF FC FF F8 FF 00 06 01 06 01 03 00 01 00
+ RO1E:48EC FF 0E FF 06 FF 02 FE E0 EC B0 AC F0 F8 E0 F0 00
+ RO1E:48FC 00 00 00 00 00 00 00 00 00 00 00 00 2F 10 2F 10
+ RO1E:490C 00 00 00 00 00 00 00 00 0F 00 1F 0F FF 0F F0 0F
+ RO1E:491C 00 00 00 00 00 00 00 00 00 00 80 00 FE 00 FE 00
+ RO1E:492C 00 00 00 00 00 00 00 00 1F 00 20 1F 40 3F 8F 7F
+ RO1E:493C 3F 10 3F 10 01 00 03 01 C7 02 2F C4 1F E8 DF F0
+ RO1E:494C FF 0F FF 0F FF 6F FF 60 FF 76 FF 70 FF 7F 80 7F
+ RO1E:495C FE 00 FE 00 F0 60 FF 60 F0 EF FF EF FF EF 1F EF
+ RO1E:496C 00 00 00 00 00 00 FC 00 04 F8 FC F0 F8 F0 F8 F0
+ RO1E:497C 9F 7F 7F 3F 7F 3F 60 3F 40 3F 8F 70 9F 60 FF 00
+ RO1E:498C FF E0 FE F1 FD F3 3F F6 1F EC DF 38 F8 1F FF 0D
+ RO1E:499C 7F FF FF 82 FF 02 FF 02 FF 02 FF 02 00 FF FF FF
+ RO1E:49AC FF EF FF 0F F0 0F DF 3F BF 78 7F F0 FF E0 FF 40
+ RO1E:49BC F8 F0 F8 F0 04 F8 FC F8 FC 00 F8 00 FC 00 FC 00
+ RO1E:49CC F8 07 7F 0C 7C 0F 7C 07 3F 00 0F 00 00 00 00 00
+ RO1E:49DC FF 82 FC C3 FF C3 7B 80 F0 00 C0 00 00 00 00 00
+ RO1E:49EC FF 00 00 FF FF FF FF 00 00 00 00 00 00 00 00 00
+ RO1E:49FC FC 83 7F 86 FE 87 BE 03 1F 00 07 00 00 00 00 00
+ RO1E:4A0C 7C C0 FC 60 7C E0 3C C0 F8 00 E0 00 00 00 00 00
+ RO1E:4A1C F8 F0 F8 F0 04 F8 FC F8 FC 00 F0 00 F8 00 FC 00
+ RO1E:4A2C FF 00 7B 07 77 0C 7C 0F 7F 07 3F 00 0F 00 00 00
+ RO1E:4A3C FF 02 FC 83 FF C3 BF C0 78 80 F0 00 C0 00 00 00
+ RO1E:4A4C FF 80 7D 83 FB 86 BE 07 3F 03 1F 00 07 00 00 00
+ RO1E:4A5C FC 00 FC C0 FC 60 5C E0 BC C0 F8 00 E0 00 00 00
+ RO1E:4A6C F8 F0 F8 F0 04 F8 FC F8 FC 00 F0 00 F0 00 F8 00
+ RO1E:4A7C FF 00 7F 00 7E 07 77 0C 74 0F 7D 07 3F 00 0F 00
+ RO1E:4A8C FF 02 FC 03 FF 83 BF C0 B8 C0 F8 80 F0 00 C0 00
+ RO1E:4A9C FF 80 7F 80 FF 83 BB 06 3A 07 3E 03 1F 00 07 00
+ RO1E:4AAC FC 00 FC 00 7C C0 DC 60 5C E0 FC C0 F8 00 E0 00
+
+ RO1E:4ABC B8 7E FF 7F 1F 02 FF 03
+ RO1E:4AC4 18 7F FF 7F 75 18 FE 28
+ RO1E:4ACC DB 7E 00 00 5D 36 7F 14
+ RO1E:4AD4 DB 7E 42 00 7F 14 FD 3E
+ RO1E:4ADC DB 7E 00 00 5D 36 E0 7E
+ RO1E:4AE4 DB 7E 00 00 7F 14 E0 7E
+ RO1E:4AEC D8 7E 00 00 FD 3E B6 29
+ RO1E:4AF4 DB 7E FF 7F 7F 1A FD 34
+
+ RO1E:4AFC 13
+ RO1E:4AFD 08 0C 13 02               ld   (bc),a
+ RO1E:4B01 08 04 12 02               ld   (bc),a
+ RO1E:4B05 08 FC 11 02               ld   (bc),a
+ RO1E:4B09 08 F4 10 02               ld   (bc),a
+ RO1E:4B0D 08 EC 0F 02               ld   (bc),a
+ RO1E:4B11 00 0C 0E 02            ld   c,02
+ RO1E:4B15 00 04 0D 02               ld   (bc),a
+ RO1E:4B19 00 FC 0C 02               ld   (bc),a
+ RO1E:4B1D 00 F4 0B 02               ld   (bc),a
+ RO1E:4B21 00 EC 0A 02               ld   (bc),a
+ RO1E:4B25 F8 0C 09 02               ld   (bc),a
+ RO1E:4B29 F8 04 08 02
+ RO1E:4B2D F8 FC 07 02               ld   (bc),a
+ RO1E:4B31 F8 F4 06 02            ld   b,02
+ RO1E:4B35 F8 EC 05 02               ld   (bc),a
+ RO1E:4B39 F0 0C 04 02               ld   (bc),a
+ RO1E:4B3D F0 04 03 02               ld   (bc),a
+ RO1E:4B41 F0 FC 02 02               ld   (bc),a
+ RO1E:4B45 F0 F4 01 02
+
+ RO1E:4B49 13
+ RO1E:4B4A FF EC 0A 02               ld   (bc),a
+ RO1E:4B4E FF 0C 14 02               ld   (bc),a
+ RO1E:4B52 FF 04 0D 02               ld   (bc),a
+ RO1E:4B56 FF F4 0B 02               ld   (bc),a
+ RO1E:4B5A 07 0C 18 02            jr   4B60
+ RO1E:4B5E 07 04 17 02               ld   (bc),a
+ RO1E:4B62 07 FC 11 02
+ RO1E:4B66 07 F4 16 02            ld   d,02
+ RO1E:4B6A 07 EC 15 02               ld   (bc),a
+ RO1E:4B6E FF FC 0C 02               ld   (bc),a
+ RO1E:4B72 F7 0C 09 02               ld   (bc),a
+ RO1E:4B76 F7 04 08 02
+ RO1E:4B7A F7 FC 07 02               ld   (bc),a
+ RO1E:4B7E F7 F4 06 02            ld   b,02
+ RO1E:4B82 F7 EC 05 02               ld   (bc),a
+ RO1E:4B86 EF 0C 04 02               ld   (bc),a
+ RO1E:4B8A EF 04 03 02               ld   (bc),a
+ RO1E:4B8E EF FC 02 02               ld   (bc),a
+ RO1E:4B92 EF F4 01 02
+
+ RO1E:4B96 13
+ RO1E:4B97 FE EC 0A 02               ld   (bc),a
+ RO1E:4B9B FE F4 0B 02               ld   (bc),a
+ RO1E:4B9F 06 0C 1D 02               ld   (bc),a
+ RO1E:4BA3 06 04 1C 02               ld   (bc),a
+ RO1E:4BA7 06 FC 11 02
+ RO1E:4BAB 06 F4 1B 02               ld   (bc),a
+ RO1E:4BAF 06 EC 1A 02               ld   (bc),a
+ RO1E:4BB3 FE 0C 19 02               ld   (bc),a
+ RO1E:4BB7 FE 04 0D 02               ld   (bc),a
+ RO1E:4BBB FE FC 0C 02               ld   (bc),a
+ RO1E:4BBF F6 0C 09 02               ld   (bc),a
+ RO1E:4BC3 F6 04 08 02
+ RO1E:4BC7 F6 FC 07 02               ld   (bc),a
+ RO1E:4BCB F6 F4 06 02            ld   b,02
+ RO1E:4BCF F6 EC 05 02               ld   (bc),a
+ RO1E:4BD3 EE 0C 04 02               ld   (bc),a
+ RO1E:4BD7 EE 04 03 02               ld   (bc),a
+ RO1E:4BDB EE FC 02 02               ld   (bc),a
+ RO1E:4BDF EE F4 01 02
+
+ RO1E:4BE3 13
+ RO1E:4BE4 08 EC 13 22               ldi  (hl),a
+ RO1E:4BE8 08 F4 12 22               ldi  (hl),a
+ RO1E:4BEC 08 FC 11 22               ldi  (hl),a
+ RO1E:4BF0 08 04 10 22               ldi  (hl),a
+ RO1E:4BF4 08 0C 0F 22               ldi  (hl),a
+ RO1E:4BF8 00 EC 0E 22            ld   c,22
+ RO1E:4BFC 00 F4 0D 22               ldi  (hl),a
+ RO1E:4C00 00 FC 0C 22               ldi  (hl),a
+ RO1E:4C04 00 04 0B 22               ldi  (hl),a
+ RO1E:4C08 00 0C 0A 22               ldi  (hl),a
+ RO1E:4C0C F8 EC 09 22               ldi  (hl),a
+ RO1E:4C10 F8 F4 08 22
+ RO1E:4C14 F8 FC 07 22               ldi  (hl),a
+ RO1E:4C18 F8 04 06 22            ld   b,22
+ RO1E:4C1C F8 0C 05 22               ldi  (hl),a
+ RO1E:4C20 F0 EC 04 22               ldi  (hl),a
+ RO1E:4C24 F0 F4 03 22               ldi  (hl),a
+ RO1E:4C28 F0 FC 02 22               ldi  (hl),a
+ RO1E:4C2C F0 04 01 22
+
+ RO1E:4C30 13
+ RO1E:4C31 FF 0C 0A 22               ldi  (hl),a
+ RO1E:4C35 FF EC 14 22               ldi  (hl),a
+ RO1E:4C39 FF F4 0D 22               ldi  (hl),a
+ RO1E:4C3D FF 04 0B 22               ldi  (hl),a
+ RO1E:4C41 07 EC 18 22            jr   4C67
+ RO1E:4C45 07 F4 17 22               ldi  (hl),a
+ RO1E:4C49 07 FC 11 22
+ RO1E:4C4D 07 04 16 22            ld   d,22
+ RO1E:4C51 07 0C 15 22               ldi  (hl),a
+ RO1E:4C55 FF FC 0C 22               ldi  (hl),a
+ RO1E:4C59 F7 EC 09 22               ldi  (hl),a
+ RO1E:4C5D F7 F4 08 22
+ RO1E:4C61 F7 FC 07 22               ldi  (hl),a
+ RO1E:4C65 F7 04 06 22            ld   b,22
+ RO1E:4C69 F7 0C 05 22               ldi  (hl),a
+ RO1E:4C6D EF EC 04 22               ldi  (hl),a
+ RO1E:4C71 EF F4 03 22               ldi  (hl),a
+ RO1E:4C75 EF FC 02 22               ldi  (hl),a
+ RO1E:4C79 EF 04 01 22
+
+ RO1E:4C7D 13
+ RO1E:4C7E FE 0C 0A 22               ldi  (hl),a
+ RO1E:4C82 FE 04 0B 22               ldi  (hl),a
+ RO1E:4C86 06 EC 1D 22               ldi  (hl),a
+ RO1E:4C8A 06 F4 1C 22               ldi  (hl),a
+ RO1E:4C8E 06 FC 11 22
+ RO1E:4C92 06 04 1B 22               ldi  (hl),a
+ RO1E:4C96 06 0C 1A 22               ldi  (hl),a
+ RO1E:4C9A FE EC 19 22               ldi  (hl),a
+ RO1E:4C9E FE F4 0D 22               ldi  (hl),a
+ RO1E:4CA2 FE FC 0C 22               ldi  (hl),a
+ RO1E:4CA6 F6 EC 09 22               ldi  (hl),a
+ RO1E:4CAA F6 F4 08 22
+ RO1E:4CAE F6 FC 07 22               ldi  (hl),a
+ RO1E:4CB2 F6 04 06 22            ld   b,22
+ RO1E:4CB6 F6 0C 05 22               ldi  (hl),a
+ RO1E:4CBA EE EC 04 22               ldi  (hl),a
+ RO1E:4CBE EE F4 03 22               ldi  (hl),a
+ RO1E:4CC2 EE FC 02 22               ldi  (hl),a
+ RO1E:4CC6 EE 04 01 22
+
+ RO1E:4CCA 12
+ RO1E:4CCB 08 0C 2F 02               ld   (bc),a
+ RO1E:4CCF 08 04 2E 02               ld   (bc),a
+ RO1E:4CD3 08 FC 2D 02               ld   (bc),a
+ RO1E:4CD7 08 F4 2C 02               ld   (bc),a
+ RO1E:4CDB 08 EC 2B 02               ld   (bc),a
+ RO1E:4CDF 00 0C 2A 02               ld   (bc),a
+ RO1E:4CE3 00 04 29 02               ld   (bc),a
+ RO1E:4CE7 00 FC 28 05            jr   z,4CF0
+ RO1E:4CEB 00 F4 27 02               ld   (bc),a
+ RO1E:4CEF 00 EC 26 02            ld   h,02
+ RO1E:4CF3 F8 0C 25 02               ld   (bc),a
+ RO1E:4CF7 F8 04 24 02               ld   (bc),a
+ RO1E:4CFB F8 FC 23 02               ld   (bc),a
+ RO1E:4CFF F8 F4 22 02               ld   (bc),a
+ RO1E:4D03 F8 EC 21 02
+ RO1E:4D07 F0 04 20 02            jr   nz,4D0D
+ RO1E:4D0B F0 FC 1F 02               ld   (bc),a
+ RO1E:4D0F F0 F4 1E 02
+
+ RO1E:4D13 12
+ RO1E:4D14 07 0C 33 02               ld   (bc),a
+ RO1E:4D18 07 04 32 02               ld   (bc),a
+ RO1E:4D1C 07 F4 31 02
+ RO1E:4D20 07 EC 30 02            jr   nc,4D26
+ RO1E:4D24 07 FC 2D 02               ld   (bc),a
+ RO1E:4D28 FF 0C 2A 02               ld   (bc),a
+ RO1E:4D2C FF 04 29 02               ld   (bc),a
+ RO1E:4D30 FF FC 28 05            jr   z,4D39
+ RO1E:4D34 FF F4 27 02               ld   (bc),a
+ RO1E:4D38 FF EC 26 02            ld   h,02
+ RO1E:4D3C F7 0C 25 02               ld   (bc),a
+ RO1E:4D40 F7 04 24 02               ld   (bc),a
+ RO1E:4D44 F7 FC 23 02               ld   (bc),a
+ RO1E:4D48 F7 F4 22 02               ld   (bc),a
+ RO1E:4D4C F7 EC 21 02
+ RO1E:4D50 EF 04 20 02            jr   nz,4D56
+ RO1E:4D54 EF FC 1F 02
+ RO1E:4D58 EF F4 1E 02
+
+ RO1E:4D5C 12
+ RO1E:4D5D 06 0C 37 02               ld   (bc),a
+ RO1E:4D61 06 04 36 02            ld   (hl),02
+ RO1E:4D65 06 F4 35 02               ld   (bc),a
+ RO1E:4D69 06 EC 34 02               ld   (bc),a
+ RO1E:4D6D 06 FC 2D 02               ld   (bc),a
+ RO1E:4D71 FE 0C 2A 02               ld   (bc),a
+ RO1E:4D75 FE 04 29 02               ld   (bc),a
+ RO1E:4D79 FE FC 28 05            jr   z,4D82
+ RO1E:4D7D FE F4 27 02               ld   (bc),a
+ RO1E:4D81 FE EC 26 02            ld   h,02
+ RO1E:4D85 F6 0C 25 02               ld   (bc),a
+ RO1E:4D89 F6 04 24 02               ld   (bc),a
+ RO1E:4D8D F6 FC 23 02               ld   (bc),a
+ RO1E:4D91 F6 F4 22 02               ld   (bc),a
+ RO1E:4D95 F6 EC 21 02
+ RO1E:4D99 EE 04 20 02            jr   nz,4D9F
+ RO1E:4D9D EE FC 1F 02               ld   (bc),a
+ RO1E:4DA1 EE F4 1E 02
+
+ RO1E:4DA5 12
+ RO1E:4DA6 08 EC 2F 22               ldi  (hl),a
+ RO1E:4DAA 08 F4 2E 22               ldi  (hl),a
+ RO1E:4DAE 08 FC 2D 22               ldi  (hl),a
+ RO1E:4DB2 08 04 2C 22               ldi  (hl),a
+ RO1E:4DB6 08 0C 2B 22               ldi  (hl),a
+ RO1E:4DBA 00 EC 2A 22               ldi  (hl),a
+ RO1E:4DBE 00 F4 29 22               ldi  (hl),a
+ RO1E:4DC2 00 FC 28 25            jr   z,4DEB
+ RO1E:4DC6 00 04 27 22               ldi  (hl),a
+ RO1E:4DCA 00 0C 26 22            ld   h,22
+ RO1E:4DCE F8 EC 25 22               ldi  (hl),a
+ RO1E:4DD2 F8 F4 24 22               ldi  (hl),a
+ RO1E:4DD6 F8 FC 23 22               ldi  (hl),a
+ RO1E:4DDA F8 04 22 22               ldi  (hl),a
+ RO1E:4DDE F8 0C 21 22
+ RO1E:4DE2 F0 F4 20 22            jr   nz,4E08
+ RO1E:4DE6 F0 FC 1F 22               ldi  (hl),a
+ RO1E:4DEA F0 04 1E 22
+
+ RO1E:4DEE 12
+ RO1E:4DEF 07 EC 33 22               ldi  (hl),a
+ RO1E:4DF3 07 F4 32 22               ldi  (hl),a
+ RO1E:4DF7 07 04 31 22
+ RO1E:4DFB 07 0C 30 22            jr   nc,4E21
+ RO1E:4DFF 07 FC 2D 22               ldi  (hl),a
+ RO1E:4E03 FF EC 2A 22               ldi  (hl),a
+ RO1E:4E07 FF F4 29 22               ldi  (hl),a
+ RO1E:4E0B FF FC 28 25            jr   z,4E34
+ RO1E:4E0F FF 04 27 22               ldi  (hl),a
+ RO1E:4E13 FF 0C 26 22            ld   h,22
+ RO1E:4E17 F7 EC 25 22               ldi  (hl),a
+ RO1E:4E1B F7 F4 24 22               ldi  (hl),a
+ RO1E:4E1F F7 FC 23 22               ldi  (hl),a
+ RO1E:4E23 F7 04 22 22               ldi  (hl),a
+ RO1E:4E27 F7 0C 21 22
+ RO1E:4E2B EF F4 20 22            jr   nz,4E51
+ RO1E:4E2F EF FC 1F 22               ldi  (hl),a
+ RO1E:4E33 EF 04 1E 22
+
+ RO1E:4E37 12
+ RO1E:4E38 06 EC 37 22               ldi  (hl),a
+ RO1E:4E3C 06 F4 36 22            ld   (hl),22
+ RO1E:4E40 06 04 35 22               ldi  (hl),a
+ RO1E:4E44 06 0C 34 22               ldi  (hl),a
+ RO1E:4E48 06 FC 2D 22               ldi  (hl),a
+ RO1E:4E4C FE EC 2A 22               ldi  (hl),a
+ RO1E:4E50 FE F4 29 22               ldi  (hl),a
+ RO1E:4E54 FE FC 28 25            jr   z,4E7D
+ RO1E:4E58 FE 04 27 22               ldi  (hl),a
+ RO1E:4E5C FE 0C 26 22            ld   h,22
+ RO1E:4E60 F6 EC 25 22               ldi  (hl),a
+ RO1E:4E64 F6 F4 24 22               ldi  (hl),a
+ RO1E:4E68 F6 FC 23 22               ldi  (hl),a
+ RO1E:4E6C F6 04 22 22               ldi  (hl),a
+ RO1E:4E70 F6 0C 21 22
+ RO1E:4E74 EE F4 20 22            jr   nz,4E9A
+ RO1E:4E78 EE FC 1F 22
+ RO1E:4E7C EE 04 1E 22
+
+ RO1E:4E80 12
+ RO1E:4E81 08 0C 49 02               ld   (bc),a
+ RO1E:4E85 08 04 48 02               ld   (bc),a
+ RO1E:4E89 08 FC 47 02               ld   (bc),a
+ RO1E:4E8D 08 F4 46 02               ld   (bc),a
+ RO1E:4E91 08 EC 45 02               ld   (bc),a
+ RO1E:4E95 00 0C 44 02               ld   (bc),a
+ RO1E:4E99 00 04 43 02               ld   (bc),a
+ RO1E:4E9D 00 FC 42 05               dec  b
+ RO1E:4EA1 00 F4 41 02               ld   (bc),a
+ RO1E:4EA5 00 EC 40 02               ld   (bc),a
+ RO1E:4EA9 F8 0C 3F 02               ld   (bc),a
+ RO1E:4EAD F8 04 3E 02            ld   a,02
+ RO1E:4EB1 F8 FC 3D 02               ld   (bc),a
+ RO1E:4EB5 F8 F4 3C 02               ld   (bc),a
+ RO1E:4EB9 F8 EC 3B 02               ld   (bc),a
+ RO1E:4EBD F0 04 3A 02               ld   (bc),a
+ RO1E:4EC1 F0 FC 39 02               ld   (bc),a
+ RO1E:4EC5 F0 F4 38 02
+
+ RO1E:4EC9 12
+ RO1E:4ECA 07 FC 47 02               ld   (bc),a
+ RO1E:4ECE 07 0C 4D 02               ld   (bc),a
+ RO1E:4ED2 07 04 4C 02               ld   (bc),a
+ RO1E:4ED6 07 F4 4B 02               ld   (bc),a
+ RO1E:4EDA 07 EC 4A 02               ld   (bc),a
+ RO1E:4EDE FF 0C 44 02               ld   (bc),a
+ RO1E:4EE2 FF 04 43 02               ld   (bc),a
+ RO1E:4EE6 FF FC 42 05               dec  b
+ RO1E:4EEA FF F4 41 02               ld   (bc),a
+ RO1E:4EEE FF EC 40 02               ld   (bc),a
+ RO1E:4EF2 F7 0C 3F 02               ld   (bc),a
+ RO1E:4EF6 F7 04 3E 02            ld   a,02
+ RO1E:4EFA F7 FC 3D 02               ld   (bc),a
+ RO1E:4EFE F7 F4 3C 02               ld   (bc),a
+ RO1E:4F02 F7 EC 3B 02               ld   (bc),a
+ RO1E:4F06 EF 04 3A 02               ld   (bc),a
+ RO1E:4F0A EF FC 39 02               ld   (bc),a
+ RO1E:4F0E EF F4 38 02
+
+ RO1E:4F12 12
+ RO1E:4F13 06 FC 47 02               ld   (bc),a
+ RO1E:4F17 06 0C 51 02               ld   (bc),a
+ RO1E:4F1B 06 04 50 02               ld   (bc),a
+ RO1E:4F1F 06 F4 4F 02               ld   (bc),a
+ RO1E:4F23 06 EC 4E 02               ld   (bc),a
+ RO1E:4F27 FE 0C 44 02               ld   (bc),a
+ RO1E:4F2B FE 04 43 02               ld   (bc),a
+ RO1E:4F2F FE FC 42 05               dec  b
+ RO1E:4F33 FE F4 41 02               ld   (bc),a
+ RO1E:4F37 FE EC 40 02               ld   (bc),a
+ RO1E:4F3B F6 0C 3F 02               ld   (bc),a
+ RO1E:4F3F F6 04 3E 02            ld   a,02
+ RO1E:4F43 F6 FC 3D 02               ld   (bc),a
+ RO1E:4F47 F6 F4 3C 02               ld   (bc),a
+ RO1E:4F4B F6 EC 3B 02               ld   (bc),a
+ RO1E:4F4F EE 04 3A 02               ld   (bc),a
+ RO1E:4F53 EE FC 39 02               ld   (bc),a
+ RO1E:4F57 EE F4 38 02
+
+ RO1E:4F5B 12
+ RO1E:4F5C 08 EC 49 22               ldi  (hl),a
+ RO1E:4F60 08 F4 48 22               ldi  (hl),a
+ RO1E:4F64 08 FC 47 22               ldi  (hl),a
+ RO1E:4F68 08 04 46 22               ldi  (hl),a
+ RO1E:4F6C 08 0C 45 22               ldi  (hl),a
+ RO1E:4F70 00 EC 44 22               ldi  (hl),a
+ RO1E:4F74 00 F4 43 22               ldi  (hl),a
+ RO1E:4F78 00 FC 42 25               dec  h
+ RO1E:4F7C 00 04 41 22               ldi  (hl),a
+ RO1E:4F80 00 0C 40 22               ldi  (hl),a
+ RO1E:4F84 F8 EC 3F 22               ldi  (hl),a
+ RO1E:4F88 F8 F4 3E 22            ld   a,22
+ RO1E:4F8C F8 FC 3D 22               ldi  (hl),a
+ RO1E:4F90 F8 04 3C 22               ldi  (hl),a
+ RO1E:4F94 F8 0C 3B 22               ldi  (hl),a
+ RO1E:4F98 F0 F4 3A 22               ldi  (hl),a
+ RO1E:4F9C F0 FC 39 22               ldi  (hl),a
+ RO1E:4FA0 F0 04 38 22
+
+ RO1E:4FA4 12
+ RO1E:4FA5 07 FC 47 22               ldi  (hl),a
+ RO1E:4FA9 07 EC 4D 22               ldi  (hl),a
+ RO1E:4FAD 07 F4 4C 22               ldi  (hl),a
+ RO1E:4FB1 07 04 4B 22               ldi  (hl),a
+ RO1E:4FB5 07 0C 4A 22               ldi  (hl),a
+ RO1E:4FB9 FF EC 44 22               ldi  (hl),a
+ RO1E:4FBD FF F4 43 22               ldi  (hl),a
+ RO1E:4FC1 FF FC 42 25               dec  h
+ RO1E:4FC5 FF 04 41 22               ldi  (hl),a
+ RO1E:4FC9 FF 0C 40 22               ldi  (hl),a
+ RO1E:4FCD F7 EC 3F 22               ldi  (hl),a
+ RO1E:4FD1 F7 F4 3E 22            ld   a,22
+ RO1E:4FD5 F7 FC 3D 22               ldi  (hl),a
+ RO1E:4FD9 F7 04 3C 22               ldi  (hl),a
+ RO1E:4FDD F7 0C 3B 22               ldi  (hl),a
+ RO1E:4FE1 EF F4 3A 22               ldi  (hl),a
+ RO1E:4FE5 EF FC 39 22               ldi  (hl),a
+ RO1E:4FE9 EF 04 38 22
+
+ RO1E:4FED 12
+ RO1E:4FEE 06 FC 47 22               ldi  (hl),a
+ RO1E:4FF2 06 EC 51 22               ldi  (hl),a
+ RO1E:4FF6 06 F4 50 22               ldi  (hl),a
+ RO1E:4FFA 06 04 4F 22               ldi  (hl),a
+ RO1E:4FFE 06 0C 4E 22               ldi  (hl),a
+ RO1E:5002 FE EC 44 22               ldi  (hl),a
+ RO1E:5006 FE F4 43 22               ldi  (hl),a
+ RO1E:500A FE FC 42 25               dec  h
+ RO1E:500E FE 04 41 22               ldi  (hl),a
+ RO1E:5012 FE 0C 40 22               ldi  (hl),a
+ RO1E:5016 F6 EC 3F 22               ldi  (hl),a
+ RO1E:501A F6 F4 3E 22            ld   a,22
+ RO1E:501E F6 FC 3D 22               ldi  (hl),a
+ RO1E:5022 F6 04 3C 22               ldi  (hl),a
+ RO1E:5026 F6 0C 3B 22               ldi  (hl),a
+ RO1E:502A EE F4 3A 22               ldi  (hl),a
+ RO1E:502E EE FC 39 22               ldi  (hl),a
+ RO1E:5032 EE 04 38 22
+
+ RO1E:5036 FC 4A 0A
+ RO1E:5039 49 4B 0A
+ RO1E:503C 96 4B 0A
+ RO1E:503F 49 4B 0A 00 00
+
+ RO1E:5044 CA 4C 0A
+ RO1E:5047 13 4D 0A
+ RO1E:504A 5C 4D 0A
+ RO1E:504D 13 4D 0A 00 00
+
+ RO1E:5052 E3 4B 0A
+ RO1E:5055 30 4C 0A
+ RO1E:5058 7D 4C 0A
+ RO1E:505B 30 4C 0A 00 00
+
+ RO1E:5060 A5 4D 0A
+ RO1E:5063 EE 4D 0A
+ RO1E:5066 37 4E 0A
+ RO1E:5069 EE 4D 0A 00 00
+
+ RO1E:506E 80 4E 0A
+ RO1E:5071 C9 4E 0A
+ RO1E:5074 12 4F 0A
+ RO1E:5077 C9 4E 0A 00 00
+
+ RO1E:507C 5B 4F 0A
+ RO1E:507F A4 4F 0A
+ RO1E:5082 ED 4F 0A
+ RO1E:5085 A4 4F 0A 00 00
+
+ RO1E:508A 49 4B FF 00 00
+ RO1E:508F 30 4C FF 00 00
+ RO1E:5094 13 4D FF 00 00
+ RO1E:5099 EE 4D FF 00 00
+ RO1E:509E C9 4E FF 00 00
+ RO1E:50A3 A4 4F FF 00 00
+
+ RO1E:50A8 36 50
+ RO1E:50AA 44 50
+ RO1E:50AC 52 50
+ RO1E:50AE 60 50
+ RO1E:50B0 6E 50
+ RO1E:50B2 7C 50
+ RO1E:50B4 8A 50
+ RO1E:50B6 8F 50
+ RO1E:50B8 94 50
+ RO1E:50BA 99 50
+ RO1E:50BC 9E 50
+ RO1E:50BE A3 50
+
+ RO1E:50C0 00 00               nop  
+ RO1E:50C2 00 00               nop  
+ RO1E:50C4 00 00               nop  
+ RO1E:50C6 00 00               nop  
+ RO1E:50C8 00 00               nop  
+ RO1E:50CA 00 00               nop  
+ RO1E:50CC 00 00               nop  
+ RO1E:50CE 00 00
+ RO1E:50D0 00 00               nop  
+ RO1E:50D2 00 00               nop  
+ RO1E:50D4 00 00               nop  
+ RO1E:50D6 1F 00               nop  
+ RO1E:50D8 22 1F               rra  
+ RO1E:50DA 22 1D               dec  e
+ RO1E:50DC 3F 1D               dec  e
+ RO1E:50DE 1F 00
+ RO1E:50E0 00 00               nop  
+ RO1E:50E2 00 00               nop  
+ RO1E:50E4 00 00               nop  
+ RO1E:50E6 FF 00               nop  
+ RO1E:50E8 00 FF               rst  38
+ RO1E:50EA 00 FF               rst  38
+ RO1E:50EC FF C0               ret  nz
+ RO1E:50EE C0 3F
+ RO1E:50F0 00 00               nop  
+ RO1E:50F2 03 00               nop  
+ RO1E:50F4 07 03               inc  bc
+ RO1E:50F6 FF 00               nop  
+ RO1E:50F8 00 FF               rst  38
+ RO1E:50FA 00 FF               rst  38
+ RO1E:50FC FF 00               nop  
+ RO1E:50FE 00 FF
+ RO1E:5100 00 00               nop  
+ RO1E:5102 E0 00            ld   (ff00+00),a
+ RO1E:5104 F0 E0            ld   a,(ff00+E0)
+ RO1E:5106 F0 00            ld   a,(ff00+00)
+ RO1E:5108 60 C0               ret  nz
+ RO1E:510A 70 C0               ret  nz
+ RO1E:510C F0 00            ld   a,(ff00+00)
+ RO1E:510E 10 E0
+ RO1E:5110 00 00               nop  
+ RO1E:5112 00 00               nop  
+ RO1E:5114 00 00               nop  
+ RO1E:5116 00 00               nop  
+ RO1E:5118 0F 00               nop  
+ RO1E:511A 10 0F            <corrupted stop>
+ RO1E:511C 20 1F            jr   nz,513D
+ RO1E:511E 47 3F
+ RO1E:5120 00 00               nop  
+ RO1E:5122 00 00               nop  
+ RO1E:5124 00 00               nop  
+ RO1E:5126 01 00 E3         ld   bc,E300
+ RO1E:5129 01 17 E2         ld   bc,E217
+ RO1E:512C 0F F4               -    
+ RO1E:512E EF F8
+ RO1E:5130 3F 00               nop  
+ RO1E:5132 7F 00               nop  
+ RO1E:5134 FF               rst  38
+ RO1E:5135 30 FF            jr   nc,5136
+ RO1E:5137 AF               xor  a
+ RO1E:5138 F0 2F            ld   a,(ff00+2F)
+ RO1E:513A FF               rst  38
+ RO1E:513B 20 FF            jr   nz,513C
+ RO1E:513D 3F               ccf  
+ RO1E:513E C0               ret  nz
+ RO1E:513F 3F               ccf  
+ RO1E:5140 FF               rst  38
+ RO1E:5141 00               nop  
+ RO1E:5142 F0 00            ld   a,(ff00+00)
+ RO1E:5144 F8 10            ld   hl,sp+10
+ RO1E:5146 FF               rst  38
+ RO1E:5147 D0               ret  nc
+ RO1E:5148 38 D7            jr   c,5121
+ RO1E:514A FF               rst  38
+ RO1E:514B 17               rla  
+ RO1E:514C FF               rst  38
+ RO1E:514D F7               rst  30
+ RO1E:514E 0F               rrca 
+ RO1E:514F F7               rst  30
+ RO1E:5150 E0 00            ld   (ff00+00),a
+ RO1E:5152 00               nop  
+ RO1E:5153 00               nop  
+ RO1E:5154 00               nop  
+ RO1E:5155 00               nop  
+ RO1E:5156 FE 00            cp   a,00
+ RO1E:5158 02               ld   (bc),a
+ RO1E:5159 FC               -    
+ RO1E:515A FE F8            cp   a,F8
+ RO1E:515C FC               -    
+ RO1E:515D F8 FC            ld   hl,sp+FC
+ RO1E:515F F8 4F            ld   hl,sp+4F
+ RO1E:5161 3F               ccf  
+ RO1E:5162 3F               ccf  
+ RO1E:5163 1F               rra  
+ RO1E:5164 3F               ccf  
+ RO1E:5165 1F               rra  
+ RO1E:5166 30 1F            jr   nc,5187
+ RO1E:5168 20 1F            jr   nz,5189
+ RO1E:516A 47               ld   b,a
+ RO1E:516B 38 4F            jr   c,51BC
+ RO1E:516D 30 7F            jr   nc,51EE
+ RO1E:516F 00               nop  
+ RO1E:5170 FF               rst  38
+ RO1E:5171 F0 FF            ld   a,(ff00+FF)
+ RO1E:5173 F8 FE            ld   hl,sp+FE
+ RO1E:5175 F9               ld   sp,hl
+ RO1E:5176 1F               rra  
+ RO1E:5177 FB               ei   
+ RO1E:5178 0F               rrca 
+ RO1E:5179 F6 EF            or   a,EF
+ RO1E:517B 1C               inc  e
+ RO1E:517C FC               -    
+ RO1E:517D 0F               rrca 
+ RO1E:517E FF               rst  38
+ RO1E:517F 06 BF            ld   b,BF
+ RO1E:5181 7F               ld   a,a
+ RO1E:5182 7F               ld   a,a
+ RO1E:5183 C1               pop  bc
+ RO1E:5184 FF               rst  38
+ RO1E:5185 81               add  c
+ RO1E:5186 FF               rst  38
+ RO1E:5187 01 FF 01         ld   bc,01FF
+ RO1E:518A FF               rst  38
+ RO1E:518B 01 00 FF         ld   bc,FF00
+ RO1E:518E FF               rst  38
+ RO1E:518F FF               rst  38
+ RO1E:5190 FF               rst  38
+ RO1E:5191 F7               rst  30
+ RO1E:5192 FF               rst  38
+ RO1E:5193 07               rlca 
+ RO1E:5194 F8 07            ld   hl,sp+07
+ RO1E:5196 EF               rst  28
+ RO1E:5197 1F               rra  
+ RO1E:5198 DF               rst  18
+ RO1E:5199 3C               inc  a
+ RO1E:519A BF               cp   a
+ RO1E:519B 78               ld   a,b
+ RO1E:519C 7F               ld   a,a
+ RO1E:519D F0 FF            ld   a,(ff00+FF)
+ RO1E:519F A0               and  b
+ RO1E:51A0 FC               -    
+ RO1E:51A1 F8 FC            ld   hl,sp+FC
+ RO1E:51A3 F8 02            ld   hl,sp+02
+ RO1E:51A5 FC               -    
+ RO1E:51A6 FE FC            cp   a,FC
+ RO1E:51A8 FE 00            cp   a,00
+ RO1E:51AA FC               -    
+ RO1E:51AB 00               nop  
+ RO1E:51AC FE 00            cp   a,00
+ RO1E:51AE FE 00            cp   a,00
+ RO1E:51B0 7C               ld   a,h
+ RO1E:51B1 03               inc  bc
+ RO1E:51B2 3F               ccf  
+ RO1E:51B3 06 3E            ld   b,3E
+ RO1E:51B5 07               rlca 
+ RO1E:51B6 3E 03            ld   a,03
+ RO1E:51B8 1F               rra  
+ RO1E:51B9 00               nop  
+ RO1E:51BA 07               rlca 
+ RO1E:51BB 00               nop  
+ RO1E:51BC 00               nop  
+ RO1E:51BD 00               nop  
+ RO1E:51BE 00               nop  
+ RO1E:51BF 00               nop  
+ RO1E:51C0 7F               ld   a,a
+ RO1E:51C1 C1               pop  bc
+ RO1E:51C2 FE 61            cp   a,61
+ RO1E:51C4 7F               ld   a,a
+ RO1E:51C5 E1               pop  hl
+ RO1E:51C6 3D               dec  a
+ RO1E:51C7 C0               ret  nz
+ RO1E:51C8 F8 00            ld   hl,sp+00
+ RO1E:51CA E0 00            ld   (ff00+00),a
+ RO1E:51CC 00               nop  
+ RO1E:51CD 00               nop  
+ RO1E:51CE 00               nop  
+ RO1E:51CF 00               nop  
+ RO1E:51D0 FF               rst  38
+ RO1E:51D1 00               nop  
+ RO1E:51D2 00               nop  
+ RO1E:51D3 FF               rst  38
+ RO1E:51D4 FF               rst  38
+ RO1E:51D5 FF               rst  38
+ RO1E:51D6 FF               rst  38
+ RO1E:51D7 00               nop  
+ RO1E:51D8 00               nop  
+ RO1E:51D9 00               nop  
+ RO1E:51DA 00               nop  
+ RO1E:51DB 00               nop  
+ RO1E:51DC 00               nop  
+ RO1E:51DD 00               nop  
+ RO1E:51DE 00               nop  
+ RO1E:51DF 00               nop  
+ RO1E:51E0 FE 41            cp   a,41
+ RO1E:51E2 3F               ccf  
+ RO1E:51E3 C3 FF C3         jp   C3FF
+ RO1E:51E6 DF               rst  18
+ RO1E:51E7 01 0F 00         ld   bc,000F
+ RO1E:51EA 03               inc  bc
+ RO1E:51EB 00               nop  
+ RO1E:51EC 00               nop  
+ RO1E:51ED 00               nop  
+ RO1E:51EE 00               nop  
+ RO1E:51EF 00               nop  
+ RO1E:51F0 3E E0            ld   a,E0
+ RO1E:51F2 FE 30            cp   a,30
+ RO1E:51F4 3E F0            ld   a,F0
+ RO1E:51F6 1E E0            ld   e,E0
+ RO1E:51F8 FC               -    
+ RO1E:51F9 00               nop  
+ RO1E:51FA F0 00            ld   a,(ff00+00)
+ RO1E:51FC 00               nop  
+ RO1E:51FD 00               nop  
+ RO1E:51FE 00               nop  
+ RO1E:51FF 00               nop  
+ RO1E:5200 FC               -    
+ RO1E:5201 F8 FC            ld   hl,sp+FC
+ RO1E:5203 F8 02            ld   hl,sp+02
+ RO1E:5205 FC               -    
+ RO1E:5206 FE FC            cp   a,FC
+ RO1E:5208 FE 00            cp   a,00
+ RO1E:520A F8 00            ld   hl,sp+00
+ RO1E:520C FC               -    
+ RO1E:520D 00               nop  
+ RO1E:520E FE 00            cp   a,00
+ RO1E:5210 7F               ld   a,a
+ RO1E:5211 00               nop  
+ RO1E:5212 3D               dec  a
+ RO1E:5213 03               inc  bc
+ RO1E:5214 3B               dec  sp
+ RO1E:5215 06 3E            ld   b,3E
+ RO1E:5217 07               rlca 
+ RO1E:5218 3F               ccf  
+ RO1E:5219 03               inc  bc
+ RO1E:521A 1F               rra  
+ RO1E:521B 00               nop  
+ RO1E:521C 07               rlca 
+ RO1E:521D 00               nop  
+ RO1E:521E 00               nop  
+ RO1E:521F 00               nop  
+ RO1E:5220 FF               rst  38
+ RO1E:5221 01 FE C1         ld   bc,C1FE
+ RO1E:5224 FF               rst  38
+ RO1E:5225 61               ld   h,c
+ RO1E:5226 5F               ld   e,a
+ RO1E:5227 E0 BC            ld   (ff00+BC),a
+ RO1E:5229 C0               ret  nz
+ RO1E:522A F8 00            ld   hl,sp+00
+ RO1E:522C E0 00            ld   (ff00+00),a
+ RO1E:522E 00               nop  
+ RO1E:522F 00               nop  
+ RO1E:5230 FF               rst  38
+ RO1E:5231 40               ld   b,b
+ RO1E:5232 3E C1            ld   a,C1
+ RO1E:5234 FD               -    
+ RO1E:5235 C3 DF 03         jp   03DF
+ RO1E:5238 1F               rra  
+ RO1E:5239 01 0F 00         ld   bc,000F
+ RO1E:523C 03               inc  bc
+ RO1E:523D 00               nop  
+ RO1E:523E 00               nop  
+ RO1E:523F 00               nop  
+ RO1E:5240 FE 00            cp   a,00
+ RO1E:5242 FE E0            cp   a,E0
+ RO1E:5244 FE 30            cp   a,30
+ RO1E:5246 2E F0            ld   l,F0
+ RO1E:5248 DE E0            sbc  a,E0
+ RO1E:524A FC               -    
+ RO1E:524B 00               nop  
+ RO1E:524C F0 00            ld   a,(ff00+00)
+ RO1E:524E 00               nop  
+ RO1E:524F 00               nop  
+ RO1E:5250 FC               -    
+ RO1E:5251 F8 FC            ld   hl,sp+FC
+ RO1E:5253 F8 02            ld   hl,sp+02
+ RO1E:5255 FC               -    
+ RO1E:5256 FE FC            cp   a,FC
+ RO1E:5258 FE 00            cp   a,00
+ RO1E:525A F8 00            ld   hl,sp+00
+ RO1E:525C F8 00            ld   hl,sp+00
+ RO1E:525E FC               -    
+ RO1E:525F 00               nop  
+ RO1E:5260 7F               ld   a,a
+ RO1E:5261 00               nop  
+ RO1E:5262 3F               ccf  
+ RO1E:5263 00               nop  
+ RO1E:5264 3F               ccf  
+ RO1E:5265 03               inc  bc
+ RO1E:5266 3B               dec  sp
+ RO1E:5267 06 3A            ld   b,3A
+ RO1E:5269 07               rlca 
+ RO1E:526A 3E 03            ld   a,03
+ RO1E:526C 1F               rra  
+ RO1E:526D 00               nop  
+ RO1E:526E 07               rlca 
+ RO1E:526F 00               nop  
+ RO1E:5270 FF               rst  38
+ RO1E:5271 01 FE 01         ld   bc,01FE
+ RO1E:5274 7F               ld   a,a
+ RO1E:5275 C1               pop  bc
+ RO1E:5276 DF               rst  18
+ RO1E:5277 60               ld   h,b
+ RO1E:5278 5C               ld   e,h
+ RO1E:5279 E0 FC            ld   (ff00+FC),a
+ RO1E:527B C0               ret  nz
+ RO1E:527C F8 00            ld   hl,sp+00
+ RO1E:527E E0 00            ld   (ff00+00),a
+ RO1E:5280 FF               rst  38
+ RO1E:5281 40               ld   b,b
+ RO1E:5282 3F               ccf  
+ RO1E:5283 C0               ret  nz
+ RO1E:5284 FF               rst  38
+ RO1E:5285 C1               pop  bc
+ RO1E:5286 DD               -    
+ RO1E:5287 03               inc  bc
+ RO1E:5288 1D               dec  e
+ RO1E:5289 03               inc  bc
+ RO1E:528A 1F               rra  
+ RO1E:528B 01 0F 00         ld   bc,000F
+ RO1E:528E 03               inc  bc
+ RO1E:528F 00               nop  
+ RO1E:5290 FE 00            cp   a,00
+ RO1E:5292 FE 00            cp   a,00
+ RO1E:5294 BE               cp   (hl)
+ RO1E:5295 E0 EE            ld   (ff00+EE),a
+ RO1E:5297 30 2E            jr   nc,52C7
+ RO1E:5299 F0 7E            ld   a,(ff00+7E)
+ RO1E:529B E0 FC            ld   (ff00+FC),a
+ RO1E:529D 00               nop  
+ RO1E:529E F0 00            ld   a,(ff00+00)
+ RO1E:52A0 00               nop  
+ RO1E:52A1 00               nop  
+ RO1E:52A2 00               nop  
+ RO1E:52A3 00               nop  
+ RO1E:52A4 00               nop  
+ RO1E:52A5 00               nop  
+ RO1E:52A6 00               nop  
+ RO1E:52A7 00               nop  
+ RO1E:52A8 00               nop  
+ RO1E:52A9 00               nop  
+ RO1E:52AA 00               nop  
+ RO1E:52AB 00               nop  
+ RO1E:52AC 7F               ld   a,a
+ RO1E:52AD 00               nop  
+ RO1E:52AE 48               ld   c,b
+ RO1E:52AF 3F               ccf  
+ RO1E:52B0 00               nop  
+ RO1E:52B1 00               nop  
+ RO1E:52B2 00               nop  
+ RO1E:52B3 00               nop  
+ RO1E:52B4 00               nop  
+ RO1E:52B5 00               nop  
+ RO1E:52B6 00               nop  
+ RO1E:52B7 00               nop  
+ RO1E:52B8 00               nop  
+ RO1E:52B9 00               nop  
+ RO1E:52BA 3E 00            ld   a,00
+ RO1E:52BC FF               rst  38
+ RO1E:52BD 3E 7F            ld   a,7F
+ RO1E:52BF BE               cp   (hl)
+ RO1E:52C0 00               nop  
+ RO1E:52C1 00               nop  
+ RO1E:52C2 00               nop  
+ RO1E:52C3 00               nop  
+ RO1E:52C4 00               nop  
+ RO1E:52C5 00               nop  
+ RO1E:52C6 00               nop  
+ RO1E:52C7 00               nop  
+ RO1E:52C8 00               nop  
+ RO1E:52C9 00               nop  
+ RO1E:52CA 00               nop  
+ RO1E:52CB 00               nop  
+ RO1E:52CC F0 00            ld   a,(ff00+00)
+ RO1E:52CE 10 E0            <corrupted stop>
+ RO1E:52D0 00               nop  
+ RO1E:52D1 00               nop  
+ RO1E:52D2 00               nop  
+ RO1E:52D3 00               nop  
+ RO1E:52D4 00               nop  
+ RO1E:52D5 00               nop  
+ RO1E:52D6 00               nop  
+ RO1E:52D7 00               nop  
+ RO1E:52D8 07               rlca 
+ RO1E:52D9 00               nop  
+ RO1E:52DA 0F               rrca 
+ RO1E:52DB 07               rlca 
+ RO1E:52DC 1F               rra  
+ RO1E:52DD 0A               ld   a,(bc)
+ RO1E:52DE 17               rla  
+ RO1E:52DF 0A               ld   a,(bc)
+ RO1E:52E0 7F               ld   a,a
+ RO1E:52E1 37               scf  
+ RO1E:52E2 7F               ld   a,a
+ RO1E:52E3 37               scf  
+ RO1E:52E4 7F               ld   a,a
+ RO1E:52E5 00               nop  
+ RO1E:52E6 06 03            ld   b,03
+ RO1E:52E8 FE 03            cp   a,03
+ RO1E:52EA FE FB            cp   a,FB
+ RO1E:52EC C6 BB            add  a,BB
+ RO1E:52EE C4 BB C1         call nz,C1BB
+ RO1E:52F1 BE               cp   (hl)
+ RO1E:52F2 FF               rst  38
+ RO1E:52F3 BE               cp   (hl)
+ RO1E:52F4 FF               rst  38
+ RO1E:52F5 3E FF            ld   a,FF
+ RO1E:52F7 7E               ld   a,(hl)
+ RO1E:52F8 FF               rst  38
+ RO1E:52F9 7E               ld   a,(hl)
+ RO1E:52FA FF               rst  38
+ RO1E:52FB 00               nop  
+ RO1E:52FC FF               rst  38
+ RO1E:52FD FF               rst  38
+ RO1E:52FE 00               nop  
+ RO1E:52FF FF               rst  38
+ RO1E:5300 F0 E0            ld   a,(ff00+E0)
+ RO1E:5302 F0 E0            ld   a,(ff00+E0)
+ RO1E:5304 FC               -    
+ RO1E:5305 00               nop  
+ RO1E:5306 EF               rst  28
+ RO1E:5307 FC               -    
+ RO1E:5308 EF               rst  28
+ RO1E:5309 FF               rst  38
+ RO1E:530A EF               rst  28
+ RO1E:530B FF               rst  38
+ RO1E:530C EF               rst  28
+ RO1E:530D FF               rst  38
+ RO1E:530E 2F               cpl  
+ RO1E:530F FF               rst  38
+ RO1E:5310 00               nop  
+ RO1E:5311 00               nop  
+ RO1E:5312 00               nop  
+ RO1E:5313 00               nop  
+ RO1E:5314 00               nop  
+ RO1E:5315 00               nop  
+ RO1E:5316 00               nop  
+ RO1E:5317 00               nop  
+ RO1E:5318 C0               ret  nz
+ RO1E:5319 00               nop  
+ RO1E:531A F0 C0            ld   a,(ff00+C0)
+ RO1E:531C F8 F0            ld   hl,sp+F0
+ RO1E:531E F8 F0            ld   hl,sp+F0
+ RO1E:5320 17               rla  
+ RO1E:5321 0A               ld   a,(bc)
+ RO1E:5322 17               rla  
+ RO1E:5323 0A               ld   a,(bc)
+ RO1E:5324 17               rla  
+ RO1E:5325 0F               rrca 
+ RO1E:5326 18 0F            jr   5337
+ RO1E:5328 17               rla  
+ RO1E:5329 0F               rrca 
+ RO1E:532A 1F               rra  
+ RO1E:532B 0F               rrca 
+ RO1E:532C 1F               rra  
+ RO1E:532D 0E 1E            ld   c,1E
+ RO1E:532F 0D               dec  c
+ RO1E:5330 C7               rst  00
+ RO1E:5331 BB               cp   e
+ RO1E:5332 C7               rst  00
+ RO1E:5333 BA               cp   d
+ RO1E:5334 FF               rst  38
+ RO1E:5335 FA 07 FA         ld   a,(FA07)
+ RO1E:5338 FF               rst  38
+ RO1E:5339 FE FD            cp   a,FD
+ RO1E:533B FE FB            cp   a,FB
+ RO1E:533D 05               dec  b
+ RO1E:533E 07               rlca 
+ RO1E:533F FB               ei   
+ RO1E:5340 00               nop  
+ RO1E:5341 FF               rst  38
+ RO1E:5342 FF               rst  38
+ RO1E:5343 00               nop  
+ RO1E:5344 FF               rst  38
+ RO1E:5345 E7               rst  20
+ RO1E:5346 FF               rst  38
+ RO1E:5347 E7               rst  20
+ RO1E:5348 FF               rst  38
+ RO1E:5349 00               nop  
+ RO1E:534A 00               nop  
+ RO1E:534B FF               rst  38
+ RO1E:534C 31 CE 00         ld   sp,00CE
+ RO1E:534F FF               rst  38
+ RO1E:5350 CF               rst  08
+ RO1E:5351 FF               rst  38
+ RO1E:5352 F3               di   
+ RO1E:5353 7F               ld   a,a
+ RO1E:5354 FC               -    
+ RO1E:5355 7F               ld   a,a
+ RO1E:5356 FF               rst  38
+ RO1E:5357 7F               ld   a,a
+ RO1E:5358 FF               rst  38
+ RO1E:5359 7F               ld   a,a
+ RO1E:535A FF               rst  38
+ RO1E:535B F8 F8            ld   hl,sp+F8
+ RO1E:535D 67               ld   h,a
+ RO1E:535E E3               -    
+ RO1E:535F DC F8 F0         call c,F0F8
+ RO1E:5362 F8 F0            ld   hl,sp+F0
+ RO1E:5364 F8 F0            ld   hl,sp+F0
+ RO1E:5366 38 F0            jr   c,5358
+ RO1E:5368 C8               ret  z
+ RO1E:5369 F0 F8            ld   a,(ff00+F8)
+ RO1E:536B 30 38            jr   nc,53A5
+ RO1E:536D C0               ret  nz
+ RO1E:536E 88               adc  b
+ RO1E:536F 70               ld   (hl),b
+ RO1E:5370 1D               dec  e
+ RO1E:5371 0A               ld   a,(bc)
+ RO1E:5372 1B               dec  de
+ RO1E:5373 04               inc  b
+ RO1E:5374 1F               rra  
+ RO1E:5375 01 07 01         ld   bc,0107
+ RO1E:5378 03               inc  bc
+ RO1E:5379 00               nop  
+ RO1E:537A 01 00 00         ld   bc,0000
+ RO1E:537D 00               nop  
+ RO1E:537E 00               nop  
+ RO1E:537F 00               nop  
+ RO1E:5380 F3               di   
+ RO1E:5381 0D               dec  c
+ RO1E:5382 1D               dec  e
+ RO1E:5383 E2               ld   (ff00+c),a
+ RO1E:5384 FD               -    
+ RO1E:5385 B2               or   d
+ RO1E:5386 BF               cp   a
+ RO1E:5387 F0 19            ld   a,(ff00+19)
+ RO1E:5389 E0 F0            ld   (ff00+F0),a
+ RO1E:538B 00               nop  
+ RO1E:538C 00               nop  
+ RO1E:538D 00               nop  
+ RO1E:538E 00               nop  
+ RO1E:538F 00               nop  
+ RO1E:5390 FF               rst  38
+ RO1E:5391 FF               rst  38
+ RO1E:5392 FF               rst  38
+ RO1E:5393 FF               rst  38
+ RO1E:5394 FF               rst  38
+ RO1E:5395 00               nop  
+ RO1E:5396 FF               rst  38
+ RO1E:5397 FF               rst  38
+ RO1E:5398 FF               rst  38
+ RO1E:5399 00               nop  
+ RO1E:539A 00               nop  
+ RO1E:539B 00               nop  
+ RO1E:539C 00               nop  
+ RO1E:539D 00               nop  
+ RO1E:539E 00               nop  
+ RO1E:539F 00               nop  
+ RO1E:53A0 CF               rst  08
+ RO1E:53A1 B0               or   b
+ RO1E:53A2 DC A3 DF         call c,DFA3
+ RO1E:53A5 26 FE            ld   h,FE
+ RO1E:53A7 87               add  a
+ RO1E:53A8 CC 03 07         call z,0703
+ RO1E:53AB 00               nop  
+ RO1E:53AC 00               nop  
+ RO1E:53AD 00               nop  
+ RO1E:53AE 00               nop  
+ RO1E:53AF 00               nop  
+ RO1E:53B0 E8 10            add  sp,10
+ RO1E:53B2 78               ld   a,b
+ RO1E:53B3 80               add  b
+ RO1E:53B4 F0 C0            ld   a,(ff00+C0)
+ RO1E:53B6 F0 C0            ld   a,(ff00+C0)
+ RO1E:53B8 60               ld   h,b
+ RO1E:53B9 80               add  b
+ RO1E:53BA C0               ret  nz
+ RO1E:53BB 00               nop  
+ RO1E:53BC 00               nop  
+ RO1E:53BD 00               nop  
+ RO1E:53BE 00               nop  
+ RO1E:53BF 00               nop  
+ RO1E:53C0 1D               dec  e
+ RO1E:53C1 0A               ld   a,(bc)
+ RO1E:53C2 1B               dec  de
+ RO1E:53C3 04               inc  b
+ RO1E:53C4 1F               rra  
+ RO1E:53C5 00               nop  
+ RO1E:53C6 06 01            ld   b,01
+ RO1E:53C8 07               rlca 
+ RO1E:53C9 01 03 00         ld   bc,0003
+ RO1E:53CC 01 00 00         ld   bc,0000
+ RO1E:53CF 00               nop  
+ RO1E:53D0 F3               di   
+ RO1E:53D1 0D               dec  c
+ RO1E:53D2 FD               -    
+ RO1E:53D3 02               ld   (bc),a
+ RO1E:53D4 7D               ld   a,l
+ RO1E:53D5 E2               ld   (ff00+c),a
+ RO1E:53D6 FF               rst  38
+ RO1E:53D7 B0               or   b
+ RO1E:53D8 AD               xor  l
+ RO1E:53D9 F0 D8            ld   a,(ff00+D8)
+ RO1E:53DB E0 F0            ld   (ff00+F0),a
+ RO1E:53DD 00               nop  
+ RO1E:53DE 00               nop  
+ RO1E:53DF 00               nop  
+ RO1E:53E0 CF               rst  08
+ RO1E:53E1 B0               or   b
+ RO1E:53E2 DF               rst  18
+ RO1E:53E3 A0               and  b
+ RO1E:53E4 DD               -    
+ RO1E:53E5 23               inc  hl
+ RO1E:53E6 FB               ei   
+ RO1E:53E7 86               add  (hl)
+ RO1E:53E8 DE 07            sbc  a,07
+ RO1E:53EA 0F               rrca 
+ RO1E:53EB 03               inc  bc
+ RO1E:53EC 07               rlca 
+ RO1E:53ED 00               nop  
+ RO1E:53EE 00               nop  
+ RO1E:53EF 00               nop  
+ RO1E:53F0 E8 10            add  sp,10
+ RO1E:53F2 F8 00            ld   hl,sp+00
+ RO1E:53F4 F0 80            ld   a,(ff00+80)
+ RO1E:53F6 F0 C0            ld   a,(ff00+C0)
+ RO1E:53F8 B0               or   b
+ RO1E:53F9 C0               ret  nz
+ RO1E:53FA 60               ld   h,b
+ RO1E:53FB 80               add  b
+ RO1E:53FC C0               ret  nz
+ RO1E:53FD 00               nop  
+ RO1E:53FE 00               nop  
+ RO1E:53FF 00               nop  
+ RO1E:5400 1D               dec  e
+ RO1E:5401 0A               ld   a,(bc)
+ RO1E:5402 1B               dec  de
+ RO1E:5403 04               inc  b
+ RO1E:5404 1F               rra  
+ RO1E:5405 00               nop  
+ RO1E:5406 07               rlca 
+ RO1E:5407 00               nop  
+ RO1E:5408 06 01            ld   b,01
+ RO1E:540A 06 01            ld   b,01
+ RO1E:540C 03               inc  bc
+ RO1E:540D 00               nop  
+ RO1E:540E 01 00 F3         ld   bc,F300
+ RO1E:5411 0D               dec  c
+ RO1E:5412 FD               -    
+ RO1E:5413 02               ld   (bc),a
+ RO1E:5414 FD               -    
+ RO1E:5415 02               ld   (bc),a
+ RO1E:5416 FF               rst  38
+ RO1E:5417 E0 ED            ld   (ff00+ED),a
+ RO1E:5419 B0               or   b
+ RO1E:541A AC               xor  h
+ RO1E:541B F0 F8            ld   a,(ff00+F8)
+ RO1E:541D E0 F0            ld   (ff00+F0),a
+ RO1E:541F 00               nop  
+ RO1E:5420 CF               rst  08
+ RO1E:5421 B0               or   b
+ RO1E:5422 DF               rst  18
+ RO1E:5423 A0               and  b
+ RO1E:5424 DF               rst  18
+ RO1E:5425 20 FF            jr   nz,5426
+ RO1E:5427 83               add  e
+ RO1E:5428 DB               -    
+ RO1E:5429 06 1A            ld   b,1A
+ RO1E:542B 07               rlca 
+ RO1E:542C 0F               rrca 
+ RO1E:542D 03               inc  bc
+ RO1E:542E 07               rlca 
+ RO1E:542F 00               nop  
+ RO1E:5430 E8 10            add  sp,10
+ RO1E:5432 F8 00            ld   hl,sp+00
+ RO1E:5434 F0 00            ld   a,(ff00+00)
+ RO1E:5436 F0 80            ld   a,(ff00+80)
+ RO1E:5438 B0               or   b
+ RO1E:5439 C0               ret  nz
+ RO1E:543A B0               or   b
+ RO1E:543B C0               ret  nz
+ RO1E:543C E0 80            ld   (ff00+80),a
+ RO1E:543E C0               ret  nz
+ RO1E:543F 00               nop  
+ RO1E:5440 00               nop  
+ RO1E:5441 00               nop  
+ RO1E:5442 00               nop  
+ RO1E:5443 00               nop  
+ RO1E:5444 00               nop  
+ RO1E:5445 00               nop  
+ RO1E:5446 00               nop  
+ RO1E:5447 00               nop  
+ RO1E:5448 00               nop  
+ RO1E:5449 00               nop  
+ RO1E:544A 00               nop  
+ RO1E:544B 00               nop  
+ RO1E:544C 1F               rra  
+ RO1E:544D 00               nop  
+ RO1E:544E 12               ld   (de),a
+ RO1E:544F 0F               rrca 
+ RO1E:5450 00               nop  
+ RO1E:5451 00               nop  
+ RO1E:5452 00               nop  
+ RO1E:5453 00               nop  
+ RO1E:5454 00               nop  
+ RO1E:5455 00               nop  
+ RO1E:5456 00               nop  
+ RO1E:5457 00               nop  
+ RO1E:5458 00               nop  
+ RO1E:5459 00               nop  
+ RO1E:545A 0F               rrca 
+ RO1E:545B 00               nop  
+ RO1E:545C FF               rst  38
+ RO1E:545D 0F               rrca 
+ RO1E:545E 1F               rra  
+ RO1E:545F EF               rst  28
+ RO1E:5460 00               nop  
+ RO1E:5461 00               nop  
+ RO1E:5462 00               nop  
+ RO1E:5463 00               nop  
+ RO1E:5464 00               nop  
+ RO1E:5465 00               nop  
+ RO1E:5466 00               nop  
+ RO1E:5467 00               nop  
+ RO1E:5468 00               nop  
+ RO1E:5469 00               nop  
+ RO1E:546A 80               add  b
+ RO1E:546B 00               nop  
+ RO1E:546C FC               -    
+ RO1E:546D 80               add  b
+ RO1E:546E C4 B8 00         call nz,00B8
+ RO1E:5471 00               nop  
+ RO1E:5472 00               nop  
+ RO1E:5473 00               nop  
+ RO1E:5474 00               nop  
+ RO1E:5475 00               nop  
+ RO1E:5476 00               nop  
+ RO1E:5477 00               nop  
+ RO1E:5478 1F               rra  
+ RO1E:5479 00               nop  
+ RO1E:547A 3F               ccf  
+ RO1E:547B 1F               rra  
+ RO1E:547C 7F               ld   a,a
+ RO1E:547D 2A               ldi  a,(hl)
+ RO1E:547E 5F               ld   e,a
+ RO1E:547F 2A               ldi  a,(hl)
+ RO1E:5480 1F               rra  
+ RO1E:5481 0D               dec  c
+ RO1E:5482 1F               rra  
+ RO1E:5483 0D               dec  c
+ RO1E:5484 1F               rra  
+ RO1E:5485 00               nop  
+ RO1E:5486 0E 07            ld   c,07
+ RO1E:5488 FE 07            cp   a,07
+ RO1E:548A FE F7            cp   a,F7
+ RO1E:548C 0E F7            ld   c,F7
+ RO1E:548E 08 F7 F0         ld   (F0F7),sp
+ RO1E:5491 EF               rst  28
+ RO1E:5492 FF               rst  38
+ RO1E:5493 EF               rst  28
+ RO1E:5494 FF               rst  38
+ RO1E:5495 0F               rrca 
+ RO1E:5496 FF               rst  38
+ RO1E:5497 DF               rst  18
+ RO1E:5498 FF               rst  38
+ RO1E:5499 DF               rst  18
+ RO1E:549A FF               rst  38
+ RO1E:549B C0               ret  nz
+ RO1E:549C FF               rst  38
+ RO1E:549D FF               rst  38
+ RO1E:549E 00               nop  
+ RO1E:549F FF               rst  38
+ RO1E:54A0 7F               ld   a,a
+ RO1E:54A1 B8               cp   b
+ RO1E:54A2 FF               rst  38
+ RO1E:54A3 BB               cp   e
+ RO1E:54A4 FF               rst  38
+ RO1E:54A5 83               add  e
+ RO1E:54A6 F7               rst  30
+ RO1E:54A7 BF               cp   a
+ RO1E:54A8 F7               rst  30
+ RO1E:54A9 BF               cp   a
+ RO1E:54AA F7               rst  30
+ RO1E:54AB 3F               ccf  
+ RO1E:54AC F7               rst  30
+ RO1E:54AD FF               rst  38
+ RO1E:54AE 00               nop  
+ RO1E:54AF FF               rst  38
+ RO1E:54B0 FC               -    
+ RO1E:54B1 00               nop  
+ RO1E:54B2 BE               cp   (hl)
+ RO1E:54B3 FC               -    
+ RO1E:54B4 BE               cp   (hl)
+ RO1E:54B5 FC               -    
+ RO1E:54B6 BE               cp   (hl)
+ RO1E:54B7 FC               -    
+ RO1E:54B8 BE               cp   (hl)
+ RO1E:54B9 FC               -    
+ RO1E:54BA BE               cp   (hl)
+ RO1E:54BB FC               -    
+ RO1E:54BC BE               cp   (hl)
+ RO1E:54BD FC               -    
+ RO1E:54BE 02               ld   (bc),a
+ RO1E:54BF FC               -    
+ RO1E:54C0 5F               ld   e,a
+ RO1E:54C1 2A               ldi  a,(hl)
+ RO1E:54C2 5F               ld   e,a
+ RO1E:54C3 2A               ldi  a,(hl)
+ RO1E:54C4 5F               ld   e,a
+ RO1E:54C5 3F               ccf  
+ RO1E:54C6 60               ld   h,b
+ RO1E:54C7 3F               ccf  
+ RO1E:54C8 5F               ld   e,a
+ RO1E:54C9 3F               ccf  
+ RO1E:54CA 7F               ld   a,a
+ RO1E:54CB 3F               ccf  
+ RO1E:54CC 7F               ld   a,a
+ RO1E:54CD 38 78            jr   c,5547
+ RO1E:54CF 37               scf  
+ RO1E:54D0 0F               rrca 
+ RO1E:54D1 F7               rst  30
+ RO1E:54D2 0F               rrca 
+ RO1E:54D3 F6 FF            or   a,FF
+ RO1E:54D5 F6 01            or   a,01
+ RO1E:54D7 FE 7F            cp   a,7F
+ RO1E:54D9 FE BF            cp   a,BF
+ RO1E:54DB FF               rst  38
+ RO1E:54DC FF               rst  38
+ RO1E:54DD 1F               rra  
+ RO1E:54DE 1F               rra  
+ RO1E:54DF EF               rst  28
+ RO1E:54E0 00               nop  
+ RO1E:54E1 FF               rst  38
+ RO1E:54E2 FF               rst  38
+ RO1E:54E3 00               nop  
+ RO1E:54E4 FF               rst  38
+ RO1E:54E5 E7               rst  20
+ RO1E:54E6 FF               rst  38
+ RO1E:54E7 E7               rst  20
+ RO1E:54E8 FF               rst  38
+ RO1E:54E9 00               nop  
+ RO1E:54EA 00               nop  
+ RO1E:54EB FF               rst  38
+ RO1E:54EC 31 CE 00         ld   sp,00CE
+ RO1E:54EF FF               rst  38
+ RO1E:54F0 FF               rst  38
+ RO1E:54F1 FF               rst  38
+ RO1E:54F2 F1               pop  af
+ RO1E:54F3 7F               ld   a,a
+ RO1E:54F4 EE 71            xor  a,71
+ RO1E:54F6 F1               pop  af
+ RO1E:54F7 7F               ld   a,a
+ RO1E:54F8 FF               rst  38
+ RO1E:54F9 7F               ld   a,a
+ RO1E:54FA FF               rst  38
+ RO1E:54FB FE FE            cp   a,FE
+ RO1E:54FD 79               ld   a,c
+ RO1E:54FE F8 F7            ld   hl,sp+F7
+ RO1E:5500 FE FC            cp   a,FC
+ RO1E:5502 8E               adc  (hl)
+ RO1E:5503 FC               -    
+ RO1E:5504 76               halt 
+ RO1E:5505 8C               adc  h
+ RO1E:5506 8E               adc  (hl)
+ RO1E:5507 FC               -    
+ RO1E:5508 FE FC            cp   a,FC
+ RO1E:550A FE 0C            cp   a,0C
+ RO1E:550C 0E F0            ld   c,F0
+ RO1E:550E E2               ld   (ff00+c),a
+ RO1E:550F 1C               inc  e
+ RO1E:5510 77               ld   (hl),a
+ RO1E:5511 28 6C            jr   z,557F
+ RO1E:5513 13               inc  de
+ RO1E:5514 7F               ld   a,a
+ RO1E:5515 06 1E            ld   b,1E
+ RO1E:5517 07               rlca 
+ RO1E:5518 0C               inc  c
+ RO1E:5519 03               inc  bc
+ RO1E:551A 07               rlca 
+ RO1E:551B 00               nop  
+ RO1E:551C 00               nop  
+ RO1E:551D 00               nop  
+ RO1E:551E 00               nop  
+ RO1E:551F 00               nop  
+ RO1E:5520 CF               rst  08
+ RO1E:5521 37               scf  
+ RO1E:5522 77               ld   (hl),a
+ RO1E:5523 8B               adc  e
+ RO1E:5524 F7               rst  30
+ RO1E:5525 C8               ret  z
+ RO1E:5526 FF               rst  38
+ RO1E:5527 C3 67 80         jp   8067
+ RO1E:552A C0               ret  nz
+ RO1E:552B 00               nop  
+ RO1E:552C 00               nop  
+ RO1E:552D 00               nop  
+ RO1E:552E 00               nop  
+ RO1E:552F 00               nop  
+ RO1E:5530 FF               rst  38
+ RO1E:5531 FF               rst  38
+ RO1E:5532 FF               rst  38
+ RO1E:5533 FF               rst  38
+ RO1E:5534 FF               rst  38
+ RO1E:5535 00               nop  
+ RO1E:5536 FF               rst  38
+ RO1E:5537 FF               rst  38
+ RO1E:5538 FF               rst  38
+ RO1E:5539 00               nop  
+ RO1E:553A 00               nop  
+ RO1E:553B 00               nop  
+ RO1E:553C 00               nop  
+ RO1E:553D 00               nop  
+ RO1E:553E 00               nop  
+ RO1E:553F 00               nop  
+ RO1E:5540 F3               di   
+ RO1E:5541 EC               -    
+ RO1E:5542 F7               rst  30
+ RO1E:5543 E8 F7            add  sp,F7
+ RO1E:5545 09               add  hl,bc
+ RO1E:5546 FF               rst  38
+ RO1E:5547 E1               pop  hl
+ RO1E:5548 F3               di   
+ RO1E:5549 00               nop  
+ RO1E:554A 01 00 00         ld   bc,0000
+ RO1E:554D 00               nop  
+ RO1E:554E 00               nop  
+ RO1E:554F 00               nop  
+ RO1E:5550 FA 04 1E         ld   a,(1E04)
+ RO1E:5553 E0 FC            ld   (ff00+FC),a
+ RO1E:5555 B0               or   b
+ RO1E:5556 BC               cp   h
+ RO1E:5557 F0 18            ld   a,(ff00+18)
+ RO1E:5559 E0 F0            ld   (ff00+F0),a
+ RO1E:555B 00               nop  
+ RO1E:555C 00               nop  
+ RO1E:555D 00               nop  
+ RO1E:555E 00               nop  
+ RO1E:555F 00               nop  
+ RO1E:5560 77               ld   (hl),a
+ RO1E:5561 28 6F            jr   z,55D2
+ RO1E:5563 10 7D            <corrupted stop>
+ RO1E:5565 03               inc  bc
+ RO1E:5566 1B               dec  de
+ RO1E:5567 06 1E            ld   b,1E
+ RO1E:5569 07               rlca 
+ RO1E:556A 0F               rrca 
+ RO1E:556B 03               inc  bc
+ RO1E:556C 07               rlca 
+ RO1E:556D 00               nop  
+ RO1E:556E 00               nop  
+ RO1E:556F 00               nop  
+ RO1E:5570 CF               rst  08
+ RO1E:5571 37               scf  
+ RO1E:5572 F7               rst  30
+ RO1E:5573 0B               dec  bc
+ RO1E:5574 F7               rst  30
+ RO1E:5575 88               adc  b
+ RO1E:5576 FF               rst  38
+ RO1E:5577 C3 B7 C0         jp   C0B7
+ RO1E:557A 60               ld   h,b
+ RO1E:557B 80               add  b
+ RO1E:557C C0               ret  nz
+ RO1E:557D 00               nop  
+ RO1E:557E 00               nop  
+ RO1E:557F 00               nop  
+ RO1E:5580 F3               di   
+ RO1E:5581 EC               -    
+ RO1E:5582 F7               rst  30
+ RO1E:5583 E8 F7            add  sp,F7
+ RO1E:5585 08 FE E1         ld   (E1FE),sp
+ RO1E:5588 F7               rst  30
+ RO1E:5589 01 03 00         ld   bc,0003
+ RO1E:558C 01 00 00         ld   bc,0000
+ RO1E:558F 00               nop  
+ RO1E:5590 FA 04 FE         ld   a,(FE04)
+ RO1E:5593 00               nop  
+ RO1E:5594 7C               ld   a,h
+ RO1E:5595 E0 FC            ld   (ff00+FC),a
+ RO1E:5597 B0               or   b
+ RO1E:5598 AC               xor  h
+ RO1E:5599 F0 D8            ld   a,(ff00+D8)
+ RO1E:559B E0 F0            ld   (ff00+F0),a
+ RO1E:559D 00               nop  
+ RO1E:559E 00 00
+ RO1E:55A0 77               ld   (hl),a
+ RO1E:55A1 28 6F            jr   z,5612
+ RO1E:55A3 10 7F            <corrupted stop>
+ RO1E:55A5 00               nop  
+ RO1E:55A6 1F               rra  
+ RO1E:55A7 03               inc  bc
+ RO1E:55A8 1B               dec  de
+ RO1E:55A9 06 1A            ld   b,1A
+ RO1E:55AB 07               rlca 
+ RO1E:55AC 0F 03               inc  bc
+ RO1E:55AE 07 00
+ RO1E:55B0 CF 37               scf  
+ RO1E:55B2 F7 0B               dec  bc
+ RO1E:55B4 F7               rst  30
+ RO1E:55B5 08 FF 83         ld   (83FF),sp
+ RO1E:55B8 B7 C0 B0 C0               ret  nz
+ RO1E:55BC E0 80 C0 00
+ RO1E:55C0 F3 EC F7               rst  30
+ RO1E:55C3 E8 F7            add  sp,F7
+ RO1E:55C5 08 FF E0         ld   (E0FF),sp
+ RO1E:55C8 F6 01 06 01            ld   b,01
+ RO1E:55CC 03 00 01 00
+ RO1E:55D0 FA 04 FE 00            cp   a,00
+ RO1E:55D4 FC 00 FC E0 EC B0               or   b
+ RO1E:55DA AC F0 F8 E0 F0 00
+
+ RO1E:55E0 B8 7E FF 7F 1F 02 FF 03
+ RO1E:55E8 18 7F FF 7F 75 18 FE 28
+ RO1E:55F0 DB 7E 00 00 5D 36 7F 14
+ RO1E:55F8 DB 7E 42 00 7F 14 FD 3E
+ RO1E:5600 DB 7E 00 00 5D 36 E0 7E
+ RO1E:5608 DB 7E 00 00 7F 14 E0 7E
+ RO1E:5610 D8 7E 00 00 FD 3E B6 29
+ RO1E:5618 DB 7E FF 7F 7F 1A FD 34
+
+ RO1E:5620 12
+ RO1E:5621 F0 F4 01 02
+ RO1E:5625 08 0C 12 02               ld   (bc),a
+ RO1E:5629 08 04 11 02               ld   (bc),a
+ RO1E:562D 08 FC 10 02               ld   (bc),a
+ RO1E:5631 08 F4 0F 02               ld   (bc),a
+ RO1E:5635 08 EC 0E 02               ld   (bc),a
+ RO1E:5639 00 0C 0D 02               ld   (bc),a
+ RO1E:563D 00 04 0C 02               ld   (bc),a
+ RO1E:5641 00 FC 0B 02               ld   (bc),a
+ RO1E:5645 00 F4 0A 02               ld   (bc),a
+ RO1E:5649 00 EC 09 02               ld   (bc),a
+ RO1E:564D F8 0C 08 02
+ RO1E:5651 F8 04 07 02               ld   (bc),a
+ RO1E:5655 F8 FC 06 02            ld   b,02
+ RO1E:5659 F8 F4 05 02               ld   (bc),a
+ RO1E:565D F8 EC 04 02               ld   (bc),a
+ RO1E:5661 F0 04 03 02               ld   (bc),a
+ RO1E:5665 F0 FC 02 02
+
+ RO1E:5669 12
+ RO1E:566A EF F4 01 02
+ RO1E:566E 07 0C 16 02            ld   d,02
+ RO1E:5672 07 04 15 02               ld   (bc),a
+ RO1E:5676 07 F4 14 02               ld   (bc),a
+ RO1E:567A 07 EC 13 02               ld   (bc),a
+ RO1E:567E 07 FC 10 02            <corrupted stop>
+ RO1E:5682 FF 0C 0D 02               ld   (bc),a
+ RO1E:5686 FF 04 0C 02               ld   (bc),a
+ RO1E:568A FF FC 0B 02               ld   (bc),a
+ RO1E:568E FF F4 0A 02               ld   (bc),a
+ RO1E:5692 FF EC 09 02               ld   (bc),a
+ RO1E:5696 F7 0C 08 02
+ RO1E:569A F7 04 07 02               ld   (bc),a
+ RO1E:569E F7 FC 06 02            ld   b,02
+ RO1E:56A2 F7 F4 05 02               ld   (bc),a
+ RO1E:56A6 F7 EC 04 02               ld   (bc),a
+ RO1E:56AA EF 04 03 02               ld   (bc),a
+ RO1E:56AE EF FC 02 02
+
+ RO1E:56B2 12
+ RO1E:56B3 EE F4 01 02
+ RO1E:56B7 06 0C 1A 02               ld   (bc),a
+ RO1E:56BB 06 04 19 02               ld   (bc),a
+ RO1E:56BF 06 F4 18 02            jr   56C5
+ RO1E:56C3 06 EC 17 02               ld   (bc),a
+ RO1E:56C7 06 FC 10 02            <corrupted stop>
+ RO1E:56CB FE 0C 0D 02               ld   (bc),a
+ RO1E:56CF FE 04 0C 02               ld   (bc),a
+ RO1E:56D3 FE FC 0B 02               ld   (bc),a
+ RO1E:56D7 FE F4 0A 02               ld   (bc),a
+ RO1E:56DB FE EC 09 02               ld   (bc),a
+ RO1E:56DF F6 0C 08 02
+ RO1E:56E3 F6 04 07 02               ld   (bc),a
+ RO1E:56E7 F6 FC 06 02            ld   b,02
+ RO1E:56EB F6 F4 05 02               ld   (bc),a
+ RO1E:56EF F6 EC 04 02               ld   (bc),a
+ RO1E:56F3 EE 04 03 02               ld   (bc),a
+ RO1E:56F7 EE FC 02 02
+
+ RO1E:56FB 12
+ RO1E:56FC F0 04 01 22
+ RO1E:5700 08 EC 12 22               ldi  (hl),a
+ RO1E:5704 08 F4 11 22               ldi  (hl),a
+ RO1E:5708 08 FC 10 22               ldi  (hl),a
+ RO1E:570C 08 04 0F 22               ldi  (hl),a
+ RO1E:5710 08 0C 0E 22               ldi  (hl),a
+ RO1E:5714 00 EC 0D 22               ldi  (hl),a
+ RO1E:5718 00 F4 0C 22               ldi  (hl),a
+ RO1E:571C 00 FC 0B 22               ldi  (hl),a
+ RO1E:5720 00 04 0A 22               ldi  (hl),a
+ RO1E:5724 00 0C 09 22               ldi  (hl),a
+ RO1E:5728 F8 EC 08 22
+ RO1E:572C F8 F4 07 22               ldi  (hl),a
+ RO1E:5730 F8 FC 06 22            ld   b,22
+ RO1E:5734 F8 04 05 22               ldi  (hl),a
+ RO1E:5738 F8 0C 04 22               ldi  (hl),a
+ RO1E:573C F0 F4 03 22               ldi  (hl),a
+ RO1E:5740 F0 FC 02 22
+
+ RO1E:5744 12
+ RO1E:5745 EF 04 01 22
+ RO1E:5749 07 EC 16 22            ld   d,22
+ RO1E:574D 07 F4 15 22               ldi  (hl),a
+ RO1E:5751 07 04 14 22               ldi  (hl),a
+ RO1E:5755 07 0C 13 22               ldi  (hl),a
+ RO1E:5759 07 FC 10 22            <corrupted stop>
+ RO1E:575D FF EC 0D 22               ldi  (hl),a
+ RO1E:5761 FF F4 0C 22               ldi  (hl),a
+ RO1E:5765 FF FC 0B 22               ldi  (hl),a
+ RO1E:5769 FF 04 0A 22               ldi  (hl),a
+ RO1E:576D FF 0C 09 22               ldi  (hl),a
+ RO1E:5771 F7 EC 08 22
+ RO1E:5775 F7 F4 07 22               ldi  (hl),a
+ RO1E:5779 F7 FC 06 22            ld   b,22
+ RO1E:577D F7 04 05 22               ldi  (hl),a
+ RO1E:5781 F7 0C 04 22               ldi  (hl),a
+ RO1E:5785 EF F4 03 22               ldi  (hl),a
+ RO1E:5789 EF FC 02 22
+
+ RO1E:578D 12
+ RO1E:578E EE 04 01 22
+ RO1E:5792 06 EC 1A 22               ldi  (hl),a
+ RO1E:5796 06 F4 19 22               ldi  (hl),a
+ RO1E:579A 06 04 18 22            jr   57C0
+ RO1E:579E 06 0C 17 22               ldi  (hl),a
+ RO1E:57A2 06 FC 10 22            <corrupted stop>
+ RO1E:57A6 FE EC 0D 22               ldi  (hl),a
+ RO1E:57AA FE F4 0C 22               ldi  (hl),a
+ RO1E:57AE FE FC 0B 22               ldi  (hl),a
+ RO1E:57B2 FE 04 0A 22               ldi  (hl),a
+ RO1E:57B6 FE 0C 09 22               ldi  (hl),a
+ RO1E:57BA F6 EC 08 22
+ RO1E:57BE F6 F4 07 22               ldi  (hl),a
+ RO1E:57C2 F6 FC 06 22            ld   b,22
+ RO1E:57C6 F6 04 05 22               ldi  (hl),a
+ RO1E:57CA F6 0C 04 22               ldi  (hl),a
+ RO1E:57CE EE F4 03 22               ldi  (hl),a
+ RO1E:57D2 EE FC 02 22
+
+ RO1E:57D6 11
+ RO1E:57D7 08 0C 2B 02               ld   (bc),a
+ RO1E:57DB 08 04 2A 02               ld   (bc),a
+ RO1E:57DF 08 FC 29 02               ld   (bc),a
+ RO1E:57E3 08 F4 28 02               ld   (bc),a
+ RO1E:57E7 08 EC 27 02               ld   (bc),a
+ RO1E:57EB 00 0C 26 02            ld   h,02
+ RO1E:57EF 00 04 25 02               ld   (bc),a
+ RO1E:57F3 00 FC 24 02               ld   (bc),a
+ RO1E:57F7 00 F4 23 02               ld   (bc),a
+ RO1E:57FB 00 EC 22 02               ld   (bc),a
+ RO1E:57FF F8 0C 21 02
+ RO1E:5803 F8 04 20 02            jr   nz,5809
+ RO1E:5807 F8 FC 1F 02               ld   (bc),a
+ RO1E:580B F8 F4 1E 02            ld   e,02
+ RO1E:580F F8 EC 1D 02               ld   (bc),a
+ RO1E:5813 F0 07 1C 02               ld   (bc),a
+ RO1E:5817 F0 FF 1B 02
+
+ RO1E:581B 11
+ RO1E:581C 07 0C 30 02            jr   nc,5822
+ RO1E:5820 07 04 2F 02               ld   (bc),a
+ RO1E:5824 07 FC 2E 02            ld   l,02
+ RO1E:5828 07 F4 2D 02               ld   (bc),a
+ RO1E:582C 07 EC 2C 02               ld   (bc),a
+ RO1E:5830 FF 0C 26 02            ld   h,02
+ RO1E:5834 FF 04 25 02               ld   (bc),a
+ RO1E:5838 FF FC 24 02               ld   (bc),a
+ RO1E:583C FF F4 23 02               ld   (bc),a
+ RO1E:5840 FF EC 22 02               ld   (bc),a
+ RO1E:5844 F7 0C 21 02
+ RO1E:5848 F7 04 20 02            jr   nz,584E
+ RO1E:584C F7 FC 1F 02               ld   (bc),a
+ RO1E:5850 F7 F4 1E 02            ld   e,02
+ RO1E:5854 F7 EC 1D 02               ld   (bc),a
+ RO1E:5858 EF 07 1C 02               ld   (bc),a
+ RO1E:585C EF FF 1B 02
+
+ RO1E:5860 11
+ RO1E:5861 06 0C 35 02               ld   (bc),a
+ RO1E:5865 06 04 34 02               ld   (bc),a
+ RO1E:5869 06 FC 33 02               ld   (bc),a
+ RO1E:586D 06 F4 32 02               ld   (bc),a
+ RO1E:5871 06 EC 31 02
+ RO1E:5875 FE 0C 26 02            ld   h,02
+ RO1E:5879 FE 04 25 02               ld   (bc),a
+ RO1E:587D FE FC 24 02               ld   (bc),a
+ RO1E:5881 FE F4 23 02               ld   (bc),a
+ RO1E:5885 FE EC 22 02               ld   (bc),a
+ RO1E:5889 F6 0C 21 02
+ RO1E:588D F6 04 20 02            jr   nz,5893
+ RO1E:5891 F6 FC 1F 02               ld   (bc),a
+ RO1E:5895 F6 F4 1E 02            ld   e,02
+ RO1E:5899 F6 EC 1D 02               ld   (bc),a
+ RO1E:589D EE 07 1C 02               ld   (bc),a
+ RO1E:58A1 EE FF 1B 02
+
+ RO1E:58A5 11
+ RO1E:58A6 08 EC 2B 22               ldi  (hl),a
+ RO1E:58AA 08 F4 2A 22               ldi  (hl),a
+ RO1E:58AE 08 FC 29 22               ldi  (hl),a
+ RO1E:58B2 08 04 28 22               ldi  (hl),a
+ RO1E:58B6 08 0C 27 22               ldi  (hl),a
+ RO1E:58BA 00 EC 26 22            ld   h,22
+ RO1E:58BE 00 F4 25 22               ldi  (hl),a
+ RO1E:58C2 00 FC 24 22               ldi  (hl),a
+ RO1E:58C6 00 04 23 22               ldi  (hl),a
+ RO1E:58CA 00 0C 22 22               ldi  (hl),a
+ RO1E:58CE F8 EC 21 22
+ RO1E:58D2 F8 F4 20 22            jr   nz,58F8
+ RO1E:58D6 F8 FC 1F 22               ldi  (hl),a
+ RO1E:58DA F8 04 1E 22            ld   e,22
+ RO1E:58DE F8 0C 1D 22               ldi  (hl),a
+ RO1E:58E2 F0 F1 1C 22               ldi  (hl),a
+ RO1E:58E6 F0 F9 1B 22
+
+ RO1E:58EA 11
+ RO1E:58EB 07 EC 30 22            jr   nc,5911
+ RO1E:58EF 07 F4 2F 22               ldi  (hl),a
+ RO1E:58F3 07 FC 2E 22            ld   l,22
+ RO1E:58F7 07 04 2D 22               ldi  (hl),a
+ RO1E:58FB 07 0C 2C 22               ldi  (hl),a
+ RO1E:58FF FF EC 26 22            ld   h,22
+ RO1E:5903 FF F4 25 22               ldi  (hl),a
+ RO1E:5907 FF FC 24 22               ldi  (hl),a
+ RO1E:590B FF 04 23 22               ldi  (hl),a
+ RO1E:590F FF 0C 22 22               ldi  (hl),a
+ RO1E:5913 F7 EC 21 22
+ RO1E:5917 F7 F4 20 22            jr   nz,593D
+ RO1E:591B F7 FC 1F 22               ldi  (hl),a
+ RO1E:591F F7 04 1E 22            ld   e,22
+ RO1E:5923 F7 0C 1D 22               ldi  (hl),a
+ RO1E:5927 EF F1 1C 22               ldi  (hl),a
+ RO1E:592B EF F9 1B 22
+
+ RO1E:592F 11
+ RO1E:5930 06 EC 35 22               ldi  (hl),a
+ RO1E:5934 06 F4 34 22               ldi  (hl),a
+ RO1E:5938 06 FC 33 22               ldi  (hl),a
+ RO1E:593C 06 04 32 22               ldi  (hl),a
+ RO1E:5940 06 0C 31 22
+ RO1E:5944 FE EC 26 22            ld   h,22
+ RO1E:5948 FE F4 25 22               ldi  (hl),a
+ RO1E:594C FE FC 24 22               ldi  (hl),a
+ RO1E:5950 FE 04 23 22               ldi  (hl),a
+ RO1E:5954 FE 0C 22 22               ldi  (hl),a
+ RO1E:5958 F6 EC 21 22
+ RO1E:595C F6 F4 20 22            jr   nz,5982
+ RO1E:5960 F6 FC 1F 22               ldi  (hl),a
+ RO1E:5964 F6 04 1E 22            ld   e,22
+ RO1E:5968 F6 0C 1D 22               ldi  (hl),a
+ RO1E:596C EE F1 1C 22               ldi  (hl),a
+ RO1E:5970 EE F9 1B 22
+
+ RO1E:5974 0F
+ RO1E:5975 08 08 44 02               ld   (bc),a
+ RO1E:5979 08 00 43 02               ld   (bc),a
+ RO1E:597D 08 F8 42 02               ld   (bc),a
+ RO1E:5981 08 F0 41 02               ld   (bc),a
+ RO1E:5985 00 08 40 02         ld   (0240),sp
+ RO1E:5989 00 00 3F 02               ld   (bc),a
+ RO1E:598D 00 F8 3E 02               ld   (bc),a
+ RO1E:5991 00 F0 3D 02               ld   (bc),a
+ RO1E:5995 F8 08 3C 02               ld   (bc),a
+ RO1E:5999 F8 00 3B 02               ld   (bc),a
+ RO1E:599D F8 F8 3A 02               ld   (bc),a
+ RO1E:59A1 F8 F0 39 02               ld   (bc),a
+ RO1E:59A5 F0 08 38 02            jr   c,59AB
+ RO1E:59A9 F0 00 37 02               ld   (bc),a
+ RO1E:59AD F0 F8 36 02
+
+ RO1E:59B1 0F
+ RO1E:59B2 FF 08 40 02         ld   (0240),sp
+ RO1E:59B6 FF 00 3F 02               ld   (bc),a
+ RO1E:59BA FF F8 3E 02               ld   (bc),a
+ RO1E:59BE FF F0 3D 02               ld   (bc),a
+ RO1E:59C2 07 08 48 02         ld   (0248),sp
+ RO1E:59C6 07 00 47 02               ld   (bc),a
+ RO1E:59CA 07 F8 46 02               ld   (bc),a
+ RO1E:59CE 07 F0 45 02               ld   (bc),a
+ RO1E:59D2 F7 08 3C 02         ld   (023C),sp
+ RO1E:59D6 F7 00 3B 02               ld   (bc),a
+ RO1E:59DA F7 F8 3A 02               ld   (bc),a
+ RO1E:59DE F7 F0 39 02               ld   (bc),a
+ RO1E:59E2 EF 08 38 02         ld   (0238),sp
+ RO1E:59E6 EF 00 37 02               ld   (bc),a
+ RO1E:59EA EF F8 36 02
+
+ RO1E:59EE 0F
+ RO1E:59EF FE 00 3F 02               ld   (bc),a
+ RO1E:59F3 FE F8 3E 02            ld   a,02
+ RO1E:59F7 FE F0 3D 02               ld   (bc),a
+ RO1E:59FB FE 08 40 02               ld   (bc),a
+ RO1E:59FF 06 08 4C 02               ld   (bc),a
+ RO1E:5A03 06 00 4B 02               ld   (bc),a
+ RO1E:5A07 06 F8 4A 02               ld   (bc),a
+ RO1E:5A0B 06 F0 49 02               ld   (bc),a
+ RO1E:5A0F F6 08 3C 02               ld   (bc),a
+ RO1E:5A13 F6 00 3B 02               ld   (bc),a
+ RO1E:5A17 F6 F8 3A 02               ld   (bc),a
+ RO1E:5A1B F6 F0 39 02               ld   (bc),a
+ RO1E:5A1F EE 08 38 02            jr   c,5A25
+ RO1E:5A23 EE 00 37 02               ld   (bc),a
+ RO1E:5A27 EE F8 36 02
+
+ RO1E:5A2B 0F
+ RO1E:5A2C 08 F0 44 22               ldi  (hl),a
+ RO1E:5A30 08 F8 43 22               ldi  (hl),a
+ RO1E:5A34 08 00 42 22               ldi  (hl),a
+ RO1E:5A38 08 08 41 22               ldi  (hl),a
+ RO1E:5A3C 00 F0 40 22               ldi  (hl),a
+ RO1E:5A40 00 F8 3F 22               ldi  (hl),a
+ RO1E:5A44 00 00 3E 22            ld   a,22
+ RO1E:5A48 00 08 3D 22         ld   (223D),sp
+ RO1E:5A4C F8 F0 3C 22               ldi  (hl),a
+ RO1E:5A50 F8 F8 3B 22               ldi  (hl),a
+ RO1E:5A54 F8 00 3A 22               ldi  (hl),a
+ RO1E:5A58 F8 08 39 22               ldi  (hl),a
+ RO1E:5A5C F0 F0 38 22            jr   c,5A82
+ RO1E:5A60 F0 F8 37 22               ldi  (hl),a
+ RO1E:5A64 F0 00 36 22
+
+ RO1E:5A68 0F
+ RO1E:5A69 FF F0 40 22               ldi  (hl),a
+ RO1E:5A6D FF F8 3F 22               ldi  (hl),a
+ RO1E:5A71 FF 00 3E 22            ld   a,22
+ RO1E:5A75 FF 08 3D 22         ld   (223D),sp
+ RO1E:5A79 07 F0 48 22               ldi  (hl),a
+ RO1E:5A7D 07 F8 47 22               ldi  (hl),a
+ RO1E:5A81 07 00 46 22               ldi  (hl),a
+ RO1E:5A85 07 08 45 22         ld   (2245),sp
+ RO1E:5A89 F7 F0 3C 22               ldi  (hl),a
+ RO1E:5A8D F7 F8 3B 22               ldi  (hl),a
+ RO1E:5A91 F7 00 3A 22               ldi  (hl),a
+ RO1E:5A95 F7 08 39 22         ld   (2239),sp
+ RO1E:5A99 EF F0 38 22               ldi  (hl),a
+ RO1E:5A9D EF F8 37 22               ldi  (hl),a
+ RO1E:5AA1 EF 00 36 22
+
+ RO1E:5AA5 0F
+ RO1E:5AA6 FE F8 3F 22               ldi  (hl),a
+ RO1E:5AAA FE 00 3E 22            ld   a,22
+ RO1E:5AAE FE 08 3D 22
+ RO1E:5AB2 FE F0 40 22               ldi  (hl),a
+ RO1E:5AB6 06 F0 4C 22               ldi  (hl),a
+ RO1E:5ABA 06 F8 4B 22
+ RO1E:5ABE 06 00 4A 22               ldi  (hl),a
+ RO1E:5AC2 06 08 49 22               ldi  (hl),a
+ RO1E:5AC6 F6 F0 3C 22
+ RO1E:5ACA F6 F8 3B 22               ldi  (hl),a
+ RO1E:5ACE F6 00 3A 22               ldi  (hl),a
+ RO1E:5AD2 F6 08 39 22
+ RO1E:5AD6 EE F0 38 22            jr   c,5AFC
+ RO1E:5ADA EE F8 37 22               ldi  (hl),a
+ RO1E:5ADE EE 00 36 22
+
+ RO1E:5AE2 20 56 0A
+ RO1E:5AE5 69 56 0A
+ RO1E:5AE8 B2 56 0A
+ RO1E:5AEB 69 56 0A 00 00
+
+ RO1E:5AF0 FB 56 0A
+ RO1E:5AF3 44 57 0A
+ RO1E:5AF6 8D 57 0A
+ RO1E:5AF9 44 57 0A 00 00
+
+ RO1E:5AFE D6 57 0A
+ RO1E:5B01 1B 58 0A
+ RO1E:5B04 60 58 0A
+ RO1E:5B07 1B 58 0A 00 00
+
+ RO1E:5B0C A5 58 0A
+ RO1E:5B0F EA 58 0A
+ RO1E:5B12 2F 59 0A
+ RO1E:5B15 EA 58 0A 00 00
+
+ RO1E:5B1A 74 59 0A
+ RO1E:5B1D B1 59 0A
+ RO1E:5B20 EE 59 0A
+ RO1E:5B23 B1 59 0A 00 00
+
+ RO1E:5B28 2B 5A 0A
+ RO1E:5B2B 68 5A 0A
+ RO1E:5B2E A5 5A 0A
+ RO1E:5B31 68 5A 0A 00 00
+
+ RO1E:5B36 69 56 FF 00 00
+ RO1E:5B3B 44 57 FF 00 00
+ RO1E:5B40 1B 58 FF 00 00
+ RO1E:5B45 EA 58 FF 00 00
+ RO1E:5B4A B1 59 FF 00 00
+ RO1E:5B4F 68 5A FF 00 00
+
+ RO1E:5B54 E2 5A
+ RO1E:5B56 F0 5A
+ RO1E:5B58 FE 5A
+ RO1E:5B5A 0C 5B
+ RO1E:5B5C 1A 5B
+ RO1E:5B5E 28 5B
+ RO1E:5B60 36 5B
+ RO1E:5B62 3B 5B
+ RO1E:5B64 40 5B
+ RO1E:5B66 45 5B
+ RO1E:5B68 4A 5B
+ RO1E:5B6A 4F 5B
+
+ RO1E:5B6C 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:5B7C 00 00 00 00 00 00 00 00 01 00 07 00 00 00 00 00
+ RO1E:5B8C 00 00 00 00 00 00 01 00 03 01 FF 00 7F 00 1E 09
+ RO1E:5B9C 00 00 00 00 F8 00 78 F0 78 F0 78 F0 0E F0 FE F4
+ RO1E:5BAC 00 00 19 00 16 09 1E 0B 3E 07 7E 3F 7E 3F 7E 3F
+ RO1E:5BBC 70 00 BF 60 BF EF BF F0 BF FF B8 FF B7 FF B8 F7
+ RO1E:5BCC 7D 0B FF 2B FF AB FF 6B FF E8 F0 EF 7F EF FF 6F
+ RO1E:5BDC FF F4 FF F5 FF F5 FF F5 FF 05 03 FD FF FD FF FD
+ RO1E:5BEC F0 00 F8 F0 78 80 78 F0 78 F0 78 F0 78 F0 08 F0
+ RO1E:5BFC 7E 3F 7E 27 75 2B 7E 2B 59 27 67 3F 5F 3F 7F 3F
+ RO1E:5C0C BF F8 BF FF 80 FF 7F BF FF DF FF EF FF F7 FF 81
+ RO1E:5C1C FF E0 FF FF 00 FF FF F9 F9 F6 F9 F6 FF F9 FF FF
+ RO1E:5C2C FF 01 FF FF 00 FF FF E7 E7 DB E7 DB FF E3 FF FC
+ RO1E:5C3C F8 F0 F8 F0 08 F0 F8 F0 58 F0 F8 F0 F8 F0 F8 00
+ RO1E:5C4C 3F 1F 1F 00 07 00 01 00 00 00 00 00 00 00 00 00
+ RO1E:5C5C FF 00 C7 38 FF 6C EF 7C C6 38 7C 00 00 00 00 00
+ RO1E:5C6C FF FF FF 00 FF 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:5C7C FF F0 FC 03 FF 06 1E 07 0C 03 07 00 00 00 00 00
+ RO1E:5C8C F8 00 78 80 F8 C0 F0 C0 60 80 C0 00 00 00 00 00
+ RO1E:5C9C 3F 1F 1F 00 07 00 01 00 01 00 00 00 00 00 00 00
+ RO1E:5CAC FF 00 FF 00 D7 38 BF 6C EB 7C D6 38 7C 00 00 00
+ RO1E:5CBC FF F0 FF 00 FD 03 1B 06 1E 07 0D 03 07 00 00 00
+ RO1E:5CCC F8 00 F8 00 78 80 F0 C0 B0 C0 60 80 C0 00 00 00
+ RO1E:5CDC 3F 1F 1F 00 07 00 01 00 01 00 01 00 00 00 00 00
+ RO1E:5CEC FF 00 FF 00 FF 00 FF 38 BB 6C AB 7C FE 38 7C 00
+ RO1E:5CFC FF F0 FF 00 FF 00 1F 03 1B 06 1A 07 0F 03 07 00
+ RO1E:5D0C F8 00 F8 00 F8 00 F0 80 B0 C0 B0 C0 E0 80 C0 00
+ RO1E:5D1C 00 00 00 00 00 00 73 00 4D 33 4D 33 4D 33 4D 33
+ RO1E:5D2C 00 00 00 00 00 00 FF 00 FB FE FB FE FB FE FB FE
+ RO1E:5D3C 00 00 19 00 16 09 1E 0B 3E 07 7E 3F 7E 3F 7E 3F
+ RO1E:5D4C 70 00 BF 60 BF EF BF F0 BF FF B8 FF B7 FF B8 F7
+ RO1E:5D5C 79 06 FF 36 FF B6 FF 77 FF F0 FF FD 7E FD FF 7D
+ RO1E:5D6C 80 7F FF 73 F3 6D FF 0C FF 0C FF ED 1E ED FF F3
+ RO1E:5D7C 3C C0 FE 5C FE 40 FE 1C DE 3C DE BC 5E BC C2 BC
+ RO1E:5D8C 7E 3F 7E 27 75 2B 7E 2B 59 27 67 3F 5F 3F 7F 3F
+ RO1E:5D9C BF F8 BF FF 80 FF 7F BF FF DF FF EF FF F7 FF 81
+ RO1E:5DAC FF FD FF FC 00 FF FF FF FF FF FF FF FF FF FF F8
+ RO1E:5DBC FF FF FF 00 00 FF FF FF F5 FF FF FF FF FF FF 00
+ RO1E:5DCC FE BC FE 3C 02 FC FE FC 56 FC FE FC FE FC FE 00
+ RO1E:5DDC 3F 1F 1F 00 07 00 01 00 00 00 00 00 00 00 00 00
+ RO1E:5DEC FF 00 C7 38 FF 6C EF 7C C6 38 7C 00 00 00 00 00
+ RO1E:5DFC FF F0 FE 01 FF 03 0F 03 06 01 03 00 00 00 00 00
+ RO1E:5E0C FF 00 3F C0 FF 61 7F E1 33 C0 E1 00 00 00 00 00
+ RO1E:5E1C FE 00 1E E0 FE B0 BC F0 18 E0 F0 00 00 00 00 00
+ RO1E:5E2C 3F 1F 1F 00 07 00 01 00 01 00 00 00 00 00 00 00
+ RO1E:5E3C FF 00 FF 00 D7 38 BF 6C EB 7C D6 38 7C 00 00 00
+ RO1E:5E4C FF F0 FF 00 FE 01 0D 03 0F 03 06 01 03 00 00 00
+ RO1E:5E5C FF 00 FF 00 BF C0 FE 61 5F E1 B3 C0 E1 00 00 00
+ RO1E:5E6C FE 00 FE 00 5E E0 FC B0 AC F0 58 E0 F0 00 00 00
+ RO1E:5E7C 3F 1F 1F 00 07 00 01 00 01 00 01 00 00 00 00 00
+ RO1E:5E8C FF 00 FF 00 FF 00 FF 38 BB 6C AB 7C FE 38 7C 00
+ RO1E:5E9C FF F0 FF 00 FF 00 0F 01 0D 03 0D 03 07 01 03 00
+ RO1E:5EAC FF 00 FF 00 FF 00 FF C0 DE 61 5E E1 F3 C0 E1 00
+ RO1E:5EBC FE 00 FE 00 FE 00 FC E0 EC B0 AC F0 F8 E0 F0 00
+ RO1E:5ECC 03 00 06 01 0E 05 1E 09 3E 15 3E 09 3E 15 3E 09
+ RO1E:5EDC 00 00 C0 00 70 C0 6C F0 6F FC 6F FF 6F FF 6F FF
+ RO1E:5EEC 00 00 00 00 00 00 00 00 00 00 C0 00 F0 C0 F8 F0
+ RO1E:5EFC 00 00 01 00 07 01 0D 07 1D 0F 2D 1F 6D 3F ED 7F
+ RO1E:5F0C 3E 15 FD 0B FB D7 FF CF 7F DF 7F E7 6F F8 6F FC
+ RO1E:5F1C 6F FF 2F FF CF FF E3 DF DC BF BF 7F FF FF FF 7F
+ RO1E:5F2C F8 F0 F8 F0 FC F0 FA F4 FB F6 3B F6 CB F6 FB B6
+ RO1E:5F3C ED 7F ED 7F ED 7F ED 7F EC 7F D9 6F B7 5F EF 3F
+ RO1E:5F4C 6F FD 0F FD FF FD FE FD 0F FC F0 EF FF EF FF EF
+ RO1E:5F5C FF 9F FF E6 1F F1 FF 00 FF 00 00 FF FF FF FF FF
+ RO1E:5F6C FB 6E FB DE FB BE FB 7E FB FE 03 FE FD 7E FF 7E
+ RO1E:5F7C DF 7F BF 7F FF 00 27 1E 1C 03 07 00 00 00 00 00
+ RO1E:5F8C FF EF FF EF FF 00 FF DB 92 6D FF 00 00 00 00 00
+ RO1E:5F9C FF FF FF FF FF 00 FF 6D 49 B6 FF 00 00 00 00 00
+ RO1E:5FAC FF 7E FF 7E FF 00 FA B4 24 D8 F8 00 00 00 00 00
+ RO1E:5FBC DF 7F BF 7F FF 00 5F 30 2F 1D 19 06 07 00 00 00
+ RO1E:5FCC FF EF FF EF FF 00 FF 00 FF B6 24 DB FF 00 00 00
+ RO1E:5FDC FF FF FF FF FF 00 FF 00 FF DB 92 6D FF 00 00 00
+ RO1E:5FEC FF 7E FF 7E FF 00 FD 06 FA 6C 4C B0 F8 00 00 00
+ RO1E:5FFC DF 7F BF 7F FF 00 5F 20 7F 18 27 1E 1C 03 07 00
+ RO1E:600C FF EF FF EF FF 00 FF 00 FF 00 FF DB 92 6D FF 00
+ RO1E:601C FF FF FF FF FF 00 FF 00 FF 00 FF 6D 49 B6 FF 00
+ RO1E:602C FF 7E FF 7E FF 00 FD 02 FD 06 FE B4 24 D8 F8 00
+
+ RO1E:603C B8 7E FF 7F 1F 02 FF 03
+ RO1E:6044 18 7F FF 7F 75 18 FE 28
+ RO1E:604C DB 7E 00 00 5D 36 7F 14
+ RO1E:6054 DB 7E 00 00 7F 14 FD 3E
+ RO1E:605C DB 7E 00 00 5D 36 E0 7E
+ RO1E:6064 DB 7E 00 00 7F 14 E0 7E
+ RO1E:606C D8 7E 00 00 FD 3E B6 29
+ RO1E:6074 DB 7E FF 7F 7F 1A FD 34
+
+
+ RO1E:607C 17
+ RO1E:607D 08 10 12 02               ld   (bc),a
+ RO1E:6081 08 08 17 02               ld   (bc),a
+ RO1E:6085 08 00 16 02               ld   (bc),a
+ RO1E:6089 08 F8 15 02               ld   (bc),a
+ RO1E:608D 08 F0 14 02               ld   (bc),a
+ RO1E:6091 08 E8 13 02               ld   (bc),a
+ RO1E:6095 00 10 11 02               ld   (bc),a
+ RO1E:6099 00 08 10 02         ld   (0210),sp
+ RO1E:609D 00 00 0F 02               ld   (bc),a
+ RO1E:60A1 00 F8 0E 02               ld   (bc),a
+ RO1E:60A5 00 F0 0D 02               ld   (bc),a
+ RO1E:60A9 00 E8 0C 02               ld   (bc),a
+ RO1E:60AD F8 10 0B 02               ld   (bc),a
+ RO1E:60B1 F8 08 0A 02               ld   (bc),a
+ RO1E:60B5 F8 00 09 02               ld   (bc),a
+ RO1E:60B9 F8 F8 08 02
+ RO1E:60BD F8 F0 07 02               ld   (bc),a
+ RO1E:60C1 F8 E8 06 02            ld   b,02
+ RO1E:60C5 F0 10 05 02               ld   (bc),a
+ RO1E:60C9 F0 08 04 02               ld   (bc),a
+ RO1E:60CD F0 00 03 02               ld   (bc),a
+ RO1E:60D1 F0 F8 02 02               ld   (bc),a
+ RO1E:60D5 F0 F0 01 02
+
+ RO1E:60D9 17
+ RO1E:60DA 07 08 1C 02         ld   (021C),sp
+ RO1E:60DE 07 00 1B 02               ld   (bc),a
+ RO1E:60E2 07 F8 1A 02               ld   (bc),a
+ RO1E:60E6 07 F0 19 02               ld   (bc),a
+ RO1E:60EA 07 E8 18 02               ld   (bc),a
+ RO1E:60EE 07 10 12 02               ld   (bc),a
+ RO1E:60F2 FF 10 11 02               ld   (bc),a
+ RO1E:60F6 FF 08 10 02         ld   (0210),sp
+ RO1E:60FA FF 00 0F 02               ld   (bc),a
+ RO1E:60FE FF F8 0E 02               ld   (bc),a
+ RO1E:6102 FF F0 0D 02               ld   (bc),a
+ RO1E:6106 FF E8 0C 02               ld   (bc),a
+ RO1E:610A F7 10 0B 02               ld   (bc),a
+ RO1E:610E F7 08 0A 02         ld   (020A),sp
+ RO1E:6112 F7 00 09 02               ld   (bc),a
+ RO1E:6116 F7 F8 08 02               ld   (bc),a
+ RO1E:611A F7 F0 07 02               ld   (bc),a
+ RO1E:611E F7 E8 06 02               ld   (bc),a
+ RO1E:6122 EF 10 05 02               ld   (bc),a
+ RO1E:6126 EF 08 04 02         ld   (0204),sp
+ RO1E:612A EF 00 03 02               ld   (bc),a
+ RO1E:612E EF F8 02 02               ld   (bc),a
+ RO1E:6132 EF F0 01 02
+
+ RO1E:6136 17
+ RO1E:6137 06 08 21 02
+ RO1E:613B 06 00 20 02            jr   nz,6141
+ RO1E:613F 06 F8 1F 02               ld   (bc),a
+ RO1E:6143 06 F0 1E 02            ld   e,02
+ RO1E:6147 06 E8 1D 02               ld   (bc),a
+ RO1E:614B 06 10 12 02               ld   (bc),a
+ RO1E:614F FE 10 11 02
+ RO1E:6153 FE 08 10 02         ld   (0210),sp
+ RO1E:6157 FE 00 0F 02               ld   (bc),a
+ RO1E:615B FE F8 0E 02            ld   c,02
+ RO1E:615F FE F0 0D 02               ld   (bc),a
+ RO1E:6163 FE E8 0C 02               ld   (bc),a
+ RO1E:6167 F6 10 0B 02               ld   (bc),a
+ RO1E:616B F6 08 0A 02               ld   (bc),a
+ RO1E:616F F6 00 09 02               ld   (bc),a
+ RO1E:6173 F6 F8 08 02
+ RO1E:6177 F6 F0 07 02               ld   (bc),a
+ RO1E:617B F6 E8 06 02            ld   b,02
+ RO1E:617F EE 10 05 02               ld   (bc),a
+ RO1E:6183 EE 08 04 02               ld   (bc),a
+ RO1E:6187 EE 00 03 02               ld   (bc),a
+ RO1E:618B EE F8 02 02               ld   (bc),a
+ RO1E:618F EE F0 01 02
+
+
+ RO1E:6193 17
+ RO1E:6194 08 E8 12 22               ldi  (hl),a
+ RO1E:6198 08 F0 17 22               ldi  (hl),a
+ RO1E:619C 08 F8 16 22               ldi  (hl),a
+ RO1E:61A0 08 00 15 22               ldi  (hl),a
+ RO1E:61A4 08 08 14 22               ldi  (hl),a
+ RO1E:61A8 08 10 13 22               ldi  (hl),a
+ RO1E:61AC 00 E8 11 22               ldi  (hl),a
+ RO1E:61B0 00 F0 10 22               ldi  (hl),a
+ RO1E:61B4 00 F8 0F 22               ldi  (hl),a
+ RO1E:61B8 00 00 0E 22            ld   c,22
+ RO1E:61BC 00 08 0D 22         ld   (220D),sp
+ RO1E:61C0 00 10 0C 22               ldi  (hl),a
+ RO1E:61C4 F8 E8 0B 22               ldi  (hl),a
+ RO1E:61C8 F8 F0 0A 22               ldi  (hl),a
+ RO1E:61CC F8 F8 09 22               ldi  (hl),a
+ RO1E:61D0 F8 00 08 22
+ RO1E:61D4 F8 08 07 22         ld   (2207),sp
+ RO1E:61D8 F8 10 06 22            ld   b,22
+ RO1E:61DC F0 E8 05 22               ldi  (hl),a
+ RO1E:61E0 F0 F0 04 22               ldi  (hl),a
+ RO1E:61E4 F0 F8 03 22               ldi  (hl),a
+ RO1E:61E8 F0 00 02 22               ldi  (hl),a
+ RO1E:61EC F0 08 01 22
+
+ RO1E:61F0 17
+ RO1E:61F1 07 F0 1C 22               ldi  (hl),a
+ RO1E:61F5 07 F8 1B 22               ldi  (hl),a
+ RO1E:61F9 07 00 1A 22               ldi  (hl),a
+ RO1E:61FD 07 08 19 22         ld   (2219),sp
+ RO1E:6201 07 10 18 22               ldi  (hl),a
+ RO1E:6205 07 E8 12 22               ldi  (hl),a
+ RO1E:6209 FF E8 11 22               ldi  (hl),a
+ RO1E:620D FF F0 10 22               ldi  (hl),a
+ RO1E:6211 FF F8 0F 22               ldi  (hl),a
+ RO1E:6215 FF 00 0E 22            ld   c,22
+ RO1E:6219 FF 08 0D 22         ld   (220D),sp
+ RO1E:621D FF 10 0C 22               ldi  (hl),a
+ RO1E:6221 F7 E8 0B 22               ldi  (hl),a
+ RO1E:6225 F7 F0 0A 22               ldi  (hl),a
+ RO1E:6229 F7 F8 09 22               ldi  (hl),a
+ RO1E:622D F7 00 08 22
+ RO1E:6231 F7 08 07 22         ld   (2207),sp
+ RO1E:6235 F7 10 06 22               ldi  (hl),a
+ RO1E:6239 EF E8 05 22               ldi  (hl),a
+ RO1E:623D EF F0 04 22               ldi  (hl),a
+ RO1E:6241 EF F8 03 22               ldi  (hl),a
+ RO1E:6245 EF 00 02 22               ldi  (hl),a
+ RO1E:6249 EF 08 01 22
+
+ RO1E:624D 17               rla  
+ RO1E:624E 06 F0 21 22
+ RO1E:6252 06 F8 20 22               ldi  (hl),a
+ RO1E:6256 06 00 1F 22               ldi  (hl),a
+ RO1E:625A 06 08 1E 22            ld   e,22
+ RO1E:625E 06 10 1D 22               ldi  (hl),a
+ RO1E:6262 06 E8 12 22               ldi  (hl),a
+ RO1E:6266 FE E8 11 22
+ RO1E:626A FE F0 10 22               ldi  (hl),a
+ RO1E:626E FE F8 0F 22               ldi  (hl),a
+ RO1E:6272 FE 00 0E 22            ld   c,22
+ RO1E:6276 FE 08 0D 22               ldi  (hl),a
+ RO1E:627A FE 10 0C 22               ldi  (hl),a
+ RO1E:627E F6 E8 0B 22               ldi  (hl),a
+ RO1E:6282 F6 F0 0A 22               ldi  (hl),a
+ RO1E:6286 F6 F8 09 22               ldi  (hl),a
+ RO1E:628A F6 00 08 22
+ RO1E:628E F6 08 07 22         ld   (2207),sp
+ RO1E:6292 F6 10 06 22            ld   b,22
+ RO1E:6296 EE E8 05 22               ldi  (hl),a
+ RO1E:629A EE F0 04 22               ldi  (hl),a
+ RO1E:629E EE F8 03 22               ldi  (hl),a
+ RO1E:62A2 EE 00 02 22               ldi  (hl),a
+ RO1E:62A6 EE 08 01 22
+
+
+ RO1E:62AA 12
+ RO1E:62AB 08 0C 33 02               ld   (bc),a
+ RO1E:62AF 08 04 32 02               ld   (bc),a
+ RO1E:62B3 08 FC 31 02               ld   (bc),a
+ RO1E:62B7 08 F4 30 02               ld   (bc),a
+ RO1E:62BB 08 EC 2F 02               ld   (bc),a
+ RO1E:62BF 00 0C 2E 02            ld   l,02
+ RO1E:62C3 00 04 2D 02               ld   (bc),a
+ RO1E:62C7 00 FC 2C 02               ld   (bc),a
+ RO1E:62CB 00 F4 2B 02               ld   (bc),a
+ RO1E:62CF 00 EC 2A 02               ld   (bc),a
+ RO1E:62D3 F8 0C 29 02               ld   (bc),a
+ RO1E:62D7 F8 04 28 02            jr   z,62DD
+ RO1E:62DB F8 FC 27 02               ld   (bc),a
+ RO1E:62DF F8 F4 26 02            ld   h,02
+ RO1E:62E3 F8 EC 25 02               ld   (bc),a
+ RO1E:62E7 F0 04 24 02               ld   (bc),a
+ RO1E:62EB F0 FC 23 02               ld   (bc),a
+ RO1E:62EF F0 F4 22 02
+
+ RO1E:62F3 12
+ RO1E:62F4 07 0C 38 02            jr   c,62FA
+ RO1E:62F8 07 04 37 02               ld   (bc),a
+ RO1E:62FC 07 FC 36 02            ld   (hl),02
+ RO1E:6300 07 F4 35 02               ld   (bc),a
+ RO1E:6304 07 EC 34 02               ld   (bc),a
+ RO1E:6308 FF 0C 2E 02            ld   l,02
+ RO1E:630C FF 04 2D 02               ld   (bc),a
+ RO1E:6310 FF FC 2C 02               ld   (bc),a
+ RO1E:6314 FF F4 2B 02               ld   (bc),a
+ RO1E:6318 FF EC 2A 02               ld   (bc),a
+ RO1E:631C F7 0C 29 02               ld   (bc),a
+ RO1E:6320 F7 04 28 02            jr   z,6326
+ RO1E:6324 F7 FC 27 02               ld   (bc),a
+ RO1E:6328 F7 F4 26 02            ld   h,02
+ RO1E:632C F7 EC 25 02               ld   (bc),a
+ RO1E:6330 EF 04 24 02               ld   (bc),a
+ RO1E:6334 EF FC 23 02               ld   (bc),a
+ RO1E:6338 EF F4 22 02
+
+ RO1E:633C 12               ld   (de),a
+ RO1E:633D 06 0C 3D 02               ld   (bc),a
+ RO1E:6341 06 04 3C 02               ld   (bc),a
+ RO1E:6345 06 FC 3B 02               ld   (bc),a
+ RO1E:6349 06 F4 3A 02               ld   (bc),a
+ RO1E:634D 06 EC 39 02               ld   (bc),a
+ RO1E:6351 FE 0C 2E 02            ld   l,02
+ RO1E:6355 FE 04 2D 02               ld   (bc),a
+ RO1E:6359 FE FC 2C 02               ld   (bc),a
+ RO1E:635D FE F4 2B 02               ld   (bc),a
+ RO1E:6361 FE EC 2A 02               ld   (bc),a
+ RO1E:6365 F6 0C 29 02               ld   (bc),a
+ RO1E:6369 F6 04 28 02            jr   z,636F
+ RO1E:636D F6 FC 27 02               ld   (bc),a
+ RO1E:6371 F6 F4 26 02            ld   h,02
+ RO1E:6375 F6 EC 25 02               ld   (bc),a
+ RO1E:6379 EE 04 24 02               ld   (bc),a
+ RO1E:637D EE FC 23 02               ld   (bc),a
+ RO1E:6381 EE F4 22 02
+
+
+ RO1E:6385 12
+ RO1E:6386 08 EC 33 22               ldi  (hl),a
+ RO1E:638A 08 F4 32 22               ldi  (hl),a
+ RO1E:638E 08 FC 31 22               ldi  (hl),a
+ RO1E:6392 08 04 30 22               ldi  (hl),a
+ RO1E:6396 08 0C 2F 22               ldi  (hl),a
+ RO1E:639A 00 EC 2E 22            ld   l,22
+ RO1E:639E 00 F4 2D 22               ldi  (hl),a
+ RO1E:63A2 00 FC 2C 22               ldi  (hl),a
+ RO1E:63A6 00 04 2B 22               ldi  (hl),a
+ RO1E:63AA 00 0C 2A 22               ldi  (hl),a
+ RO1E:63AE F8 EC 29 22               ldi  (hl),a
+ RO1E:63B2 F8 F4 28 22            jr   z,63D8
+ RO1E:63B6 F8 FC 27 22               ldi  (hl),a
+ RO1E:63BA F8 04 26 22            ld   h,22
+ RO1E:63BE F8 0C 25 22               ldi  (hl),a
+ RO1E:63C2 F0 F4 24 22               ldi  (hl),a
+ RO1E:63C6 F0 FC 23 22               ldi  (hl),a
+ RO1E:63CA F0 04 22 22
+
+ RO1E:63CE 12
+ RO1E:63CF 07 EC 38 22            jr   c,63F5
+ RO1E:63D3 07 F4 37 22               ldi  (hl),a
+ RO1E:63D7 07 FC 36 22            ld   (hl),22
+ RO1E:63DB 07 04 35 22               ldi  (hl),a
+ RO1E:63DF 07 0C 34 22               ldi  (hl),a
+ RO1E:63E3 FF EC 2E 22            ld   l,22
+ RO1E:63E7 FF F4 2D 22               ldi  (hl),a
+ RO1E:63EB FF FC 2C 22               ldi  (hl),a
+ RO1E:63EF FF 04 2B 22               ldi  (hl),a
+ RO1E:63F3 FF 0C 2A 22               ldi  (hl),a
+ RO1E:63F7 F7 EC 29 22               ldi  (hl),a
+ RO1E:63FB F7 F4 28 22            jr   z,6421
+ RO1E:63FF F7 FC 27 22               ldi  (hl),a
+ RO1E:6403 F7 04 26 22            ld   h,22
+ RO1E:6407 F7 0C 25 22               ldi  (hl),a
+ RO1E:640B EF F4 24 22               ldi  (hl),a
+ RO1E:640F EF FC 23 22               ldi  (hl),a
+ RO1E:6413 EF 04 22 22
+
+ RO1E:6417 12               ld   (de),a
+ RO1E:6418 06 EC 3D 22               ldi  (hl),a
+ RO1E:641C 06 F4 3C 22               ldi  (hl),a
+ RO1E:6420 06 FC 3B 22               ldi  (hl),a
+ RO1E:6424 06 04 3A 22               ldi  (hl),a
+ RO1E:6428 06 0C 39 22               ldi  (hl),a
+ RO1E:642C FE EC 2E 22            ld   l,22
+ RO1E:6430 FE F4 2D 22               ldi  (hl),a
+ RO1E:6434 FE FC 2C 22               ldi  (hl),a
+ RO1E:6438 FE 04 2B 22               ldi  (hl),a
+ RO1E:643C FE 0C 2A 22               ldi  (hl),a
+ RO1E:6440 F6 EC 29 22               ldi  (hl),a
+ RO1E:6444 F6 F4 28 22            jr   z,646A
+ RO1E:6448 F6 FC 27 22               ldi  (hl),a
+ RO1E:644C F6 04 26 22            ld   h,22
+ RO1E:6450 F6 0C 25 22               ldi  (hl),a
+ RO1E:6454 EE F4 24 22               ldi  (hl),a
+ RO1E:6458 EE FC 23 22               ldi  (hl),a
+ RO1E:645C EE 04 22 22
+
+
+ RO1E:6460 13
+ RO1E:6461 08 0C 50 02               ld   (bc),a
+ RO1E:6465 08 04 4F 02               ld   (bc),a
+ RO1E:6469 08 FC 4E 02               ld   (bc),a
+ RO1E:646D 08 F4 4D 02               ld   (bc),a
+ RO1E:6471 08 EC 4C 02               ld   (bc),a
+ RO1E:6475 00 0C 4B 02               ld   (bc),a
+ RO1E:6479 00 04 4A 02               ld   (bc),a
+ RO1E:647D 00 FC 49 02               ld   (bc),a
+ RO1E:6481 00 F4 48 02               ld   (bc),a
+ RO1E:6485 00 EC 47 02               ld   (bc),a
+ RO1E:6489 F8 0C 46 02               ld   (bc),a
+ RO1E:648D F8 04 45 02               ld   (bc),a
+ RO1E:6491 F8 FC 44 02               ld   (bc),a
+ RO1E:6495 F8 F4 43 02               ld   (bc),a
+ RO1E:6499 F8 EC 42 02               ld   (bc),a
+ RO1E:649D F0 0C 41 02               ld   (bc),a
+ RO1E:64A1 F0 04 40 02               ld   (bc),a
+ RO1E:64A5 F0 FC 3F 02               ld   (bc),a
+ RO1E:64A9 F0 F4 3E 02
+
+ RO1E:64AD 13
+ RO1E:64AE 07 0C 55 02               ld   (bc),a
+ RO1E:64B2 07 04 54 02               ld   (bc),a
+ RO1E:64B6 07 FC 53 02               ld   (bc),a
+ RO1E:64BA 07 F4 52 02               ld   (bc),a
+ RO1E:64BE 07 EC 51 02               ld   (bc),a
+ RO1E:64C2 FF 0C 4B 02               ld   (bc),a
+ RO1E:64C6 FF 04 4A 02               ld   (bc),a
+ RO1E:64CA FF FC 49 02               ld   (bc),a
+ RO1E:64CE FF F4 48 02               ld   (bc),a
+ RO1E:64D2 FF EC 47 02               ld   (bc),a
+ RO1E:64D6 F7 0C 46 02               ld   (bc),a
+ RO1E:64DA F7 04 45 02               ld   (bc),a
+ RO1E:64DE F7 FC 44 02               ld   (bc),a
+ RO1E:64E2 F7 F4 43 02               ld   (bc),a
+ RO1E:64E6 F7 EC 42 02               ld   (bc),a
+ RO1E:64EA EF 0C 41 02               ld   (bc),a
+ RO1E:64EE EF 04 40 02               ld   (bc),a
+ RO1E:64F2 EF FC 3F 02               ld   (bc),a
+ RO1E:64F6 EF F4 3E 02
+
+ RO1E:64FA 13
+ RO1E:64FB 06 0C 5A 02               ld   (bc),a
+ RO1E:64FF 06 04 59 02               ld   (bc),a
+ RO1E:6503 06 FC 58 02               ld   (bc),a
+ RO1E:6507 06 F4 57 02               ld   (bc),a
+ RO1E:650B 06 EC 56 02               ld   (bc),a
+ RO1E:650F FE 0C 4B 02               ld   (bc),a
+ RO1E:6513 FE 04 4A 02               ld   (bc),a
+ RO1E:6517 FE FC 49 02               ld   (bc),a
+ RO1E:651B FE F4 48 02               ld   (bc),a
+ RO1E:651F FE EC 47 02               ld   (bc),a
+ RO1E:6523 F6 0C 46 02               ld   (bc),a
+ RO1E:6527 F6 04 45 02               ld   (bc),a
+ RO1E:652B F6 FC 44 02               ld   (bc),a
+ RO1E:652F F6 F4 43 02               ld   (bc),a
+ RO1E:6533 F6 EC 42 02               ld   (bc),a
+ RO1E:6537 EE 0C 41 02               ld   (bc),a
+ RO1E:653B EE 04 40 02               ld   (bc),a
+ RO1E:653F EE FC 3F 02               ld   (bc),a
+ RO1E:6543 EE F4 3E 02
+
+
+ RO1E:6547 13
+ RO1E:6548 08 EC 50 22               ldi  (hl),a
+ RO1E:654C 08 F4 4F 22               ldi  (hl),a
+ RO1E:6550 08 FC 4E 22               ldi  (hl),a
+ RO1E:6554 08 04 4D 22               ldi  (hl),a
+ RO1E:6558 08 0C 4C 22               ldi  (hl),a
+ RO1E:655C 00 EC 4B 22               ldi  (hl),a
+ RO1E:6560 00 F4 4A 22               ldi  (hl),a
+ RO1E:6564 00 FC 49 22               ldi  (hl),a
+ RO1E:6568 00 04 48 22               ldi  (hl),a
+ RO1E:656C 00 0C 47 22               ldi  (hl),a
+ RO1E:6570 F8 EC 46 22               ldi  (hl),a
+ RO1E:6574 F8 F4 45 22               ldi  (hl),a
+ RO1E:6578 F8 FC 44 22               ldi  (hl),a
+ RO1E:657C F8 04 43 22               ldi  (hl),a
+ RO1E:6580 F8 0C 42 22               ldi  (hl),a
+ RO1E:6584 F0 EC 41 22               ldi  (hl),a
+ RO1E:6588 F0 F4 40 22               ldi  (hl),a
+ RO1E:658C F0 FC 3F 22               ldi  (hl),a
+ RO1E:6590 F0 04 3E 22
+
+ RO1E:6594 13
+ RO1E:6595 07 EC 55 22               ldi  (hl),a
+ RO1E:6599 07 F4 54 22               ldi  (hl),a
+ RO1E:659D 07 FC 53 22               ldi  (hl),a
+ RO1E:65A1 07 04 52 22               ldi  (hl),a
+ RO1E:65A5 07 0C 51 22               ldi  (hl),a
+ RO1E:65A9 FF EC 4B 22               ldi  (hl),a
+ RO1E:65AD FF F4 4A 22               ldi  (hl),a
+ RO1E:65B1 FF FC 49 22               ldi  (hl),a
+ RO1E:65B5 FF 04 48 22               ldi  (hl),a
+ RO1E:65B9 FF 0C 47 22               ldi  (hl),a
+ RO1E:65BD F7 EC 46 22               ldi  (hl),a
+ RO1E:65C1 F7 F4 45 22               ldi  (hl),a
+ RO1E:65C5 F7 FC 44 22               ldi  (hl),a
+ RO1E:65C9 F7 04 43 22               ldi  (hl),a
+ RO1E:65CD F7 0C 42 22               ldi  (hl),a
+ RO1E:65D1 EF EC 41 22               ldi  (hl),a
+ RO1E:65D5 EF F4 40 22               ldi  (hl),a
+ RO1E:65D9 EF FC 3F 22               ldi  (hl),a
+ RO1E:65DD EF 04 3E 22
+
+ RO1E:65E1 13
+ RO1E:65E2 06 EC 5A 22               ldi  (hl),a
+ RO1E:65E6 06 F4 59 22               ldi  (hl),a
+ RO1E:65EA 06 FC 58 22               ldi  (hl),a
+ RO1E:65EE 06 04 57 22               ldi  (hl),a
+ RO1E:65F2 06 0C 56 22               ldi  (hl),a
+ RO1E:65F6 FE EC 4B 22               ldi  (hl),a
+ RO1E:65FA FE F4 4A 22               ldi  (hl),a
+ RO1E:65FE FE FC 49 22               ldi  (hl),a
+ RO1E:6602 FE 04 48 22               ldi  (hl),a
+ RO1E:6606 FE 0C 47 22               ldi  (hl),a
+ RO1E:660A F6 EC 46 22               ldi  (hl),a
+ RO1E:660E F6 F4 45 22               ldi  (hl),a
+ RO1E:6612 F6 FC 44 22               ldi  (hl),a
+ RO1E:6616 F6 04 43 22               ldi  (hl),a
+ RO1E:661A F6 0C 42 22               ldi  (hl),a
+ RO1E:661E EE EC 41 22               ldi  (hl),a
+ RO1E:6622 EE F4 40 22               ldi  (hl),a
+ RO1E:6626 EE FC 3F 22
+ RO1E:662A EE 04 3E 22
+
+
+ RO1E:662E 7C 60 0A               ld   a,(bc)
+ RO1E:6631 D9 60 0A               ld   a,(bc)
+ RO1E:6634 36 61 0A               ld   a,(bc)
+ RO1E:6637 D9 60 0A 00 00
+
+ RO1E:663C AA 62 0A               ld   a,(bc)
+ RO1E:663F F3 62 0A               ld   a,(bc)
+ RO1E:6642 3C 63 0A               ld   a,(bc)
+ RO1E:6645 F3 62 0A 00 00
+
+ RO1E:664A 93 61 0A               ld   a,(bc)
+ RO1E:664D F0 61 0A               ld   a,(bc)
+ RO1E:6650 4D 62 0A               ld   a,(bc)
+ RO1E:6653 F0 61 0A 00 00
+
+ RO1E:6658 85 63 0A               ld   a,(bc)
+ RO1E:665B CE 63 0A               ld   a,(bc)
+ RO1E:665E 17 64 0A               ld   a,(bc)
+ RO1E:6661 CE 63 0A 00 00
+
+ RO1E:6666 60 64 0A               ld   a,(bc)
+ RO1E:6669 AD 64 0A               ld   a,(bc)
+ RO1E:666C FA 64 0A         ld   a,(0A64)
+ RO1E:666F AD 64 0A 00 00
+
+ RO1E:6674 47 65 0A               ld   a,(bc)
+ RO1E:6677 94 65 0A               ld   a,(bc)
+ RO1E:667A E1 65 0A               ld   a,(bc)
+ RO1E:667D 94 65 0A 00 00
+
+ RO1E:6682 D9 60 FF 00 00
+ RO1E:6687 F0 61 FF 00 00
+ RO1E:668C F3 62 FF 00 00
+ RO1E:6691 CE 63 FF 00 00
+ RO1E:6696 AD 64 FF 00 00
+ RO1E:669B 94 65 FF 00 00
+
+ RO1E:66A0 2E 66            ld   l,66
+ RO1E:66A2 3C 66               ld   h,(hl)
+ RO1E:66A4 4A 66               ld   h,(hl)
+ RO1E:66A6 58 66               ld   h,(hl)
+ RO1E:66A8 66 66               ld   h,(hl)
+ RO1E:66AA 74 66               ld   h,(hl)
+ RO1E:66AC 82 66               ld   h,(hl)
+ RO1E:66AE 87 66               ld   h,(hl)
+ RO1E:66B0 8C 66               ld   h,(hl)
+ RO1E:66B2 91 66               ld   h,(hl)
+ RO1E:66B4 96 66               ld   h,(hl)
+ RO1E:66B6 9B 66
+
+ RO1E:66B8 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:66C8 00 00 00 00 00 00 00 00 01 00 01 00 03 01 03 01
+ RO1E:66D8 7C 00 5F 34 DF 77 DF 77 DF B7 DB B7 DC 37 DF 77
+ RO1E:66E8 00 00 C0 00 FC C0 FF FC FF FF FF FF 3F FF C3 FF
+ RO1E:66F8 00 00 00 00 00 00 C0 00 FC C0 FF FC FF FF FF FF
+ RO1E:6708 00 00 00 00 00 00 00 00 00 00 C0 00 FC C0 F6 EC
+ RO1E:6718 00 00 00 00 00 00 01 00 03 00 07 00 07 00 07 01
+ RO1E:6728 03 00 03 00 FB 00 7F F9 7F F9 7F F8 7F F8 7F F8
+ RO1E:6738 DF 77 CF B7 CF B7 FB 3F FC 37 FF 6F FF 6F FF C7
+ RO1E:6748 FC FF FF FF FF FF FF FF 3F FF C3 FF FC FF FF FF
+ RO1E:6758 3F FF C3 FF FC FF FF FF FF FF FF FF 3F FF C3 FF
+ RO1E:6768 F6 EC F6 EC 36 EC D6 EC F6 EC F6 EC F6 EC F2 EC
+ RO1E:6778 07 02 07 00 07 00 07 00 06 01 05 03 07 02 07 02
+ RO1E:6788 7F F8 7F F9 7F F9 07 F8 FF F8 1F F8 DF 3C DF 3C
+ RO1E:6798 FF D8 FF BF FF BF FF 1F FF 01 FD 02 FB 06 F7 6C
+ RO1E:67A8 FF 7F FF 87 FF F8 FF FF FF FF FF 1F FF 01 FF F8
+ RO1E:67B8 FC FF FF FF FF 7F FF 87 FF F8 FF FF FF FF FF 1F
+ RO1E:67C8 32 EC D2 FC FE EC FC D8 FC 58 F8 B0 F8 B0 F0 60
+ RO1E:67D8 F0 60 E0 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:67E8 07 03 07 03 07 03 03 00 00 00 00 00 00 00 00 00
+ RO1E:67F8 FD FE 83 FE 7D 82 DF 20 72 0D 1F 00 00 00 00 00
+ RO1E:6808 FF 00 00 FF FF FF FF 00 49 B6 FF 00 00 00 00 00
+ RO1E:6818 FF 00 00 FF FF FF FF 00 24 DB FF 00 00 00 00 00
+ RO1E:6828 FF 01 03 FC FF FE FF 00 9C 60 F0 00 00 00 00 00
+ RO1E:6838 07 03 07 03 07 03 03 00 00 00 00 00 00 00 00 00
+ RO1E:6848 FD FE 83 FE 7D 82 FF 18 CF 33 79 06 1F 00 00 00
+ RO1E:6858 FF 00 00 FF FF FF FF 00 FF 6D 24 DB FF 00 00 00
+ RO1E:6868 FF 00 00 FF FF FF FF 00 FF B6 92 6D FF 00 00 00
+ RO1E:6878 FF 01 03 FC FF FE FF 00 FA DC 4C B0 F0 00 00 00
+ RO1E:6888 07 03 07 03 07 03 03 00 01 00 00 00 00 00 00 00
+ RO1E:6898 FD FE 83 FE 7D 82 FF 00 FF 30 9F 66 72 0D 1F 00
+ RO1E:68A8 FF 00 00 FF FF FF FF 00 FF 00 FF DB 49 B6 FF 00
+ RO1E:68B8 FF 00 00 FF FF FF FF 00 FF 00 FF 6D 24 DB FF 00
+ RO1E:68C8 FF 01 03 FC FF FE FF 00 FF 06 F2 BC 9C 60 F0 00
+ RO1E:68D8 00 00 00 00 00 00 0C 00 0E 04 1F 02 1F 01 1B 04
+ RO1E:68E8 00 00 00 00 00 00 00 00 00 00 00 00 9F 00 FF 9E
+ RO1E:68F8 00 00 00 00 00 00 00 00 00 00 00 00 FC 00 F6 FC
+ RO1E:6908 00 00 00 00 07 00 0F 07 1F 08 3F 17 3B 0F 3B 1F
+ RO1E:6918 1D 02 16 09 0B 04 FD 02 FF 7D FF 00 FF FC FF FC
+ RO1E:6928 EF 5E EC 1F EB 9F EC 5B EF 1C E0 9F 9F 7F 70 FF
+ RO1E:6938 F7 FE 77 FE B7 FE 7F B6 FF 7E 03 FE FD FE 7F FE
+ RO1E:6948 00 00 00 00 00 00 E0 00 F0 E0 F0 00 B0 E0 B0 E0
+ RO1E:6958 3B 1F 3B 1F 3F 18 3B 17 38 0F 37 1F 2F 1F 3F 1F
+ RO1E:6968 FE FD FF FD FF FC 83 7C FF 7F 81 7F FF FE FF FE
+ RO1E:6978 F4 EF FF EB FF EB FF 0B FF 00 02 FF FF FD FF FD
+ RO1E:6988 07 FE FF FA FF F8 FF 80 FF 01 04 FF FF FB FF FB
+ RO1E:6998 B0 E0 B0 E0 B0 E0 10 E0 F0 E0 10 E0 F0 E0 F0 E0
+ RO1E:69A8 3F 1F 3F 1F 3F 00 0C 03 03 00 00 00 00 00 00 00
+ RO1E:69B8 FF FE FF FE FF 00 FF 36 92 6D FF 00 00 00 00 00
+ RO1E:69C8 FF FD FF FD FF 00 FF DB 49 B6 FF 00 00 00 00 00
+ RO1E:69D8 FF FB FF FB FF 00 FF 6D 25 DA FE 00 00 00 00 00
+ RO1E:69E8 F0 E0 F0 E0 E0 00 40 80 80 00 00 00 00 00 00 00
+ RO1E:69F8 3F 1F 3F 1F 3F 00 13 0C 0E 01 03 00 00 00 00 00
+ RO1E:6A08 FF FE FF FE FF 00 FF C0 7F 9B C9 36 FF 00 00 00
+ RO1E:6A18 FF FD FF FD FF 00 FF 00 FF 6D 24 DB FF 00 00 00
+ RO1E:6A28 FF FB FF FB FF 00 FF 00 FE B7 93 6C FE 00 00 00
+ RO1E:6A38 F0 E0 F0 E0 E0 00 C0 00 40 80 80 00 00 00 00 00
+ RO1E:6A48 3F 1F 3F 1F 3F 00 1F 00 17 09 0C 03 03 00 00 00
+ RO1E:6A58 FF FE FF FE FF 00 FF 00 FF 80 FF 36 92 6D FF 00
+ RO1E:6A68 FF FD FF FD FF 00 FF 00 FF 00 FF DB 49 B6 FF 00
+ RO1E:6A78 FF FB FF FB FF 00 FF 00 FF 00 FF 6D 25 DA FE 00
+ RO1E:6A88 F0 E0 F0 E0 E0 00 A0 40 C0 00 40 80 80 00 00 00
+ RO1E:6A98 00 00 0C 00 3E 04 FF 12 FF 41 FB 04 ED 12 B7 49
+ RO1E:6AA8 00 00 00 00 00 00 00 00 80 00 CF 80 F7 4F F7 2F
+ RO1E:6AB8 00 00 01 00 01 00 01 00 19 00 3D 18 E7 38 CF 38
+ RO1E:6AC8 00 00 E0 00 E0 C0 E0 C0 F0 C0 E8 D0 38 D0 F4 D8
+ RO1E:6AD8 00 00 00 00 07 00 1E 07 3E 1F 7E 3F 7E 3F 7E 3F
+ RO1E:6AE8 5F 24 3F 12 9F 09 8F 04 FF 02 FF 7C DF 7C DE 7D
+ RO1E:6AF8 F7 8F F7 4F F7 2F F7 8F F0 0F CF 3F 3F FF FF FF
+ RO1E:6B08 8F 70 9F 74 FF 68 FF 12 FF 22 FC 03 FF 00 FF FF
+ RO1E:6B18 FC 18 FC 38 FC 78 F8 F0 FC 00 0E F0 FE 00 FE F0
+ RO1E:6B28 7E 3F 7E 3F 7E 3F 7E 3F 78 3F 67 3F 5F 3F 7F 3F
+ RO1E:6B38 DF 7D DF 7D DF 7D C3 7D FF 40 FF 7C 84 7F FF FB
+ RO1E:6B48 E0 FF DF FF FF BF FF BF FF 3F FF 00 02 FF FF FD
+ RO1E:6B58 1F FF F0 FF FF FB FF FB FF FB FF 00 01 FF FF FE
+ RO1E:6B68 FE F0 0E F0 FC F0 FC F0 FC E0 FC 00 02 FC FE FC
+ RO1E:6B78 7F 3F 7F 3F 7F 00 1D 03 07 00 00 00 00 00 00 00
+ RO1E:6B88 FF FB FF FB FF 00 FF DB 49 B6 FF 00 00 00 00 00
+ RO1E:6B98 FF FD FF FD FF 00 FF 6D 24 DB FF 00 00 00 00 00
+ RO1E:6BA8 FF FE FF FE FF 00 FF B6 92 6D FF 00 00 00 00 00
+ RO1E:6BB8 FE FC FE FC FE 00 F8 30 70 80 C0 00 00 00 00 00
+ RO1E:6BC8 7F 3F 7F 3F 7F 00 3F 03 19 06 07 00 00 00 00 00
+ RO1E:6BD8 FF FB FF FB FF 00 FF 00 FF 6D 24 DB FF 00 00 00
+ RO1E:6BE8 FF FD FF FD FF 00 FF 00 FF B6 92 6D FF 00 00 00
+ RO1E:6BF8 FF FE FF FE FF 00 FF 00 FF DB 49 B6 FF 00 00 00
+ RO1E:6C08 FE FC FE FC FE 00 FC 08 F8 70 30 C0 C0 00 00 00
+ RO1E:6C18 7F 3F 7F 3F 7F 00 3F 00 1F 0C 0E 01 03 00 00 00
+ RO1E:6C28 FF FB FF FB FF 00 FF 00 FF C0 7F 9B C9 36 FF 00
+ RO1E:6C38 FF FD FF FD FF 00 FF 00 FF 00 FF 6D 24 DB FF 00
+ RO1E:6C48 FF FE FF FE FF 00 FF 00 FF 00 FF B6 92 6D FF 00
+ RO1E:6C58 FE FC FE FC FE 00 FE 04 FC 18 C8 F0 70 80 C0 00
+
+ RO1E:6C68 B8 7E FF 7F 1F 02 FF 03
+ RO1E:6C70 18 7F FF 7F 75 18 FE 28
+ RO1E:6C78 DB 7E 00 00 5D 36 7F 14
+ RO1E:6C80 DB 7E 00 00 7F 14 FD 3E
+ RO1E:6C88 DB 7E 00 00 5D 36 E0 7E
+ RO1E:6C90 DB 7E 00 00 7F 14 E0 7E
+ RO1E:6C98 D8 7E 00 00 FD 3E B6 29
+ RO1E:6CA0 DB 7E FF 7F 7F 1A FD 34
+
+
+ RO1E:6CA8 11
+ RO1E:6CA9 08 04 11 02
+ RO1E:6CAD 08 FC 10 02            <corrupted stop>
+ RO1E:6CB1 08 F4 0F 02               ld   (bc),a
+ RO1E:6CB5 08 EC 0E 02               ld   (bc),a
+ RO1E:6CB9 00 0C 0D 02               ld   (bc),a
+ RO1E:6CBD 00 04 0C 02               ld   (bc),a
+ RO1E:6CC1 00 FC 0B 02               ld   (bc),a
+ RO1E:6CC5 00 F4 0A 02               ld   (bc),a
+ RO1E:6CC9 00 EC 09 02               ld   (bc),a
+ RO1E:6CCD F8 0C 08 02
+ RO1E:6CD1 F8 04 07 02               ld   (bc),a
+ RO1E:6CD5 F8 FC 06 02            ld   b,02
+ RO1E:6CD9 F8 F4 05 02               ld   (bc),a
+ RO1E:6CDD F8 EC 04 02               ld   (bc),a
+ RO1E:6CE1 F0 05 03 02               ld   (bc),a
+ RO1E:6CE5 F0 FD 02 02               ld   (bc),a
+ RO1E:6CE9 F0 F5 01 02
+
+ RO1E:6CED 11         ld   bc,1102
+ RO1E:6CEE 07 04 15 02               ld   (bc),a
+ RO1E:6CF2 07 FC 14 02               ld   (bc),a
+ RO1E:6CF6 07 F4 13 02               ld   (bc),a
+ RO1E:6CFA 07 EC 12 02               ld   (bc),a
+ RO1E:6CFE FF 0C 0D 02               ld   (bc),a
+ RO1E:6D02 FF 04 0C 02               ld   (bc),a
+ RO1E:6D06 FF FC 0B 02               ld   (bc),a
+ RO1E:6D0A FF F4 0A 02               ld   (bc),a
+ RO1E:6D0E FF EC 09 02               ld   (bc),a
+ RO1E:6D12 F7 0C 08 02
+ RO1E:6D16 F7 04 07 02               ld   (bc),a
+ RO1E:6D1A F7 FC 06 02            ld   b,02
+ RO1E:6D1E F7 F4 05 02               ld   (bc),a
+ RO1E:6D22 F7 EC 04 02               ld   (bc),a
+ RO1E:6D26 EF 05 03 02               ld   (bc),a
+ RO1E:6D2A EF FD 02 02               ld   (bc),a
+ RO1E:6D2E EF F5 01 02
+
+ RO1E:6D32 11
+ RO1E:6D33 06 04 19 02               ld   (bc),a
+ RO1E:6D37 06 FC 18 02            jr   6D3D
+ RO1E:6D3B 06 F4 17 02               ld   (bc),a
+ RO1E:6D3F 06 EC 16 02            ld   d,02
+ RO1E:6D43 FE 0C 0D 02               ld   (bc),a
+ RO1E:6D47 FE 04 0C 02               ld   (bc),a
+ RO1E:6D4B FE FC 0B 02               ld   (bc),a
+ RO1E:6D4F FE F4 0A 02               ld   (bc),a
+ RO1E:6D53 FE EC 09 02               ld   (bc),a
+ RO1E:6D57 F6 0C 08 02
+ RO1E:6D5B F6 04 07 02               ld   (bc),a
+ RO1E:6D5F F6 FC 06 02            ld   b,02
+ RO1E:6D63 F6 F4 05 02               ld   (bc),a
+ RO1E:6D67 F6 EC 04 02               ld   (bc),a
+ RO1E:6D6B EE 05 03 02               ld   (bc),a
+ RO1E:6D6F EE FD 02 02               ld   (bc),a
+ RO1E:6D73 EE F5 01 02
+
+
+ RO1E:6D77 11         ld   bc,1102
+ RO1E:6D78 08 F4 11 22               ldi  (hl),a
+ RO1E:6D7C 08 FC 10 22               ldi  (hl),a
+ RO1E:6D80 08 04 0F 22               ldi  (hl),a
+ RO1E:6D84 08 0C 0E 22               ldi  (hl),a
+ RO1E:6D88 00 EC 0D 22               ldi  (hl),a
+ RO1E:6D8C 00 F4 0C 22               ldi  (hl),a
+ RO1E:6D90 00 FC 0B 22               ldi  (hl),a
+ RO1E:6D94 00 04 0A 22               ldi  (hl),a
+ RO1E:6D98 00 0C 09 22               ldi  (hl),a
+ RO1E:6D9C F8 EC 08 22
+ RO1E:6DA0 F8 F4 07 22               ldi  (hl),a
+ RO1E:6DA4 F8 FC 06 22            ld   b,22
+ RO1E:6DA8 F8 04 05 22               ldi  (hl),a
+ RO1E:6DAC F8 0C 04 22               ldi  (hl),a
+ RO1E:6DB0 F0 F3 03 22               ldi  (hl),a
+ RO1E:6DB4 F0 FB 02 22               ldi  (hl),a
+ RO1E:6DB8 F0 03 01 22
+
+ RO1E:6DBC 11         ld   bc,1122
+ RO1E:6DBD 07 F4 15 22               ldi  (hl),a
+ RO1E:6DC1 07 FC 14 22               ldi  (hl),a
+ RO1E:6DC5 07 04 13 22               ldi  (hl),a
+ RO1E:6DC9 07 0C 12 22               ldi  (hl),a
+ RO1E:6DCD FF EC 0D 22               ldi  (hl),a
+ RO1E:6DD1 FF F4 0C 22               ldi  (hl),a
+ RO1E:6DD5 FF FC 0B 22               ldi  (hl),a
+ RO1E:6DD9 FF 04 0A 22               ldi  (hl),a
+ RO1E:6DDD FF 0C 09 22               ldi  (hl),a
+ RO1E:6DE1 F7 EC 08 22
+ RO1E:6DE5 F7 F4 07 22               ldi  (hl),a
+ RO1E:6DE9 F7 FC 06 22            ld   b,22
+ RO1E:6DED F7 04 05 22               ldi  (hl),a
+ RO1E:6DF1 F7 0C 04 22               ldi  (hl),a
+ RO1E:6DF5 EF F3 03 22               ldi  (hl),a
+ RO1E:6DF9 EF FB 02 22               ldi  (hl),a
+ RO1E:6DFD EF 03 01 22
+
+ RO1E:6E01 11         ld   bc,1122
+ RO1E:6E02 06 F4 19 22               ldi  (hl),a
+ RO1E:6E06 06 FC 18 22            jr   6E2C
+ RO1E:6E0A 06 04 17 22               ldi  (hl),a
+ RO1E:6E0E 06 0C 16 22            ld   d,22
+ RO1E:6E12 FE EC 0D 22               ldi  (hl),a
+ RO1E:6E16 FE F4 0C 22               ldi  (hl),a
+ RO1E:6E1A FE FC 0B 22               ldi  (hl),a
+ RO1E:6E1E FE 04 0A 22               ldi  (hl),a
+ RO1E:6E22 FE 0C 09 22               ldi  (hl),a
+ RO1E:6E26 F6 EC 08 22
+ RO1E:6E2A F6 F4 07 22               ldi  (hl),a
+ RO1E:6E2E F6 FC 06 22            ld   b,22
+ RO1E:6E32 F6 04 05 22               ldi  (hl),a
+ RO1E:6E36 F6 0C 04 22               ldi  (hl),a
+ RO1E:6E3A EE F3 03 22               ldi  (hl),a
+ RO1E:6E3E EE FB 02 22               ldi  (hl),a
+ RO1E:6E42 EE 03 01 22
+
+
+ RO1E:6E46 16         ld   bc,1622
+ RO1E:6E47 08 10 2F 02               ld   (bc),a
+ RO1E:6E4B 08 08 2E 02               ld   (bc),a
+ RO1E:6E4F 08 00 2D 02               ld   (bc),a
+ RO1E:6E53 08 F8 2C 02               ld   (bc),a
+ RO1E:6E57 08 F0 2B 02               ld   (bc),a
+ RO1E:6E5B 08 E8 2A 02               ld   (bc),a
+ RO1E:6E5F 00 10 29 02               ld   (bc),a
+ RO1E:6E63 00 08 28 02         ld   (0228),sp
+ RO1E:6E67 00 00 27 02               ld   (bc),a
+ RO1E:6E6B 00 F8 26 02               ld   (bc),a
+ RO1E:6E6F 00 F0 25 02               ld   (bc),a
+ RO1E:6E73 00 E8 24 02               ld   (bc),a
+ RO1E:6E77 F8 10 23 02               ld   (bc),a
+ RO1E:6E7B F8 08 22 02               ld   (bc),a
+ RO1E:6E7F F8 00 21 02
+ RO1E:6E83 F8 F8 20 02               ld   (bc),a
+ RO1E:6E87 F8 F0 1F 02               ld   (bc),a
+ RO1E:6E8B F8 E8 1E 02            ld   e,02
+ RO1E:6E8F F0 10 1D 02               ld   (bc),a
+ RO1E:6E93 F0 08 1C 02               ld   (bc),a
+ RO1E:6E97 F0 00 1B 02               ld   (bc),a
+ RO1E:6E9B F0 F8 1A 02
+
+ RO1E:6E9F 16
+ RO1E:6EA0 07 10 35 02               ld   (bc),a
+ RO1E:6EA4 07 08 34 02         ld   (0234),sp
+ RO1E:6EA8 07 00 33 02               ld   (bc),a
+ RO1E:6EAC 07 F8 32 02               ld   (bc),a
+ RO1E:6EB0 07 F0 31 02               ld   (bc),a
+ RO1E:6EB4 07 E8 30 02               ld   (bc),a
+ RO1E:6EB8 FF 10 29 02               ld   (bc),a
+ RO1E:6EBC FF 08 28 02         ld   (0228),sp
+ RO1E:6EC0 FF 00 27 02               ld   (bc),a
+ RO1E:6EC4 FF F8 26 02               ld   (bc),a
+ RO1E:6EC8 FF F0 25 02               ld   (bc),a
+ RO1E:6ECC FF E8 24 02               ld   (bc),a
+ RO1E:6ED0 F7 10 23 02               ld   (bc),a
+ RO1E:6ED4 F7 08 22 02         ld   (0222),sp
+ RO1E:6ED8 F7 00 21 02
+ RO1E:6EDC F7 F8 20 02               ld   (bc),a
+ RO1E:6EE0 F7 F0 1F 02               ld   (bc),a
+ RO1E:6EE4 F7 E8 1E 02               ld   (bc),a
+ RO1E:6EE8 EF 10 1D 02               ld   (bc),a
+ RO1E:6EEC EF 08 1C 02         ld   (021C),sp
+ RO1E:6EF0 EF 00 1B 02               ld   (bc),a
+ RO1E:6EF4 EF F8 1A 02
+
+ RO1E:6EF8 16
+ RO1E:6EF9 06 10 3B 02               ld   (bc),a
+ RO1E:6EFD 06 08 3A 02               ld   (bc),a
+ RO1E:6F01 06 00 39 02               ld   (bc),a
+ RO1E:6F05 06 F8 38 02            jr   c,6F0B
+ RO1E:6F09 06 F0 37 02               ld   (bc),a
+ RO1E:6F0D 06 E8 36 02            ld   (hl),02
+ RO1E:6F11 FE 10 29 02               ld   (bc),a
+ RO1E:6F15 FE 08 28 02            jr   z,6F1B
+ RO1E:6F19 FE 00 27 02               ld   (bc),a
+ RO1E:6F1D FE F8 26 02            ld   h,02
+ RO1E:6F21 FE F0 25 02               ld   (bc),a
+ RO1E:6F25 FE E8 24 02               ld   (bc),a
+ RO1E:6F29 F6 10 23 02               ld   (bc),a
+ RO1E:6F2D F6 08 22 02               ld   (bc),a
+ RO1E:6F31 F6 00 21 02
+ RO1E:6F35 F6 F8 20 02               ld   (bc),a
+ RO1E:6F39 F6 F0 1F 02               ld   (bc),a
+ RO1E:6F3D F6 E8 1E 02            ld   e,02
+ RO1E:6F41 EE 10 1D 02               ld   (bc),a
+ RO1E:6F45 EE 08 1C 02               ld   (bc),a
+ RO1E:6F49 EE 00 1B 02               ld   (bc),a
+ RO1E:6F4D EE F8 1A 02
+
+
+ RO1E:6F51 16
+ RO1E:6F52 08 E8 2F 22               ldi  (hl),a
+ RO1E:6F56 08 F0 2E 22               ldi  (hl),a
+ RO1E:6F5A 08 F8 2D 22               ldi  (hl),a
+ RO1E:6F5E 08 00 2C 22               ldi  (hl),a
+ RO1E:6F62 08 08 2B 22               ldi  (hl),a
+ RO1E:6F66 08 10 2A 22               ldi  (hl),a
+ RO1E:6F6A 00 E8 29 22               ldi  (hl),a
+ RO1E:6F6E 00 F0 28 22               ldi  (hl),a
+ RO1E:6F72 00 F8 27 22               ldi  (hl),a
+ RO1E:6F76 00 00 26 22            ld   h,22
+ RO1E:6F7A 00 08 25 22         ld   (2225),sp
+ RO1E:6F7E 00 10 24 22               ldi  (hl),a
+ RO1E:6F82 F8 E8 23 22               ldi  (hl),a
+ RO1E:6F86 F8 F0 22 22               ldi  (hl),a
+ RO1E:6F8A F8 F8 21 22
+ RO1E:6F8E F8 00 20 22            jr   nz,6FB4
+ RO1E:6F92 F8 08 1F 22               ldi  (hl),a
+ RO1E:6F96 F8 10 1E 22            ld   e,22
+ RO1E:6F9A F0 E8 1D 22               ldi  (hl),a
+ RO1E:6F9E F0 F0 1C 22               ldi  (hl),a
+ RO1E:6FA2 F0 F8 1B 22               ldi  (hl),a
+ RO1E:6FA6 F0 00 1A 22
+
+ RO1E:6FAA 16
+ RO1E:6FAB 07 E8 35 22               ldi  (hl),a
+ RO1E:6FAF 07 F0 34 22               ldi  (hl),a
+ RO1E:6FB3 07 F8 33 22               ldi  (hl),a
+ RO1E:6FB7 07 00 32 22               ldi  (hl),a
+ RO1E:6FBB 07 08 31 22         ld   (2231),sp
+ RO1E:6FBF 07 10 30 22               ldi  (hl),a
+ RO1E:6FC3 FF E8 29 22               ldi  (hl),a
+ RO1E:6FC7 FF F0 28 22               ldi  (hl),a
+ RO1E:6FCB FF F8 27 22               ldi  (hl),a
+ RO1E:6FCF FF 00 26 22            ld   h,22
+ RO1E:6FD3 FF 08 25 22         ld   (2225),sp
+ RO1E:6FD7 FF 10 24 22               ldi  (hl),a
+ RO1E:6FDB F7 E8 23 22               ldi  (hl),a
+ RO1E:6FDF F7 F0 22 22               ldi  (hl),a
+ RO1E:6FE3 F7 F8 21 22               ldi  (hl),a
+ RO1E:6FE7 F7 00 20 22            jr   nz,700D
+ RO1E:6FEB F7 08 1F 22         ld   (221F),sp
+ RO1E:6FEF F7 10 1E 22               ldi  (hl),a
+ RO1E:6FF3 EF E8 1D 22               ldi  (hl),a
+ RO1E:6FF7 EF F0 1C 22               ldi  (hl),a
+ RO1E:6FFB EF F8 1B 22               ldi  (hl),a
+ RO1E:6FFF EF 00 1A 22
+
+ RO1E:7003 16
+ RO1E:7004 06 E8 3B 22               ldi  (hl),a
+ RO1E:7008 06 F0 3A 22               ldi  (hl),a
+ RO1E:700C 06 F8 39 22               ldi  (hl),a
+ RO1E:7010 06 00 38 22            jr   c,7036
+ RO1E:7014 06 08 37 22               ldi  (hl),a
+ RO1E:7018 06 10 36 22            ld   (hl),22
+ RO1E:701C FE E8 29 22               ldi  (hl),a
+ RO1E:7020 FE F0 28 22            jr   z,7046
+ RO1E:7024 FE F8 27 22               ldi  (hl),a
+ RO1E:7028 FE 00 26 22            ld   h,22
+ RO1E:702C FE 08 25 22               ldi  (hl),a
+ RO1E:7030 FE 10 24 22               ldi  (hl),a
+ RO1E:7034 F6 E8 23 22               ldi  (hl),a
+ RO1E:7038 F6 F0 22 22               ldi  (hl),a
+ RO1E:703C F6 F8 21 22
+ RO1E:7040 F6 00 20 22            jr   nz,7066
+ RO1E:7044 F6 08 1F 22               ldi  (hl),a
+ RO1E:7048 F6 10 1E 22            ld   e,22
+ RO1E:704C EE E8 1D 22               ldi  (hl),a
+ RO1E:7050 EE F0 1C 22               ldi  (hl),a
+ RO1E:7054 EE F8 1B 22               ldi  (hl),a
+ RO1E:7058 EE 00 1A 22
+
+
+ RO1E:705C 15
+ RO1E:705D 08 0C 50 02               ld   (bc),a
+ RO1E:7061 08 04 4F 02               ld   (bc),a
+ RO1E:7065 08 FC 4E 02               ld   (bc),a
+ RO1E:7069 08 F4 4D 02               ld   (bc),a
+ RO1E:706D 08 EC 4C 02               ld   (bc),a
+ RO1E:7071 00 0C 4B 02               ld   (bc),a
+ RO1E:7075 00 04 4A 02               ld   (bc),a
+ RO1E:7079 00 FC 49 02               ld   (bc),a
+ RO1E:707D 00 F4 48 02               ld   (bc),a
+ RO1E:7081 00 EC 47 02               ld   (bc),a
+ RO1E:7085 F8 0C 46 02               ld   (bc),a
+ RO1E:7089 F8 04 45 02               ld   (bc),a
+ RO1E:708D F8 FC 44 02               ld   (bc),a
+ RO1E:7091 F8 F4 43 02               ld   (bc),a
+ RO1E:7095 F8 EC 42 02               ld   (bc),a
+ RO1E:7099 F0 0C 41 02               ld   (bc),a
+ RO1E:709D F0 04 40 02               ld   (bc),a
+ RO1E:70A1 F0 FC 3F 02               ld   (bc),a
+ RO1E:70A5 F0 F4 3E 02            ld   a,02
+ RO1E:70A9 F0 EC 3D 02               ld   (bc),a
+ RO1E:70AD F0 E4 3C 02
+
+ RO1E:70B1 15               dec  d
+ RO1E:70B2 07 0C 55 02               ld   (bc),a
+ RO1E:70B6 07 04 54 02               ld   (bc),a
+ RO1E:70BA 07 FC 53 02               ld   (bc),a
+ RO1E:70BE 07 F4 52 02               ld   (bc),a
+ RO1E:70C2 07 EC 51 02               ld   (bc),a
+ RO1E:70C6 FF 0C 4B 02               ld   (bc),a
+ RO1E:70CA FF 04 4A 02               ld   (bc),a
+ RO1E:70CE FF FC 49 02               ld   (bc),a
+ RO1E:70D2 FF F4 48 02               ld   (bc),a
+ RO1E:70D6 FF EC 47 02               ld   (bc),a
+ RO1E:70DA F7 0C 46 02               ld   (bc),a
+ RO1E:70DE F7 04 45 02               ld   (bc),a
+ RO1E:70E2 F7 FC 44 02               ld   (bc),a
+ RO1E:70E6 F7 F4 43 02               ld   (bc),a
+ RO1E:70EA F7 EC 42 02               ld   (bc),a
+ RO1E:70EE EF 0C 41 02               ld   (bc),a
+ RO1E:70F2 EF 04 40 02               ld   (bc),a
+ RO1E:70F6 EF FC 3F 02               ld   (bc),a
+ RO1E:70FA EF F4 3E 02            ld   a,02
+ RO1E:70FE EF EC 3D 02               ld   (bc),a
+ RO1E:7102 EF E4 3C 02
+
+ RO1E:7106 15               dec  d
+ RO1E:7107 06 0C 5A 02               ld   (bc),a
+ RO1E:710B 06 04 59 02               ld   (bc),a
+ RO1E:710F 06 FC 58 02               ld   (bc),a
+ RO1E:7113 06 F4 57 02               ld   (bc),a
+ RO1E:7117 06 EC 56 02               ld   (bc),a
+ RO1E:711B FE 0C 4B 02               ld   (bc),a
+ RO1E:711F FE 04 4A 02               ld   (bc),a
+ RO1E:7123 FE FC 49 02               ld   (bc),a
+ RO1E:7127 FE F4 48 02               ld   (bc),a
+ RO1E:712B FE EC 47 02               ld   (bc),a
+ RO1E:712F F6 0C 46 02               ld   (bc),a
+ RO1E:7133 F6 04 45 02               ld   (bc),a
+ RO1E:7137 F6 FC 44 02               ld   (bc),a
+ RO1E:713B F6 F4 43 02               ld   (bc),a
+ RO1E:713F F6 EC 42 02               ld   (bc),a
+ RO1E:7143 EE 0C 41 02               ld   (bc),a
+ RO1E:7147 EE 04 40 02               ld   (bc),a
+ RO1E:714B EE FC 3F 02               ld   (bc),a
+ RO1E:714F EE F4 3E 02            ld   a,02
+ RO1E:7153 EE EC 3D 02               ld   (bc),a
+ RO1E:7157 EE E4 3C 02
+
+
+ RO1E:715B 15               dec  d
+ RO1E:715C 08 EC 50 22               ldi  (hl),a
+ RO1E:7160 08 F4 4F 22               ldi  (hl),a
+ RO1E:7164 08 FC 4E 22               ldi  (hl),a
+ RO1E:7168 08 04 4D 22               ldi  (hl),a
+ RO1E:716C 08 0C 4C 22               ldi  (hl),a
+ RO1E:7170 00 EC 4B 22               ldi  (hl),a
+ RO1E:7174 00 F4 4A 22               ldi  (hl),a
+ RO1E:7178 00 FC 49 22               ldi  (hl),a
+ RO1E:717C 00 04 48 22               ldi  (hl),a
+ RO1E:7180 00 0C 47 22               ldi  (hl),a
+ RO1E:7184 F8 EC 46 22               ldi  (hl),a
+ RO1E:7188 F8 F4 45 22               ldi  (hl),a
+ RO1E:718C F8 FC 44 22               ldi  (hl),a
+ RO1E:7190 F8 04 43 22               ldi  (hl),a
+ RO1E:7194 F8 0C 42 22               ldi  (hl),a
+ RO1E:7198 F0 EC 41 22               ldi  (hl),a
+ RO1E:719C F0 F4 40 22               ldi  (hl),a
+ RO1E:71A0 F0 FC 3F 22               ldi  (hl),a
+ RO1E:71A4 F0 04 3E 22            ld   a,22
+ RO1E:71A8 F0 0C 3D 22               ldi  (hl),a
+ RO1E:71AC F0 14 3C 22
+
+ RO1E:71B0 15               dec  d
+ RO1E:71B1 07 EC 55 22               ldi  (hl),a
+ RO1E:71B5 07 F4 54 22               ldi  (hl),a
+ RO1E:71B9 07 FC 53 22               ldi  (hl),a
+ RO1E:71BD 07 04 52 22               ldi  (hl),a
+ RO1E:71C1 07 0C 51 22               ldi  (hl),a
+ RO1E:71C5 FF EC 4B 22               ldi  (hl),a
+ RO1E:71C9 FF F4 4A 22               ldi  (hl),a
+ RO1E:71CD FF FC 49 22               ldi  (hl),a
+ RO1E:71D1 FF 04 48 22               ldi  (hl),a
+ RO1E:71D5 FF 0C 47 22               ldi  (hl),a
+ RO1E:71D9 F7 EC 46 22               ldi  (hl),a
+ RO1E:71DD F7 F4 45 22               ldi  (hl),a
+ RO1E:71E1 F7 FC 44 22               ldi  (hl),a
+ RO1E:71E5 F7 04 43 22               ldi  (hl),a
+ RO1E:71E9 F7 0C 42 22               ldi  (hl),a
+ RO1E:71ED EF EC 41 22               ldi  (hl),a
+ RO1E:71F1 EF F4 40 22               ldi  (hl),a
+ RO1E:71F5 EF FC 3F 22               ldi  (hl),a
+ RO1E:71F9 EF 04 3E 22            ld   a,22
+ RO1E:71FD EF 0C 3D 22               ldi  (hl),a
+ RO1E:7201 EF 14 3C 22
+
+ RO1E:7205 15
+ RO1E:7206 06 EC 5A 22               ldi  (hl),a
+ RO1E:720A 06 F4 59 22               ldi  (hl),a
+ RO1E:720E 06 FC 58 22               ldi  (hl),a
+ RO1E:7212 06 04 57 22               ldi  (hl),a
+ RO1E:7216 06 0C 56 22               ldi  (hl),a
+ RO1E:721A FE EC 4B 22               ldi  (hl),a
+ RO1E:721E FE F4 4A 22               ldi  (hl),a
+ RO1E:7222 FE FC 49 22               ldi  (hl),a
+ RO1E:7226 FE 04 48 22               ldi  (hl),a
+ RO1E:722A FE 0C 47 22               ldi  (hl),a
+ RO1E:722E F6 EC 46 22               ldi  (hl),a
+ RO1E:7232 F6 F4 45 22               ldi  (hl),a
+ RO1E:7236 F6 FC 44 22               ldi  (hl),a
+ RO1E:723A F6 04 43 22               ldi  (hl),a
+ RO1E:723E F6 0C 42 22               ldi  (hl),a
+ RO1E:7242 EE EC 41 22               ldi  (hl),a
+ RO1E:7246 EE F4 40 22               ldi  (hl),a
+ RO1E:724A EE FC 3F 22               ldi  (hl),a
+ RO1E:724E EE 04 3E 22
+ RO1E:7252 EE 0C 3D 22               ldi  (hl),a
+ RO1E:7256 EE 14 3C 22
+
+
+ RO1E:725A A8 6C 0A               ld   a,(bc)
+ RO1E:725D ED 6C 0A               ld   a,(bc)
+ RO1E:7260 32 6D 0A               ld   a,(bc)
+ RO1E:7263 ED 6C 0A 00 00
+
+ RO1E:7268 46 6E 0A               ld   a,(bc)
+ RO1E:726B 9F 6E 0A               ld   a,(bc)
+ RO1E:726E F8 6E 0A               ld   a,(bc)
+ RO1E:7271 9F 6E 0A 00 00
+
+ RO1E:7276 77 6D 0A               ld   a,(bc)
+ RO1E:7279 BC 6D 0A               ld   a,(bc)
+ RO1E:727C 01 6E 0A         ld   bc,0A6E
+ RO1E:727F BC 6D 0A 00 00
+
+ RO1E:7284 51 6F 0A               ld   a,(bc)
+ RO1E:7287 AA 6F 0A               ld   a,(bc)
+ RO1E:728A 03 70 0A               ld   a,(bc)
+ RO1E:728D AA 6F 0A 00 00
+
+ RO1E:7292 5C 70 0A               ld   a,(bc)
+ RO1E:7295 B1 70 0A               ld   a,(bc)
+ RO1E:7298 06 71 0A               ld   a,(bc)
+ RO1E:729B B1 70 0A 00 00
+
+ RO1E:72A0 5B 71 0A               ld   a,(bc)
+ RO1E:72A3 B0 71 0A               ld   a,(bc)
+ RO1E:72A6 05 72 0A               ld   a,(bc)
+ RO1E:72A9 B0 71 0A 00 00
+
+ RO1E:72AE ED 6C FF 00 00
+ RO1E:72B3 BC 6D FF 00 00
+ RO1E:72B8 9F 6E FF 00 00
+ RO1E:72BD AA 6F FF 00 00
+ RO1E:72C2 B1 70 FF 00 00
+ RO1E:72C7 B0 71 FF 00 00
+
+ RO1E:72CC 5A 72               ld   (hl),d
+ RO1E:72CE 68 72               ld   (hl),d
+ RO1E:72D0 76 72               ld   (hl),d
+ RO1E:72D2 84 72               ld   (hl),d
+ RO1E:72D4 92 72               ld   (hl),d
+ RO1E:72D6 A0 72               ld   (hl),d
+ RO1E:72D8 AE 72               ld   (hl),d
+ RO1E:72DA B3 72               ld   (hl),d
+ RO1E:72DC B8 72               ld   (hl),d
+ RO1E:72DE BD 72               ld   (hl),d
+ RO1E:72E0 C2 72
+ RO1E:72E2 C7 72
+
+
+ RO1E:72E4 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:72F4 07 00 04 03 06 03 03 01 01 00 00 00 00 00 07 00
+ RO1E:7304 0E 00 89 06 4C 87 26 C3 F3 A1 F9 70 7C 38 3E 10
+ RO1E:7314 00 00 00 00 80 00 40 80 E0 40 F0 E0 F8 70 7F 38
+ RO1E:7324 00 00 00 00 00 00 0F 00 3B 0F 5B 2F 7B 2F 7B 1F
+ RO1E:7334 02 01 03 01 01 00 FE 00 FF FE 7B FF 7B FF 7B FF
+ RO1E:7344 4C 83 3E C3 9F E1 FF 50 FF 38 FF 5C FF 6E DC 67
+ RO1E:7354 99 0E 7C 87 3E C3 FF A1 FF 70 FF 38 FF 1C F9 4E
+ RO1E:7364 C0 80 E0 40 70 A0 20 C0 C0 80 80 00 80 00 C0 80
+ RO1E:7374 7B 3F 7B 3F 7B 3F 7B 1F 50 2F 7F 2F 7F 1F 5F 3F
+ RO1E:7384 7B FF 03 FF FF 03 FF FF 81 FF FE BF FF DF FF EF
+ RO1E:7394 BE 73 FF 71 FF 7A FF 81 FF E0 FF FF 00 FF FF FF
+ RO1E:73A4 7C A7 3E D3 9F E5 FF 42 FF 85 FF 7E 01 FE FF FE
+ RO1E:73B4 E0 40 70 A0 20 C0 C0 80 80 00 00 00 00 00 00 00
+ RO1E:73C4 7F 3F 7F 3F 3F 00 0F 03 03 00 00 00 00 00 00 00
+ RO1E:73D4 FF F7 FF FB FF 00 FF 36 92 6D FF 00 00 00 00 00
+ RO1E:73E4 F0 EF EF DF FF 1F FF C0 49 B6 FF 00 00 00 00 00
+ RO1E:73F4 07 FA FF FA FF F8 FE 00 38 D0 F0 00 00 00 00 00
+ RO1E:7404 7F 3F 7F 3F 7F 00 1F 0C 0E 01 03 00 00 00 00 00
+ RO1E:7414 FF F7 FF FB FF 00 FF C0 7F 9B C9 36 FF 00 00 00
+ RO1E:7424 F0 EF EF DF FF 1F FF 00 FF 6D 24 DB FF 00 00 00
+ RO1E:7434 07 FA FF FA FF F8 FE 00 FC 98 98 60 F0 00 00 00
+ RO1E:7444 7F 3F 7F 3F 7F 00 3F 10 17 09 0C 03 03 00 00 00
+ RO1E:7454 FF F7 FF FB FF 00 FF 00 FF 80 FF 36 92 6D FF 00
+ RO1E:7464 F0 EF EF DF FF 1F FF 00 FF 00 FF DB 49 B6 FF 00
+ RO1E:7474 07 FA FF FA FF F8 FE 00 FE 04 FC 68 28 D0 F0 00
+ RO1E:7484 E1 00 91 60 C9 70 64 38 3E 14 1F 0E 0F 07 E7 02
+ RO1E:7494 C3 00 22 C1 93 E1 C9 70 7C 28 3E 1C 9F 0E CF 04
+ RO1E:74A4 80 00 40 80 20 C0 90 E0 F8 50 7C 38 3E 1C 9F 0E
+ RO1E:74B4 00 00 00 00 00 00 00 00 00 00 00 00 00 00 C0 00
+ RO1E:74C4 00 00 01 00 03 01 07 02 0F 04 0F 00 0F 00 0F 00
+ RO1E:74D4 FE 00 43 FE 7F FE 7F FE 43 FE 7F FE 7F FE 7F FE
+ RO1E:74E4 93 60 CF 70 67 38 FF 14 FF CE FF D7 FF DB F7 D9
+ RO1E:74F4 26 C1 9F E1 CF 70 FF 28 FF 1C FF 0E FF 87 3E D3
+ RO1E:7504 4C 87 3E C3 9F E1 FF 50 FF 38 FF 1C FF 0E 7C A7
+ RO1E:7514 E0 40 70 A0 38 D0 90 E0 E0 40 C0 00 C0 00 E0 40
+ RO1E:7524 0F 00 0F 00 0F 00 0E 01 0D 02 0B 04 0F 04 0F 07
+ RO1E:7534 43 FE 7F FE 01 FE FF FE FF 26 FF 26 FF 3E FF FF
+ RO1E:7544 EF DC FF DC FF DE FF E0 FF F0 FF FF 08 FF FF F7
+ RO1E:7554 9F E9 CF 74 E7 B9 FF 50 FF 20 FF DF 42 FF FF BD
+ RO1E:7564 3E D3 9F E9 CF 72 FF A1 FF 40 FF BF 10 FF FF EF
+ RO1E:7574 70 A0 38 D0 90 E0 E0 40 C0 80 80 00 80 00 80 00
+ RO1E:7584 0F 07 0F 07 07 00 03 01 01 00 00 00 00 00 00 00
+ RO1E:7594 FF FF FF FC FF 00 FF 36 92 6D 7F 00 00 00 00 00
+ RO1E:75A4 FF F7 FF 00 FF 00 FF DB 49 B6 FF 00 00 00 00 00
+ RO1E:75B4 FF BD FF 00 FF 00 FF 6D 24 DB FF 00 00 00 00 00
+ RO1E:75C4 FF EF FF 00 FF 06 F2 BC 9C 60 F8 00 00 00 00 00
+ RO1E:75D4 80 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:75E4 0F 07 0F 07 0F 00 07 00 02 01 01 00 00 00 00 00
+ RO1E:75F4 FF FF FF FC FF 00 FF C0 7F 9B C9 36 7F 00 00 00
+ RO1E:7604 FF F7 FF 00 FF 00 FF 00 FF 6D 24 DB FF 00 00 00
+ RO1E:7614 FF BD FF 00 FF 00 FF 00 FF B6 92 6D FF 00 00 00
+ RO1E:7624 FF EF FF 00 FF 06 FF 00 FE D8 4C B0 F8 00 00 00
+ RO1E:7634 80 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:7644 0F 07 0F 07 0F 00 07 00 07 02 03 01 01 00 00 00
+ RO1E:7654 FF FF FF FC FF 00 FF 00 FF 00 FF 36 92 6D 7F 00
+ RO1E:7664 FF F7 FF 00 FF 00 FF 00 FF 00 FF DB 49 B6 FF 00
+ RO1E:7674 FF BD FF 00 FF 00 FF 00 FF 00 FF 6D 24 DB FF 00
+ RO1E:7684 FF EF FF 00 FF 02 FF 00 FF 0C F2 BC 9C 60 F8 00
+ RO1E:7694 80 00 80 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO1E:76A4 00 00 1E 00 31 1E 3C 1F 3F 0F 0F 01 01 00 00 00
+ RO1E:76B4 00 00 00 00 C0 00 78 C0 FF B8 FF 0F FF 00 3F 01
+ RO1E:76C4 00 00 00 00 00 00 00 00 00 00 E0 00 1C E0 C3 FC
+ RO1E:76D4 00 00 00 00 00 00 00 00 00 00 03 00 07 03 8C 07
+ RO1E:76E4 00 00 00 00 00 00 00 00 03 00 FD 03 FD FF 0C F7
+ RO1E:76F4 00 00 00 00 00 00 00 00 F0 00 FE 70 FF 7E 8F FE
+ RO1E:7704 07 00 00 00 00 00 03 00 0E 03 1E 0F 3E 1F 3F 13
+ RO1E:7714 F8 FF FF 1F FF 02 FF 70 FE FD FF FE FF FF 78 FF
+ RO1E:7724 FB 84 FF 72 FF 1C FF 00 F8 87 BB 64 F7 8B 74 8B
+ RO1E:7734 EF 14 EF D7 EF D7 EE 17 0E F7 FF 0E FF FF 00 FF
+ RO1E:7744 FF 0E FF FE 0F FE F7 FE F7 FE 0F F6 FF 0E 01 FE
+ RO1E:7754 3F 0B 3F 1B 3F 1B 3F 13 3F 0F 3C 1F 33 1F 2F 1F
+ RO1E:7764 77 FF 78 F7 BF F8 BF FF 80 FF 7F FF FF FF FF FF
+ RO1E:7774 EB 97 6A D7 F7 4F FF C1 13 FC FF EF FF EF FF EF
+ RO1E:7784 FF FF 01 FF FF FF FF FE FF 01 FF FD FF FD FF FD
+ RO1E:7794 FF FE FF FE FF FE FF 00 01 FE FF FE FF FE FF FE
+ RO1E:77A4 3F 1F 3F 00 0F 01 04 03 03 00 00 00 00 00 00 00
+ RO1E:77B4 FF FF FF 00 FF 80 FF 36 92 6D FF 00 00 00 00 00
+ RO1E:77C4 FF EF FF 00 FF 00 FF DB 49 B6 FF 00 00 00 00 00
+ RO1E:77D4 FF FD FF 00 FF 00 FF 6D 24 DB FF 00 00 00 00 00
+ RO1E:77E4 FF C0 FE 00 FE 04 F4 98 98 60 E0 00 00 00 00 00
+ RO1E:77F4 3F 1F 3F 00 17 0E 0B 04 06 01 03 00 00 00 00 00
+ RO1E:7804 FF FF FF 00 FF 00 FF C0 7F 9B C9 36 FF 00 00 00
+ RO1E:7814 FF EF FF 00 FF 00 FF 00 FF 6D 24 DB FF 00 00 00
+ RO1E:7824 FF FD FF 00 FF 00 FF 00 FF B6 92 6D FF 00 00 00
+ RO1E:7834 FF C0 FF 00 FE 04 FA 04 FC C8 58 A0 E0 00 00 00
+ RO1E:7844 3F 1F 3F 00 3F 00 17 08 0F 01 04 03 03 00 00 00
+ RO1E:7854 FF FF FF 00 FF 00 FF 00 FF 80 FF 36 92 6D FF 00
+ RO1E:7864 FF EF FF 00 FF 00 FF 00 FF 00 FF DB 49 B6 FF 00
+ RO1E:7874 FF FD FF 00 FF 00 FF 00 FF 00 FF 6D 24 DB FF 00
+ RO1E:7884 FF C0 FF 00 FF 00 FE 04 FE 00 F4 B8 98 60 E0 00
+
+ RO1E:7894 B8 7E FF 7F 1F 02 FF 03
+ RO1E:789C 18 7F FF 7F 75 18 FE 28
+ RO1E:78A4 DB 7E 00 00 5D 36 7F 14
+ RO1E:78AC DB 7E 00 00 7F 14 FD 3E
+ RO1E:78B4 DB 7E 00 00 5D 36 E0 7E
+ RO1E:78BC DB 7E 00 00 7F 14 E0 7E
+ RO1E:78C4 D8 7E 00 00 FD 3E B6 29
+ RO1E:78CC DB 7E FF 7F 7F 1A FD 34
+

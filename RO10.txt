@@ -1,0 +1,1665 @@
+ RO10:4000 FE 11            cp   a,11
+ RO10:4002 28 03            jr   z,4007
+ RO10:4004 C3 BB 40         jp   40BB           // Jump being done if not GBC/GBA
+ RO10:4007 EF 11 00 40                          // "GB Mobile System" startup screen display
+ RO10:400B AF               xor  a
+ RO10:400C E0 40            ld   (ff00+40),a
+ RO10:400E CD 20 40         call 4020           // Establishes Hudson Logo palette colors
+ RO10:4011 CD 91 40         call 4091           // Establishes Hudson logo graphics
+ RO10:4014 3E 80            ld   a,80
+ RO10:4016 E0 40            ld   (ff00+40),a    // Enable LCD Select, disables other LCD control portions
+ RO10:4018 01 78 00         ld   bc,0078
+ RO10:401B CD AA 40         call 40AA           // NOP 630000 times
+ RO10:401E AF               xor  a
+ RO10:401F C9               ret                 // Startup advertisement screens; starts with setting up non-GBC infinite loop
+ RO10:4020 3E 01            ld   a,01
+ RO10:4022 E0 4F            ld   (ff00+4F),a
+ RO10:4024 21 00 98         ld   hl,9800
+ RO10:4027 AF               xor  a
+ RO10:4028 01 00 08         ld   bc,0800
+ RO10:402B 22               ldi  (hl),a
+ RO10:402C 0D               dec  c
+ RO10:402D 20 FC            jr   nz,402B
+ RO10:402F 05               dec  b
+ RO10:4030 20 F9            jr   nz,402B        // Empties VRA1($9800-$9FFF)
+ RO10:4032 AF               xor  a
+ RO10:4033 E0 4F            ld   (ff00+4F),a
+ RO10:4035 01 7F 0F         ld   bc,0F7F
+ RO10:4038 11 E4 58         ld   de,58E4        // Palettes: 7FFF, 0F7F, 58E4, 0000, 7FFF, 58E4, 0F7F, 0000
+ RO10:403B C3 47 40         jp   4047
+ RO10:403E 01 F7 5E         ld   bc,5EF7
+ RO10:4041 11 EF 3D         ld   de,3DEF
+ RO10:4044 C3 47 40         jp   4047
+ RO10:4047 3E 80            ld   a,80
+ RO10:4049 E0 68            ld   (ff00+68),a    // Auto increment on
+ RO10:404B 21 69 FF         ld   hl,FF69
+ RO10:404E CD 58 40         call 4058
+ RO10:4051 3E 80            ld   a,80
+ RO10:4053 E0 6A            ld   (ff00+6A),a
+ RO10:4055 21 6B FF         ld   hl,FF6B
+ RO10:4058 3E 04            ld   a,04
+ RO10:405A 36 FF            ld   (hl),FF
+ RO10:405C 36 7F            ld   (hl),7F
+ RO10:405E 71               ld   (hl),c
+ RO10:405F 70               ld   (hl),b
+ RO10:4060 73               ld   (hl),e
+ RO10:4061 72               ld   (hl),d
+ RO10:4062 36 00            ld   (hl),00
+ RO10:4064 36 00            ld   (hl),00
+ RO10:4066 36 FF            ld   (hl),FF
+ RO10:4068 36 7F            ld   (hl),7F
+ RO10:406A 73               ld   (hl),e
+ RO10:406B 72               ld   (hl),d
+ RO10:406C 71               ld   (hl),c
+ RO10:406D 70               ld   (hl),b
+ RO10:406E 36 00            ld   (hl),00
+ RO10:4070 36 00            ld   (hl),00
+ RO10:4072 3D               dec  a
+ RO10:4073 20 E5            jr   nz,405A
+ RO10:4075 C9               ret                 // Establishes Hudson Logo palette colors
+ RO10:4076 F0 44            ld   a,(ff00+44)
+ RO10:4078 FE 92            cp   a,92
+ RO10:407A 38 FA            jr   c,4076         // Cycles while LY value is below 146
+ RO10:407C AF               xor  a
+ RO10:407D E0 40            ld   (ff00+40),a
+ RO10:407F CD 91 40         call 4091           // Establishes Hudson logo graphics
+ RO10:4082 3E F0            ld   a,F0
+ RO10:4084 E0 47            ld   (ff00+47),a    // 100% Shade for Colors 3 and 4
+ RO10:4086 3E 81            ld   a,81
+ RO10:4088 E0 40            ld   (ff00+40),a    // Enable LCD Display and BG Display
+ RO10:408A 01 78 00         ld   bc,0078
+ RO10:408D CD AA 40         call 40AA           // NOP 630000 times
+ RO10:4090 C9               ret  
+ RO10:4091 11 75 41         ld   de,4175
+ RO10:4094 21 00 90         ld   hl,9000
+ RO10:4097 01 E0 07         ld   bc,07E0
+ RO10:409A CD 50 3B         call 3B50           // ($9000~$97DF) = ($4175~$4954)
+ RO10:409D 11 15 49         ld   de,4915
+ RO10:40A0 21 00 98         ld   hl,9800
+ RO10:40A3 01 00 04         ld   bc,0400
+ RO10:40A6 CD 50 3B         call 3B50           // ($9800~$9BFF) = ($4915~$4D14)
+ RO10:40A9 C9               ret  
+ RO10:40AA 11 D6 06         ld   de,06D6
+ RO10:40AD 00               nop  
+ RO10:40AE 00               nop  
+ RO10:40AF 00               nop  
+ RO10:40B0 1B               dec  de
+ RO10:40B1 7A               ld   a,d
+ RO10:40B2 B3               or   e
+ RO10:40B3 20 F8            jr   nz,40AD
+ RO10:40B5 0B               dec  bc
+ RO10:40B6 78               ld   a,b
+ RO10:40B7 B1               or   c
+ RO10:40B8 20 F0            jr   nz,40AA
+ RO10:40BA C9               ret  
+ RO10:40BB F3               di   
+ RO10:40BC F0 40            ld   a,(ff00+40)
+ RO10:40BE CB 7F            bit  7,a
+ RO10:40C0 28 06            jr   z,40C8
+ RO10:40C2 F0 44            ld   a,(ff00+44)
+ RO10:40C4 FE 92            cp   a,92
+ RO10:40C6 38 FA            jr   c,40C2         // Cycles while LY value is below 146
+ RO10:40C8 AF               xor  a
+ RO10:40C9 E0 40            ld   (ff00+40),a
+ RO10:40CB E0 43            ld   (ff00+43),a
+ RO10:40CD E0 42            ld   (ff00+42),a
+ RO10:40CF 21 00 98         ld   hl,9800
+ RO10:40D2 01 00 08         ld   bc,0800
+ RO10:40D5 3E 20            ld   a,20
+ RO10:40D7 CD 79 3B         call 3B79           // ($9800 ~ $9FFF) = 32 (blank space)
+ RO10:40DA EF 01 00 40                          // Graphics holding: VRA0($9000) to VRA0($97FF) then VRA0($8800) to VRA0($8FFF) holds basic text
+ RO10:40DE CD F4 40         call 40F4           // Prints GBC-only disclaimer
+ RO10:40E1 AF               xor  a
+ RO10:40E2 E0 48            ld   (ff00+48),a
+ RO10:40E4 E0 49            ld   (ff00+49),a
+ RO10:40E6 3E 0C            ld   a,0C
+ RO10:40E8 E0 47            ld   (ff00+47),a
+ RO10:40EA 3E 81            ld   a,81
+ RO10:40EC E0 40            ld   (ff00+40),a
+ RO10:40EE 76               halt 
+ RO10:40EF 00               nop  
+ RO10:40F0 00               nop  
+ RO10:40F1 00               nop  
+ RO10:40F2 18 FA            jr   40EE           // Infinite loop set up to prevent the game from proceeding without GBC
+
+ RO10:40F4 0E 05            ld   c,05
+ RO10:40F6 06 00            ld   b,00
+ RO10:40F8 C5               push bc             // Loop begins here
+ RO10:40F9 58               ld   e,b
+ RO10:40FA CB 23            sla  e
+ RO10:40FC 16 00            ld   d,00
+ RO10:40FE 21 19 41         ld   hl,4119
+ RO10:4101 19               add  hl,de
+ RO10:4102 5E               ld   e,(hl)
+ RO10:4103 23               inc  hl
+ RO10:4104 56               ld   d,(hl)
+ RO10:4105 1A               ld   a,(de)
+ RO10:4106 6F               ld   l,a
+ RO10:4107 13               inc  de
+ RO10:4108 1A               ld   a,(de)
+ RO10:4109 67               ld   h,a
+ RO10:410A 13               inc  de
+ RO10:410B 1A               ld   a,(de)
+ RO10:410C 4F               ld   c,a
+ RO10:410D 06 00            ld   b,00
+ RO10:410F 13               inc  de
+ RO10:4110 CD 50 3B         call 3B50           // (HL ~ HL+BC-1) = (DE ~ DE+BC-1)
+ RO10:4113 C1               pop  bc
+ RO10:4114 04               inc  b
+ RO10:4115 0D               dec  c
+ RO10:4116 20 E0            jr   nz,40F8
+ RO10:4118 C9               ret                 // Prints GBC-only disclaimer
+
+ RO10:4119 23 41
+ RO10:411B 31 41
+ RO10:411D 3E 41
+ RO10:411F 4B 41
+ RO10:4121 5E 41
+
+ RO10:4123 84 98
+ RO10:4125 0B
+ RO10:4126 E1 2D D1 F1 2D B2 B3 FB 2D E5 33                                   // Game Boy Wars 3
+
+ RO10:4131 A5 98
+ RO10:4133 0A
+ RO10:4134 20 20 20 20 20 20 20 20 20 20
+
+ RO10:413E 05 99
+ RO10:4140 0A
+ RO10:4141 6A 79 B6 2D C4 D8 FF E4 7A 2C                                      // This Cartridge,
+
+ RO10:414B 42 99
+ RO10:414D 10
+ RO10:414E E1 2D D1 F1 2D B2 B6 D7 2D 6E 8D 86 63 9B 6D 2E                    // ..is GBC-only.
+
+ RO10:415E 80 99
+ RO10:4160 14
+ RO10:4161 E1 2D D1 F1 2D B2 B6 D7 2D 9B 2C 6C 86 63 6C 73 68 98 6B 62        // Please use GBC.
+ 
+ RO10:4175 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ 
+ RO10:4185 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:4195 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0 00 00 00 00
+ RO10:41A5 00 00 00 00 00 00 00 00 00 00 01 01 01 01 1F 1F
+ RO10:41B5 30 30 78 78 78 78 79 79 FF FF FF FF CE CE FE FE
+ RO10:41C5 00 00 1E 1E FF FF FF FF C1 C1 1C 1C 3E 3E 3E 3E
+ RO10:41D5 00 00 00 00 81 81 C3 C3 EF EF FF FF 7E 7E 7F 7F
+ RO10:41E5 18 18 7C 7C FC FC F0 F0 C0 C0 00 00 00 00 80 80
+ RO10:41F5 00 00 00 00 00 00 00 00 00 00 00 00 03 03 7F 7F
+ RO10:4205 00 00 00 00 00 00 00 00 00 00 00 00 FC FC FC FC
+ RO10:4215 00 C7 00 C3 00 C3 00 C3 00 C1 00 C1 00 00 00 00
+ RO10:4225 00 CF 00 CF 00 8F 00 8F 00 0F 00 0F 00 00 00 00
+ RO10:4235 00 FF 00 FF 00 FF 00 FF 00 FF 00 7C 00 00 00 00
+ RO10:4245 00 E7 00 E7 00 E3 00 E3 00 C1 00 80 00 00 00 00
+ RO10:4255 00 FF 00 FF 00 FF 00 FF 00 EF 00 E7 00 00 00 00
+ RO10:4265 00 F9 00 F9 00 F1 00 F1 00 E1 00 81 00 00 00 00
+ RO10:4275 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 00 00 00
+ RO10:4285 00 F1 00 F1 00 E1 00 E1 00 C1 00 01 00 00 00 00
+ RO10:4295 00 00 00 00 00 00 01 01 01 01 03 03 03 03 03 03
+ RO10:42A5 7F 7F F8 F8 E3 E3 C7 C7 C7 C7 87 87 87 87 83 83
+ RO10:42B5 FC FC 3C 3C 9E 9E DE DE CF CF CF CF CF CF 9D 9D
+ RO10:42C5 3E 3E 3E 3E 1C 1C 00 00 00 00 83 83 FF FF FF FF
+ RO10:42D5 7B 7B 70 70 71 71 F7 F7 FF FF FF FF FF FF DF DF
+ RO10:42E5 C7 C7 FF FF FF FF FC FC FF FF FF FF FF FF FF FF
+ RO10:42F5 FF FF F8 F8 80 80 0F 0F FF FF FF FF 00 00 E0 E0
+ RO10:4305 E0 E0 00 00 00 00 FE FE FF FF 0F 0F 00 00 00 00
+ RO10:4315 00 00 00 00 00 00 00 00 C0 C0 F0 F0 F0 F0 00 00
+ RO10:4325 00 FF 00 FF 00 7F 00 7F 00 3F 00 0F 00 00 00 00
+ RO10:4335 00 F8 00 F8 00 F8 00 F8 00 F8 00 F8 00 00 00 00
+ RO10:4345 00 FB 00 FB 00 FB 00 FB 00 FB 00 FB 00 00 00 00
+ RO10:4355 00 03 00 03 00 03 00 03 00 03 00 03 00 00 00 00
+ RO10:4365 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0
+ RO10:4375 00 9E 00 9F 00 9F 00 8F 00 8F 00 8F 00 87 00 C7
+ RO10:4385 00 C7 00 C7 00 C7 00 C7 00 C7 00 C7 00 C7 00 CF
+ RO10:4395 01 01 3F 3F 3F 3F 1F 1F 01 01 03 03 03 03 07 07
+ RO10:43A5 C0 C0 C0 C0 F0 F0 FF FF FF FF 87 87 8F 8F 3E 3E
+ RO10:43B5 1C 1C 3F 3F FF FF FE FE F8 F8 FF FF FF FF FF FE
+ RO10:43C5 FF FF FF FF 8F 8F 1F 1F FF FE FF F8 FF E0 FF 00
+ RO10:43D5 FF FF FE FE FF FF FF 0F FF 07 FF 07 FF 0F FF 0F
+ RO10:43E5 FF FF 03 03 00 00 C0 C0 E0 E0 F0 F0 F8 F8 FC FC
+ RO10:43F5 FF FF FF FF 07 07 00 00 00 00 00 00 00 00 00 00
+ RO10:4405 00 00 F8 F8 FF FF 3F 3F 03 03 00 00 00 00 00 00
+ RO10:4415 00 00 00 00 80 80 C0 C0 C0 C0 00 00 00 00 00 00
+ RO10:4425 00 C7 00 C7 00 C7 00 C7 00 C7 00 C7 00 EF 00 FF
+ RO10:4435 00 87 00 C7 00 C7 00 E7 00 E7 00 E7 00 E7 00 E7
+ RO10:4445 00 3F 00 1F 00 07 00 03 00 E3 00 E3 00 F7 00 FF
+ RO10:4455 00 F8 00 F8 00 F8 00 F8 00 F9 00 F9 00 F9 00 F9
+ RO10:4465 00 F8 00 F8 00 F8 00 F8 00 F8 00 F9 00 FF 00 FF
+ RO10:4475 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0 00 F1
+ RO10:4485 00 00 00 00 00 00 00 00 00 00 00 00 00 00 01 01
+ RO10:4495 07 07 03 03 07 07 0F 0F 1F 1F 3F 3F 77 77 EF EF
+ RO10:44A5 FC FC FF FF FF FF FF FF F9 F9 E9 E9 91 91 31 31
+ RO10:44B5 FF F0 FF E0 FF E0 FF C0 FF C0 FF C0 FF C0 FF C0
+ RO10:44C5 FF 00 FF 00 FF 00 FF 00 FF 00 FF 03 FF 0F FF FF
+ RO10:44D5 FF 1F FF 1F FF 3F FF 7F FF FF FF FF FF FF FF FF
+ RO10:44E5 FC FC FE FE FE FE FF FF FF FF FF FF FF FF FF FB
+ RO10:44F5 00 00 00 00 00 00 00 00 00 00 00 00 80 80 80 80
+ RO10:4505 00 00 00 00 01 01 03 03 03 03 07 07 07 07 0E 0E
+ RO10:4515 78 78 FC FC FE FE CE CE 87 87 07 07 07 07 07 07
+ RO10:4525 00 00 00 00 00 00 00 00 00 00 00 00 01 01 03 03
+ RO10:4535 00 00 00 00 00 00 00 00 0F 0F 7F 7F FF FF F0 F0
+ RO10:4545 00 00 00 00 00 00 00 00 80 80 C0 C0 00 00 00 00
+ RO10:4555 00 F8 00 F8 00 F8 00 F8 00 F8 00 F8 00 FD 00 FF
+ RO10:4565 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0 00 F8
+ RO10:4575 00 00 00 00 00 00 00 00 00 00 00 00 03 03 07 07
+ RO10:4585 03 03 07 07 1E 1E 3C 3C 78 78 F1 F1 E1 E1 83 83
+ RO10:4595 DE DE 1C 1C 3D 3D 79 79 F3 F3 E7 E7 EF EF CE CE
+ RO10:45A5 71 71 E1 E1 C1 C1 C1 C1 81 81 80 80 00 00 00 00
+ RO10:45B5 00 FF 00 F1 00 F1 00 F1 00 F1 00 F1 00 F1 00 FB
+ RO10:45C5 00 01 00 01 00 01 00 01 00 01 00 01 00 01 00 03
+ RO10:45D5 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FE
+ RO10:45E5 FF FB FF F3 FF F3 FF E7 FF C7 FF 87 FF 07 FF 0F
+ RO10:45F5 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80 80
+ RO10:4605 0E 0E 0E 0E 0E 0E 07 07 07 07 03 03 03 03 01 01
+ RO10:4615 07 07 0E 0E 0E 0E 0E 0E 1C 1C 9C 9C B9 B9 FF FF
+ RO10:4625 07 07 0F 0F 1E 1E 3C 3C 78 78 F0 F0 E0 E0 C0 C0
+ RO10:4635 C0 C0 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:4645 00 4A 00 84 00 78 00 00 00 00 00 00 00 00 00 00
+ RO10:4655 00 F9 00 F8 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0
+ RO10:4665 00 F9 00 F9 00 F8 00 FC 00 FC 00 BC 00 BE 00 BE
+ RO10:4675 1F 1F 3E 3E 3C 3C 18 18 00 00 00 00 00 00 00 00
+ RO10:4685 07 07 0F 0F 1F 1F 3E 3E 7C 7C 78 78 71 71 01 01
+ RO10:4695 9E 9E 3C 3C 38 38 70 70 70 70 E0 E0 E0 E0 C0 C0
+ RO10:46A5 00 CF 00 CF 00 C7 00 C7 00 C7 00 C7 00 C7 00 C7
+ RO10:46B5 7F 7F 7F 7F 7F 7F 3F 3F 3F 3C 1F 1C 1F 1E 0F 0F
+ RO10:46C5 FF FF FF FF FF FF FF E0 FF 00 FF 00 FF 00 FF 00
+ RO10:46D5 FF F8 FF E0 FF 00 FF 00 FF 00 FF 00 FF 01 FF 07
+ RO10:46E5 FF 0F FF 1F FF 1F FF 3F FF 7F FF FF FF FF FF FF
+ RO10:46F5 00 00 00 00 00 00 80 80 80 80 C0 C0 E0 E0 FB FB
+ RO10:4705 01 01 00 00 00 00 01 01 03 03 0F 0F 3F 3F FC FC
+ RO10:4715 FF FF FF FF EC EC C0 C0 C0 C0 80 80 00 00 00 00
+ RO10:4725 80 80 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:4735 00 FF 00 FF 00 EF 00 C7 00 C7 00 C7 00 C7 00 C7
+ RO10:4745 00 E7 00 E7 00 E7 00 E7 00 07 00 07 00 07 00 07
+ RO10:4755 00 FF 00 FF 00 FB 00 F1 00 F0 00 F8 00 FE 00 7F
+ RO10:4765 00 F9 00 F9 00 F9 00 F9 00 F9 00 F8 00 F8 00 F8
+ RO10:4775 00 FF 00 FF 00 F9 00 F8 00 F8 00 F8 00 F8 00 F8
+ RO10:4785 03 03 03 03 03 03 01 01 00 00 00 00 00 00 00 00
+ RO10:4795 C0 C0 C0 C0 80 80 80 80 00 00 00 00 00 00 00 00
+ RO10:47A5 00 FD 00 FD 00 F8 00 F8 00 F8 00 F8 00 F8 00 F8
+ RO10:47B5 07 07 03 03 01 01 00 00 00 00 00 00 00 00 00 00
+ RO10:47C5 FF C0 FF FF FF FF 7F 7F 0F 0F 00 00 00 00 00 00
+ RO10:47D5 FF 1F FF FF FF FF FE FE E0 E0 00 00 00 00 00 00
+ RO10:47E5 FF FF F8 F8 C0 C0 00 00 00 00 00 00 00 00 00 00
+ RO10:47F5 F3 F3 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:4805 F8 F8 E0 E0 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:4815 00 F9 00 F9 00 F0 00 F0 00 F0 00 F0 00 F0 00 F0
+ RO10:4825 00 FB 00 FB 00 F1 00 F1 00 F1 00 F1 00 F1 00 FF
+ RO10:4835 00 03 00 03 00 01 00 01 00 01 00 01 00 01 00 01
+ RO10:4845 00 00 00 00 00 00 00 78 00 84 00 72 00 4A 00 72
+ RO10:4855 00 00 00 00 00 00 00 F8 00 F8 00 F9 00 F9 00 F9
+ RO10:4865 00 00 00 00 00 00 00 E1 00 E1 00 F1 00 F1 00 F1
+ RO10:4875 00 00 00 00 00 00 00 03 00 03 00 03 00 03 00 03
+ RO10:4885 00 00 00 00 00 00 00 FB 00 FB 00 FB 00 FB 00 FB
+ RO10:4895 00 00 00 00 00 00 00 F9 00 F9 00 F9 00 F9 00 F9
+ RO10:48A5 00 00 00 00 00 00 00 FD 00 FD 00 FD 00 FD 00 FD
+ RO10:48B5 00 00 00 00 00 00 00 0F 00 0F 00 8F 00 8F 00 CF
+ RO10:48C5 00 00 00 00 00 00 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:48D5 00 00 00 00 00 00 00 80 00 E0 00 F1 00 F1 00 F9
+ RO10:48E5 00 00 00 00 00 00 00 79 00 FD 00 FF 00 FF 00 FF
+ RO10:48F5 00 00 00 00 00 00 00 E0 00 E1 00 E3 00 E3 00 E7
+ RO10:4905 00 00 00 00 00 00 00 7C 00 FF 00 FF 00 FF 00 FF
+ 
+ RO10:4915 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+ RO10:4929 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4935 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+ RO10:4949 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4955 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+ RO10:4969 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4975 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+ RO10:4989 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4995 01 01 01 01 01 01 03 04 05 06 07 08 09 01 01 01 01 01 01 01
+ RO10:49A9 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:49B5 01 01 01 01 01 12 13 14 15 16 17 18 19 1A 01 01 01 01 01 01
+ RO10:49C9 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:49D5 01 01 01 01 01 22 23 24 25 26 27 28 29 2A 01 01 01 01 01 01
+ RO10:49E9 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:49F5 01 01 01 01 31 32 33 34 35 36 37 38 39 3A 3B 3C 3D 01 01 01
+ RO10:4A09 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4A15 01 01 01 40 41 42 43 00 00 46 47 48 49 4A 4B 4C 01 01 01 01
+ RO10:4A29 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4A35 01 01 01 50 51 52 01 54 55 56 57 58 59 5A 5B 01 01 01 01 01
+ RO10:4A49 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4A55 01 01 01 01 61 62 01 64 65 66 67 68 69 01 01 01 01 01 01 01
+ RO10:4A69 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4A75 01 01 01 70 71 72 73 72 75 76 77 78 79 74 6F 6E 6D 01 01 01
+ RO10:4A89 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4A95 01 01 01 6C 6B 6A 63 6A 60 5F 5E 5D 5C 53 4F 4E 4D 01 01 01
+ RO10:4AA9 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4AB5 01 01 01 45 44 3F 3E 30 2F 2E 2D 2C 2B 21 20 1F 01 01 01 01
+ RO10:4AC9 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4AD5 01 01 01 1E 1D 1C 1B 11 10 0F 0E 0D 0C 0B 0A 02 01 01 01 01
+ RO10:4AE9 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4AF5 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+ RO10:4B09 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4B15 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+ RO10:4B29 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4B35 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01 01
+ RO10:4B49 00 00 00 00 00 00 00 00 00 00 00 00
+ 
+ RO10:4B55 11 E0 C4         ld   de,C4E0
+ RO10:4B58 21 67 C5         ld   hl,C567
+ RO10:4B5B 01 80 00         ld   bc,0080
+ RO10:4B5E CD 50 3B         call 3B50           // ($C567~$C5E6) = ($C4E0~$C55F)
+ RO10:4B61 11 FF 7F         ld   de,7FFF
+ RO10:4B64 21 E0 C4         ld   hl,C4E0
+ RO10:4B67 01 40 00         ld   bc,0040
+ RO10:4B6A CD A5 3B         call 3BA5           // ($C4E0~$C55F) filled with all White
+ RO10:4B6D C9               ret                 // Palettes put in ($C567~$C5E6) while ($C4E0~C55F) ends up with all White
+ RO10:4B6E 21 A7 C5         ld   hl,C5A7
+ RO10:4B71 11 20 C5         ld   de,C520
+ RO10:4B74 0E 08            ld   c,08
+ RO10:4B76 C5               push bc             // Loop begins here
+ RO10:4B77 2A               ldi  a,(hl)         // A = ($C5?? (A7,AF,B7,BF,C7,CF,D7,DF))
+ RO10:4B78 12               ld   (de),a         // ($C5?? (20,28,30,38,40,48,50,58)) = ($C5?? (A7,AF,B7,BF,C7,CF,D7,DF))
+ RO10:4B79 13               inc  de
+ RO10:4B7A 7E               ld   a,(hl)
+ RO10:4B7B 12               ld   (de),a
+ RO10:4B7C 01 07 00         ld   bc,0007
+ RO10:4B7F 09               add  hl,bc
+ RO10:4B80 79               ld   a,c
+ RO10:4B81 83               add  e
+ RO10:4B82 5F               ld   e,a
+ RO10:4B83 78               ld   a,b
+ RO10:4B84 8A               adc  d
+ RO10:4B85 57               ld   d,a
+ RO10:4B86 C1               pop  bc
+ RO10:4B87 0D               dec  c
+ RO10:4B88 20 EC            jr   nz,4B76
+ RO10:4B8A C9               ret                 // ($C520) sprite set grabs first color of each palette from ($C5A7) sprite set
+ RO10:4B8B CD BB 4B         call 4BBB           // All Palettes have each RGB portion of each color shifted up to 4 points to new color indicated by ($C567) table
+ RO10:4B8E CD F2 06         call 06F2           // Both BG and Sprite Palette tables are updated
+ RO10:4B91 FA 64 C5         ld   a,(C564)
+ RO10:4B94 3D               dec  a
+ RO10:4B95 EA 64 C5         ld   (C564),a
+ RO10:4B98 20 03            jr   nz,4B9D
+ RO10:4B9A EA 63 C5         ld   (C563),a
+ RO10:4B9D C9               ret                 // Updates all Palette tables to be closer to new colors, decrements ($C564), empties ($C563) if ($C564) becomes empty
+ RO10:4B9E CD B1 4B         call 4BB1           // BG Palettes have each RGB portion of each color shifted up to 4 points to new color indicated by ($C567) table
+ RO10:4BA1 CD F9 06         call 06F9           // BG Palette tables are updated
+ RO10:4BA4 FA 64 C5         ld   a,(C564)
+ RO10:4BA7 3D               dec  a
+ RO10:4BA8 EA 64 C5         ld   (C564),a
+ RO10:4BAB 20 03            jr   nz,4BB0
+ RO10:4BAD EA 63 C5         ld   (C563),a
+ RO10:4BB0 C9               ret                 // Updates BG Palette tables to be closer to new colors, decrements ($C564), empties ($C563) if ($C564) becomes empty
+ RO10:4BB1 0E 20            ld   c,20
+ RO10:4BB3 21 E0 C4         ld   hl,C4E0
+ RO10:4BB6 11 67 C5         ld   de,C567
+ RO10:4BB9 18 08            jr   4BC3
+ RO10:4BBB 0E 40            ld   c,40
+ RO10:4BBD 21 E0 C4         ld   hl,C4E0
+ RO10:4BC0 11 67 C5         ld   de,C567        // C = 32 or 64 depending on starting point
+ RO10:4BC3 C5               push bc             // Loop begins here
+ RO10:4BC4 1A               ld   a,(de)
+ RO10:4BC5 13               inc  de
+ RO10:4BC6 4F               ld   c,a
+ RO10:4BC7 1A               ld   a,(de)
+ RO10:4BC8 13               inc  de
+ RO10:4BC9 47               ld   b,a
+ RO10:4BCA D5               push de
+ RO10:4BCB C5               push bc
+ RO10:4BCC 4E               ld   c,(hl)
+ RO10:4BCD 23               inc  hl
+ RO10:4BCE 46               ld   b,(hl)
+ RO10:4BCF D1               pop  de             // BC has (HL) values, DE has (DE) values
+ RO10:4BD0 CD DD 4B         call 4BDD           // A holds 2nd byte of new Palette, C holds 1st byte of new Palette
+ RO10:4BD3 32               ldd  (hl),a
+ RO10:4BD4 71               ld   (hl),c
+ RO10:4BD5 23               inc  hl
+ RO10:4BD6 23               inc  hl
+ RO10:4BD7 D1               pop  de
+ RO10:4BD8 C1               pop  bc
+ RO10:4BD9 0D               dec  c
+ RO10:4BDA 20 E7            jr   nz,4BC3
+ RO10:4BDC C9               ret                 // BG Palettes (all Palettes for $4BBB procedure) have each RGB portion of each color shifted up to 4 points to new color indicated by ($C567) table
+ RO10:4BDD E5               push hl
+ RO10:4BDE 79               ld   a,c
+ RO10:4BDF BB               cp   e
+ RO10:4BE0 20 0C            jr   nz,4BEE        // Jumps if C != E
+ RO10:4BE2 78               ld   a,b
+ RO10:4BE3 BA               cp   d
+ RO10:4BE4 28 57            jr   z,4C3D         // Ends immediately if BC = DE
+ RO10:4BE6 79               ld   a,c
+ RO10:4BE7 E6 1F            and  a,1F           // A = BC Red
+ RO10:4BE9 EA 65 C5         ld   (C565),a       // ($C565) = BC Red
+ RO10:4BEC 18 0D            jr   4BFB
+ RO10:4BEE 7B               ld   a,e
+ RO10:4BEF E6 1F            and  a,1F           // A = DE Red
+ RO10:4BF1 6F               ld   l,a            // L = DE Red
+ RO10:4BF2 79               ld   a,c
+ RO10:4BF3 E6 1F            and  a,1F
+ RO10:4BF5 CD 3F 4C         call 4C3F           // BC Red is shifted up to 4 points closer to DE Red
+ RO10:4BF8 EA 65 C5         ld   (C565),a       // ($C565) = BC Red shifted up to 4 points closer to DE Red
+ RO10:4BFB 7B               ld   a,e
+ RO10:4BFC E6 E0            and  a,E0
+ RO10:4BFE 6F               ld   l,a            // L = E / 32 * 32
+ RO10:4BFF 7A               ld   a,d
+ RO10:4C00 E6 03            and  a,03
+ RO10:4C02 B5               or   l              // A = D % 4 + E / 32 * 32
+ RO10:4C03 CB 37            swap a              // A = D % 4 * 16 + E / 32 * 2
+ RO10:4C05 0F               rrca                // A = D % 4 * 8 + E / 32 = DE Green
+ RO10:4C06 6F               ld   l,a            // L = DE Green
+ RO10:4C07 79               ld   a,c
+ RO10:4C08 E6 E0            and  a,E0
+ RO10:4C0A 67               ld   h,a            // H = C / 32 * 32
+ RO10:4C0B 78               ld   a,b
+ RO10:4C0C E6 03            and  a,03
+ RO10:4C0E B4               or   h              // A = B % 4 + C / 32 * 32
+ RO10:4C0F CB 37            swap a              // A = B % 4 * 16 + C / 32 * 2
+ RO10:4C11 0F               rrca                // A = B % 4 * 8 + C / 32 = BC Green
+ RO10:4C12 CD 3F 4C         call 4C3F           // A is shifted up to 4 points closer to DE Green
+ RO10:4C15 07               rlca 
+ RO10:4C16 CB 37            swap a
+ RO10:4C18 67               ld   h,a
+ RO10:4C19 E6 03            and  a,03
+ RO10:4C1B EA 66 C5         ld   (C566),a
+ RO10:4C1E 3E E0            ld   a,E0
+ RO10:4C20 A4               and  h
+ RO10:4C21 67               ld   h,a
+ RO10:4C22 FA 65 C5         ld   a,(C565)
+ RO10:4C25 B4               or   h
+ RO10:4C26 67               ld   h,a
+ RO10:4C27 7A               ld   a,d
+ RO10:4C28 E6 7C            and  a,7C
+ RO10:4C2A 0F               rrca 
+ RO10:4C2B 0F               rrca                // A = (D / 4) % 32 = BC Blue
+ RO10:4C2C 6F               ld   l,a            // L = BC Blue
+ RO10:4C2D 78               ld   a,b
+ RO10:4C2E E6 7C            and  a,7C
+ RO10:4C30 0F               rrca 
+ RO10:4C31 0F               rrca                // A = (B / 4) % 32 = BC Blue
+ RO10:4C32 CD 3F 4C         call 4C3F           // A is shifted up to 4 points closer to DE Blue
+ RO10:4C35 07               rlca 
+ RO10:4C36 07               rlca 
+ RO10:4C37 47               ld   b,a            // B = New Blue * 2
+ RO10:4C38 FA 66 C5         ld   a,(C566)
+ RO10:4C3B B0               or   b
+ RO10:4C3C 4C               ld   c,h
+ RO10:4C3D E1               pop  hl
+ RO10:4C3E C9               ret                 // A holds 2nd byte of new Palette, C holds 1st byte of new Palette
+ RO10:4C3F BD               cp   l
+ RO10:4C40 C8               ret  z              // Ends immediately if A = L
+ RO10:4C41 30 0B            jr   nc,4C4E
+ RO10:4C43 3C               inc  a
+ RO10:4C44 BD               cp   l
+ RO10:4C45 C8               ret  z
+ RO10:4C46 3C               inc  a
+ RO10:4C47 BD               cp   l
+ RO10:4C48 C8               ret  z
+ RO10:4C49 3C               inc  a
+ RO10:4C4A BD               cp   l
+ RO10:4C4B C8               ret  z
+ RO10:4C4C 3C               inc  a
+ RO10:4C4D C9               ret  
+ RO10:4C4E 3D               dec  a
+ RO10:4C4F BD               cp   l
+ RO10:4C50 C8               ret  z
+ RO10:4C51 3D               dec  a
+ RO10:4C52 BD               cp   l
+ RO10:4C53 C8               ret  z
+ RO10:4C54 3D               dec  a
+ RO10:4C55 BD               cp   l
+ RO10:4C56 C8               ret  z
+ RO10:4C57 3D               dec  a
+ RO10:4C58 C9               ret                 // A is shifted up to 4 points closer to L
+ RO10:4C59 C5               push bc
+ RO10:4C5A 3E 00            ld   a,00
+ RO10:4C5C E0 83            ld   (ff00+83),a
+ RO10:4C5E E0 4F            ld   (ff00+4F),a
+ RO10:4C60 CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO10:4C63 01 A0 00         ld   bc,00A0
+ RO10:4C66 11 80 4C         ld   de,4C80
+ RO10:4C69 CD 50 3B         call 3B50           // VRA0($9800 + B + C * 32) 160 byte = ($4C80 ~ $4D1F)
+ RO10:4C6C 3E 01            ld   a,01
+ RO10:4C6E E0 83            ld   (ff00+83),a
+ RO10:4C70 E0 4F            ld   (ff00+4F),a
+ RO10:4C72 C1               pop  bc
+ RO10:4C73 CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO10:4C76 01 A0 00         ld   bc,00A0
+ RO10:4C79 11 20 4D         ld   de,4D20
+ RO10:4C7C CD 50 3B         call 3B50           // VRA1($9800 + B + C * 32) 160 byte = ($4D20 ~ $4DBF)
+ RO10:4C7F C9               ret                 // 16x3 Text Window base established at Coordinates BC
+
+ RO10:4C80 37 34 35 35 35 35 35 35 35 35 35 35 35 35 35 35-35 35 34 37 30 30 30 30 30 30 30 30 30 30 30 30
+ RO10:4CA0 37 36 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 36 37 30 30 30 30 30 30 30 30 30 30 30 30
+ RO10:4CC0 37 36 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 36 37 30 30 30 30 30 30 30 30 30 30 30 30
+ RO10:4CE0 37 36 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 36 37 30 30 30 30 30 30 30 30 30 30 30 30
+ RO10:4D00 37 34 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 35 34 37 30 30 30 30 30 30 30 30 30 30 30 30
+
+ RO10:4D20 0C 0A 0A 0A 0A 0A 0A 0A 0A 0A 0A 0A 0A 0A 0A 0A 0A 0A 2A 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C 0C
+ RO10:4D40 0C 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2A 0C 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:4D60 0C 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2A 0C 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:4D80 0C 0A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 2A 0C 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:4DA0 0C 4A 6A 6A 6A 6A 6A 6A 6A 6A 6A 6A 6A 6A 6A 6A 6A 6A 6A 0C 00 00 00 00 00 00 00 00 00 00 00 00
+
+ RO10:4DC0 CD FC 4E         call 4EFC           // Manual Absolute Erasure master control
+ RO10:4DC3 3E 01            ld   a,01
+ RO10:4DC5 CD 16 38         call 3816           // Title theme
+ RO10:4DC8 CD F3 4D         call 4DF3           // Title screen controls
+ RO10:4DCB A7               and  a
+ RO10:4DCC 20 1F            jr   nz,4DED        // Closes title screen on valid button press
+ RO10:4DCE EF 23 AC 48                          // Computer Typing of Game Intro
+ RO10:4DD2 CD F3 4D         call 4DF3           // Title screen controls
+ RO10:4DD5 A7               and  a
+ RO10:4DD6 20 15            jr   nz,4DED
+ RO10:4DD8 CD D4 4E         call 4ED4           // Attraction Mode stuff
+ RO10:4DDB A7               and  a              // A would always be 1 anyway
+ RO10:4DDC 20 E2            jr   nz,4DC0
+
+ RO10:4DDE CD 34 05         call 0534           // res 0,($FFFF) (V-Blank Off)
+ RO10:4DE1 FA 10 C0         ld   a,(C010)
+ RO10:4DE4 EF 10 00 40                          // Startup advertisement screens; starts with setting up non-GBC infinite loop
+ RO10:4DE8 CD 2A 05         call 052A           // ($FF0F) = 0, set 0,($FFFF) (V-Blank On)
+ RO10:4DEB 18 D3            jr   4DC0
+ RO10:4DED 3E 1C            ld   a,1C
+ RO10:4DEF CD 44 38         call 3844
+ RO10:4DF2 C9               ret  
+ RO10:4DF3 EF 27 17 44                          // Title screen controls
+ RO10:4DF7 C9               ret  
+ RO10:4DF8 C5               push bc
+ RO10:4DF9 D5               push de
+ RO10:4DFA E5               push hl
+ RO10:4DFB F0 83            ld   a,(ff00+83)
+ RO10:4DFD F5               push af
+ RO10:4DFE AF               xor  a
+ RO10:4DFF 06 08            ld   b,08
+ RO10:4E01 21 68 68         ld   hl,6868
+ RO10:4E04 CD BC 06         call 06BC           // ($C4E0) to ($C51F) hold ($6868) to ($68A7)
+ RO10:4E07 CD F2 06         call 06F2           // Both BG and Sprite Palette tables are updated
+ RO10:4E0A 3E 00            ld   a,00
+ RO10:4E0C E0 83            ld   (ff00+83),a
+ RO10:4E0E E0 4F            ld   (ff00+4F),a
+ RO10:4E10 11 E8 51         ld   de,51E8
+ RO10:4E13 21 00 90         ld   hl,9000
+ RO10:4E16 01 00 08         ld   bc,0800
+ RO10:4E19 CD 50 3B         call 3B50           // VRA0($9000~$97FF) = ($51E8~$59E7)
+ RO10:4E1C 21 00 88         ld   hl,8800
+ RO10:4E1F 01 00 08         ld   bc,0800
+ RO10:4E22 CD 50 3B         call 3B50           // VRA0($8800~$8FFF) = ($59E8~$61E7)
+ RO10:4E25 3E 01            ld   a,01
+ RO10:4E27 E0 83            ld   (ff00+83),a
+ RO10:4E29 E0 4F            ld   (ff00+4F),a
+ RO10:4E2B 21 00 90         ld   hl,9000
+ RO10:4E2E 01 80 06         ld   bc,0680
+ RO10:4E31 CD 50 3B         call 3B50           // VRA1($9000~$967F) = ($61E8~$6867)
+ RO10:4E34 3E 00            ld   a,00
+ RO10:4E36 E0 83            ld   (ff00+83),a
+ RO10:4E38 E0 4F            ld   (ff00+4F),a
+ RO10:4E3A 1E 00            ld   e,00
+ RO10:4E3C 16 00            ld   d,00
+ RO10:4E3E 21 00 98         ld   hl,9800
+ RO10:4E41 0E 00            ld   c,00
+ RO10:4E43 E5               push hl             // Big loop begins here
+ RO10:4E44 06 00            ld   b,00
+ RO10:4E46 3E 00            ld   a,00           // Loop begins here
+ RO10:4E48 E0 83            ld   (ff00+83),a
+ RO10:4E4A E0 4F            ld   (ff00+4F),a
+ RO10:4E4C 73               ld   (hl),e
+ RO10:4E4D 3E 01            ld   a,01
+ RO10:4E4F E0 83            ld   (ff00+83),a
+ RO10:4E51 E0 4F            ld   (ff00+4F),a
+ RO10:4E53 D5               push de
+ RO10:4E54 E5               push hl
+ RO10:4E55 C5               push bc
+ RO10:4E56 41               ld   b,c
+ RO10:4E57 3E 14            ld   a,14
+ RO10:4E59 CD 95 29         call 2995           // HL = C * 20
+ RO10:4E5C C1               pop  bc
+ RO10:4E5D 78               ld   a,b
+ RO10:4E5E CD BC 29         call 29BC           // HL = C * 20 + B
+ RO10:4E61 11 80 50         ld   de,5080
+ RO10:4E64 19               add  hl,de          // HL = $5080 + B + C * 20
+ RO10:4E65 7E               ld   a,(hl)
+ RO10:4E66 E1               pop  hl
+ RO10:4E67 D1               pop  de
+ RO10:4E68 CB 42            bit  0,d
+ RO10:4E6A 28 02            jr   z,4E6E
+ RO10:4E6C F6 08            or   a,08
+ RO10:4E6E 22               ldi  (hl),a
+ RO10:4E6F 13               inc  de
+ RO10:4E70 04               inc  b
+ RO10:4E71 78               ld   a,b
+ RO10:4E72 FE 14            cp   a,14
+ RO10:4E74 20 D0            jr   nz,4E46        // Jumps if row isn't done
+ RO10:4E76 E1               pop  hl
+ RO10:4E77 3E 20            ld   a,20
+ RO10:4E79 CD BC 29         call 29BC           // HL += A
+ RO10:4E7C 0C               inc  c
+ RO10:4E7D 79               ld   a,c
+ RO10:4E7E FE 12            cp   a,12
+ RO10:4E80 20 C1            jr   nz,4E43
+ RO10:4E82 F1               pop  af
+ RO10:4E83 E0 83            ld   (ff00+83),a
+ RO10:4E85 E0 4F            ld   (ff00+4F),a
+ RO10:4E87 E1               pop  hl
+ RO10:4E88 D1               pop  de
+ RO10:4E89 C1               pop  bc
+ RO10:4E8A C9               ret                 // Establishes title screen BG graphics as a whole
+ RO10:4E8B CD F3 04         call 04F3           // Shuts off LCD Display if necessary
+ RO10:4E8E EF 01 00 40                          // Graphics holding: VRA0($9000) to VRA0($97FF) then VRA0($8800) to VRA0($8FFF) holds basic text
+ RO10:4E92 CD 18 06         call 0618           // Resets Palettes to absolute default Palettes
+ RO10:4E95 CD 02 0F         call 0F02           // Empties ($9800) to ($9BFF) in both VRAM banks
+ RO10:4E98 3E 00            ld   a,00
+ RO10:4E9A E0 83            ld   (ff00+83),a
+ RO10:4E9C E0 4F            ld   (ff00+4F),a
+ RO10:4E9E 21 CC 4E         ld   hl,4ECC        // "ANIME DEMO"
+ RO10:4EA1 CD 6E 33         call 336E           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ RO10:4EA4 CD 1D 08         call 081D           // Shifts palettes closer to new colors from all white over the span of 8 frames
+ RO10:4EA7 AF               xor  a
+ RO10:4EA8 EA DC CC         ld   (CCDC),a
+ RO10:4EAB CD A2 05         call 05A2           // Button update, next frame
+ RO10:4EAE F0 91            ld   a,(ff00+91)
+ RO10:4EB0 CB 47            bit  0,a            // A
+ RO10:4EB2 C0               ret  nz
+ RO10:4EB3 CB 5F            bit  3,a            // Start
+ RO10:4EB5 C0               ret  nz             // Immediate end on button press
+ RO10:4EB6 FA DC CC         ld   a,(CCDC)
+ RO10:4EB9 3C               inc  a
+ RO10:4EBA FE B4            cp   a,B4
+ RO10:4EBC 28 05            jr   z,4EC3         // Lasts 3 seconds
+ RO10:4EBE EA DC CC         ld   (CCDC),a
+ RO10:4EC1 18 E8            jr   4EAB
+ RO10:4EC3 CD B4 07         call 07B4           // Shifts palettes closer to all white over the span of 8 frames
+ RO10:4EC6 CD F3 04         call 04F3           // Shuts off LCD Display if necessary
+ RO10:4EC9 AF               xor  a
+ RO10:4ECA A7               and  a
+ RO10:4ECB C9               ret  
+
+ RO10:4ECC 07 07                                // "ANIME DEMO"
+ RO10:4ECE B1 C6 D2 EB D3 00
+
+ RO10:4ED4 EF 13 00 40                          // Empties $C630~$C633, $C67E~$C87D, $C8B3~$C8BA, and $C9B5; then sets $C685 to 61 and $C686 to 1
+ RO10:4ED8 CD F3 04         call 04F3           // Shuts off LCD Display if necessary
+ RO10:4EDB 3E 3C            ld   a,3C           // Demo 02
+ RO10:4EDD EF 28 5A 40                          // ($CA1A) 3 byte holds map data location, ($CA1D) = 1 if map is already cleared, ($CA1E) holds 2, ($CA1F) holds Map # based on Standard, ($CA21) to ($CA4E) holds general map information
+ RO10:4EE1 EF 0B 88 40                          // Establishes stats for a new start on a map
+ RO10:4EE5 3E 05            ld   a,05
+ RO10:4EE7 EA 2F C6         ld   (C62F),a       // Attract Mode
+ RO10:4EEA CD 79 05         call 0579           // ($FF0F) = 0, set 4,($FFFF) (Joypad Interrupt On; causes Soft Reset on A or Start)
+ RO10:4EED EF 0B 26 6B                          // Core Gameplay master control
+ RO10:4EF1 CD 83 05         call 0583           // ($FF0F) = 0, res 4,($FFFF) (Joypad Interrupt Off)
+ RO10:4EF4 AF               xor  a
+ RO10:4EF5 E0 95            ld   (ff00+95),a
+ RO10:4EF7 E0 96            ld   (ff00+96),a
+ RO10:4EF9 3E 01            ld   a,01
+ RO10:4EFB C9               ret                 // Attraction Mode stuff
+ RO10:4EFC CD A2 05         call 05A2           // Button update, next frame
+ RO10:4EFF F0 90            ld   a,(ff00+90)
+ RO10:4F01 E6 65            and  a,65           // A, Select, Left, Up
+ RO10:4F03 FE 65            cp   a,65
+ RO10:4F05 C0               ret  nz             // End immediately if button combination isn't pressed
+ RO10:4F06 CD F3 04         call 04F3           // Shuts off LCD Display if necessary
+ RO10:4F09 CD 02 0F         call 0F02           // Empties ($9800) to ($9BFF) in both VRAM banks
+ RO10:4F0C EF 01 00 40                          // Graphics holding: VRA0($9000) to VRA0($97FF) then VRA0($8800) to VRA0($8FFF) holds basic text
+ RO10:4F10 CD BB 3B         call 3BBB           // Establishes table graphics for absolute erasure prompt
+ RO10:4F13 CD AF 06         call 06AF           // ($C4E0) 8 byte set to 00 00 00 69 FF 7F 40 72
+ RO10:4F16 3E 01            ld   a,01
+ RO10:4F18 06 01            ld   b,01
+ RO10:4F1A 21 BB 4F         ld   hl,4FBB
+ RO10:4F1D CD BC 06         call 06BC           // ($C4E8) to ($C4EF) hold ($4FBB) to ($4FC2)
+ RO10:4F20 CD F2 06         call 06F2           // Both BG and Sprite Palette tables are updated
+ RO10:4F23 EF 10 A8 68                          // Sets up basic covered graphics values
+ RO10:4F27 3E 01            ld   a,01
+ RO10:4F29 EF 10 CE 68                          // WRA4($DC6C) = 1
+ RO10:4F2D 01 04 04         ld   bc,0404
+ RO10:4F30 11 09 0C         ld   de,0C09
+ RO10:4F33 EF 10 09 6A                          // Tile placement and coloring handled for [$9800 + B + C * 32] table size indicated by DE using [$DC6C] and [$DC6D] as the base
+ RO10:4F37 21 C3 4F         ld   hl,4FC3        // "Save Data.."
+ RO10:4F3A 01 06 06         ld   bc,0606
+ RO10:4F3D CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4F40 21 CB 4F         ld   hl,4FCB        // "..full erasure.."
+ RO10:4F43 01 07 06         ld   bc,0607
+ RO10:4F46 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4F49 21 D3 4F         ld   hl,4FD3        // "..okay?"
+ RO10:4F4C 01 08 06         ld   bc,0608
+ RO10:4F4F CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4F52 CD 1D 08         call 081D           // Shifts palettes closer to new colors from all white over the span of 8 frames
+ RO10:4F55 CD FB 4F         call 4FFB           // Absolute Erasure Prompt player controls
+ RO10:4F58 A7               and  a
+ RO10:4F59 20 5C            jr   nz,4FB7        // End immediately if "NO"
+ RO10:4F5B 21 DC 4F         ld   hl,4FDC        // "Really.."
+ RO10:4F5E 01 06 06         ld   bc,0606
+ RO10:4F61 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4F64 21 E4 4F         ld   hl,4FE4        // Blank line
+ RO10:4F67 01 07 06         ld   bc,0607
+ RO10:4F6A CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4F6D CD FB 4F         call 4FFB           // Absolute Erasure Prompt player controls
+ RO10:4F70 A7               and  a
+ RO10:4F71 20 44            jr   nz,4FB7        // End immediately if "NO"
+ RO10:4F73 01 04 04         ld   bc,0404
+ RO10:4F76 11 09 0C         ld   de,0C09
+ RO10:4F79 EF 10 09 6A                          // Tile placement and coloring handled for [$9800 + B + C * 32] table size indicated by DE using [$DC6C] and [$DC6D] as the base
+ RO10:4F7D 21 C3 4F         ld   hl,4FC3        // "Save Data.."
+ RO10:4F80 01 06 06         ld   bc,0606
+ RO10:4F83 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4F86 21 ED 4F         ld   hl,4FED        // "..deleting."
+ RO10:4F89 01 08 06         ld   bc,0608
+ RO10:4F8C CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4F8F 01 0A 06         ld   bc,060A
+ RO10:4F92 21 E4 4F         ld   hl,4FE4        // Blank line
+ RO10:4F95 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4F98 AF               xor  a
+ RO10:4F99 E0 8E            ld   (ff00+8E),a
+ RO10:4F9B CD 88 39         call 3988           // Full save erasure
+ RO10:4F9E F0 8E            ld   a,(ff00+8E)
+ RO10:4FA0 21 F4 4F         ld   hl,4FF4        // "..deleted."
+ RO10:4FA3 01 08 06         ld   bc,0608
+ RO10:4FA6 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:4FA9 CD A2 05         call 05A2           // Button update, next frame
+ RO10:4FAC F0 91            ld   a,(ff00+91)
+ RO10:4FAE CB 47            bit  0,a            // A
+ RO10:4FB0 28 F7            jr   z,4FA9         // Standby for button input
+ RO10:4FB2 3E 02            ld   a,02
+ RO10:4FB4 CD 44 38         call 3844
+ RO10:4FB7 CD B4 07         call 07B4           // Shifts palettes closer to all white over the span of 8 frames
+ RO10:4FBA C9               ret  
+ 
+ RO10:4FBB 1F 7C 1F 7C 00 00 FF 7F
+
+ RO10:4FC3 BE 2D EF EB 2D C0 60 00
+ RO10:4FCB 6D A0 73 69 6C 7F 6D 00
+ RO10:4FD3 86 8B 6C 62 9B 6D 66 3F 00
+ RO10:4FDC 7E 8D 74 63 76 20 20 00
+ RO10:4FE4 20 20 20 20 20 20 20 20 00
+ RO10:4FED 69 6C 73 62 7F 6D 00
+ RO10:4FF4 69 6C 7F 6C 70 20 00
+
+ RO10:4FFB 21 55 50         ld   hl,5055        // "OK/NO"
+ RO10:4FFE 01 0A 07         ld   bc,070A
+ RO10:5001 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text; coordinates BC
+ RO10:5004 CD 2E 35         call 352E           // Text catchup
+ RO10:5007 3E 01            ld   a,01
+ RO10:5009 EA 21 C0         ld   (C021),a       // Defaults choice to "NO" as insistence check
+ RO10:500C CD 5B 50         call 505B           // Absolute Erasure "OK/NO" Palette set based on Choice A
+ RO10:500F CD A2 05         call 05A2           // Button update, next frame
+ RO10:5012 F0 91            ld   a,(ff00+91)
+ RO10:5014 CB 6F            bit  5,a            // Left
+ RO10:5016 20 0A            jr   nz,5022
+ RO10:5018 CB 67            bit  4,a            // Right
+ RO10:501A 20 0E            jr   nz,502A
+ RO10:501C CB 47            bit  0,a            // A
+ RO10:501E 20 1F            jr   nz,503F
+ RO10:5020 18 ED            jr   500F
+ RO10:5022 FA 21 C0         ld   a,(C021)
+ RO10:5025 A7               and  a
+ RO10:5026 20 08            jr   nz,5030
+ RO10:5028 18 E5            jr   500F           // Further wait for Button Input if already on "OK" after pressing Left
+ RO10:502A FA 21 C0         ld   a,(C021)
+ RO10:502D A7               and  a
+ RO10:502E 20 DF            jr   nz,500F        // Further wait for Button Input if already on "NO" after pressing Right
+ RO10:5030 EE 01            xor  a,01
+ RO10:5032 EA 21 C0         ld   (C021),a       // Inverted
+ RO10:5035 CD 5B 50         call 505B           // Absolute Erasure "OK/NO" Palette set based on Choice A
+ RO10:5038 3E 01            ld   a,01
+ RO10:503A CD 44 38         call 3844
+ RO10:503D 18 D0            jr   500F
+ RO10:503F FA 21 C0         ld   a,(C021)       // You made your choice (A Button press)
+ RO10:5042 A7               and  a
+ RO10:5043 20 07            jr   nz,504C        // Just branching for sound
+ RO10:5045 3E 02            ld   a,02
+ RO10:5047 CD 44 38         call 3844
+ RO10:504A 18 05            jr   5051
+ RO10:504C 3E 0C            ld   a,0C
+ RO10:504E CD 44 38         call 3844
+ RO10:5051 FA 21 C0         ld   a,(C021)
+ RO10:5054 C9               ret  
+
+ RO10:5055 04 05 06 07 08 00
+
+ RO10:505B EE 01            xor  a,01
+ RO10:505D 57               ld   d,a
+ RO10:505E 01 0A 07         ld   bc,070A
+ RO10:5061 CD D4 0E         call 0ED4           // HL = $9947
+ RO10:5064 3E 01            ld   a,01
+ RO10:5066 E0 83            ld   (ff00+83),a
+ RO10:5068 E0 4F            ld   (ff00+4F),a
+ RO10:506A 7A               ld   a,d
+ RO10:506B CD 1C 0F         call 0F1C           // VRA1($9947) = (A/2)*2 + 1 + A%2
+ RO10:506E 7A               ld   a,d
+ RO10:506F CD 1C 0F         call 0F1C           // VRA1($9948) = (A/2)*2 + 1 + A%2
+ RO10:5072 23               inc  hl
+ RO10:5073 7A               ld   a,d
+ RO10:5074 EE 01            xor  a,01
+ RO10:5076 CD 1C 0F         call 0F1C           // VRA1($994A) = A
+ RO10:5079 7A               ld   a,d
+ RO10:507A EE 01            xor  a,01
+ RO10:507C CD 1C 0F         call 0F1C           // VRA1($994B) = A
+ RO10:507F C9               ret  
+
+ RO10:5080 06 04 04 04 04 06 06 06 06 04 04 04 04 04 06 06 06 06 06 06
+ RO10:5094 06 04 04 04 04 06 06 04 06 04 04 04 04 04 06 06 06 06 06 06
+ RO10:50A8 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 06 04 04 04 04
+ RO10:50BC 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04
+ RO10:50D0 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 04 06
+ RO10:50E4 06 04 04 04 04 04 04 04 04 05 05 05 04 04 04 04 04 04 04 06
+ RO10:50F8 06 06 06 06 04 06 06 05 05 05 05 05 04 06 06 06 06 06 06 06
+ RO10:510C 06 06 06 06 06 06 06 06 05 05 05 05 04 06 06 00 00 06 06 06
+ RO10:5120 06 06 06 06 06 06 05 05 05 05 06 06 06 05 00 00 06 06 06 06
+ RO10:5134 06 06 06 06 06 06 00 00 00 00 06 06 00 00 00 06 06 06 06 06
+ RO10:5148 06 06 00 00 00 00 00 01 00 00 00 00 00 00 06 06 06 06 06 06
+ RO10:515C 06 00 03 03 00 00 00 00 00 03 03 00 00 00 00 00 06 06 06 06
+ RO10:5170 00 00 03 03 03 03 03 03 03 00 03 03 02 02 02 00 00 00 00 06
+ RO10:5184 02 02 02 03 03 03 03 03 03 03 00 03 00 02 02 02 00 00 00 00
+ RO10:5198 02 02 02 03 03 03 03 03 03 03 03 01 00 00 02 02 02 02 01 01
+ RO10:51AC 02 02 02 02 02 02 02 02 02 03 03 01 01 01 03 02 02 02 01 01
+ RO10:51C0 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07
+ RO10:51D4 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07 07
+
+ RO10:51E8 03 FF 47 FF 9F E5 2F F9 7F F3 1F FD 7F A2 FF 0F
+ RO10:51F8 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5208 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5218 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5228 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5238 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5248 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5258 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5268 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5278 FF FF FF FF FF FF FF FF FF FF FF FF FF FF E0 E0
+ RO10:5288 FF FF FF FF FF FF FF FF FF FF FF FF E9 E9 00 00
+ RO10:5298 FF FF FF FF FF FF FF FF FC FC 80 80 00 00 00 00
+ RO10:52A8 FF FF FF FF FF FF FF FF 7F 7F 0F 0F 17 17 00 00
+ RO10:52B8 FF FF FF FF FF FF FF FF FF FF FF FF FF FF 0F 0F
+ RO10:52C8 FF F7 FF EB FF C5 FF EB FF DF FF EF FF FD FF FA
+ RO10:52D8 EF 90 FF CB FF C2 FF A5 FF 8A FF 41 FF AA FF 90
+ RO10:52E8 FF AB FF 45 FF 13 FF 25 FF 8B FF 5F FF AD FF 7A
+ RO10:52F8 FF 5D FF B8 FF F5 FF FB FF DF FF B7 FF EF FF FA
+ RO10:5308 FF 7F FF BD FF 7A F7 E9 E3 DD F5 AF AB 56 F7 AD
+ RO10:5318 FF BE FF E8 FD DA FF A5 FF 76 FF ED FF D7 FF 3A
+
+ RO10:5328 FF 1F FF 07 FF 2B FF 41 FF EB FF D7 FF 7F FF FF
+ RO10:5338 FF FF FF FF FF FF FE FE F8 F8 FA FA F8 F8 FE FE
+ RO10:5348 FF FF FF FF FF FF 3F 3F 00 00 60 60 00 00 3F 3F
+ RO10:5358 FF FF FF FF FF FF FF FF 00 00 00 00 00 00 FF FF
+ RO10:5368 FF FF FF FF FF FF F8 F8 00 00 00 00 00 00 F8 F8
+ RO10:5378 FF FF FF FF FF FF 00 00 00 00 00 00 00 00 00 00
+ RO10:5388 FF FF FF FF FC FC 00 00 00 00 00 00 00 00 00 00
+ RO10:5398 FF FF FF FF 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:53A8 FC FC 84 84 80 80 04 04 00 00 00 00 00 00 00 00
+ RO10:53B8 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:53C8 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:53D8 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:53E8 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:53F8 0F 0F 0F 0F 1F 1F 1F 1F 0F 0F 0F 0F 0F 0F 1F 1F
+ RO10:5408 FF FD FF EA FF F8 FD F6 F8 FF FD F2 FF EB FF F6
+ RO10:5418 FB 04 BF E1 57 AC 0F F1 97 68 5F A2 BF 69 FF 95
+ RO10:5428 FF BD FF 7F FF FF FF 7F FF BF FF 7F FF 7F FD FD
+ RO10:5438 FF F5 FF F2 FF A8 FF F5 FF FB FF FF FF FF 0F 0F
+ RO10:5448 FF 5B FF 25 FF 96 FF 4A FF 9F FF CD FF 97 FF AF
+ RO10:5458 FF 91 DF 6B CF B5 DF 6E FF B7 FF 5B FF AF FF FF
+
+ RO10:5468 FF FF FF FF FF FF FF FF FF FF FE FE FE FE FE FE
+ RO10:5478 FF FF FF FF FF FF FF FF FF FF 01 01 FD FD 85 F9
+ RO10:5488 FF FF FF FF 80 80 B3 BB AA B3 AA B3 AA B3 AA B3
+ RO10:5498 FF FF FF FF 3F 3F 3F BF BF 3F BF 3F BF 3F BF 3F
+ RO10:54A8 FF FF FF FF FF FF FF FF FF FF E0 E0 EF EF D0 DF
+ RO10:54B8 FF FF FF FF FF FF FF FF FF FF 19 19 DF DF BF 3F
+ RO10:54C8 FC FC FF FF FF FF F0 F0 E0 E0 00 03 E1 E2 E1 E2
+ RO10:54D8 00 00 FF FF FF FF 20 20 08 0E 06 E8 E6 08 E6 08
+ RO10:54E8 80 80 84 84 FC FC 0F 0F 0C EC 68 88 68 88 68 88
+ RO10:54F8 00 00 00 00 00 00 40 40 00 00 00 00 00 00 00 00
+ RO10:5508 00 00 00 00 00 00 00 00 00 00 03 03 04 04 08 0B
+ RO10:5518 00 00 00 00 00 00 00 00 00 00 FC FC 04 04 07 F7
+ RO10:5528 00 00 00 00 00 00 01 01 3F 3F 20 20 20 2F E7 E8
+ RO10:5538 3F 3F 7F 7F FF FF E0 E0 E0 E0 20 20 20 A0 BF 3F
+ RO10:5548 FF FF FF FF FF FF 00 00 00 00 00 00 00 00 80 80
+ RO10:5558 FF 5B FF BF FF EF 00 00 00 00 00 00 00 00 00 00
+ RO10:5568 FF FF FE FE FC FC F8 F8 00 00 00 00 01 01 01 01
+ RO10:5578 BF BF 1F 1F 0F 0F 0F 0F 0F 0F 1F 1F FF FF 00 00
+ RO10:5588 FF FF FF FF FF FF FF FF E0 E0 EC EE EA EC 0A 0C
+ RO10:5598 FF FF FF FF FF FF FF FF 0F 0F CF EF AF CF AF CF
+
+ RO10:55A8 FE FE FC FC FD FD F1 F1 F7 F7 F4 F7 F4 F7 F4 F7
+ RO10:55B8 84 F8 87 FB 00 FF 00 FF 00 FF 0F F1 11 E1 11 E1
+ RO10:55C8 2A 33 99 A2 00 80 7F FF 00 FF 0F F0 08 F0 08 F0
+ RO10:55D8 BF 3F BF 3F 3F 3F 7F 7F 7F 7F 7F 7F 7F 7F 00 00
+ RO10:55E8 D0 DF D0 DF A1 BE A1 BE A1 BE 42 7C 42 7C 42 7C
+ RO10:55F8 BC 3C BD 3D 7C 7D 64 65 44 45 FC FD 00 00 7D 7D
+ RO10:5608 01 02 C1 FE FF 00 FF 00 FF 00 FF 00 01 02 01 7A
+ RO10:5618 E6 08 E6 08 E0 00 F8 1F FF 00 FF 00 E0 00 E0 0F
+ RO10:5628 68 88 68 88 08 08 18 D8 D0 10 D0 10 1F 1F 40 40
+ RO10:5638 00 00 00 00 00 00 00 00 1F 1F 10 10 F0 F7 03 04
+ RO10:5648 13 14 2F 28 5F 50 BF A0 7F 40 7F 80 FF 00 FF 00
+ RO10:5658 F0 00 F7 07 F3 04 83 04 03 04 73 74 53 54 53 54
+ RO10:5668 07 08 07 F8 FF 00 FF 00 FF 00 FF 00 C0 00 DF 1F
+ RO10:5678 80 00 A0 7E FE 00 FE 00 FE 00 FE 00 3E 40 3C 40
+ RO10:5688 80 80 80 80 87 87 84 84 FD FD 00 01 C0 FF 7F 80
+ RO10:5698 00 00 00 00 F8 F8 08 08 0E EE E2 02 E3 1B F8 00
+ RO10:56A8 01 01 01 01 01 01 01 01 01 01 01 01 FF FF 00 00
+ RO10:56B8 1F 7F 60 1F 60 1F 60 1F 7E 01 01 01 FD FD FA FB
+ RO10:56C8 EA EC 0A EC 06 E8 00 E0 0B F3 0B F3 17 E7 17 E7
+ RO10:56D8 AF CF AF CF 6F 8F 0F 0F FF FF FF FF FF FF FF FF
+
+ RO10:56E8 F4 F7 F4 F7 F4 F7 F0 F4 F1 F1 FD FD FD FD FD FD
+ RO10:56F8 11 E1 11 E1 21 C1 01 01 FE FF 00 FF 00 FF 00 FF
+ RO10:5708 17 E7 14 E7 14 E7 14 E7 17 E4 10 E0 2F CF 2F CF
+ RO10:5718 F8 FC 04 F8 04 F8 05 F9 FD 01 01 01 FA FB FA FB
+ RO10:5728 85 F9 85 F9 85 F9 0B F3 0B F3 08 F0 0F FF 00 FF
+ RO10:5738 7D 41 4D 71 7D 41 7D 41 7C 40 7C 41 DC E1 1C E1
+ RO10:5748 39 42 39 42 39 42 39 42 39 42 79 82 F9 02 F9 02
+ RO10:5758 E7 08 E7 08 E7 08 E7 08 E7 08 E7 08 E7 08 E7 08
+ RO10:5768 5C 5F 4F 50 4F 50 4F 50 0F 10 00 C0 DF 0F DF 0F
+ RO10:5778 03 F4 F3 04 F3 04 F3 04 F3 04 00 00 FF FF 00 00
+ RO10:5788 FF 00 FF 00 EF 10 CF 10 8F 10 0F 10 CF D0 00 00
+ RO10:5798 53 54 53 54 50 50 5F 5F 44 44 44 45 64 65 3C 3D
+ RO10:57A8 D1 11 D1 11 11 11 FE FE 00 00 E1 FF FF 00 FF 00
+ RO10:57B8 3C 40 3C 40 3C 40 7D 81 FB 83 FA 02 FA 02 FA 02
+ RO10:57C8 7F 80 0F 10 1C 11 8C 91 BC A1 3C 21 58 E1 70 87
+ RO10:57D8 F8 03 E1 02 E1 02 E9 0A E9 0A E8 08 EF 0F E8 08
+ RO10:57E8 1C FE E2 1C E2 1C E2 1C FE 00 00 00 FE FE 1E 1E
+ RO10:57F8 FA FB F4 F7 F4 F7 E8 EF 10 1F E0 FF 01 FE 01 FE
+ RO10:5808 17 E7 0B F3 0B F3 05 F9 04 F8 C2 3F 21 3E 21 3E
+ RO10:5818 FF FF FF FE FF F5 FF EE FF FB 7F 75 7F 7B 7F 6F
+
+ RO10:5828 FD FD FD F5 BD E9 7C F0 FF D7 F7 EB EF 95 FB AE
+ RO10:5838 00 FF 00 FF FF 00 00 00 FF FF FF FF FF FF FF FF
+ RO10:5848 2F CF 2F CF DF 1F 3F 3F FF FF FF FF FF FF FF FF
+ RO10:5858 FA FB FA FB FA FB F8 F8 FF FF FF FF FF FF FF FF
+ RO10:5868 00 FF 00 FF FF 00 00 00 FF FF FF FF FF FF FF FF
+ RO10:5878 0C F1 00 F9 F4 05 0C 0C FF FF FF FF FF FF FF FF
+ RO10:5888 F9 02 F9 02 F1 02 0C 0C FF FF FF FF FF FF FF FF
+ RO10:5898 E7 08 E7 08 E7 00 08 08 FE FE FE FE FE FE FE FE
+ RO10:58A8 D8 08 C7 00 3F 07 BF 1F BF 1F BF 00 00 00 00 00
+ RO10:58B8 FF 00 FF FF FF FF FF F0 F8 F0 F8 00 01 01 00 00
+ RO10:58C8 FF 00 FF FF FF FF FF 01 02 01 0B 01 EA E1 03 01
+ RO10:58D8 85 04 F0 80 AE F0 55 FE AA FF 54 FF AA FF 41 FE
+ RO10:58E8 FF 00 FF 00 1F 00 80 00 4F 8F 4F 8F 4F 8F CF 0F
+ RO10:58F8 F6 06 F6 06 EE 0E 1E 1E FF FF FF FF FF FF FF FF
+ RO10:5908 73 84 73 84 73 84 00 00 FF FF FF FF FF FF FF FF
+ RO10:5918 E8 08 E9 09 D3 13 3F 3F FF FF FF FF FF FF FF FF
+ RO10:5928 1E 1E FE FE FE FE FE FE FF FF FF FF FF FF FF FF
+ RO10:5938 02 FC 02 FC FD 01 03 03 FF FF FF FF FF FF FF FF
+ RO10:5948 D1 DE E9 EE E7 E8 F0 F0 FF FF FF FF FF FF FE FE
+ RO10:5958 7F 57 7F 4D 7F 2A 7F 5D FF FF 87 87 7B 7B 8D 8D
+
+ RO10:5968 F5 5F BE 5B FE AD 7F FA 7E 91 BF 44 AF 50 D6 29
+ RO10:5978 7F FF AF F5 1F EA 5E AF BF 57 5E AD 27 D9 87 7C
+ RO10:5988 FF 7F BF F7 7F EB 7F B7 FF 7F EF BF DF EB E7 DF
+ RO10:5998 FF FF FF FF FF FF FF FF FF FF FF FF FF FB FF CF
+ RO10:59A8 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:59B8 FF FF FF FF FF FF FF FF FF FF FF F6 FF E9 FF C2
+ RO10:59C8 FF FF FF FF FF FB FF F5 FF FB FF EF FF 57 FF FF
+ RO10:59D8 FF FF FF FF FF FF FF FF FF FF FE FE FE FE FE FE
+ RO10:59E8 FF FF FF FF FF FF FF FF FF FF 00 00 BF 00 A0 1F
+ RO10:59F8 EB E0 EB E1 EB E0 E0 E0 E0 E0 01 01 F9 01 09 F1
+ RO10:5A08 FC 03 00 FF FC 03 02 01 0A 01 EA E1 EA E1 EA E1
+ RO10:5A18 0E F0 70 80 0E F0 01 FE 00 FF 00 FF 00 FF 00 FF
+ RO10:5A28 0F 0F 1F 1F 1F 1F 8F 0F 4F 8F 4F 8F 4F 8F 4F 8F
+ RO10:5A38 FF FF FF FB FF F7 FF FD FF FD FF FA FF FD FF FF
+ RO10:5A48 FF FF FF FB FF B5 FF 5A FF B9 FF F5 FF BB FF 6D
+ RO10:5A58 FF FF FF FF FF 7F FF BF FF 7F FF FF FF FF FF FF
+ RO10:5A68 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5A78 FF FF FF FE FF FF FF FD FF FC FF FA FF FC FF FF
+ RO10:5A88 FE 7A FE B6 FE 7C FD CF FA 95 FD 46 FF A0 FF 65
+ RO10:5A98 B5 B5 8D 8D B5 B5 7B 7B 87 87 FE BF FF 5F EF 1A
+
+ RO10:5AA8 FD 02 78 C7 FC 27 6F 90 BF 44 4F BA DF 34 FE 11
+ RO10:5AB8 00 FF 01 FE 94 6B 6A 95 D4 2B B0 4F 64 9B 00 FF
+ RO10:5AC8 97 79 AA 75 1C EB 01 FE 06 F9 0F F2 07 FD 1F FF
+ RO10:5AD8 FF 15 BF 6A 7F 9F 3F DB FF 8D FF FB FF FF FF FF
+ RO10:5AE8 FF FF FF FF FF FF FF FF FF FF FF FF FF FE FF FD
+ RO10:5AF8 FF A9 FF D0 FF BA FF EC FF C6 FF AB FF D5 FF 7B
+ RO10:5B08 FF 5F FF BF FF 6F FF 5F FF FF FF 7F FF FF FF FF
+ RO10:5B18 FE FE FE FE FE 7E FF FF FF FF FF FF FF FF FF FF
+ RO10:5B28 A0 1F B0 0F 0E 01 81 80 E0 E0 FC FC FF FF FF FF
+ RO10:5B38 08 F0 0F F0 00 FF C0 3F 3F 00 00 00 80 80 FF FF
+ RO10:5B48 02 01 FE 01 00 FF 00 FF FF 00 00 00 00 00 FF FF
+ RO10:5B58 00 FF 00 FF 07 F8 38 C0 C0 00 01 01 0F 0F FF FF
+ RO10:5B68 4F 8F CF 0F 0F 0F 0F 0F 7F 7F FF FF FF FF FF FF
+ RO10:5B78 FF FB FF F4 FF FA FF FD FF FF FF FF FF FF FF FF
+ RO10:5B88 FF 1F FF AF FF DF FF 7F FF FF FF FF FF FF FF FF
+ RO10:5B98 FF FF FF FF FF FF FF FF FF FF FE FE FC FC F8 F8
+ RO10:5BA8 FF FF FF FF FF FF DF FF 1F AF 07 0F 0F 1F 1F 3F
+ RO10:5BB8 FF FE FF FF FF FF FF FF FF FD FF F8 FF E8 FE D1
+ RO10:5BC8 FF F8 FF B2 FF 49 EE 91 D5 2A 4A F5 80 7F 48 B7
+ RO10:5BD8 76 AD B5 CA 82 7D 48 B7 0C F3 18 E7 41 BE 02 FD
+
+ RO10:5BE8 7E C5 FF 00 BA 45 53 AC A9 56 44 BB 00 FF 00 FF
+ RO10:5BF8 18 F7 28 FF 10 FF 84 7F 20 FF 50 FF 25 FA 13 EC
+ RO10:5C08 0F FF 1F EF 5F B6 BF 4B 7F 87 5F A2 EF 11 DE 25
+ RO10:5C18 FF F7 FF 6B FF B7 FF 7F FF DD FF F6 7F A9 BF 42
+ RO10:5C28 FF FE FF FF FF FF FF EF FF FF FF BD FF 7A FF F5
+ RO10:5C38 FF FF FF FF FF FF FF FF FF DF FF AF FF DF FF FF
+ RO10:5C48 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5C58 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5C68 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5C78 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5C88 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF ED
+ RO10:5C98 FF FF FF F5 FF EA FD F2 FA 65 FD D3 FF A8 FF C0
+ RO10:5CA8 FF FF FF FD FF 7E FF B5 FF 68 FF 15 FF 0B FF 77
+ RO10:5CB8 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5CC8 FF FF FF FF FF FF FC FE FC F8 E0 F0 80 C0 01 03
+ RO10:5CD8 F0 E0 E0 C1 03 87 07 0F 3F 1F BF 7F FF FF FF FF
+ RO10:5CE8 7F FF FF FE FF FF FF FA FF F4 FE B9 EC 53 FB 84
+ RO10:5CF8 FF 41 FF 02 FB 25 F5 5A 78 BF B0 5F DC 23 B0 4F
+ RO10:5D08 D4 2B 6A D5 3E C1 7C 8B AA 55 00 FF 00 FF 83 7C
+ RO10:5D18 09 F6 40 BF 87 79 4F B0 0F F4 0F FA BF 47 7F 9E
+
+ RO10:5D28 00 FF 72 8D 58 A7 FF 00 7F 80 FD 03 57 A8 33 CC
+ RO10:5D38 6E 91 7C 83 FA 25 DD 6A FF A4 FF DA FF BC FF 17
+ RO10:5D48 FF 0A 7F 94 FF 28 FF 10 FF 48 FF B5 FF 6B FF B7
+ RO10:5D58 3F C8 FF 15 FF 2E FF 1F FF AA FF 57 FF EB FF FF
+ RO10:5D68 FF 79 FF 3A FF D5 FF 62 FF D7 FF EF FF 7B FF FF
+ RO10:5D78 FF FF FF FF FF BF FF FF FF FF FF FF FF FF FF FE
+ RO10:5D88 FF FF FF FF FF FF FF FF FF FF FF FF FF FF 03 FF
+ RO10:5D98 FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5DA8 FF FF FF FF FF FF FF FF FF FF F7 F8 BC C1 E8 10
+ RO10:5DB8 FF FF FF FF FF FF F3 FF 6F 9F BF 7F FF FF 3F 7F
+ RO10:5DC8 FF D4 FF 88 FF C0 FF A0 FF D4 FF F9 FF D2 FF ED
+ RO10:5DD8 FF 95 FF 4B FF 21 FF 0B FF D7 FF AF FF DF FF FF
+ RO10:5DE8 FF FF FF FF FF FF FE FF FA FF E8 F2 E0 C0 00 80
+ RO10:5DF8 FD FE F4 F8 D0 E0 01 C0 05 03 17 0F 2F 1F 1F 3F
+ RO10:5E08 17 0F 3F 1F BF 7F 7F FF FF FF FF FF FF FF FF FF
+ RO10:5E18 FF FD FF D8 FF ED FF BE FF CB FF 16 FD 0F FF D2
+ RO10:5E28 E5 1A F2 0D A8 77 FE 51 FC 23 EE 91 9B 64 27 D8
+ RO10:5E38 F0 1F 79 AE BE 51 FD 02 5F A0 B7 4C DF 2A BF 44
+ RO10:5E48 CD 32 FF 01 EF 1B FF 17 FF 2B FF 01 FF 14 FF 28
+ RO10:5E58 FF 14 FE 3B FF D5 FF 7C FF B2 FF C5 FF 8B F7 0A
+
+ RO10:5E68 47 B8 B7 48 6B 94 B7 4A FF 01 BF 40 5F A4 2F D9
+ RO10:5E78 FF 5D FF 2B FF 97 FF 97 FF 2E FF 7F FB 5F FC 7C
+ RO10:5E88 FF FF FF FF 8F FF 70 FF FE FF FE FF FE FE FE FE
+ RO10:5E98 FF FF FF FF FF FF 3F FF 77 0F 04 33 DF 20 01 00
+ RO10:5EA8 FF FF FF FF FF FF FF FF FD FE FE F8 F9 30 FC 00
+ RO10:5EB8 FF FC F6 F9 D8 E1 65 82 B9 02 62 00 A7 00 38 00
+ RO10:5EC8 0E A1 44 10 09 20 95 00 00 1D 41 39 03 73 7F 07
+ RO10:5ED8 F0 FC 98 E0 6D 9F FA FF F4 FF E0 FF C0 FF 80 FF
+ RO10:5EE8 D8 20 1C 00 44 82 0F F3 01 FF 00 FF 00 FF 00 FF
+ RO10:5EF8 1F 3F 0F 1F 1F 3F 3F BF FC FF 1B FC 03 FC 01 FE
+ RO10:5F08 FF FF FF FF FB FD F0 F9 21 F3 43 87 86 4F 8A 44
+ RO10:5F18 FE FF FF FE FA FC F4 F8 90 E0 41 80 85 03 0B 07
+ RO10:5F28 80 00 02 01 05 03 17 0F 5F 3F FF FF BF CF EF DF
+ RO10:5F38 BF 7F FF FF FF FF FF FF FF FF FF FF FF FF FF FF
+ RO10:5F48 FF DD FD A2 F8 CF FD D2 FF E5 FF C2 FF AF FF D7
+ RO10:5F58 FF 21 F7 5A EF 31 BF 44 7F 8E DF B5 FF BB FF D7
+ RO10:5F68 EF 50 FF E9 FF 5D FF AF FF 36 FF 8D FF 53 FF 88
+ RO10:5F78 DF 21 FF 88 FF 5C FF FA FE FD FD B6 FB 2C 7E D1
+ RO10:5F88 FF 12 FF 05 FF 02 F7 08 BA 45 EC 13 B0 4F 40 BF
+ RO10:5F98 BA 45 ED 92 92 6D 28 D7 52 AD 05 FA 02 FD 08 F7
+
+ RO10:5FA8 1D E2 5F A2 BF 64 FF 53 FF 85 FF 4F FF AB FF D7
+ RO10:5FB8 FF FE FF FE FF FE FF FE FF FE FF FE FF FE FF FE
+ RO10:5FC8 9C 7E 80 00 C0 00 6C 00 6C 00 78 00 70 00 70 00
+ RO10:5FD8 FF 00 7F 00 7F 00 3F 40 3F 40 7F 00 7F 00 7F 00
+ RO10:5FE8 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:5FF8 F8 00 07 00 00 00 00 00 00 00 00 00 00 00 00 00
+ RO10:6008 09 06 FE 00 0F 00 00 00 00 00 00 00 00 00 00 00
+ RO10:6018 18 07 00 0F FF 00 2F 1E 3F 1F 3F 5F 7F DF 83 3F
+ RO10:6028 00 FF 00 FF 80 7F FF 00 FF F0 FF FF FF FE FD FD
+ RO10:6038 FE FF FE FF FE FF F8 F8 E0 00 80 00 40 30 F0 0C
+ RO10:6048 0C C0 20 80 51 00 A1 00 15 00 03 00 01 00 01 00
+ RO10:6058 2F 1F 3F 7F 7F 7F 1B 67 72 0D 71 0E 78 07 7C 03
+ RO10:6068 EF DF EF DF C0 DF C1 C0 00 FF 00 FF E8 17 06 F8
+ RO10:6078 FF FF F7 FF FF 07 F9 07 3E C1 FF 00 38 00 07 00
+ RO10:6088 FF FF FF FF FF FF 9F FF 3D C3 C1 27 FF 07 FF 00
+ RO10:6098 FF FF FF FF FF FF FF FF FF FF FF FF FF FF 9F 7F
+ RO10:60A8 FD 12 FE 41 ED 92 D7 E8 EB F5 FF FA FF FF FF FF
+ RO10:60B8 B4 6B EA 15 77 88 EA 15 5F A0 EF 90 DF B2 FF ED
+ RO10:60C8 09 F6 03 FC 72 8D AB 54 07 FD BF 4A FF 3F FF 77
+ RO10:60D8 51 AE BA 45 FF 12 FF 20 FF 11 BF 4A FF D7 FF AE
+
+ RO10:60E8 FF FF FF FF FE FF FD FF 5E FF AB FF 42 FF B9 C7
+ RO10:60F8 FF FE FE FF FF FF DA FF B5 FF EA FF A3 FC 2D D2
+ RO10:6108 7C 00 6C 00 2E 00 B6 80 D3 C0 EB E0 7D F0 C2 38
+ RO10:6118 3F 00 03 00 00 00 08 70 30 38 00 18 84 00 CA 00
+ RO10:6128 FF 00 FF 00 7F 00 03 00 48 00 A0 00 50 04 1A 00
+ RO10:6138 FF 00 FF 00 FF 00 FF 00 1F 00 00 00 00 00 00 00
+ RO10:6148 FF 00 FF 00 F6 01 ED 02 D6 01 EC 03 0B 00 01 02
+ RO10:6158 5F BF 85 03 90 08 0A 94 AC 12 FA 04 7C 02 6E 10
+ RO10:6168 F9 FD F1 F8 B9 00 F1 00 7D 80 BD 40 ED 10 D5 28
+ RO10:6178 70 00 FD 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00
+ RO10:6188 01 00 03 00 02 80 00 E0 00 F8 02 FC 00 FF 00 FF
+ RO10:6198 03 3F 81 3F 00 3F 00 1F 08 07 04 03 02 01 01 80
+ RO10:61A8 CF FF BF FF FF 0F 0B 07 0F 01 01 01 03 11 05 3B
+ RO10:61B8 85 83 FF FD 79 FE 20 C0 AE C1 FF FF FF FF FF FF
+ RO10:61C8 FF 01 E7 FF F2 1C BF 7F BF DF DF EF EF F7 F6 F9
+ RO10:61D8 DF 07 0F E1 43 31 06 F9 01 FE 12 EC 1C E0 08 F0
+ RO10:61E8 FF FF FF FF FF FF FF FF FF FF 7F FF E1 7F C6 7D
+ RO10:61F8 FF FF FF FF FF FF FF FF FF FF FF FF FF FF 7F FF
+ RO10:6208 FF FF FF FF FF FF FF FF FF FF FF FF FF FF EE F1
+ RO10:6218 FF FF FF 7B FF F5 FF FA FF FF FF FE FF FF FF FF
+
+ RO10:6228 E7 1F 9B 64 7D 82 18 E7 C0 BF C4 FB 1E E7 0E FF
+ RO10:6238 1C E7 EE 15 80 7F 00 FF 29 D6 F7 E8 79 FE 7C B3
+ RO10:6248 38 C4 2C D2 CE 31 FB 7D DF E0 3F C0 FF 20 0D F0
+ RO10:6258 04 00 0C 01 06 01 02 08 2D 80 04 92 04 FB 00 D7
+ RO10:6268 E0 00 44 10 81 2A C6 10 6A 14 D1 2E A9 56 55 AA
+ RO10:6278 00 00 48 00 04 10 00 28 C8 10 A8 40 F6 00 EA 10
+ RO10:6288 07 00 07 00 07 00 07 00 07 00 03 00 00 00 00 00
+ RO10:6298 6B 14 F3 0C 69 16 73 0C 75 0A 3B 04 3F 00 23 00
+ RO10:62A8 31 CC 4D B0 9D 60 FC 00 7E 00 7C 02 6E 00 80 00
+ RO10:62B8 00 FF 00 FF 00 FB 80 7B 20 1B 08 07 1A 01 6B 14
+ RO10:62C8 FF 00 FB 04 B5 4A FB 04 ED 12 D6 29 6C 93 D0 2F
+ RO10:62D8 20 C0 17 E0 0B F0 27 F8 51 FE BD FE FA FF F4 FF
+ RO10:62E8 03 3C 32 0D 0E 01 04 03 00 01 00 00 00 00 00 00
+ RO10:62F8 F0 FF F0 FF E0 FF E2 FF C5 FF 52 FF 38 07 00 00
+ RO10:6308 7F FC 01 FE 00 FF 04 FF 0F FF 17 FE 0F FC AE 78
+ RO10:6318 1F E7 88 07 9F 00 80 00 00 00 00 00 00 00 00 00
+ RO10:6328 FF C0 E0 00 00 FF FF 1F F7 0F 8D 73 80 7F 80 7C
+ RO10:6338 80 7F FC 00 FF FF FF FF FF FF F6 FF EB FF 02 FF
+ RO10:6348 00 FC 01 00 FF FF EF FF 7F FF BB FF 75 FF AB FF
+ RO10:6358 FF FF FF FF EF FF DE FF 74 FF EA FF F4 FF 09 FF
+
+ RO10:6368 01 FF 07 F9 7F 81 FF 03 FF 07 EF 1E 1C FF 73 FF
+ RO10:6378 3F CF 3F FF FB FF EF DF 43 BF 00 FF EC FF C1 BE
+ RO10:6388 FB E0 F1 D0 F8 C0 8C F1 61 FE C7 FB 33 CF 00 3F
+ RO10:6398 09 E6 00 2E 00 F4 00 21 C3 EF ED FF F7 FF BE FF
+ RO10:63A8 3A 45 01 9E 00 4F 02 F4 B0 F8 3B FC 98 FF 40 BF
+ RO10:63B8 6B 90 7B 84 C4 00 02 00 70 00 C7 38 01 FE 00 FF
+ RO10:63C8 00 00 00 00 00 00 00 00 00 00 1C 00 FF 00 71 8E
+ RO10:63D8 03 00 00 00 00 00 00 00 00 00 00 00 C0 38 FF 00
+ RO10:63E8 80 00 00 01 00 00 01 00 00 00 00 00 00 00 80 00
+ RO10:63F8 52 20 D0 22 81 28 22 88 65 00 22 40 35 02 1B 24
+ RO10:6408 17 3F EB 1F F7 1F E7 5F BF 0F 7E 1E FD 2F D6 16
+ RO10:6418 51 FE BA FF 74 FE 7A FF B5 FD 5E FF 28 BD 04 DE
+ RO10:6428 00 00 08 14 35 4A 43 BC 84 78 8C F2 84 79 48 B4
+ RO10:6438 07 00 13 24 8E 71 D4 23 A8 07 04 93 02 2D 03 94
+ RO10:6448 00 00 00 00 00 FF FF FF FF FF FF FF FF FF FF FF
+ RO10:6458 00 00 01 00 1F E0 E6 F9 FF FE FF FF FF FF FF FF
+ RO10:6468 BF 7F BF 7F DE 3F 78 87 2F F0 FB FC FE FF FE FF
+ RO10:6478 3F FF 9F FF 0F FF 03 FF 7F FF BC 7F EC 1F 70 8E
+ RO10:6488 01 FF 02 FF 21 FF 48 FF 7F B6 FF 3D FF 56 FF 2F
+ RO10:6498 5E FF AD FF 06 FF 77 C8 FF A2 FF 45 FF D2 FF A8
+
+ RO10:64A8 F6 F9 7D F3 23 DF 5F AF FF 1F 5F AF 21 CF 00 00
+ RO10:64B8 19 F0 FE FC FD FE F9 FE FB FC E4 F8 C9 F0 00 00
+ RO10:64C8 D8 E7 36 FF 7E 8D CD 01 65 A3 F2 0F 2C FF 00 00
+ RO10:64D8 47 F8 45 BE C7 FF C0 FF B0 FF 73 FE C7 FF 00 00
+ RO10:64E8 AD 1F D3 3F E3 7F 47 BF EE 1F E5 1B 57 A8 00 00
+ RO10:64F8 FF A0 BC D2 83 FC CF F0 6F F2 E7 FC F7 FE 00 00
+ RO10:6508 F3 0E 3F 04 8E 71 1F F3 3C C7 F6 0B FA 07 00 00
+ RO10:6518 FF 00 0F F0 92 FD 21 FE 65 FF 99 FF 02 FF 00 00
+ RO10:6528 C0 00 F8 00 A0 40 5E A0 CF F0 F1 FE 46 FF 00 00
+ RO10:6538 1F 00 07 08 87 00 C1 00 33 C0 5A A0 2C D1 00 00
+ RO10:6548 C5 45 E2 B2 53 6F 21 19 13 2F 05 D7 01 E8 00 00
+ RO10:6558 00 7F 52 F6 24 FF 8A FF 5D FF 7A BF ED 3F 00 00
+ RO10:6568 00 25 10 DB 40 FD 00 6A 00 B4 20 FA 50 F0 00 00
+ RO10:6578 00 43 21 FB 52 77 21 AF 12 47 25 1F A4 79 00 00
+ RO10:6588 4A FF A5 FF D2 FF EA F7 B3 5E 7D A9 B2 D4 00 00
+ RO10:6598 3F FF 00 FF 7F 80 FD 82 FB 24 00 52 00 E0 00 00
+ RO10:65A8 F1 FE 0F F0 FF 00 FF 01 7E 82 0B 21 05 00 00 00
+ RO10:65B8 FE 00 FE 20 FD 50 E9 28 94 90 1D 02 B4 0F 00 00
+ RO10:65C8 E7 1F EA 3F F7 0F EF 3F 7F 5F 37 2F 9A 0F 00 00
+ RO10:65D8 6E F1 BA FF 77 FD CB FF 4F B7 BD 67 72 DF 00 00
+
+ RO10:65E8 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:65F8 38 FF 44 FF 9A FF A2 FF 9A FF 44 FF 38 FF 00 FF
+ RO10:6608 3C FF 66 FF 66 FF 0C FF 18 FF 30 FF 7E FF 00 FF
+ RO10:6618 3C FF 66 FF 66 FF 66 FF 66 FF 66 FF 3C FF 00 FF
+ RO10:6628 3C FF 66 FF 66 FF 66 FF 66 FF 66 FF 3C FF 00 FF
+ RO10:6638 0C FF 1C FF 0C FF 0C FF 0C FF 0C FF 0C FF 00 FF
+ RO10:6648 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6658 C6 FF C6 FF C6 FF FE FF C6 FF C6 FF C6 FF 00 FF
+ RO10:6668 C6 FE C6 FF C6 FF C6 FF C6 FF C6 FF 7C FF 00 FF
+ RO10:6678 FC FF C6 FF C6 FF C6 FF C6 FF C6 FF FC FF 00 FF
+ RO10:6688 7C FF C6 FF E0 FF 7C FF 0E FF C6 FF 7C FF 00 FF
+ RO10:6698 7C FF C6 FF C6 FF C6 FF C6 FF C6 FF 7C FF 00 FF
+ RO10:66A8 E6 FF E6 FF F6 FF D6 FF DE FF CE FF CE FF 00 FF
+ RO10:66B8 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:66C8 7C FF C6 FF E0 FF 7C FF 0E FF C6 FF 7C FF 00 FF
+ RO10:66D8 7C FF C6 FF C6 FF C6 FF C6 FF C6 FF 7C FF 00 FF
+ RO10:66E8 FE FF C0 FF C0 FF FC FF C0 FF C0 FF C0 FF 00 FF
+ RO10:66F8 FF FF 18 FF 18 FF 18 FF 18 FF 18 FF 18 FF 00 FF
+ RO10:6708 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6718 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+
+ RO10:6728 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6738 38 FF 44 FF 9A FF A2 FF 9A FF 44 FF 38 FF 00 FF
+ RO10:6748 0C FF 1C FF 0C FF 0C FF 0C FF 0C FF 0C FF 00 FF
+ RO10:6758 3C FF 66 FF 66 FF 3E FF 06 FF 66 FF 3C FF 00 FF
+ RO10:6768 3C FF 66 FF 66 FF 3E FF 06 FF 66 FF 3C FF 00 FF
+ RO10:6778 3C FF 66 FF 66 FF 66 FF 66 FF 66 FF 3C FF 00 FF
+ RO10:6788 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6798 C6 FF E6 FF E6 FF D6 FF D6 FF CE FF CE FF C6 FF
+ RO10:67A8 C0 FF C0 FF 00 FF DB FF DD FF D9 FF D9 FF D9 FF
+ RO10:67B8 00 FF 30 FF 78 FF 33 FF B6 FF B7 FF B6 FF B3 FF
+ RO10:67C8 00 FF 00 FF 00 FF CD FF 6E FF EC FF 0C FF EC FF
+ RO10:67D8 01 FF 01 FF 01 FF 8F FF D9 FF D9 FF D9 FF CF FF
+ RO10:67E8 80 FF 80 FF 80 FF 9E FF B3 FF B3 FF B3 FF 9E FF
+ RO10:67F8 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6808 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6818 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6828 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6838 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6848 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+ RO10:6858 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF 00 FF
+
+ RO10:6868 E9 24 4C 39 54 5A 9E 6F
+ RO10:6870 4C 39 F1 4D 54 5A 1A 73
+ RO10:6878 E9 24 4C 39 F1 4D 54 5A
+ RO10:6880 A7 28 E9 28 4C 35 54 52
+ RO10:6888 E9 18 BD 00 3F 02 9E 6F
+ RO10:6890 E9 18 B9 00 FF 1A 9E 6F
+ RO10:6898 E9 18 B4 62 0D 56 9E 6F
+ RO10:68A0 4C 39 F1 4D 00 00 FF 7F
+
+ RO10:68A8 F0 82            ld   a,(ff00+82)
+ RO10:68AA F5               push af
+ RO10:68AB 3E 04            ld   a,04
+ RO10:68AD E0 82            ld   (ff00+82),a
+ RO10:68AF E0 70            ld   (ff00+70),a
+ RO10:68B1 AF               xor  a
+ RO10:68B2 EA 6E DC         ld   (DC6E),a
+ RO10:68B5 3E 79            ld   a,79
+ RO10:68B7 EA 6F DC         ld   (DC6F),a
+ RO10:68BA 3E DC            ld   a,DC
+ RO10:68BC EA 70 DC         ld   (DC70),a
+ RO10:68BF AF               xor  a
+ RO10:68C0 EA 6D DC         ld   (DC6D),a
+ RO10:68C3 3E AA            ld   a,AA
+ RO10:68C5 EA 6C DC         ld   (DC6C),a       // WRA4($DC6C) : 170, 0, 0, 121, 220
+ RO10:68C8 F1               pop  af
+ RO10:68C9 E0 82            ld   (ff00+82),a
+ RO10:68CB E0 70            ld   (ff00+70),a
+ RO10:68CD C9               ret                 // Sets up basic covered graphics values
+ RO10:68CE C5               push bc
+ RO10:68CF 47               ld   b,a
+ RO10:68D0 F0 82            ld   a,(ff00+82)
+ RO10:68D2 F5               push af
+ RO10:68D3 3E 04            ld   a,04
+ RO10:68D5 E0 82            ld   (ff00+82),a
+ RO10:68D7 E0 70            ld   (ff00+70),a
+ RO10:68D9 78               ld   a,b
+ RO10:68DA EA 6C DC         ld   (DC6C),a
+ RO10:68DD F1               pop  af
+ RO10:68DE E0 82            ld   (ff00+82),a
+ RO10:68E0 E0 70            ld   (ff00+70),a
+ RO10:68E2 C1               pop  bc
+ RO10:68E3 C9               ret                 // WRA4($DC6C) = A
+ RO10:68E4 C5               push bc
+ RO10:68E5 47               ld   b,a
+ RO10:68E6 F0 82            ld   a,(ff00+82)
+ RO10:68E8 F5               push af
+ RO10:68E9 3E 04            ld   a,04
+ RO10:68EB E0 82            ld   (ff00+82),a
+ RO10:68ED E0 70            ld   (ff00+70),a
+ RO10:68EF 78               ld   a,b
+ RO10:68F0 EA 6D DC         ld   (DC6D),a
+ RO10:68F3 F1               pop  af
+ RO10:68F4 E0 82            ld   (ff00+82),a
+ RO10:68F6 E0 70            ld   (ff00+70),a
+ RO10:68F8 C1               pop  bc
+ RO10:68F9 C9               ret                 // WRA4($DC6D) = A
+ RO10:68FA CD 0C 69         call 690C           // Sets up next table of covered graphics within late WRA4 Bank (BC is starting location, DE is size)
+ RO10:68FD CD 09 6A         call 6A09           // Tile placement and coloring handled for [$9800 + B + C * 32] table size indicated by DE using [$DC6C] and [$DC6D] as the base
+ RO10:6900 C9               ret                 // Sets up table of covered graphics within late WRA4 Bank, as well as defaulted table of graphics (BC is starting location, DE is size)
+ RO10:6901 CD 0C 69         call 690C           // Sets up next table of covered graphics within late WRA4 Bank (BC is starting location, DE is size)
+ RO10:6904 CD 0F 6A         call 6A0F           // Tile placement and coloring handled for [$9800 + B + C * 32] table size indicated by DE using [$DC6C] and [$DC6D] as the base; each row advances the game state by 1 frame
+ RO10:6907 C9               ret                 // Sets up table of covered graphics within late WRA4 Bank, as well as defaulted table of graphics, frame update per row version (BC is starting location, DE is size)
+ RO10:6908 CD 8E 69         call 698E           // Restores last table of covered graphics
+ RO10:690B C9               ret  
+ RO10:690C C5               push bc
+ RO10:690D D5               push de
+ RO10:690E E5               push hl
+ RO10:690F F0 82            ld   a,(ff00+82)
+ RO10:6911 F5               push af
+ RO10:6912 3E 04            ld   a,04
+ RO10:6914 E0 82            ld   (ff00+82),a
+ RO10:6916 E0 70            ld   (ff00+70),a
+ RO10:6918 D5               push de
+ RO10:6919 21 6E DC         ld   hl,DC6E
+ RO10:691C 7E               ld   a,(hl)         // A = WRA4($DC6E)
+ RO10:691D 34               inc  (hl)
+ RO10:691E 87               add  a
+ RO10:691F 5F               ld   e,a            // E = WRA4($DC6E) * 2
+ RO10:6920 16 00            ld   d,00
+ RO10:6922 21 71 DC         ld   hl,DC71
+ RO10:6925 19               add  hl,de          // HL = $DC71 + WRA4($DC6E) * 2
+ RO10:6926 FA 6F DC         ld   a,(DC6F)
+ RO10:6929 22               ldi  (hl),a
+ RO10:692A FA 70 DC         ld   a,(DC70)
+ RO10:692D 22               ldi  (hl),a         // ($DC71 + WRA4($DC6E) * 2) 2 byte holds pointer indicated by ($DC6F) 2 byte
+ RO10:692E D1               pop  de
+ RO10:692F FA 6F DC         ld   a,(DC6F)
+ RO10:6932 6F               ld   l,a
+ RO10:6933 FA 70 DC         ld   a,(DC70)
+ RO10:6936 67               ld   h,a            // HL holds ($DC6F) 2 byte reverse
+ RO10:6937 70               ld   (hl),b
+ RO10:6938 23               inc  hl
+ RO10:6939 71               ld   (hl),c
+ RO10:693A 23               inc  hl
+ RO10:693B 72               ld   (hl),d
+ RO10:693C 23               inc  hl
+ RO10:693D 73               ld   (hl),e
+ RO10:693E 23               inc  hl
+ RO10:693F E5               push hl
+ RO10:6940 CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO10:6943 C1               pop  bc
+ RO10:6944 D5               push de             // Loop begins here
+ RO10:6945 E5               push hl
+ RO10:6946 3E 00            ld   a,00           // Mini-loop begins here
+ RO10:6948 E0 83            ld   (ff00+83),a
+ RO10:694A E0 4F            ld   (ff00+4F),a
+ RO10:694C CD 4F 0F         call 0F4F           // A = VRA0(HL) with cooldown based on bit 1,($FF41)
+ RO10:694F 02               ld   (bc),a
+ RO10:6950 03               inc  bc
+ RO10:6951 3E 01            ld   a,01
+ RO10:6953 E0 83            ld   (ff00+83),a
+ RO10:6955 E0 4F            ld   (ff00+4F),a
+ RO10:6957 CD 4F 0F         call 0F4F           // A = VRA1(HL) with cooldown based on bit 1,($FF41)
+ RO10:695A 02               ld   (bc),a
+ RO10:695B 03               inc  bc
+ RO10:695C D5               push de
+ RO10:695D 7D               ld   a,l
+ RO10:695E E6 E0            and  a,E0
+ RO10:6960 57               ld   d,a
+ RO10:6961 7D               ld   a,l
+ RO10:6962 3C               inc  a
+ RO10:6963 E6 1F            and  a,1F
+ RO10:6965 B2               or   d
+ RO10:6966 6F               ld   l,a
+ RO10:6967 D1               pop  de
+ RO10:6968 15               dec  d
+ RO10:6969 20 DB            jr   nz,6946        // Loops back for row ongoing
+ RO10:696B E1               pop  hl
+ RO10:696C 7C               ld   a,h
+ RO10:696D 11 20 00         ld   de,0020
+ RO10:6970 19               add  hl,de
+ RO10:6971 FE 9C            cp   a,9C
+ RO10:6973 30 04            jr   nc,6979
+ RO10:6975 7C               ld   a,h
+ RO10:6976 E6 9B            and  a,9B
+ RO10:6978 67               ld   h,a
+ RO10:6979 D1               pop  de
+ RO10:697A 1D               dec  e
+ RO10:697B 20 C7            jr   nz,6944        // Loop result starting at ($DC6F) location: B, C, D, E, Tile/Color alteration
+ RO10:697D 79               ld   a,c
+ RO10:697E EA 6F DC         ld   (DC6F),a
+ RO10:6981 78               ld   a,b
+ RO10:6982 EA 70 DC         ld   (DC70),a
+ RO10:6985 F1               pop  af
+ RO10:6986 E0 82            ld   (ff00+82),a
+ RO10:6988 E0 70            ld   (ff00+70),a
+ RO10:698A E1               pop  hl
+ RO10:698B D1               pop  de
+ RO10:698C C1               pop  bc
+ RO10:698D C9               ret                 // Sets up next table of covered graphics within late WRA4 Bank (BC is starting location, DE is size)
+ RO10:698E C5               push bc
+ RO10:698F D5               push de
+ RO10:6990 E5               push hl
+ RO10:6991 F0 82            ld   a,(ff00+82)
+ RO10:6993 F5               push af
+ RO10:6994 3E 04            ld   a,04
+ RO10:6996 E0 82            ld   (ff00+82),a
+ RO10:6998 E0 70            ld   (ff00+70),a
+ RO10:699A FA 6E DC         ld   a,(DC6E)
+ RO10:699D A7               and  a
+ RO10:699E 28 60            jr   z,6A00         // Ends immediately if no graphics are covered
+ RO10:69A0 3D               dec  a
+ RO10:69A1 EA 6E DC         ld   (DC6E),a       // ($DC6E) = max(0,WRA4($DC6E) - 1)
+ RO10:69A4 87               add  a              // A = 2 * max(0,WRA4($DC6E) - 1)
+ RO10:69A5 5F               ld   e,a            // E = 2 * max(0,WRA4($DC6E) - 1)
+ RO10:69A6 16 00            ld   d,00
+ RO10:69A8 21 71 DC         ld   hl,DC71
+ RO10:69AB 19               add  hl,de          // HL = $DC71 + 2 * max(0,WRA4($DC6E) - 1)
+ RO10:69AC 2A               ldi  a,(hl)
+ RO10:69AD EA 6F DC         ld   (DC6F),a
+ RO10:69B0 5F               ld   e,a
+ RO10:69B1 2A               ldi  a,(hl)
+ RO10:69B2 EA 70 DC         ld   (DC70),a
+ RO10:69B5 57               ld   d,a            // Grabs pointer for last table of covered graphics
+ RO10:69B6 1A               ld   a,(de)
+ RO10:69B7 47               ld   b,a
+ RO10:69B8 13               inc  de
+ RO10:69B9 1A               ld   a,(de)
+ RO10:69BA 4F               ld   c,a            // BC holds designated starting location
+ RO10:69BB 13               inc  de
+ RO10:69BC D5               push de
+ RO10:69BD CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO10:69C0 C1               pop  bc
+ RO10:69C1 0A               ld   a,(bc)
+ RO10:69C2 57               ld   d,a
+ RO10:69C3 03               inc  bc
+ RO10:69C4 0A               ld   a,(bc)
+ RO10:69C5 5F               ld   e,a            // DE holds size dimensions
+ RO10:69C6 03               inc  bc
+ RO10:69C7 D5               push de             // Loop begins here
+ RO10:69C8 E5               push hl
+ RO10:69C9 3E 00            ld   a,00           // Current row loop begins here
+ RO10:69CB E0 83            ld   (ff00+83),a
+ RO10:69CD E0 4F            ld   (ff00+4F),a
+ RO10:69CF 0A               ld   a,(bc)
+ RO10:69D0 03               inc  bc
+ RO10:69D1 CD 2D 0F         call 0F2D           // (HL) = A with cooldown based on bit 1,($FF41)
+ RO10:69D4 3E 01            ld   a,01
+ RO10:69D6 E0 83            ld   (ff00+83),a
+ RO10:69D8 E0 4F            ld   (ff00+4F),a
+ RO10:69DA 0A               ld   a,(bc)
+ RO10:69DB 03               inc  bc
+ RO10:69DC CD 2D 0F         call 0F2D           // (HL) = A with cooldown based on bit 1,($FF41)
+ RO10:69DF D5               push de
+ RO10:69E0 7D               ld   a,l
+ RO10:69E1 E6 E0            and  a,E0
+ RO10:69E3 57               ld   d,a
+ RO10:69E4 7D               ld   a,l
+ RO10:69E5 3C               inc  a
+ RO10:69E6 E6 1F            and  a,1F
+ RO10:69E8 B2               or   d
+ RO10:69E9 6F               ld   l,a
+ RO10:69EA D1               pop  de
+ RO10:69EB 15               dec  d
+ RO10:69EC 20 DB            jr   nz,69C9        // Loop for next entry on current row
+ RO10:69EE E1               pop  hl
+ RO10:69EF 7C               ld   a,h
+ RO10:69F0 11 20 00         ld   de,0020
+ RO10:69F3 19               add  hl,de
+ RO10:69F4 FE 9C            cp   a,9C
+ RO10:69F6 30 04            jr   nc,69FC
+ RO10:69F8 7C               ld   a,h
+ RO10:69F9 E6 9B            and  a,9B
+ RO10:69FB 67               ld   h,a
+ RO10:69FC D1               pop  de
+ RO10:69FD 1D               dec  e
+ RO10:69FE 20 C7            jr   nz,69C7
+ RO10:6A00 F1               pop  af
+ RO10:6A01 E0 82            ld   (ff00+82),a
+ RO10:6A03 E0 70            ld   (ff00+70),a
+ RO10:6A05 E1               pop  hl
+ RO10:6A06 D1               pop  de
+ RO10:6A07 C1               pop  bc
+ RO10:6A08 C9               ret                 // Restores last table of covered graphics
+ RO10:6A09 AF               xor  a
+ RO10:6A0A EA 79 CD         ld   (CD79),a
+ RO10:6A0D 18 05            jr   6A14
+ RO10:6A0F 3E 01            ld   a,01
+ RO10:6A11 EA 79 CD         ld   (CD79),a
+ RO10:6A14 C5               push bc
+ RO10:6A15 D5               push de
+ RO10:6A16 E5               push hl
+ RO10:6A17 F0 82            ld   a,(ff00+82)
+ RO10:6A19 F5               push af
+ RO10:6A1A 3E 04            ld   a,04
+ RO10:6A1C E0 82            ld   (ff00+82),a
+ RO10:6A1E E0 70            ld   (ff00+70),a
+ RO10:6A20 CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO10:6A23 CD 59 6A         call 6A59           // Tile placement and coloring handled for [HL] to [HL + D - 1] as top row using [$DC6C] and [$DC6D] as the base
+ RO10:6A26 D5               push de
+ RO10:6A27 7C               ld   a,h
+ RO10:6A28 11 20 00         ld   de,0020
+ RO10:6A2B 19               add  hl,de
+ RO10:6A2C FE 9C            cp   a,9C
+ RO10:6A2E 30 04            jr   nc,6A34
+ RO10:6A30 7C               ld   a,h
+ RO10:6A31 E6 9B            and  a,9B
+ RO10:6A33 67               ld   h,a
+ RO10:6A34 D1               pop  de
+ RO10:6A35 1D               dec  e
+ RO10:6A36 1D               dec  e              // Loop begins here
+ RO10:6A37 28 14            jr   z,6A4D
+ RO10:6A39 CD 80 6A         call 6A80           // Tile placement and coloring handled for [HL] to [HL + D - 1] as a middle row using [$DC6C] and [$DC6D] as the base
+ RO10:6A3C D5               push de
+ RO10:6A3D 7C               ld   a,h
+ RO10:6A3E 11 20 00         ld   de,0020
+ RO10:6A41 19               add  hl,de
+ RO10:6A42 FE 9C            cp   a,9C
+ RO10:6A44 30 04            jr   nc,6A4A
+ RO10:6A46 7C               ld   a,h
+ RO10:6A47 E6 9B            and  a,9B
+ RO10:6A49 67               ld   h,a
+ RO10:6A4A D1               pop  de
+ RO10:6A4B 18 E9            jr   6A36
+ RO10:6A4D CD A8 6A         call 6AA8           // Tile placement and coloring handled for [HL] to [HL + D - 1] as bottom row using [$DC6C] and [$DC6D] as the base
+ RO10:6A50 F1               pop  af
+ RO10:6A51 E0 82            ld   (ff00+82),a
+ RO10:6A53 E0 70            ld   (ff00+70),a
+ RO10:6A55 E1               pop  hl
+ RO10:6A56 D1               pop  de
+ RO10:6A57 C1               pop  bc
+ RO10:6A58 C9               ret                 // Tile placement and coloring handled for [$9800 + B + C * 32] table size indicated by DE using [$DC6C] and [$DC6D] as the base
+ RO10:6A59 D5               push de
+ RO10:6A5A E5               push hl
+ RO10:6A5B FA 6C DC         ld   a,(DC6C)
+ RO10:6A5E 06 00            ld   b,00
+ RO10:6A60 CD CF 6A         call 6ACF           // Tile placement and colors established with ($DC6C) and ($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6A63 15               dec  d
+ RO10:6A64 15               dec  d              // Loop begins here
+ RO10:6A65 28 0B            jr   z,6A72
+ RO10:6A67 FA 6C DC         ld   a,(DC6C)
+ RO10:6A6A 3C               inc  a
+ RO10:6A6B 06 00            ld   b,00
+ RO10:6A6D CD CF 6A         call 6ACF           // Tile placement and colors established with ($DC6C) + 1 and ($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6A70 18 F2            jr   6A64
+ RO10:6A72 FA 6C DC         ld   a,(DC6C)
+ RO10:6A75 06 20            ld   b,20
+ RO10:6A77 CD CF 6A         call 6ACF           // Tile placement and colors established with ($DC6C) and OR $20,($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6A7A CD F4 6A         call 6AF4           // ($CD79) being active advances game state to next frame
+ RO10:6A7D E1               pop  hl
+ RO10:6A7E D1               pop  de
+ RO10:6A7F C9               ret                 // Tile placement and coloring handled for [HL] to [HL + D - 1] as top row using [$DC6C] and [$DC6D] as the base
+ RO10:6A80 D5               push de
+ RO10:6A81 E5               push hl
+ RO10:6A82 FA 6C DC         ld   a,(DC6C)
+ RO10:6A85 C6 02            add  a,02
+ RO10:6A87 06 00            ld   b,00
+ RO10:6A89 CD CF 6A         call 6ACF           // Tile placement and colors established with ($DC6C) + 2 and ($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6A8C 15               dec  d
+ RO10:6A8D 15               dec  d              // Loop begins here
+ RO10:6A8E 28 08            jr   z,6A98
+ RO10:6A90 AF               xor  a
+ RO10:6A91 06 00            ld   b,00
+ RO10:6A93 CD CF 6A         call 6ACF           // Tile placement and colors established with 0 and ($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6A96 18 F5            jr   6A8D
+ RO10:6A98 FA 6C DC         ld   a,(DC6C)
+ RO10:6A9B C6 02            add  a,02
+ RO10:6A9D 06 20            ld   b,20
+ RO10:6A9F CD CF 6A         call 6ACF           // Tile placement and colors established with ($DC6C) + 2 and OR $20,($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6AA2 CD F4 6A         call 6AF4           // ($CD79) being active advances game state to next frame
+ RO10:6AA5 E1               pop  hl
+ RO10:6AA6 D1               pop  de
+ RO10:6AA7 C9               ret                 // Tile placement and coloring handled for [HL] to [HL + D - 1] as a middle row using [$DC6C] and [$DC6D] as the base
+ RO10:6AA8 D5               push de
+ RO10:6AA9 E5               push hl
+ RO10:6AAA FA 6C DC         ld   a,(DC6C)
+ RO10:6AAD 06 40            ld   b,40
+ RO10:6AAF CD CF 6A         call 6ACF           // Tile placement and colors established with A and OR B,($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6AB2 15               dec  d
+ RO10:6AB3 15               dec  d              // Loop begins here
+ RO10:6AB4 28 0B            jr   z,6AC1
+ RO10:6AB6 FA 6C DC         ld   a,(DC6C)
+ RO10:6AB9 3C               inc  a
+ RO10:6ABA 06 40            ld   b,40
+ RO10:6ABC CD CF 6A         call 6ACF           // Tile placement and colors established with A and OR B,($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6ABF 18 F2            jr   6AB3
+ RO10:6AC1 FA 6C DC         ld   a,(DC6C)
+ RO10:6AC4 06 60            ld   b,60
+ RO10:6AC6 CD CF 6A         call 6ACF           // Tile placement and colors established with A and OR B,($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6AC9 CD F4 6A         call 6AF4           // ($CD79) being active advances game state to next frame
+ RO10:6ACC E1               pop  hl
+ RO10:6ACD D1               pop  de
+ RO10:6ACE C9               ret                 // Tile placement and coloring handled for [HL] to [HL + D - 1] as bottom row using [$DC6C] and [$DC6D] as the base
+ RO10:6ACF D5               push de
+ RO10:6AD0 F5               push af
+ RO10:6AD1 3E 00            ld   a,00
+ RO10:6AD3 E0 83            ld   (ff00+83),a
+ RO10:6AD5 E0 4F            ld   (ff00+4F),a
+ RO10:6AD7 F1               pop  af
+ RO10:6AD8 CD 2D 0F         call 0F2D           // (HL) = A with cooldown based on bit 1,($FF41)
+ RO10:6ADB 3E 01            ld   a,01
+ RO10:6ADD E0 83            ld   (ff00+83),a
+ RO10:6ADF E0 4F            ld   (ff00+4F),a
+ RO10:6AE1 FA 6D DC         ld   a,(DC6D)
+ RO10:6AE4 B0               or   b
+ RO10:6AE5 CD 2D 0F         call 0F2D           // (HL) = A with cooldown based on bit 1,($FF41)
+ RO10:6AE8 7D               ld   a,l
+ RO10:6AE9 E6 E0            and  a,E0
+ RO10:6AEB 57               ld   d,a
+ RO10:6AEC 7D               ld   a,l
+ RO10:6AED 3C               inc  a
+ RO10:6AEE E6 1F            and  a,1F
+ RO10:6AF0 B2               or   d
+ RO10:6AF1 6F               ld   l,a
+ RO10:6AF2 D1               pop  de
+ RO10:6AF3 C9               ret                 // Tile placement and colors established with A and OR B,($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6AF4 FA 79 CD         ld   a,(CD79)
+ RO10:6AF7 A7               and  a
+ RO10:6AF8 C8               ret  z
+ RO10:6AF9 CD D2 04         call 04D2           // Next frame
+ RO10:6AFC C9               ret                 // ($CD79) being active advances game state to next frame
+ RO10:6AFD C5               push bc
+ RO10:6AFE D5               push de
+ RO10:6AFF F5               push af
+ RO10:6B00 78               ld   a,b
+ RO10:6B01 3C               inc  a
+ RO10:6B02 E6 1F            and  a,1F
+ RO10:6B04 47               ld   b,a            // B = (B + 1)%32
+ RO10:6B05 79               ld   a,c
+ RO10:6B06 3C               inc  a
+ RO10:6B07 E6 1F            and  a,1F
+ RO10:6B09 4F               ld   c,a            // C = (C + 1)%32
+ RO10:6B0A 7A               ld   a,d
+ RO10:6B0B D6 02            sub  a,02
+ RO10:6B0D 57               ld   d,a            // D -= 2
+ RO10:6B0E 7B               ld   a,e
+ RO10:6B0F D6 02            sub  a,02
+ RO10:6B11 5F               ld   e,a            // E -= 2
+ RO10:6B12 CD D4 0E         call 0ED4           // HL = $9800 + B + C * 32
+ RO10:6B15 F1               pop  af
+ RO10:6B16 4F               ld   c,a            // C = A
+ RO10:6B17 F0 82            ld   a,(ff00+82)
+ RO10:6B19 F5               push af
+ RO10:6B1A 3E 04            ld   a,04
+ RO10:6B1C E0 82            ld   (ff00+82),a
+ RO10:6B1E E0 70            ld   (ff00+70),a
+ RO10:6B20 D5               push de             // Loop begins here
+ RO10:6B21 E5               push hl
+ RO10:6B22 79               ld   a,c
+ RO10:6B23 06 00            ld   b,00
+ RO10:6B25 CD CF 6A         call 6ACF           // Tile placement and colors established with A and ($DC6D) within respective VRAM banks for HL address, HL effectively incremented within same row for 32x32
+ RO10:6B28 15               dec  d
+ RO10:6B29 20 F7            jr   nz,6B22
+ RO10:6B2B E1               pop  hl
+ RO10:6B2C 7C               ld   a,h
+ RO10:6B2D 11 20 00         ld   de,0020
+ RO10:6B30 19               add  hl,de
+ RO10:6B31 FE 9C            cp   a,9C
+ RO10:6B33 30 04            jr   nc,6B39
+ RO10:6B35 7C               ld   a,h
+ RO10:6B36 E6 9B            and  a,9B
+ RO10:6B38 67               ld   h,a
+ RO10:6B39 D1               pop  de
+ RO10:6B3A 1D               dec  e
+ RO10:6B3B 20 E3            jr   nz,6B20
+ RO10:6B3D F1               pop  af
+ RO10:6B3E E0 82            ld   (ff00+82),a
+ RO10:6B40 E0 70            ld   (ff00+70),a
+ RO10:6B42 D1               pop  de
+ RO10:6B43 C1               pop  bc
+ RO10:6B44 C9               ret                 // VRA0 rectangle B+1,C+1, size D-1,E-1, set to A, and VRA1 same rectangle set to default palette
+

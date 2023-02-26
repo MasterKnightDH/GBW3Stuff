@@ -1,0 +1,613 @@
+ ROM2:4000 F5               push af
+ ROM2:4001 78               ld   a,b
+ ROM2:4002 EA AE C4         ld   (C4AE),a
+ ROM2:4005 F1               pop  af
+ ROM2:4006 CB 27            sla  a
+ ROM2:4008 26 00            ld   h,00
+ ROM2:400A 6F               ld   l,a
+ ROM2:400B 01 16 40         ld   bc,4016
+ ROM2:400E 09               add  hl,bc
+ ROM2:400F 2A               ldi  a,(hl)
+ ROM2:4010 5F               ld   e,a
+ ROM2:4011 7E               ld   a,(hl)
+ ROM2:4012 57               ld   d,a
+ ROM2:4013 62               ld   h,d
+ ROM2:4014 6B               ld   l,e
+ ROM2:4015 C9               ret                 // HL holds pointer to unit type's positions table on Battle Screen (A = Unit Type, B = Side)
+
+ ROM2:4016 7E 40               ld   b,b
+ ROM2:4018 82 40                                // Grunt
+ ROM2:401A B2 40               ld   b,b
+ ROM2:401C E2 40               ld   b,b
+ ROM2:401E 12 41               ld   b,c
+ ROM2:4020 42 41               ld   b,c
+ ROM2:4022 72 41               ld   b,c
+ ROM2:4024 A2 41               ld   b,c
+ ROM2:4026 D2 41
+ ROM2:4028 02 42               ld   b,d
+ ROM2:402A 32 42               ld   b,d
+ ROM2:402C 62 42               ld   b,d
+ ROM2:402E 92 42               ld   b,d
+ ROM2:4030 C2 42
+ ROM2:4032 F2 42               ld   b,d
+ ROM2:4034 22 43               ld   b,e
+ ROM2:4036 52 43               ld   b,e
+ ROM2:4038 82 43               ld   b,e
+ ROM2:403A B2 43               ld   b,e
+ ROM2:403C E2 43               ld   b,e
+ ROM2:403E 12 44               ld   b,h
+ ROM2:4040 42 44               ld   b,h
+ ROM2:4042 72 44               ld   b,h
+ ROM2:4044 A2 44               ld   b,h
+ ROM2:4046 D2 44
+ ROM2:4048 02 45               ld   b,l
+ ROM2:404A 32 45               ld   b,l
+ ROM2:404C 62 45               ld   b,l
+ ROM2:404E 92 45               ld   b,l
+ ROM2:4050 C2 45
+ ROM2:4052 F2 45               ld   b,l
+ ROM2:4054 22 46               ld   b,(hl)
+ ROM2:4056 52 46               ld   b,(hl)
+ ROM2:4058 82 46               ld   b,(hl)
+ ROM2:405A B2 46               ld   b,(hl)
+ ROM2:405C E2 46               ld   b,(hl)
+ ROM2:405E 12 47               ld   b,a
+ ROM2:4060 42 47               ld   b,a
+ ROM2:4062 72 47               ld   b,a
+ ROM2:4064 A2 47               ld   b,a
+ ROM2:4066 D2 47
+ ROM2:4068 02 48               ld   c,b
+ ROM2:406A 32 48               ld   c,b
+ ROM2:406C 62 48               ld   c,b
+ ROM2:406E 92 48               ld   c,b
+ ROM2:4070 C2 48
+ ROM2:4072 F2 48               ld   c,b
+ ROM2:4074 22 49               ld   c,c
+ ROM2:4076 52 49               ld   c,c
+ ROM2:4078 82 49               ld   c,c
+ ROM2:407A B2 49               ld   c,c
+ ROM2:407C E2 49
+
+ ROM2:407E FF FF FF FF
+
+ ROM2:4082 02 07 05 07 01 09 04 09 02 0B 05 0B 01 0D 04 0D 02 0F 05 0F FF FF FF FF
+ ROM2:409A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:40B2 02 07 05 07 01 09 04 09 02 0B 05 0B 01 0D 04 0D 02 0F 05 0F FF FF FF FF
+ ROM2:40CA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:40E2 01 08 04 08 00 0A 03 0A 01 0C 04 0C 00 0E 03 0E 01 10 04 10 FF FF FF FF
+ ROM2:40FA 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C 11 0E 0E 0E 10 10 0D 10 FF FF FF FF
+
+ ROM2:4112 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:412A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4142 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:415A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4172 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:418A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:41A2 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:41BA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:41D2 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:41EA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4202 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:421A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4232 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:424A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4262 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:427A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4292 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:42AA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:42C2 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:42DA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:42F2 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:430A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4322 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:433A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4352 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:436A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4382 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:439A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:43B2 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:43CA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:43E2 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:43FA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4412 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:442A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4442 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:445A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4472 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:448A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:44A2 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:44BA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:44D2 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:44EA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4502 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:451A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4532 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:454A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4562 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:457A 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:4592 01 07 04 07 00 09 03 09 01 0B 04 0B 00 0D 03 0D 01 0F 04 0F FF FF FF FF
+ ROM2:45AA 10 07 0D 07 11 09 0E 09 10 0B 0D 0B 11 0D 0E 0D 10 0F 0D 0F FF FF FF FF
+
+ ROM2:45C2 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:45DA 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:45F2 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:460A 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:4622 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:463A 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:4652 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:466A 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:4682 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:469A 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:46B2 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:46CA 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:46E2 00 04 01 04 02 04 03 04 04 04 00 08 01 08 02 08 03 08 04 08 FF FF FF FF
+ ROM2:46FA 0C 04 0D 04 0E 04 0F 04 10 04 0C 08 0D 08 0E 08 0F 08 10 08 FF FF FF FF
+
+ ROM2:4712 01 04 02 04 03 04 04 04 05 04 01 08 02 08 03 08 04 08 05 08 FF FF FF FF
+ ROM2:472A 0C 04 0D 04 0E 04 0F 04 10 04 0C 08 0D 08 0E 08 0F 08 10 08 FF FF FF FF
+
+ ROM2:4742 00 04 01 04 02 04 03 04 04 04 00 08 01 08 02 08 03 08 04 08 FF FF FF FF
+ ROM2:475A 0C 04 0D 04 0E 04 0F 04 10 04 0C 08 0D 08 0E 08 0F 08 10 08 FF FF FF FF
+
+ ROM2:4772 00 04 01 04 02 04 03 04 04 04 00 08 01 08 02 08 03 08 04 08 FF FF FF FF
+ ROM2:478A 0C 04 0D 04 0E 04 0F 04 10 04 0C 08 0D 08 0E 08 0F 08 10 08 FF FF FF FF
+
+ ROM2:47A2 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:47BA 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:47D2 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:47EA 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:4802 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:481A 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:4832 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:484A 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:4862 01 04 04 04 00 06 03 06 01 08 04 08 00 0A 03 0A 01 0C 04 0C FF FF FF FF
+ ROM2:487A 10 04 0D 04 11 06 0E 06 10 08 0D 08 11 0A 0E 0A 10 0C 0D 0C FF FF FF FF
+
+ ROM2:4892 00 0A 01 0B 00 0A 01 0B 00 0A 01 0C 00 0D 01 0C 00 0D 01 0C FF FF FF FF
+ ROM2:48AA 0C 0A 0D 0B 0C 0A 0D 0B 0C 0A 0D 0C 0C 0D 0D 0C 0C 0D 0D 0C FF FF FF FF
+
+ ROM2:48C2 00 0A 01 0B 00 0A 01 0B 00 0A 01 0C 00 0D 01 0C 00 0D 01 0C FF FF FF FF
+ ROM2:48DA 0C 0A 0D 0B 0C 0A 0D 0B 0C 0A 0D 0C 0C 0D 0D 0C 0C 0D 0D 0C FF FF FF FF
+
+ ROM2:48F2 00 0A 01 0B 00 0A 01 0B 00 0A 01 0C 00 0D 01 0C 00 0D 01 0C FF FF FF FF
+ ROM2:490A 0C 0A 0D 0B 0C 0A 0D 0B 0C 0A 0D 0C 0C 0D 0D 0C 0C 0D 0D 0C FF FF FF FF
+
+ ROM2:4922 01 0A 02 0B 01 0A 02 0B 01 0A 02 0C 01 0D 02 0C 01 0D 02 0C FF FF FF FF
+ ROM2:493A 0C 0A 0D 0B 0C 0A 0D 0B 0C 0A 0D 0C 0C 0D 0D 0C 0C 0D 0D 0C FF FF FF FF
+
+ ROM2:4952 01 0A 02 0C 01 0B 02 0C 01 0B 02 0D 01 0E 02 0D 01 0E 02 0D FF FF FF FF
+ ROM2:496A 0C 0A 0D 0C 0C 0B 0D 0C 0C 0B 0D 0D 0C 0E 0D 0D 0C 0E 0D 0D FF FF FF FF
+
+ ROM2:4982 00 0A 01 0B 00 0A 01 0B 00 0A 01 0C 00 0D 01 0C 00 0D 01 0C FF FF FF FF
+ ROM2:499A 0C 0A 0D 0B 0C 0A 0D 0B 0C 0A 0D 0C 0C 0D 0D 0C 0C 0D 0D 0C FF FF FF FF
+
+ ROM2:49B2 00 0B 01 0C 00 0B 01 0C 00 0B 01 0D 00 0E 01 0D 00 0E 01 0D FF FF FF FF
+ ROM2:49CA 0C 0B 0D 0C 0C 0B 0D 0C 0C 0B 0D 0D 0C 0E 0D 0D 0C 0E 0D 0D FF FF FF FF
+
+ ROM2:49E2 00 0B 01 0C 00 0B 01 0C 00 0B 01 0D 00 0E 01 0D 00 0E 01 0D FF FF FF FF
+ ROM2:49FA 0C 0B 0D 0C 0C 0B 0D 0C 0C 0B 0D 0D 0C 0E 0D 0D 0C 0E 0D 0D FF FF FF FF
+
+ ROM2:4A12 C3 68 4B         jp   4B68
+ ROM2:4A15 18 FB            jr   4A12
+ ROM2:4A17 3E 00            ld   a,00
+ ROM2:4A19 EA 0E C9         ld   (C90E),a
+ ROM2:4A1C EA 0F C9         ld   (C90F),a
+ ROM2:4A1F EA 10 C9         ld   (C910),a
+ ROM2:4A22 CD F3 04         call 04F3           // Shuts off LCD Display if necessary
+ ROM2:4A25 CD CE 34         call 34CE           // Empty $FFC8 to $FFCB
+ ROM2:4A28 CD 7C 2D         call 2D7C           // Resets all Sprite-related data
+ ROM2:4A2B EF 10 A8 68                          // Sets up basic covered graphics values
+ ROM2:4A2F EF 01 00 40                          // Graphics holding: VRA0($9000) to VRA0($97FF) then VRA0($8800) to VRA0($8FFF) holds basic text
+ ROM2:4A33 CD 18 06         call 0618           // Resets Palettes to absolute default Palettes
+ ROM2:4A36 CD 02 0F         call 0F02           // Empties ($9800) to ($9BFF) in both VRAM banks
+ ROM2:4A39 3E 00            ld   a,00
+ ROM2:4A3B EF 15 91 66                          // VRA1:($8F30~$8FFF) holds mode menu tile graphics basics; mode menu graphics basics established accordingly
+ ROM2:4A3F 3E 02            ld   a,02
+ ROM2:4A41 06 01            ld   b,01
+ ROM2:4A43 EF 31 28 76                          // Controls for Campaign Mode concept description screen; ends with A = 0 for A/Start Button press, or -1 for successful B Button press (A is concept, B is scroll-back ability flag) (Mercenary Units)
+ ROM2:4A47 3E 03            ld   a,03
+ ROM2:4A49 06 00            ld   b,00
+ ROM2:4A4B EF 31 28 76                          // Controls for Campaign Mode concept description screen; ends with A = 0 for A/Start Button press, or -1 for successful B Button press (A is concept, B is scroll-back ability flag) (Badges)
+ ROM2:4A4F CD A2 05         call 05A2           // Button update, next frame
+ ROM2:4A52 CD 56 30         call 3056           // Establishes all active sprite portions in ($C400) table; updates ($FFBC), sets ($C00E) to 1
+ ROM2:4A55 3E 00            ld   a,00
+ ROM2:4A57 EF 15 91 67                          // Updates menu shifting diagonally down-right BG graphics (A is modification of where menu BG graphics had been stored)
+ ROM2:4A5B F0 92            ld   a,(ff00+92)
+ ROM2:4A5D CB 47            bit  0,a            // A
+ ROM2:4A5F 28 00            jr   z,4A61
+ ROM2:4A61 CB 4F            bit  1,a            // B
+ ROM2:4A63 28 02            jr   z,4A67
+ ROM2:4A65 18 02            jr   4A69
+ ROM2:4A67 18 E6            jr   4A4F
+ ROM2:4A69 C3 17 4A         jp   4A17
+ ROM2:4A6C C9               ret  
+ ROM2:4A6D F0 82            ld   a,(ff00+82)
+ ROM2:4A6F F5               push af
+ ROM2:4A70 3E 04            ld   a,04
+ ROM2:4A72 E0 82            ld   (ff00+82),a
+ ROM2:4A74 E0 70            ld   (ff00+70),a
+ ROM2:4A76 FA 7E D3         ld   a,(D37E)
+ ROM2:4A79 FE 05            cp   a,05
+ ROM2:4A7B 20 02            jr   nz,4A7F
+ ROM2:4A7D 18 02            jr   4A81
+ ROM2:4A7F 18 FE            jr   4A7F
+ ROM2:4A81 F1               pop  af
+ ROM2:4A82 E0 82            ld   (ff00+82),a
+ ROM2:4A84 E0 70            ld   (ff00+70),a
+ ROM2:4A86 C9               ret  
+ ROM2:4A87 F0 82            ld   a,(ff00+82)
+ ROM2:4A89 F5               push af
+ ROM2:4A8A 3E 04            ld   a,04
+ ROM2:4A8C E0 82            ld   (ff00+82),a
+ ROM2:4A8E E0 70            ld   (ff00+70),a
+ ROM2:4A90 3E 1D            ld   a,1D
+ ROM2:4A92 EA 77 D3         ld   (D377),a       // Fighter
+ ROM2:4A95 3E 0A            ld   a,0A
+ ROM2:4A97 EA 78 D3         ld   (D378),a
+ ROM2:4A9A 3E 0A            ld   a,0A
+ ROM2:4A9C EA 79 D3         ld   (D379),a
+ ROM2:4A9F 3E 29            ld   a,29
+ ROM2:4AA1 EA 7A D3         ld   (D37A),a       // Sea
+ ROM2:4AA4 3E 04            ld   a,04
+ ROM2:4AA6 EA 7B D3         ld   (D37B),a
+ ROM2:4AA9 3E 01            ld   a,01
+ ROM2:4AAB EA 7C D3         ld   (D37C),a
+ ROM2:4AAE 3E 01            ld   a,01
+ ROM2:4AB0 EA 7D D3         ld   (D37D),a       // Grunt
+ ROM2:4AB3 3E 0A            ld   a,0A
+ ROM2:4AB5 EA 7E D3         ld   (D37E),a
+ ROM2:4AB8 3E 00            ld   a,00
+ ROM2:4ABA EA 7F D3         ld   (D37F),a
+ ROM2:4ABD 3E 01            ld   a,01
+ ROM2:4ABF EA 80 D3         ld   (D380),a       // Red Star Headquarters
+ ROM2:4AC2 3E 02            ld   a,02
+ ROM2:4AC4 EA 81 D3         ld   (D381),a
+ ROM2:4AC7 3E 01            ld   a,01
+ ROM2:4AC9 EA 82 D3         ld   (D382),a
+ ROM2:4ACC F1               pop  af
+ ROM2:4ACD E0 82            ld   (ff00+82),a
+ ROM2:4ACF E0 70            ld   (ff00+70),a
+ ROM2:4AD1 C9               ret  
+ ROM2:4AD2 F0 82            ld   a,(ff00+82)
+ ROM2:4AD4 F5               push af
+ ROM2:4AD5 3E 04            ld   a,04
+ ROM2:4AD7 E0 82            ld   (ff00+82),a
+ ROM2:4AD9 E0 70            ld   (ff00+70),a
+ ROM2:4ADB 3E 20            ld   a,20
+ ROM2:4ADD EA 77 D3         ld   (D377),a       // Attacker
+ ROM2:4AE0 3E 0A            ld   a,0A
+ ROM2:4AE2 EA 78 D3         ld   (D378),a
+ ROM2:4AE5 3E 0A            ld   a,0A
+ ROM2:4AE7 EA 79 D3         ld   (D379),a
+ ROM2:4AEA 3E 29            ld   a,29
+ ROM2:4AEC EA 7A D3         ld   (D37A),a       // Sea
+ ROM2:4AEF 3E 12            ld   a,12
+ ROM2:4AF1 EA 7B D3         ld   (D37B),a
+ ROM2:4AF4 3E 0A            ld   a,0A
+ ROM2:4AF6 EA 7C D3         ld   (D37C),a
+ ROM2:4AF9 3E 2E            ld   a,2E
+ ROM2:4AFB EA 7D D3         ld   (D37D),a       // Large Aircraft Carrier
+ ROM2:4AFE 3E 03            ld   a,03
+ ROM2:4B00 EA 7E D3         ld   (D37E),a
+ ROM2:4B03 3E 00            ld   a,00
+ ROM2:4B05 EA 7F D3         ld   (D37F),a
+ ROM2:4B08 3E 14            ld   a,14
+ ROM2:4B0A EA 80 D3         ld   (D380),a       // White Moon Harbor
+ ROM2:4B0D 3E 07            ld   a,07
+ ROM2:4B0F EA 81 D3         ld   (D381),a
+ ROM2:4B12 3E 14            ld   a,14
+ ROM2:4B14 EA 82 D3         ld   (D382),a
+ ROM2:4B17 F1               pop  af
+ ROM2:4B18 E0 82            ld   (ff00+82),a
+ ROM2:4B1A E0 70            ld   (ff00+70),a
+ ROM2:4B1C C9               ret  
+ ROM2:4B1D F0 82            ld   a,(ff00+82)
+ ROM2:4B1F F5               push af
+ ROM2:4B20 3E 04            ld   a,04
+ ROM2:4B22 E0 82            ld   (ff00+82),a
+ ROM2:4B24 E0 70            ld   (ff00+70),a
+ ROM2:4B26 3E 11            ld   a,11
+ ROM2:4B28 EA 77 D3         ld   (D377),a       // Anti-Air Tank
+ ROM2:4B2B 3E 0A            ld   a,0A
+ ROM2:4B2D EA 78 D3         ld   (D378),a
+ ROM2:4B30 3E 0A            ld   a,0A
+ ROM2:4B32 EA 79 D3         ld   (D379),a
+ ROM2:4B35 3E 09            ld   a,09
+ ROM2:4B37 EA 7A D3         ld   (D37A),a       // Red Star Harbor
+ ROM2:4B3A 3E 03            ld   a,03
+ ROM2:4B3C EA 7B D3         ld   (D37B),a
+ ROM2:4B3F 3E 03            ld   a,03
+ ROM2:4B41 EA 7C D3         ld   (D37C),a
+ ROM2:4B44 3E 2A            ld   a,2A
+ ROM2:4B46 EA 7D D3         ld   (D37D),a       // Transport Helicopter
+ ROM2:4B49 3E 0A            ld   a,0A
+ ROM2:4B4B EA 7E D3         ld   (D37E),a
+ ROM2:4B4E 3E 00            ld   a,00
+ ROM2:4B50 EA 7F D3         ld   (D37F),a       // Dead
+ ROM2:4B53 3E 14            ld   a,14
+ ROM2:4B55 EA 80 D3         ld   (D380),a       // White Moon Harbor
+ ROM2:4B58 3E 03            ld   a,03
+ ROM2:4B5A EA 81 D3         ld   (D381),a
+ ROM2:4B5D 3E 05            ld   a,05
+ ROM2:4B5F EA 82 D3         ld   (D382),a
+ ROM2:4B62 F1               pop  af
+ ROM2:4B63 E0 82            ld   (ff00+82),a
+ ROM2:4B65 E0 70            ld   (ff00+70),a
+ ROM2:4B67 C9               ret  
+ ROM2:4B68 3E 00            ld   a,00
+ ROM2:4B6A CD 8D 05         call 058D           // ($4000) = 0, ($FF81) = 0
+ ROM2:4B6D 3E 00            ld   a,00
+ ROM2:4B6F E0 82            ld   (ff00+82),a
+ ROM2:4B71 E0 70            ld   (ff00+70),a
+ ROM2:4B73 3E 00            ld   a,00
+ ROM2:4B75 E0 83            ld   (ff00+83),a
+ ROM2:4B77 E0 4F            ld   (ff00+4F),a
+ ROM2:4B79 CD FA 02         call 02FA
+ ROM2:4B7C CD CE 34         call 34CE           // Empty $FFC8 to $FFCB
+ ROM2:4B7F CD 18 06         call 0618           // Resets Palettes to absolute default Palettes
+ ROM2:4B82 EF 01 00 40                          // Graphics holding: VRA0($9000) to VRA0($97FF) then VRA0($8800) to VRA0($8FFF) holds basic text
+ ROM2:4B86 EF 0B 82 42                          // Empty $FFAC, $FFB1, and $FFB2
+ ROM2:4B8A CD CE 34         call 34CE           // Empty $FFC8 to $FFCB
+ ROM2:4B8D CD 7C 2D         call 2D7C           // Resets all Sprite-related data
+ ROM2:4B90 CD 2A 05         call 052A           // ($FF0F) = 0, set 0,($FFFF) (V-Blank On)
+ ROM2:4B93 CD 65 05         call 0565           // ($FF0F) = 0, set 2,($FFFF) (Timer On)
+ ROM2:4B96 EF 14 05 48                          
+ ROM2:4B9A C9               ret  
+ ROM2:4B9B CD F3 04         call 04F3           // Shuts off LCD Display if necessary
+ ROM2:4B9E EF 01 00 40                          // Graphics holding: VRA0($9000) to VRA0($97FF) then VRA0($8800) to VRA0($8FFF) holds basic text
+ ROM2:4BA2 21 00 98         ld   hl,9800
+ ROM2:4BA5 01 00 08         ld   bc,0800
+ ROM2:4BA8 3E 20            ld   a,20
+ ROM2:4BAA CD 79 3B         call 3B79           // ($9800 ~ $9FFF) = 32
+ ROM2:4BAD 21 E8 4B         ld   hl,4BE8
+ ROM2:4BB0 06 00            ld   b,00
+ ROM2:4BB2 0E 00            ld   c,00
+ ROM2:4BB4 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ ROM2:4BB7 21 F3 4B         ld   hl,4BF3
+ ROM2:4BBA 06 00            ld   b,00
+ ROM2:4BBC 0E 20            ld   c,20
+ ROM2:4BBE CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ ROM2:4BC1 CD 8B 03         call 038B
+ ROM2:4BC4 AF               xor  a
+ ROM2:4BC5 EA 11 C9         ld   (C911),a
+ ROM2:4BC8 EA 12 C9         ld   (C912),a
+ ROM2:4BCB CD 12 4D         call 4D12
+ ROM2:4BCE CD E5 04         call 04E5           // If ($C00F) bit 7 is off, set 7,($C00F); ($FF40) = new ($C00F)
+ ROM2:4BD1 CD D2 04         call 04D2           // Next frame
+ ROM2:4BD4 CD AC 05         call 05AC           // Establishes current direct and newly pressed controls, also sets up Soft Reset method
+ ROM2:4BD7 F0 91            ld   a,(ff00+91)
+ ROM2:4BD9 CB 5F            bit  3,a            // Start
+ ROM2:4BDB 20 21            jr   nz,4BFE
+ ROM2:4BDD CD 07 4C         call 4C07
+ ROM2:4BE0 CD 15 4C         call 4C15
+ ROM2:4BE3 CD 16 4D         call 4D16
+ ROM2:4BE6 18 E9            jr   4BD1
+
+ ROM2:4BE8 30 31 32 33 34 35 36 37 38 39 00
+
+ ROM2:4BF3 41 42 43 44 45 46 47 48 49 4A 00
+
+ ROM2:4BFE CD F3 04         call 04F3           // Shuts off LCD Display if necessary
+ ROM2:4C01 CD 9D 03         call 039D
+ ROM2:4C04 C3 68 4B         jp   4B68
+ ROM2:4C07 FA 11 C9         ld   a,(C911)
+ ROM2:4C0A 3C               inc  a
+ ROM2:4C0B EA 11 C9         ld   (C911),a
+ ROM2:4C0E 06 0A            ld   b,0A
+ ROM2:4C10 0E 09            ld   c,09
+ ROM2:4C12 C3 ED 34         jp   34ED
+ ROM2:4C15 F0 91            ld   a,(ff00+91)
+ ROM2:4C17 CB 47            bit  0,a            // A
+ ROM2:4C19 C8               ret  z
+ ROM2:4C1A FA 12 C9         ld   a,(C912)
+ ROM2:4C1D EE 01            xor  a,01
+ ROM2:4C1F EA 12 C9         ld   (C912),a
+ ROM2:4C22 CA 1F 05         jp   z,051F         // Finishes with Shuts off Window Display procedure
+ ROM2:4C25 3E 07            ld   a,07
+ ROM2:4C27 E0 97            ld   (ff00+97),a
+ ROM2:4C29 AF               xor  a
+ ROM2:4C2A E0 98            ld   (ff00+98),a
+ ROM2:4C2C C3 14 05         jp   0514           // Turns on Window Display
+
+ ROM2:4C2F 4D 4F 42 49 4C 45               ld   b,l
+ ROM2:4C35 20 53 59 53               ld   d,e
+ ROM2:4C39 20 49 4E 49 54               ld   d,h
+ ROM2:4C3E 2E 2E 2E 20 20 00
+
+ ROM2:4C44 50 50 50               ld   d,b
+ ROM2:4C47 20 43 4F 4E 4E 45 43 54 49 4E 47               ld   b,a
+ ROM2:4C52 2E 2E 2E 20 20 20 00
+
+ ROM2:4C59 48 54 54 50               ld   d,b
+ ROM2:4C5D 20 44 41 54 41               ld   b,c
+ ROM2:4C62 20 52 45 41 44               ld   b,h
+ ROM2:4C67 2E 2E 2E 20 20 20 00
+
+ ROM2:4C6E 45 52 52 4F 52               ld   d,d
+ ROM2:4C73 21 20 45 52 52 4F 52               ld   d,d
+ ROM2:4C7A 21 20 45 52 52 4F 52 21 00
+
+ ROM2:4C83 52 45 41 44               ld   b,h
+ ROM2:4C87 20 4F 4B               ld   c,e
+ ROM2:4C8A 21 20 50 52 45 53 53               ld   d,e
+ ROM2:4C91 20 41 5F 42 54 4E 00
+
+ ROM2:4C98 44 45 42 55 47               ld   b,a
+ ROM2:4C9D 20 57 41 49 54               ld   d,h
+ ROM2:4CA2 20 57 41 49 54               ld   d,h
+ ROM2:4CA7 20 57 41 49 54 00
+
+ ROM2:4CAD 4F 46 46 4C 49 4E 45               ld   b,l
+ ROM2:4CB4 20 57 41 49 54               ld   d,h
+ ROM2:4CB9 2E 2E 2E 2E 2E 2E 2E 2E 00
+
+ ROM2:4CC2 30 37            jr   nc,4CFB
+ ROM2:4CC4 35               dec  (hl)
+ ROM2:4CC5 36 30            ld   (hl),30
+ ROM2:4CC7 35               dec  (hl)
+ ROM2:4CC8 36 36            ld   (hl),36
+ ROM2:4CCA 31 35 00         ld   sp,0035
+ ROM2:4CCD 67               ld   h,a
+ ROM2:4CCE 30 30            jr   nc,4D00
+ ROM2:4CD0 30 30            jr   nc,4D02
+ ROM2:4CD2 30 31            jr   nc,4D05
+ ROM2:4CD4 30 33            jr   nc,4D09
+ ROM2:4CD6 39               add  hl,sp
+ ROM2:4CD7 00               nop  
+ ROM2:4CD8 67               ld   h,a
+ ROM2:4CD9 62               ld   h,d
+ ROM2:4CDA 70               ld   (hl),b
+ ROM2:4CDB 77               ld   (hl),a
+ ROM2:4CDC 31 30 33         ld   sp,3330
+ ROM2:4CDF 39               add  hl,sp
+ ROM2:4CE0 00               nop  
+ ROM2:4CE1 21 C2 4C         ld   hl,4CC2
+ ROM2:4CE4 11 15 C9         ld   de,C915
+ ROM2:4CE7 06 1F            ld   b,1F
+ ROM2:4CE9 2A               ldi  a,(hl)
+ ROM2:4CEA 12               ld   (de),a
+ ROM2:4CEB 13               inc  de
+ ROM2:4CEC 05               dec  b
+ ROM2:4CED 20 FA            jr   nz,4CE9
+ ROM2:4CEF C9               ret  
+ ROM2:4CF0 CD E1 4C         call 4CE1
+ ROM2:4CF3 11 0B 00         ld   de,000B
+ ROM2:4CF6 21 15 C9         ld   hl,C915
+ ROM2:4CF9 19               add  hl,de
+ ROM2:4CFA 7D               ld   a,l
+ ROM2:4CFB EA 15 C9         ld   (C915),a
+ ROM2:4CFE 7C               ld   a,h
+ ROM2:4CFF EA 16 C9         ld   (C916),a
+ ROM2:4D02 11 16 00         ld   de,0016
+ ROM2:4D05 21 15 C9         ld   hl,C915
+ ROM2:4D08 19               add  hl,de
+ ROM2:4D09 7D               ld   a,l
+ ROM2:4D0A EA 17 C9         ld   (C917),a
+ ROM2:4D0D 7C               ld   a,h
+ ROM2:4D0E EA 18 C9         ld   (C918),a
+ ROM2:4D11 C9               ret  
+ ROM2:4D12 CD 24 4D         call 4D24
+ ROM2:4D15 C9               ret  
+ ROM2:4D16 FA 13 C9         ld   a,(C913)
+ ROM2:4D19 B7               or   a
+ ROM2:4D1A C2 29 4D         jp   nz,4D29
+ ROM2:4D1D F0 91            ld   a,(ff00+91)
+ ROM2:4D1F CB 77            bit  6,a            // Up
+ ROM2:4D21 20 1D            jr   nz,4D40
+ ROM2:4D23 C9               ret  
+ ROM2:4D24 AF               xor  a
+ ROM2:4D25 EA 13 C9         ld   (C913),a
+ ROM2:4D28 C9               ret  
+ ROM2:4D29 FA 13 C9         ld   a,(C913)
+ ROM2:4D2C 3D               dec  a
+ ROM2:4D2D 28 23            jr   z,4D52
+ ROM2:4D2F 3D               dec  a
+ ROM2:4D30 CA 72 4D         jp   z,4D72
+ ROM2:4D33 3D               dec  a
+ ROM2:4D34 CA 94 4D         jp   z,4D94
+ ROM2:4D37 3D               dec  a
+ ROM2:4D38 CA B0 4D         jp   z,4DB0
+ ROM2:4D3B AF               xor  a
+ ROM2:4D3C EA 13 C9         ld   (C913),a
+ ROM2:4D3F C9               ret  
+ ROM2:4D40 06 00            ld   b,00
+ ROM2:4D42 0E 11            ld   c,11
+ ROM2:4D44 21 2F 4C         ld   hl,4C2F        // MOBILE SYS INIT...
+ ROM2:4D47 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ ROM2:4D4A 21 13 C9         ld   hl,C913
+ ROM2:4D4D 34               inc  (hl)
+ ROM2:4D4E EF 0A 39 40                          
+ ROM2:4D52 EF 0A 12 40                          
+ ROM2:4D56 38 76            jr   c,4DCE
+ ROM2:4D58 B7               or   a
+ ROM2:4D59 C0               ret  nz
+ ROM2:4D5A 06 00            ld   b,00
+ ROM2:4D5C 0E 11            ld   c,11
+ ROM2:4D5E 21 44 4C         ld   hl,4C44        // PPP CONNECTING...
+ ROM2:4D61 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ ROM2:4D64 21 13 C9         ld   hl,C913
+ ROM2:4D67 34               inc  (hl)
+ ROM2:4D68 CD E1 4C         call 4CE1
+ ROM2:4D6B 21 15 C9         ld   hl,C915
+ ROM2:4D6E EF 0A 73 40                          
+ ROM2:4D72 EF 0A 12 40                          
+ ROM2:4D76 DA CE 4D         jp   c,4DCE
+ ROM2:4D79 B7               or   a
+ ROM2:4D7A C0               ret  nz
+ ROM2:4D7B 06 00            ld   b,00
+ ROM2:4D7D 0E 11            ld   c,11
+ ROM2:4D7F 21 59 4C         ld   hl,4C59        // HTTP DATA READ...
+ ROM2:4D82 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ ROM2:4D85 21 13 C9         ld   hl,C913
+ ROM2:4D88 36 03            ld   (hl),03
+ ROM2:4D8A CD F0 4C         call 4CF0
+ ROM2:4D8D 11 15 C9         ld   de,C915
+ ROM2:4D90 EF 0A AE 48                          
+ ROM2:4D94 EF 0A E9 48                          
+ ROM2:4D98 DA CE 4D         jp   c,4DCE
+ ROM2:4D9B B7               or   a
+ ROM2:4D9C C0               ret  nz
+ ROM2:4D9D 06 00            ld   b,00
+ ROM2:4D9F 0E 11            ld   c,11
+ ROM2:4DA1 21 AD 4C         ld   hl,4CAD        // OFFLINE WAIT........
+ ROM2:4DA4 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ ROM2:4DA7 21 13 C9         ld   hl,C913
+ ROM2:4DAA 36 04            ld   (hl),04
+ ROM2:4DAC EF 0A D4 43                          
+ ROM2:4DB0 EF 0A 12 40                          
+ ROM2:4DB4 38 18            jr   c,4DCE
+ ROM2:4DB6 B7               or   a
+ ROM2:4DB7 C0               ret  nz
+ ROM2:4DB8 EF 0A 6B 40                          
+ ROM2:4DBC 06 00            ld   b,00
+ ROM2:4DBE 0E 11            ld   c,11
+ ROM2:4DC0 21 83 4C         ld   hl,4C83        // READ OK! PRESS A_BUN
+ ROM2:4DC3 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ ROM2:4DC6 EA 14 C9         ld   (C914),a
+ ROM2:4DC9 AF               xor  a
+ ROM2:4DCA EA 13 C9         ld   (C913),a
+ ROM2:4DCD C9               ret  
+ ROM2:4DCE 06 00            ld   b,00
+ ROM2:4DD0 0E 11            ld   c,11
+ ROM2:4DD2 21 6E 4C         ld   hl,4C6E        // ERROR! ERROR! ERROR!
+ ROM2:4DD5 CD 53 33         call 3353           // [$C300 + [$FFC8]] holds # of text bytes, then designated HL (reversed), then text, with HRAM bytes updated as necessary
+ ROM2:4DD8 AF               xor  a
+ ROM2:4DD9 EA 13 C9         ld   (C913),a
+ ROM2:4DDC C9               ret  
+

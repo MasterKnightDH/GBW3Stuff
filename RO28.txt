@@ -1,0 +1,386 @@
+ RO28:4000 C5               push bc
+ RO28:4001 D5               push de
+ RO28:4002 E5               push hl
+ RO28:4003 F5               push af
+ RO28:4004 06 00            ld   b,00
+ RO28:4006 21 93 42         ld   hl,4293
+ RO28:4009 CD 7E 40         call 407E           // ($CA1A) 3 byte holds map data location, ($CA1E) holds 0, ($CA1F) holds Map # based on Beginner
+ RO28:400C F1               pop  af
+ RO28:400D 21 8D C6         ld   hl,C68D
+ RO28:4010 CD C7 3A         call 3AC7
+ RO28:4013 28 08            jr   z,401D         // Skip next 3 lines if map not cleared yet
+ RO28:4015 FA 1D CA         ld   a,(CA1D)
+ RO28:4018 CB C7            set  0,a
+ RO28:401A EA 1D CA         ld   (CA1D),a       // ($CA1D) = 1 if map is already cleared
+ RO28:401D CD A0 28         call 28A0           // ($CA21) to ($CA4E) holds general map information
+ RO28:4020 E1               pop  hl
+ RO28:4021 D1               pop  de
+ RO28:4022 C1               pop  bc
+ RO28:4023 C9               ret                 // ($CA1A) 3 byte holds map data location, ($CA1D) = 1 if map is already cleared, ($CA1E) holds 0, ($CA1F) holds Map # based on Beginner, ($CA21) to ($CA4E) holds general map information
+ RO28:4024 C5               push bc
+ RO28:4025 D5               push de
+ RO28:4026 E5               push hl
+ RO28:4027 F5               push af
+ RO28:4028 06 01            ld   b,01
+ RO28:402A 21 C3 42         ld   hl,42C3
+ RO28:402D CD 7E 40         call 407E           // ($CA1A) 3 byte holds map data location, ($CA1E) holds 1, ($CA1F) holds Map # based on Campaign
+ RO28:4030 F1               pop  af
+ RO28:4031 4F               ld   c,a
+ RO28:4032 21 8F C6         ld   hl,C68F
+ RO28:4035 CD C7 3A         call 3AC7
+ RO28:4038 28 08            jr   z,4042         // Skip next 3 lines if map not cleared yet
+ RO28:403A FA 1D CA         ld   a,(CA1D)
+ RO28:403D CB C7            set  0,a
+ RO28:403F EA 1D CA         ld   (CA1D),a       // ($CA1D) = 1 if map is already cleared
+ RO28:4042 79               ld   a,c
+ RO28:4043 21 9D C6         ld   hl,C69D
+ RO28:4046 CD C7 3A         call 3AC7           // A = Flag for given Campaign Map being open
+ RO28:4049 28 08            jr   z,4053
+ RO28:404B FA 1D CA         ld   a,(CA1D)
+ RO28:404E CB D7            set  2,a
+ RO28:4050 EA 1D CA         ld   (CA1D),a
+ RO28:4053 CD A0 28         call 28A0           // ($CA21) to ($CA4E) holds general map information
+ RO28:4056 E1               pop  hl
+ RO28:4057 D1               pop  de
+ RO28:4058 C1               pop  bc
+ RO28:4059 C9               ret                 // ($CA1A) 3 byte holds map data location, ($CA1D) = 4 if map is open but not cleared, ($CA1E) holds 1, ($CA1F) holds Map # based on Campaign, ($CA21) to ($CA4E) holds general map information
+ RO28:405A C5               push bc
+ RO28:405B D5               push de
+ RO28:405C E5               push hl
+ RO28:405D F5               push af
+ RO28:405E 06 02            ld   b,02
+ RO28:4060 21 DC 41         ld   hl,41DC
+ RO28:4063 CD 7E 40         call 407E           // ($CA1A) 3 byte holds map data location, ($CA1E) holds 2, ($CA1F) holds Map # based on Standard
+ RO28:4066 F1               pop  af
+ RO28:4067 21 95 C6         ld   hl,C695
+ RO28:406A CD C7 3A         call 3AC7
+ RO28:406D 28 08            jr   z,4077         // Skip next 3 lines if map not cleared yet
+ RO28:406F FA 1D CA         ld   a,(CA1D)
+ RO28:4072 CB C7            set  0,a
+ RO28:4074 EA 1D CA         ld   (CA1D),a       // ($CA1D) = 1 if map is already cleared
+ RO28:4077 CD A0 28         call 28A0
+ RO28:407A E1               pop  hl
+ RO28:407B D1               pop  de
+ RO28:407C C1               pop  bc
+ RO28:407D C9               ret                 // ($CA1A) 3 byte holds map data location, ($CA1D) = 1 if map is already cleared, ($CA1E) holds 2, ($CA1F) holds Map # based on Standard, ($CA21) to ($CA4E) holds general map information
+ RO28:407E CD 9D 40         call 409D           // ($CA1A) to ($CA4E) emptied
+ RO28:4081 57               ld   d,a
+ RO28:4082 EA 1F CA         ld   (CA1F),a
+ RO28:4085 78               ld   a,b
+ RO28:4086 EA 1E CA         ld   (CA1E),a
+ RO28:4089 7A               ld   a,d
+ RO28:408A 87               add  a
+ RO28:408B 82               add  d
+ RO28:408C 4F               ld   c,a            // C = A * 3
+ RO28:408D 06 00            ld   b,00
+ RO28:408F 09               add  hl,bc
+ RO28:4090 2A               ldi  a,(hl)
+ RO28:4091 EA 1A CA         ld   (CA1A),a
+ RO28:4094 2A               ldi  a,(hl)
+ RO28:4095 EA 1B CA         ld   (CA1B),a
+ RO28:4098 2A               ldi  a,(hl)
+ RO28:4099 EA 1C CA         ld   (CA1C),a
+ RO28:409C C9               ret                 // ($CA1A) 3 byte holds map data location, ($CA1E) holds B, ($CA1F) holds Map #
+ RO28:409D F5               push af
+ RO28:409E C5               push bc
+ RO28:409F E5               push hl
+ RO28:40A0 21 1A CA         ld   hl,CA1A
+ RO28:40A3 01 35 00         ld   bc,0035
+ RO28:40A6 AF               xor  a
+ RO28:40A7 CD 79 3B         call 3B79
+ RO28:40AA E1               pop  hl
+ RO28:40AB C1               pop  bc
+ RO28:40AC F1               pop  af
+ RO28:40AD C9               ret                 // ($CA1A) to ($CA4E) emptied
+ RO28:40AE CD 9D 40         call 409D           // ($CA1A) to ($CA4E) emptied
+ RO28:40B1 F5               push af
+ RO28:40B2 EA 1F CA         ld   (CA1F),a       // Map # established by A
+ RO28:40B5 FA 2F C6         ld   a,(C62F)
+ RO28:40B8 EA 1E CA         ld   (CA1E),a       // Active Game Mode established
+ RO28:40BB F1               pop  af
+ RO28:40BC EF 13 CC 5D                          // Establishes map basic logistics, also triggers custom map exists flag if given custom map is used
+ RO28:40C0 C9               ret
+ RO28:40C1 3E 02            ld   a,02
+ RO28:40C3 E0 94            ld   (ff00+94),a
+ RO28:40C5 EF 0B 88 40                          // Establishes stats for a new start on a map
+ RO28:40C9 CD D7 40         call 40D7           // If playing on Standard past Map #30, establishes starting view around White Moon's HQ
+ RO28:40CC EF 0B BC 52                          // Zoomed out map view controls, ending with A = -1 for B Button, or 0 for A Button; latter has BC as view selection center tile
+ RO28:40D0 F5               push af
+ RO28:40D1 3E 04            ld   a,04
+ RO28:40D3 E0 94            ld   (ff00+94),a
+ RO28:40D5 F1               pop  af
+ RO28:40D6 C9               ret                 // Map preview, ending with A = -1 for B Button, or 0 for A Button; latter has BC as view selection center tile
+ RO28:40D7 FA 2F C6         ld   a,(C62F)
+ RO28:40DA FE 02            cp   a,02
+ RO28:40DC C0               ret  nz             // Return if not Standard
+ RO28:40DD FA 1F CA         ld   a,(CA1F)
+ RO28:40E0 FE 1E            cp   a,1E
+ RO28:40E2 D8               ret  c              // Return if Map # is 1 to 30
+ RO28:40E3 21 48 C6         ld   hl,C648
+ RO28:40E6 2A               ldi  a,(hl)
+ RO28:40E7 47               ld   b,a
+ RO28:40E8 4E               ld   c,(hl)         // BC holds White Moon's HQ coordinates
+ RO28:40E9 EF 0B CB 7A                          // Establishes view area around White Moon's HQ, then cursor's within view and overall coordinates, and finally cursor's sprite grapics location center
+ RO28:40ED C9               ret                 // If playing on Standard past Map #30, establishes starting view around White Moon's HQ
+ RO28:40EE 21 95 C6         ld   hl,C695
+ RO28:40F1 1E 07            ld   e,07
+ RO28:40F3 06 2D            ld   b,2D
+ RO28:40F5 0E 3A            ld   c,3A
+ RO28:40F7 CD 49 41         call 4149
+ RO28:40FA 20 37            jr   nz,4133        // End with A = 7 if Standard 46 to 59 are cleared
+ RO28:40FC 1D               dec  e
+ RO28:40FD 3E 2C            ld   a,2C
+ RO28:40FF CD C7 3A         call 3AC7
+ RO28:4102 20 2F            jr   nz,4133        // End with A = 6 if Standard 45 is cleared
+ RO28:4104 1D               dec  e
+ RO28:4105 06 1E            ld   b,1E
+ RO28:4107 0E 2B            ld   c,2B
+ RO28:4109 CD 49 41         call 4149
+ RO28:410C 20 25            jr   nz,4133        // End with A = 5 if Standard 31 to 44 are cleared
+ RO28:410E 1D               dec  e
+ RO28:410F 3E 1D            ld   a,1D
+ RO28:4111 CD C7 3A         call 3AC7
+ RO28:4114 20 1D            jr   nz,4133        // End with A = 4 if Standard 30 is cleared
+ RO28:4116 1D               dec  e
+ RO28:4117 06 0F            ld   b,0F
+ RO28:4119 0E 1C            ld   c,1C
+ RO28:411B CD 49 41         call 4149
+ RO28:411E 20 13            jr   nz,4133        // End with A = 3 if Standard 16 to 29 are cleared
+ RO28:4120 1D               dec  e
+ RO28:4121 3E 0E            ld   a,0E
+ RO28:4123 CD C7 3A         call 3AC7
+ RO28:4126 20 0B            jr   nz,4133        // End with A = 2 if Standard 15 is cleared
+ RO28:4128 1D               dec  e
+ RO28:4129 06 00            ld   b,00
+ RO28:412B 0E 0D            ld   c,0D
+ RO28:412D CD 49 41         call 4149
+ RO28:4130 20 01            jr   nz,4133        // End with A = 1 if Standard 1 to 14 are cleared
+ RO28:4132 1D               dec  e
+ RO28:4133 7B               ld   a,e
+ RO28:4134 C9               ret                 // A = Standard Mode progress
+ RO28:4135 C5               push bc
+ RO28:4136 21 8D C6         ld   hl,C68D
+ RO28:4139 06 00            ld   b,00
+ RO28:413B 0E 0F            ld   c,0F
+ RO28:413D CD 49 41         call 4149
+ RO28:4140 28 04            jr   z,4146
+ RO28:4142 3E 01            ld   a,01
+ RO28:4144 18 01            jr   4147
+ RO28:4146 AF               xor  a
+ RO28:4147 C1               pop  bc
+ RO28:4148 C9               ret                 // A = Beginner Mode progress
+ RO28:4149 78               ld   a,b
+ RO28:414A CD C7 3A         call 3AC7
+ RO28:414D C8               ret  z
+ RO28:414E 78               ld   a,b
+ RO28:414F 04               inc  b
+ RO28:4150 B9               cp   c
+ RO28:4151 20 F6            jr   nz,4149
+ RO28:4153 3E 01            ld   a,01
+ RO28:4155 A7               and  a
+ RO28:4156 C9               ret                 // A = 1 with AND A right after if [HL] flags B to C are all active; ret z done otherwise
+ RO28:4157 87               add  a
+ RO28:4158 21 6A 41         ld   hl,416A
+ RO28:415B CD BC 29         call 29BC           // HL += A
+ RO28:415E 7E               ld   a,(hl)
+ RO28:415F C9               ret                 // Campaign Mode Day limit
+
+ RO28:4160 87               add  a
+ RO28:4161 21 6A 41         ld   hl,416A
+ RO28:4164 CD BC 29         call 29BC           // HL += A
+ RO28:4167 23               inc  hl
+ RO28:4168 7E               ld   a,(hl)
+ RO28:4169 C9               ret                 // Campaign Mode Day limit, Fast Clear
+
+ RO28:416A 1E 1E
+ RO28:416C 1E 1E
+ RO28:416E 1E 0D
+ RO28:4170 1E 0F
+ RO28:4172 1E 10
+ RO28:4174 1E 0F
+ RO28:4176 1E 0F
+ RO28:4178 1E 1E
+ RO28:417A 1E 1E
+
+ RO28:417C 20 20
+ RO28:417E 20 0E
+ RO28:4180 20 20
+ RO28:4182 20 11
+ RO28:4184 20 10
+ RO28:4186 20 10
+ RO28:4188 20 12
+ RO28:418A 20 13
+ RO28:418C 20 14
+
+ RO28:418E 22 12
+ RO28:4190 22 22
+ RO28:4192 22 13
+ RO28:4194 22 16
+ RO28:4196 22 22
+ RO28:4198 22 13
+ RO28:419A 22 16
+ RO28:419C 22 16
+ RO28:419E 22 22
+
+ RO28:41A0 24 16
+ RO28:41A2 24 13
+ RO28:41A4 24 11
+ RO28:41A6 24 14
+ RO28:41A8 24 13
+ RO28:41AA 24 11
+ RO28:41AC 24 17
+ RO28:41AE 24 18
+ RO28:41B0 24 11
+
+ RO28:41B2 26 14
+ RO28:41B4 26 26
+ RO28:41B6 26 11
+ RO28:41B8 26 14
+ RO28:41BA 26 26
+ RO28:41BC 26 11
+ RO28:41BE 26 14
+ RO28:41C0 28 13
+ RO28:41C2 28 11
+
+ RO28:41C4 21 CC 41         ld   hl,41CC
+ RO28:41C7 CD BC 29         call 29BC           // HL += A
+ RO28:41CA 7E               ld   a,(hl)
+ RO28:41CB C9               ret                 // Beginner Mode Day limit
+
+ RO28:41CC 04               inc  b
+ RO28:41CD 02               ld   (bc),a
+ RO28:41CE 04               inc  b
+ RO28:41CF 03               inc  bc
+ RO28:41D0 04               inc  b
+ RO28:41D1 01 02 03         ld   bc,0302
+ RO28:41D4 04               inc  b
+ RO28:41D5 04               inc  b
+ RO28:41D6 02               ld   (bc),a
+ RO28:41D7 01 01 01         ld   bc,0101
+ RO28:41DA 01 01
+ 
+ RO28:41DC 29 F2 41               ld   b,c
+ RO28:41DF 29 B1 43               ld   b,e
+ RO28:41E2 29 70 45               ld   b,l
+ RO28:41E5 29 2F 47               ld   b,a
+ RO28:41E8 29 EE 48            xor  a,48
+ RO28:41EB 29 AD 4A               ld   c,d
+ RO28:41EE 29 4D 4D               ld   c,l
+ RO28:41F1 29 ED 4F               ld   c,a
+ RO28:41F4 29 D8 52               ld   d,d
+ RO28:41F7 29 5F 55               ld   d,l
+ RO28:41FA 29 95 58               ld   e,b
+ RO28:41FD 29 1C 5B               ld   e,e
+ RO28:4200 29 65 5F               ld   e,a
+ RO28:4203 29 FF 62               ld   h,d
+ RO28:4206 29 1C 66               ld   h,(hl)
+ RO28:4209 29 14 6B               ld   l,e
+ RO28:420C 29 F3 6F               ld   l,a
+ RO28:420F 29 B2 71               ld   (hl),c
+ RO28:4212 29 71 73               ld   (hl),e
+ RO28:4215 29 11 76
+ RO28:4218 29 34 78               ld   a,b
+ RO28:421B 29 F3 79               ld   a,c
+ RO28:421E 29 16 7C            ld   d,7C
+ RO28:4221 2A 00 40               ld   b,b
+ RO28:4224 2A 1D 43               ld   b,e
+ RO28:4227 2A D0 46               ld   b,(hl)
+ RO28:422A 2A 70 49               ld   c,c
+ RO28:422D 2A B9 4D               ld   c,l
+ RO28:4230 2A 28 54            jr   z,4287
+ RO28:4233 2A 97 5A               ld   e,d
+ RO28:4236 2A 76 5F               ld   e,a
+ RO28:4239 2A 35 61               ld   h,c
+ RO28:423C 2A F4 62               ld   h,d
+ RO28:423F 2A B3 64               ld   h,h
+ RO28:4242 2A 72 66               ld   h,(hl)
+ RO28:4245 2A 31 68
+ RO28:4248 2A D1 6A               ld   l,d
+ RO28:424B 2A 71 6D               ld   l,l
+ RO28:424E 2A 5C 70               ld   (hl),b
+ RO28:4251 2A E3 72               ld   (hl),d
+ RO28:4254 2A 19 76               halt 
+ RO28:4257 2A A0 78               ld   a,b
+ RO28:425A 2B 00 40               ld   b,b
+ RO28:425D 2B 9A 43               ld   b,e
+ RO28:4260 2B B7 46               ld   b,(hl)
+ RO28:4263 2B 96 4B               ld   c,e
+ RO28:4266 2B 75 50               ld   d,b
+ RO28:4269 2B 34 52               ld   d,d
+ RO28:426C 2B F3 53               ld   d,e
+ RO28:426F 2B 93 56               ld   d,(hl)
+ RO28:4272 2B B6 58               ld   e,b
+ RO28:4275 2B 75 5A               ld   e,d
+ RO28:4278 2B 98 5C               ld   e,h
+ RO28:427B 2B 38 5F            jr   c,42DD
+ RO28:427E 2B 55 62               ld   h,d
+ RO28:4281 2B 08 66
+ RO28:4284 2B A8 68               ld   l,b
+ RO28:4287 2B F1 6C               ld   l,h
+ RO28:428A 2B 60 73               ld   (hl),e
+ RO28:428D 2C 00 40               ld   b,b
+ RO28:4290 29 00 40               ld   b,b
+ 
+ RO28:4293 2C 6F 46
+ RO28:4296 2C 2E 48
+ RO28:4299 2C F9 49
+ RO28:429C 2C CA 4B
+ RO28:429F 2C 98 4D
+ RO28:42A2 2C 5A 4F
+ RO28:42A5 2C 25 51
+ RO28:42A8 2C EA 52
+ RO28:42AB 2C B2 54
+ RO28:42AE 2C 7A 56
+ RO28:42B1 2C 42 58
+ RO28:42B4 2C 0D 5A
+ RO28:42B7 2C DB 5B
+ RO28:42BA 2C A3 5D
+ RO28:42BD 2C 6B 5F
+ RO28:42C0 2C 33 61
+ 
+ RO28:42C3 2D 00 40
+ RO28:42C6 2D BF 41
+ RO28:42C9 2D 7E 43 - Tbmahana
+ RO28:42CC 2D A4 45
+ RO28:42CF 2D DC 47
+ RO28:42D2 2D BF 49 - Sanehi
+ RO28:42D5 2D 06 4C
+ RO28:42D8 2D 56 4E - Flare
+ RO28:42DB 2D 0B 51 - Nolbo
+ RO28:42DE 2D C3 53
+ RO28:42E1 2D 97 55 - Ryuwl
+ RO28:42E4 2D 74 57 - Taytz
+ RO28:42E7 2D 81 59
+ RO28:42EA 2D 5D 5C
+ RO28:42ED 2D 27 5F - Lightow
+ RO28:42F0 2D 92 62
+ RO28:42F3 2D E2 65
+ RO28:42F6 2D B9 69
+ RO28:42F9 2D B7 6D
+ RO28:42FC 2D EF 70
+ RO28:42FF 2E 00 40
+ RO28:4302 2E 19 44
+ RO28:4305 2E 08 48
+ RO28:4308 2E F4 4B
+ RO28:430B 2E F8 4F
+ RO28:430E 2E E4 53
+ RO28:4311 2E D1 56
+ RO28:4314 2E 5D 5A
+ RO28:4317 2E 31 5E
+ RO28:431A 2E A2 61
+ RO28:431D 2E 91 65
+ RO28:4320 2E 5E 69
+ RO28:4323 2E A2 6C - Lirebe
+ RO28:4326 2E 96 70
+ RO28:4329 2E 09 75
+ RO28:432C 2F 00 40 - Bissum
+ RO28:432F 2F 3A 46 - Ryuunoha
+ RO28:4332 2F 4D 4C - Saki
+ RO28:4335 2F 8A 52 - Damgan
+ RO28:4338 2F 09 57
+ RO28:433B 2F 0B 5D
+ RO28:433E 2F 23 62 - Bleedar
+ RO28:4341 2F 7B 67 - Metaron
+ RO28:4344 2F B4 6C - Plan B
+ RO28:4347 2F 94 73 - Plan A
+

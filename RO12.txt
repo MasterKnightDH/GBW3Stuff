@@ -1,0 +1,1706 @@
+ RO12:4000 F0 82            ld   a,(ff00+82)
+ RO12:4002 F5               push af
+ RO12:4003 3E 03            ld   a,03
+ RO12:4005 E0 82            ld   (ff00+82),a
+ RO12:4007 E0 70            ld   (ff00+70),a
+ RO12:4009 21 00 D0         ld   hl,D000
+ RO12:400C 01 40 06         ld   bc,0640
+ RO12:400F AF               xor  a
+ RO12:4010 CD 79 3B         call 3B79
+ RO12:4013 AF               xor  a
+ RO12:4014 EA 09 CD         ld   (CD09),a
+ RO12:4017 EA 0A CD         ld   (CD0A),a
+ RO12:401A F1               pop  af
+ RO12:401B E0 82            ld   (ff00+82),a
+ RO12:401D E0 70            ld   (ff00+70),a
+ RO12:401F C9               ret                 // Unit stats table emptied, ($CD09) and ($CD0A) emptied
+ RO12:4020 CB 3F            srl  a
+ RO12:4022 21 43 4A         ld   hl,4A43
+ RO12:4025 CD 93 3A         call 3A93           // HL = (2 * floor(A/2) + $4A43)
+ RO12:4028 C9               ret  
+ RO12:4029 D5               push de
+ RO12:402A 6F               ld   l,a
+ RO12:402B 26 00            ld   h,00           // HL = A
+ RO12:402D 29               add  hl,hl
+ RO12:402E 29               add  hl,hl
+ RO12:402F 29               add  hl,hl
+ RO12:4030 29               add  hl,hl          // HL = A * 16
+ RO12:4031 11 00 D0         ld   de,D000
+ RO12:4034 19               add  hl,de          // HL = D000 + A * 16
+ RO12:4035 D1               pop  de
+ RO12:4036 C9               ret  
+ RO12:4037 C5               push bc
+ RO12:4038 E5               push hl
+ RO12:4039 CD 20 40         call 4020           // HL = (2 * floor(A/2) + $4A43)
+ RO12:403C 06 00            ld   b,00
+ RO12:403E 09               add  hl,bc          // HL = (2 * floor(A/2) + $4A43) + C
+ RO12:403F 7E               ld   a,(hl)         // A = ((2 * floor(A/2) + $4A43) + C)
+ RO12:4040 E1               pop  hl
+ RO12:4041 C1               pop  bc
+ RO12:4042 C9               ret  
+ RO12:4043 F5               push af
+ RO12:4044 CD 37 40         call 4037           // A = ((2 * floor(A/2) + $4A43) + C)
+ RO12:4047 5F               ld   e,a            // E = ((2 * floor(A/2) + $4A43) + C)
+ RO12:4048 F1               pop  af
+ RO12:4049 0C               inc  c
+ RO12:404A CD 37 40         call 4037           // A = ((2 * floor(A/2) + $4A43) + C + 1)
+ RO12:404D 57               ld   d,a            // D = ((2 * floor(A/2) + $4A43) + C + 1)
+ RO12:404E C9               ret  
+ RO12:404F C5               push bc
+ RO12:4050 D5               push de
+ RO12:4051 E5               push hl
+ RO12:4052 CD 20 40         call 4020           // HL = (2 * floor(A/2) + $4A43)
+ RO12:4055 54               ld   d,h
+ RO12:4056 5D               ld   e,l            // DE = (2 * floor(A/2) + $4A43)
+ RO12:4057 21 28 CD         ld   hl,CD28
+ RO12:405A 01 0A 00         ld   bc,000A
+ RO12:405D CD 50 3B         call 3B50           // ($CD28) to ($CD31) holds unit type's name
+ RO12:4060 AF               xor  a
+ RO12:4061 77               ld   (hl),a         // ($CD32) holds ending space
+ RO12:4062 E1               pop  hl
+ RO12:4063 D1               pop  de
+ RO12:4064 C1               pop  bc
+ RO12:4065 C9               ret                 // ($CD28) to ($CD32) holds unit type's name
+ RO12:4066 C5               push bc
+ RO12:4067 E5               push hl
+ RO12:4068 47               ld   b,a            // Store A into B
+ RO12:4069 F0 82            ld   a,(ff00+82)  
+ RO12:406B F5               push af
+ RO12:406C 3E 03            ld   a,03
+ RO12:406E E0 82            ld   (ff00+82),a
+ RO12:4070 E0 70            ld   (ff00+70),a
+ RO12:4072 78               ld   a,b            // Grab A back
+ RO12:4073 CD 29 40         call 4029           // HL = D000 + A * 16
+ RO12:4076 06 00            ld   b,00
+ RO12:4078 09               add  hl,bc
+ RO12:4079 46               ld   b,(hl)         // B is the unit's used stat
+ RO12:407A F1               pop  af
+ RO12:407B E0 82            ld   (ff00+82),a
+ RO12:407D E0 70            ld   (ff00+70),a
+ RO12:407F 78               ld   a,b            // A is the unit's used stat
+ RO12:4080 E1               pop  hl
+ RO12:4081 C1               pop  bc
+ RO12:4082 C9               ret  
+ RO12:4083 C5               push bc
+ RO12:4084 E5               push hl
+ RO12:4085 67               ld   h,a
+ RO12:4086 F0 82            ld   a,(ff00+82)
+ RO12:4088 F5               push af
+ RO12:4089 3E 03            ld   a,03
+ RO12:408B E0 82            ld   (ff00+82),a
+ RO12:408D E0 70            ld   (ff00+70),a
+ RO12:408F 7C               ld   a,h
+ RO12:4090 CD 29 40         call 4029           // HL = unit's stats starting location
+ RO12:4093 06 00            ld   b,00
+ RO12:4095 09               add  hl,bc
+ RO12:4096 5E               ld   e,(hl)
+ RO12:4097 23               inc  hl
+ RO12:4098 56               ld   d,(hl)
+ RO12:4099 F1               pop  af
+ RO12:409A E0 82            ld   (ff00+82),a
+ RO12:409C E0 70            ld   (ff00+70),a
+ RO12:409E E1               pop  hl
+ RO12:409F C1               pop  bc
+ RO12:40A0 C9               ret                 // DE = unit's used stat 2 byte
+ RO12:40A1 E5               push hl
+ RO12:40A2 6F               ld   l,a
+ RO12:40A3 F0 82            ld   a,(ff00+82)
+ RO12:40A5 F5               push af
+ RO12:40A6 3E 03            ld   a,03
+ RO12:40A8 E0 82            ld   (ff00+82),a
+ RO12:40AA E0 70            ld   (ff00+70),a
+ RO12:40AC C5               push bc
+ RO12:40AD 7D               ld   a,l
+ RO12:40AE CD 29 40         call 4029           // HL = unit's stats starting location
+ RO12:40B1 06 00            ld   b,00
+ RO12:40B3 09               add  hl,bc
+ RO12:40B4 C1               pop  bc
+ RO12:40B5 70               ld   (hl),b
+ RO12:40B6 F1               pop  af
+ RO12:40B7 E0 82            ld   (ff00+82),a
+ RO12:40B9 E0 70            ld   (ff00+70),a
+ RO12:40BB E1               pop  hl
+ RO12:40BC C9               ret                 // Unit's used stat holds B
+ RO12:40BD C5               push bc
+ RO12:40BE E5               push hl
+ RO12:40BF 67               ld   h,a
+ RO12:40C0 F0 82            ld   a,(ff00+82)
+ RO12:40C2 F5               push af
+ RO12:40C3 3E 03            ld   a,03
+ RO12:40C5 E0 82            ld   (ff00+82),a
+ RO12:40C7 E0 70            ld   (ff00+70),a
+ RO12:40C9 7C               ld   a,h
+ RO12:40CA CD 29 40         call 4029           // HL = unit's stats starting location
+ RO12:40CD 06 00            ld   b,00
+ RO12:40CF 09               add  hl,bc
+ RO12:40D0 73               ld   (hl),e
+ RO12:40D1 23               inc  hl
+ RO12:40D2 72               ld   (hl),d
+ RO12:40D3 F1               pop  af
+ RO12:40D4 E0 82            ld   (ff00+82),a
+ RO12:40D6 E0 70            ld   (ff00+70),a
+ RO12:40D8 E1               pop  hl
+ RO12:40D9 C1               pop  bc
+ RO12:40DA C9               ret                 // Unit's used stat 2 byte holds DE
+ RO12:40DB C5               push bc
+ RO12:40DC D5               push de
+ RO12:40DD 47               ld   b,a
+ RO12:40DE 0E 0A            ld   c,0A
+ RO12:40E0 CD 83 40         call 4083           // DE = Unit's EXP
+ RO12:40E3 19               add  hl,de          // HL += Unit's EXP
+ RO12:40E4 11 90 01         ld   de,0190
+ RO12:40E7 CD CA 29         call 29CA
+ RO12:40EA 38 02            jr   c,40EE
+ RO12:40EC 54               ld   d,h
+ RO12:40ED 5D               ld   e,l            // DE ceiling of 400
+ RO12:40EE 78               ld   a,b
+ RO12:40EF CD BD 40         call 40BD           // Unit's EXP updated (ceiling of 400)
+ RO12:40F2 D1               pop  de
+ RO12:40F3 C1               pop  bc
+ RO12:40F4 C9               ret  
+ RO12:40F5 C5               push bc
+ RO12:40F6 D5               push de
+ RO12:40F7 0E 0A            ld   c,0A
+ RO12:40F9 CD 83 40         call 4083
+ RO12:40FC 01 64 00         ld   bc,0064
+ RO12:40FF CD 21 2A         call 2A21           // DE = EXP / 100
+ RO12:4102 7B               ld   a,e            // A = EXP / 100
+ RO12:4103 D1               pop  de
+ RO12:4104 C1               pop  bc
+ RO12:4105 C9               ret  
+ RO12:4106 C5               push bc
+ RO12:4107 D5               push de
+ RO12:4108 E5               push hl
+ RO12:4109 47               ld   b,a
+ RO12:410A F0 82            ld   a,(ff00+82)
+ RO12:410C F5               push af
+ RO12:410D 3E 03            ld   a,03
+ RO12:410F E0 82            ld   (ff00+82),a
+ RO12:4111 E0 70            ld   (ff00+70),a
+ RO12:4113 78               ld   a,b
+ RO12:4114 CD 29 40         call 4029           // HL = Unit's stats starting location
+ RO12:4117 54               ld   d,h
+ RO12:4118 5D               ld   e,l
+ RO12:4119 21 DD CC         ld   hl,CCDD
+ RO12:411C 01 10 00         ld   bc,0010
+ RO12:411F CD 50 3B         call 3B50           // ($CCDD) to ($CCEC) holds unit's stats
+ RO12:4122 F1               pop  af
+ RO12:4123 E0 82            ld   (ff00+82),a
+ RO12:4125 E0 70            ld   (ff00+70),a
+ RO12:4127 E1               pop  hl
+ RO12:4128 D1               pop  de
+ RO12:4129 C1               pop  bc
+ RO12:412A C9               ret  
+ RO12:412B C5               push bc
+ RO12:412C D5               push de
+ RO12:412D E5               push hl
+ RO12:412E 47               ld   b,a
+ RO12:412F F0 82            ld   a,(ff00+82)
+ RO12:4131 F5               push af
+ RO12:4132 3E 03            ld   a,03
+ RO12:4134 E0 82            ld   (ff00+82),a
+ RO12:4136 E0 70            ld   (ff00+70),a
+ RO12:4138 78               ld   a,b
+ RO12:4139 CD 29 40         call 4029           // HL = Unit's stats starting location
+ RO12:413C 11 DD CC         ld   de,CCDD
+ RO12:413F 01 10 00         ld   bc,0010
+ RO12:4142 CD 50 3B         call 3B50
+ RO12:4145 F1               pop  af
+ RO12:4146 E0 82            ld   (ff00+82),a
+ RO12:4148 E0 70            ld   (ff00+70),a
+ RO12:414A E1               pop  hl
+ RO12:414B D1               pop  de
+ RO12:414C C1               pop  bc
+ RO12:414D C9               ret                 // Unit's stats now holds ($CCDD) to ($CCEC)
+ RO12:414E C5               push bc
+ RO12:414F D5               push de
+ RO12:4150 E5               push hl
+ RO12:4151 50               ld   d,b
+ RO12:4152 59               ld   e,c
+ RO12:4153 06 00            ld   b,00
+ RO12:4155 78               ld   a,b            // Loop starts here
+ RO12:4156 0E 00            ld   c,00
+ RO12:4158 CD 66 40         call 4066           // A = Unit type
+ RO12:415B A7               and  a
+ RO12:415C 28 1C            jr   z,417A         // End cycle if unit doesn't exist
+ RO12:415E 78               ld   a,b
+ RO12:415F 0E 01            ld   c,01
+ RO12:4161 CD 66 40         call 4066           // A = X coordinate
+ RO12:4164 BA               cp   d
+ RO12:4165 20 13            jr   nz,417A
+ RO12:4167 78               ld   a,b
+ RO12:4168 0E 02            ld   c,02
+ RO12:416A CD 66 40         call 4066           // A = Y coordinate
+ RO12:416D BB               cp   e
+ RO12:416E 20 0A            jr   nz,417A
+ RO12:4170 78               ld   a,b
+ RO12:4171 0E 03            ld   c,03
+ RO12:4173 CD 66 40         call 4066
+ RO12:4176 CB 47            bit  0,a            // Loaded?
+ RO12:4178 28 0A            jr   z,4184         // Jump to end loop with A = unit number of primary occupying unit if all conditions are handled
+ RO12:417A 04               inc  b
+ RO12:417B 78               ld   a,b
+ RO12:417C FE 64            cp   a,64
+ RO12:417E 20 D5            jr   nz,4155
+ RO12:4180 3E FF            ld   a,FF
+ RO12:4182 18 01            jr   4185
+ RO12:4184 78               ld   a,b
+ RO12:4185 E1               pop  hl
+ RO12:4186 D1               pop  de
+ RO12:4187 C1               pop  bc
+ RO12:4188 C9               ret                 // A = unit number of primary occupying unit, -1 if there is none
+ RO12:4189 C5               push bc
+ RO12:418A D5               push de
+ RO12:418B E5               push hl
+ RO12:418C 57               ld   d,a
+ RO12:418D F0 82            ld   a,(ff00+82)
+ RO12:418F F5               push af
+ RO12:4190 3E 03            ld   a,03
+ RO12:4192 E0 82            ld   (ff00+82),a
+ RO12:4194 E0 70            ld   (ff00+70),a
+ RO12:4196 1E 00            ld   e,00
+ RO12:4198 7B               ld   a,e            // Loop begins here
+ RO12:4199 CD 29 40         call 4029           // HL = Unit's stats starting location
+ RO12:419C 7E               ld   a,(hl)
+ RO12:419D A7               and  a
+ RO12:419E 28 34            jr   z,41D4         // End cycle if unit doesn't exist
+ RO12:41A0 3E 03            ld   a,03
+ RO12:41A2 CD BC 29         call 29BC
+ RO12:41A5 7E               ld   a,(hl)
+ RO12:41A6 CB 47            bit  0,a
+ RO12:41A8 28 2A            jr   z,41D4         // End cycle if unit isn't Loaded
+ RO12:41AA 7B               ld   a,e
+ RO12:41AB CD 29 40         call 4029           // HL = Unit's stats starting location
+ RO12:41AE 3E 06            ld   a,06
+ RO12:41B0 CD BC 29         call 29BC
+ RO12:41B3 7E               ld   a,(hl)
+ RO12:41B4 BA               cp   d
+ RO12:41B5 20 1D            jr   nz,41D4        // End cycle if unit is carried by another unit
+ RO12:41B7 7B               ld   a,e
+ RO12:41B8 CD 29 40         call 4029           // HL = Unit's stats starting location
+ RO12:41BB 3E 05            ld   a,05
+ RO12:41BD CD BC 29         call 29BC
+ RO12:41C0 7E               ld   a,(hl)
+ RO12:41C1 A7               and  a
+ RO12:41C2 28 04            jr   z,41C8         // Skips recursion accounting for stack-loading if unit doesn't have anything Loaded
+ RO12:41C4 7B               ld   a,e
+ RO12:41C5 CD 89 41         call 4189
+ RO12:41C8 7B               ld   a,e
+ RO12:41C9 CD 29 40         call 4029           // HL = Unit's stats starting location
+ RO12:41CC 3E 01            ld   a,01
+ RO12:41CE CD BC 29         call 29BC
+ RO12:41D1 70               ld   (hl),b
+ RO12:41D2 23               inc  hl
+ RO12:41D3 71               ld   (hl),c         // Unit's coordinates updated by transport's movement
+ RO12:41D4 1C               inc  e
+ RO12:41D5 7B               ld   a,e
+ RO12:41D6 FE 64            cp   a,64
+ RO12:41D8 20 BE            jr   nz,4198
+ RO12:41DA F1               pop  af
+ RO12:41DB E0 82            ld   (ff00+82),a
+ RO12:41DD E0 70            ld   (ff00+70),a
+ RO12:41DF E1               pop  hl
+ RO12:41E0 D1               pop  de
+ RO12:41E1 C1               pop  bc
+ RO12:41E2 C9               ret                 // Transport's movement updates loaded units' coordinates
+ RO12:41E3 C5               push bc
+ RO12:41E4 D5               push de
+ RO12:41E5 E5               push hl
+ RO12:41E6 57               ld   d,a
+ RO12:41E7 E6 01            and  a,01
+ RO12:41E9 CD F6 42         call 42F6           // A = first available unit ID, -1 if none is available
+ RO12:41EC FE FF            cp   a,FF
+ RO12:41EE 28 03            jr   z,41F3
+ RO12:41F0 CD F7 41         call 41F7           // Establishes newly created unit's stats
+ RO12:41F3 E1               pop  hl
+ RO12:41F4 D1               pop  de
+ RO12:41F5 C1               pop  bc
+ RO12:41F6 C9               ret                 // Establishes newly created unit's stats with first available unit slot
+ RO12:41F7 F5               push af
+ RO12:41F8 F0 82            ld   a,(ff00+82)
+ RO12:41FA F5               push af
+ RO12:41FB 3E 03            ld   a,03
+ RO12:41FD E0 82            ld   (ff00+82),a
+ RO12:41FF E0 70            ld   (ff00+70),a
+ RO12:4201 7A               ld   a,d
+ RO12:4202 22               ldi  (hl),a
+ RO12:4203 70               ld   (hl),b
+ RO12:4204 23               inc  hl
+ RO12:4205 71               ld   (hl),c
+ RO12:4206 23               inc  hl
+ RO12:4207 AF               xor  a
+ RO12:4208 22               ldi  (hl),a
+ RO12:4209 7A               ld   a,d
+ RO12:420A 0E 0A            ld   c,0A
+ RO12:420C CD 37 40         call 4037           // A = Max HP
+ RO12:420F 22               ldi  (hl),a
+ RO12:4210 AF               xor  a
+ RO12:4211 22               ldi  (hl),a
+ RO12:4212 22               ldi  (hl),a
+ RO12:4213 E5               push hl
+ RO12:4214 7A               ld   a,d
+ RO12:4215 0E 0B            ld   c,0B
+ RO12:4217 CD 37 40         call 4037           // A = Max Fuel
+ RO12:421A E1               pop  hl
+ RO12:421B 22               ldi  (hl),a
+ RO12:421C E5               push hl
+ RO12:421D 7A               ld   a,d
+ RO12:421E 0E 15            ld   c,15
+ RO12:4220 CD 37 40         call 4037           // A = Max Primary Ammo
+ RO12:4223 E1               pop  hl
+ RO12:4224 22               ldi  (hl),a
+ RO12:4225 E5               push hl
+ RO12:4226 7A               ld   a,d
+ RO12:4227 0E 17            ld   c,17
+ RO12:4229 CD 37 40         call 4037           // A = Max Secondary Ammo
+ RO12:422C E1               pop  hl
+ RO12:422D 22               ldi  (hl),a
+ RO12:422E AF               xor  a
+ RO12:422F 22               ldi  (hl),a         // .....not sure how EXP isn't bugged.
+ RO12:4230 F1               pop  af
+ RO12:4231 E0 82            ld   (ff00+82),a
+ RO12:4233 E0 70            ld   (ff00+70),a
+ RO12:4235 7A               ld   a,d
+ RO12:4236 E6 01            and  a,01
+ RO12:4238 21 09 CD         ld   hl,CD09
+ RO12:423B CD BC 29         call 29BC
+ RO12:423E 34               inc  (hl)
+ RO12:423F F1               pop  af
+ RO12:4240 C9               ret                 // Establishes newly created unit's stats
+ RO12:4241 F5               push af
+ RO12:4242 D5               push de
+ RO12:4243 E6 01            and  a,01
+ RO12:4245 87               add  a
+ RO12:4246 21 B3 C8         ld   hl,C8B3
+ RO12:4249 CD BC 29         call 29BC
+ RO12:424C 5E               ld   e,(hl)
+ RO12:424D 23               inc  hl
+ RO12:424E 56               ld   d,(hl)
+ RO12:424F 7B               ld   a,e
+ RO12:4250 A2               and  d
+ RO12:4251 FE FF            cp   a,FF
+ RO12:4253 28 04            jr   z,4259
+ RO12:4255 13               inc  de
+ RO12:4256 72               ld   (hl),d
+ RO12:4257 2B               dec  hl
+ RO12:4258 73               ld   (hl),e
+ RO12:4259 D1               pop  de
+ RO12:425A F1               pop  af
+ RO12:425B C9               ret                 // Units built incremented by 1, cap of 65,535
+ RO12:425C C5               push bc
+ RO12:425D D5               push de
+ RO12:425E E5               push hl
+ RO12:425F 57               ld   d,a
+ RO12:4260 F0 82            ld   a,(ff00+82)
+ RO12:4262 F5               push af
+ RO12:4263 3E 03            ld   a,03
+ RO12:4265 E0 82            ld   (ff00+82),a
+ RO12:4267 E0 70            ld   (ff00+70),a
+ RO12:4269 7A               ld   a,d
+ RO12:426A 0E 01            ld   c,01
+ RO12:426C CD 66 40         call 4066           // A = X coordinate
+ RO12:426F 47               ld   b,a
+ RO12:4270 7A               ld   a,d
+ RO12:4271 0E 02            ld   c,02
+ RO12:4273 CD 66 40         call 4066           // A = Y coordinate
+ RO12:4276 4F               ld   c,a            // BC hold coordinates
+ RO12:4277 7A               ld   a,d
+ RO12:4278 CD B2 42         call 42B2           // Handles destroyed unit
+ RO12:427B 1E 00            ld   e,00
+ RO12:427D C5               push bc             // Loop begins here (loop handles recursion for any cargo of destroyed unit)
+ RO12:427E 7B               ld   a,e
+ RO12:427F 0E 01            ld   c,01
+ RO12:4281 CD 66 40         call 4066           // A = X coordinate
+ RO12:4284 C1               pop  bc
+ RO12:4285 B8               cp   b
+ RO12:4286 20 1B            jr   nz,42A3
+ RO12:4288 C5               push bc
+ RO12:4289 7B               ld   a,e
+ RO12:428A 0E 02            ld   c,02
+ RO12:428C CD 66 40         call 4066           // A = Y coordinate
+ RO12:428F C1               pop  bc
+ RO12:4290 B9               cp   c
+ RO12:4291 20 10            jr   nz,42A3
+ RO12:4293 C5               push bc
+ RO12:4294 7B               ld   a,e
+ RO12:4295 0E 03            ld   c,03
+ RO12:4297 CD 66 40         call 4066
+ RO12:429A C1               pop  bc
+ RO12:429B CB 47            bit  0,a            // Is unit Loaded?
+ RO12:429D 28 04            jr   z,42A3
+ RO12:429F 7B               ld   a,e
+ RO12:42A0 CD B2 42         call 42B2
+ RO12:42A3 1C               inc  e
+ RO12:42A4 7B               ld   a,e
+ RO12:42A5 FE 64            cp   a,64
+ RO12:42A7 20 D4            jr   nz,427D
+ RO12:42A9 F1               pop  af
+ RO12:42AA E0 82            ld   (ff00+82),a
+ RO12:42AC E0 70            ld   (ff00+70),a
+ RO12:42AE E1               pop  hl
+ RO12:42AF D1               pop  de
+ RO12:42B0 C1               pop  bc
+ RO12:42B1 C9               ret                 // Handles destroyed unit's stats, along with any of their cargo's
+ RO12:42B2 C5               push bc
+ RO12:42B3 D5               push de
+ RO12:42B4 E5               push hl
+ RO12:42B5 47               ld   b,a
+ RO12:42B6 F0 82            ld   a,(ff00+82)
+ RO12:42B8 F5               push af
+ RO12:42B9 3E 03            ld   a,03
+ RO12:42BB E0 82            ld   (ff00+82),a
+ RO12:42BD E0 70            ld   (ff00+70),a
+ RO12:42BF 78               ld   a,b
+ RO12:42C0 21 09 CD         ld   hl,CD09
+ RO12:42C3 FE 32            cp   a,32
+ RO12:42C5 38 01            jr   c,42C8
+ RO12:42C7 23               inc  hl
+ RO12:42C8 C5               push bc
+ RO12:42C9 35               dec  (hl)           // Decrement army's headcount
+ RO12:42CA CD 29 40         call 4029           // HL = Unit's stats starting location
+ RO12:42CD AF               xor  a
+ RO12:42CE 01 10 00         ld   bc,0010
+ RO12:42D1 CD 79 3B         call 3B79           // Unit's stats emptied
+ RO12:42D4 C1               pop  bc
+ RO12:42D5 21 B7 C8         ld   hl,C8B7
+ RO12:42D8 78               ld   a,b
+ RO12:42D9 FE 32            cp   a,32
+ RO12:42DB 38 03            jr   c,42E0
+ RO12:42DD 21 B9 C8         ld   hl,C8B9
+ RO12:42E0 5E               ld   e,(hl)
+ RO12:42E1 23               inc  hl
+ RO12:42E2 56               ld   d,(hl)
+ RO12:42E3 7B               ld   a,e
+ RO12:42E4 A2               and  d
+ RO12:42E5 FE FF            cp   a,FF
+ RO12:42E7 28 04            jr   z,42ED         // Jump if ($C8B7 + 2 * active player value) is already 65,535
+ RO12:42E9 13               inc  de
+ RO12:42EA 72               ld   (hl),d
+ RO12:42EB 2B               dec  hl
+ RO12:42EC 73               ld   (hl),e
+ RO12:42ED F1               pop  af
+ RO12:42EE E0 82            ld   (ff00+82),a
+ RO12:42F0 E0 70            ld   (ff00+70),a
+ RO12:42F2 E1               pop  hl
+ RO12:42F3 D1               pop  de
+ RO12:42F4 C1               pop  bc
+ RO12:42F5 C9               ret                 // Handles destroyed unit
+ RO12:42F6 C5               push bc
+ RO12:42F7 21 00 D0         ld   hl,D000
+ RO12:42FA 06 00            ld   b,00
+ RO12:42FC A7               and  a
+ RO12:42FD 28 05            jr   z,4304
+ RO12:42FF 21 20 D3         ld   hl,D320
+ RO12:4302 06 32            ld   b,32
+ RO12:4304 0E 00            ld   c,00
+ RO12:4306 F0 82            ld   a,(ff00+82)
+ RO12:4308 F5               push af
+ RO12:4309 3E 03            ld   a,03
+ RO12:430B E0 82            ld   (ff00+82),a
+ RO12:430D E0 70            ld   (ff00+70),a
+ RO12:430F 7E               ld   a,(hl)
+ RO12:4310 A7               and  a
+ RO12:4311 28 0D            jr   z,4320
+ RO12:4313 3E 10            ld   a,10
+ RO12:4315 CD BC 29         call 29BC
+ RO12:4318 0C               inc  c
+ RO12:4319 79               ld   a,c
+ RO12:431A FE 32            cp   a,32
+ RO12:431C 20 F1            jr   nz,430F
+ RO12:431E 0E FF            ld   c,FF
+ RO12:4320 F1               pop  af
+ RO12:4321 E0 82            ld   (ff00+82),a
+ RO12:4323 E0 70            ld   (ff00+70),a
+ RO12:4325 79               ld   a,c
+ RO12:4326 80               add  b
+ RO12:4327 C1               pop  bc
+ RO12:4328 C9               ret                 // A = available unit ID, -1 if none is available
+ RO12:4329 C5               push bc
+ RO12:432A D5               push de
+ RO12:432B 0E 1A            ld   c,1A
+ RO12:432D CD 37 40         call 4037           // A = Carrying Type
+ RO12:4330 FE 00            cp   a,00
+ RO12:4332 28 1A            jr   z,434E         // End if Carrying Type is Null (Unit can't Load)
+ RO12:4334 57               ld   d,a
+ RO12:4335 78               ld   a,b
+ RO12:4336 0E 1B            ld   c,1B
+ RO12:4338 CD 37 40         call 4037           // A = 2nd unit's Carried Type
+ RO12:433B BA               cp   d
+ RO12:433C 28 10            jr   z,434E         // End with Carried Type if it matches Carrying Type (Unit can be Loaded)
+ RO12:433E 78               ld   a,b
+ RO12:433F 0E 1C            ld   c,1C
+ RO12:4341 CD 37 40         call 4037           // 
+ RO12:4344 BA               cp   d
+ RO12:4345 28 07            jr   z,434E         // Same as above
+ RO12:4347 78               ld   a,b
+ RO12:4348 0E 1D            ld   c,1D
+ RO12:434A CD 37 40         call 4037
+ RO12:434D BA               cp   d
+ RO12:434E D1               pop  de
+ RO12:434F C1               pop  bc
+ RO12:4350 C9               ret                 // If unit A can Load, Z flag depends on unit B's Carried Type being Carrying type
+ RO12:4351 C5               push bc
+ RO12:4352 D5               push de
+ RO12:4353 57               ld   d,a
+ RO12:4354 CB 38            srl  b              // Adjacent Unit's Type #
+ RO12:4356 0E 18            ld   c,18
+ RO12:4358 CD 37 40         call 4037
+ RO12:435B FE 02            cp   a,02           // Air?
+ RO12:435D 28 1E            jr   z,437D
+ RO12:435F FE 03            cp   a,03           // Ship?
+ RO12:4361 28 42            jr   z,43A5
+ RO12:4363 FE 04            cp   a,04           // Diver?
+ RO12:4365 28 4D            jr   z,43B4         // End with A = 1 if unit is a submarine
+ RO12:4367 7A               ld   a,d
+ RO12:4368 CB 3F            srl  a              // Selected Unit's Type #
+ RO12:436A FE 05            cp   a,05           // Supply Truck?
+ RO12:436C 28 46            jr   z,43B4
+ RO12:436E FE 06            cp   a,06           // Supply Truck+?
+ RO12:4370 28 42            jr   z,43B4         // End with A = 1 if unit is a Supply Truck
+ RO12:4372 78               ld   a,b
+ RO12:4373 FE 05            cp   a,05           // Supply Truck?
+ RO12:4375 28 3A            jr   z,43B1
+ RO12:4377 FE 06            cp   a,06           // Supply Truck+?
+ RO12:4379 28 36            jr   z,43B1         // End with A = 0 if second unit is a Supply Truck
+ RO12:437B 18 37            jr   43B4
+ RO12:437D 7A               ld   a,d
+ RO12:437E CB 3F            srl  a
+ RO12:4380 FE 23            cp   a,23
+ RO12:4382 28 30            jr   z,43B4
+ RO12:4384 FE 24            cp   a,24
+ RO12:4386 28 2C            jr   z,43B4
+ RO12:4388 FE 25            cp   a,25
+ RO12:438A 28 28            jr   z,43B4
+ RO12:438C FE 26            cp   a,26
+ RO12:438E 28 24            jr   z,43B4         // End with A = 1 if unit is a big plane
+ RO12:4390 7A               ld   a,d
+ RO12:4391 0E 19            ld   c,19
+ RO12:4393 CD 37 40         call 4037           // A = Carrying Type
+ RO12:4396 FE 0A            cp   a,0A
+ RO12:4398 28 D8            jr   z,4372
+ RO12:439A FE 09            cp   a,09
+ RO12:439C 28 D4            jr   z,4372         // Supply Truck check if unit is a helicopter or VTOL jet
+ RO12:439E 78               ld   a,b
+ RO12:439F FE 26            cp   a,26
+ RO12:43A1 28 0E            jr   z,43B1         // End with A = 0 if second unit is a Supply Plane
+ RO12:43A3 18 0F            jr   43B4
+ RO12:43A5 7A               ld   a,d
+ RO12:43A6 CB 3F            srl  a
+ RO12:43A8 FE 31            cp   a,31
+ RO12:43AA 28 08            jr   z,43B4         // End with A = 1 if unit is a Tanker
+ RO12:43AC 78               ld   a,b
+ RO12:43AD FE 31            cp   a,31
+ RO12:43AF 20 03            jr   nz,43B4        // End with A = 1 if second unit isn't a Tanker
+ RO12:43B1 AF               xor  a
+ RO12:43B2 18 02            jr   43B6
+ RO12:43B4 3E 01            ld   a,01
+ RO12:43B6 D1               pop  de
+ RO12:43B7 C1               pop  bc
+ RO12:43B8 C9               ret                 // A = 0 if first unit can be resupplied by second unit, 1 otherwise
+ RO12:43B9 C5               push bc
+ RO12:43BA D5               push de
+ RO12:43BB E5               push hl
+ RO12:43BC EA 41 CD         ld   (CD41),a
+ RO12:43BF AF               xor  a
+ RO12:43C0 EA 33 CD         ld   (CD33),a
+ RO12:43C3 16 00            ld   d,00
+ RO12:43C5 7A               ld   a,d            // Loop begins here
+ RO12:43C6 0E 03            ld   c,03
+ RO12:43C8 CD 66 40         call 4066
+ RO12:43CB CB 47            bit  0,a            // Is unit Loaded?
+ RO12:43CD 28 1B            jr   z,43EA         // End cycle if not
+ RO12:43CF 7A               ld   a,d
+ RO12:43D0 0E 06            ld   c,06
+ RO12:43D2 CD 66 40         call 4066
+ RO12:43D5 4F               ld   c,a            // C = Loading Unit's #
+ RO12:43D6 FA 41 CD         ld   a,(CD41)
+ RO12:43D9 B9               cp   c              // Is currently checked unit cargo?
+ RO12:43DA 20 0E            jr   nz,43EA        // End cycle if not
+ RO12:43DC 21 34 CD         ld   hl,CD34
+ RO12:43DF FA 33 CD         ld   a,(CD33)
+ RO12:43E2 CD BC 29         call 29BC
+ RO12:43E5 72               ld   (hl),d
+ RO12:43E6 21 33 CD         ld   hl,CD33
+ RO12:43E9 34               inc  (hl)
+ RO12:43EA 14               inc  d
+ RO12:43EB 7A               ld   a,d
+ RO12:43EC FE 64            cp   a,64
+ RO12:43EE 20 D5            jr   nz,43C5
+ RO12:43F0 E1               pop  hl
+ RO12:43F1 D1               pop  de
+ RO12:43F2 C1               pop  bc
+ RO12:43F3 C9               ret                 // ($CD33) holds number of units Loaded, ($CD34) 7? bytes holds units directly Loaded
+ RO12:43F4 C5               push bc
+ RO12:43F5 D5               push de
+ RO12:43F6 E5               push hl
+ RO12:43F7 47               ld   b,a
+ RO12:43F8 AF               xor  a
+ RO12:43F9 EA 0B CD         ld   (CD0B),a
+ RO12:43FC 78               ld   a,b
+ RO12:43FD FE 04            cp   a,04           // Factory?
+ RO12:43FF 28 18            jr   z,4419
+ RO12:4401 FE 06            cp   a,06           // Airport?
+ RO12:4403 28 1D            jr   z,4422
+ RO12:4405 FE 09            cp   a,09           // Harbor?
+ RO12:4407 28 22            jr   z,442B
+ RO12:4409 06 01            ld   b,01
+ RO12:440B 0E 03            ld   c,03
+ RO12:440D CD 36 44         call 4436
+ RO12:4410 06 07            ld   b,07
+ RO12:4412 0E 16            ld   c,16
+ RO12:4414 CD 36 44         call 4436
+ RO12:4417 18 19            jr   4432           // City/HQ checks for land units other than the Work Car and Supply Truck
+ RO12:4419 06 01            ld   b,01
+ RO12:441B 0E 1C            ld   c,1C
+ RO12:441D CD 36 44         call 4436
+ RO12:4420 18 10            jr   4432           // Factory checks for all land units
+ RO12:4422 06 1D            ld   b,1D
+ RO12:4424 0E 0F            ld   c,0F
+ RO12:4426 CD 36 44         call 4436
+ RO12:4429 18 07            jr   4432           // Airport checks for all air units
+ RO12:442B 06 2C            ld   b,2C
+ RO12:442D 0E 08            ld   c,08
+ RO12:442F CD 36 44         call 4436           // Harbor checks for all sea units
+ RO12:4432 E1               pop  hl
+ RO12:4433 D1               pop  de
+ RO12:4434 C1               pop  bc
+ RO12:4435 C9               ret                 // ($CD0B) holds number of allowed units, ($CD0C) holds allowed units in as many bytes as needed
+ RO12:4436 21 0C CD         ld   hl,CD0C
+ RO12:4439 FA 0B CD         ld   a,(CD0B)
+ RO12:443C CD BC 29         call 29BC
+ RO12:443F 54               ld   d,h
+ RO12:4440 5D               ld   e,l
+ RO12:4441 78               ld   a,b            // Loop begins here
+ RO12:4442 CD 70 44         call 4470           // A = 0 if unit is allowed, 2 otherwise
+ RO12:4445 FE 00            cp   a,00
+ RO12:4447 20 0A            jr   nz,4453        // End cycle if unit is disallowed
+ RO12:4449 78               ld   a,b
+ RO12:444A 12               ld   (de),a
+ RO12:444B 13               inc  de
+ RO12:444C FA 0B CD         ld   a,(CD0B)
+ RO12:444F 3C               inc  a
+ RO12:4450 EA 0B CD         ld   (CD0B),a
+ RO12:4453 04               inc  b
+ RO12:4454 0D               dec  c
+ RO12:4455 20 EA            jr   nz,4441
+ RO12:4457 C9               ret                 // ($CD0B) holds number of allowed units, ($CD0C) holds allowed units in as many bytes as needed
+ RO12:4458 21 0C CD         ld   hl,CD0C
+ RO12:445B 3E 03            ld   a,03
+ RO12:445D 22               ldi  (hl),a
+ RO12:445E 3E 12            ld   a,12
+ RO12:4460 22               ldi  (hl),a
+ RO12:4461 3E 1C            ld   a,1C
+ RO12:4463 22               ldi  (hl),a
+ RO12:4464 3E 24            ld   a,24
+ RO12:4466 22               ldi  (hl),a
+ RO12:4467 3E 2D            ld   a,2D
+ RO12:4469 22               ldi  (hl),a
+ RO12:446A 3E 05            ld   a,05
+ RO12:446C EA 0B CD         ld   (CD0B),a
+ RO12:446F C9               ret                 // Mercenary units version of above
+ RO12:4470 C5               push bc
+ RO12:4471 21 7F 49         ld   hl,497F
+ RO12:4474 CD C7 3A         call 3AC7
+ RO12:4477 20 10            jr   nz,4489
+ RO12:4479 3E 02            ld   a,02
+ RO12:447B 18 0E            jr   448B
+ RO12:447D FA A3 C6         ld   a,(C6A3)
+ RO12:4480 CD 8D 44         call 448D
+ RO12:4483 20 04            jr   nz,4489
+ RO12:4485 3E 02            ld   a,02
+ RO12:4487 18 02            jr   448B
+ RO12:4489 3E 00            ld   a,00
+ RO12:448B C1               pop  bc
+ RO12:448C C9               ret                 // A = 0 if unit is allowed, 2 otherwise
+ RO12:448D 21 86 49         ld   hl,4986
+ RO12:4490 CD 93 3A         call 3A93
+ RO12:4493 78               ld   a,b
+ RO12:4494 CD C7 3A         call 3AC7
+ RO12:4497 C9               ret                 // Unused allowed units lists stuff
+ RO12:4498 C5               push bc
+ RO12:4499 47               ld   b,a
+ RO12:449A CD F5 40         call 40F5           // A = EXP / 100
+ RO12:449D FE 04            cp   a,04
+ RO12:449F 20 14            jr   nz,44B5        // End with A = 0 if unit isn't S-Rank
+ RO12:44A1 78               ld   a,b
+ RO12:44A2 0E 00            ld   c,00
+ RO12:44A4 CD 66 40         call 4066
+ RO12:44A7 4F               ld   c,a            // C = Unit Type
+ RO12:44A8 CB 3F            srl  a
+ RO12:44AA CD B8 44         call 44B8           // A = Promoted Unit
+ RO12:44AD 87               add  a
+ RO12:44AE 47               ld   b,a            // B = Promoted Unit
+ RO12:44AF 79               ld   a,c
+ RO12:44B0 E6 01            and  a,01
+ RO12:44B2 80               add  b
+ RO12:44B3 18 01            jr   44B6
+ RO12:44B5 AF               xor  a
+ RO12:44B6 C1               pop  bc
+ RO12:44B7 C9               ret                 // A = Promoted Unit, 0 if none or unit isn't S-Rank
+ RO12:44B8 21 0F 4A         ld   hl,4A0F
+ RO12:44BB CD BC 29         call 29BC
+ RO12:44BE 7E               ld   a,(hl)
+ RO12:44BF C9               ret                 // A = Promoted Unit
+ RO12:44C0 C5               push bc
+ RO12:44C1 D5               push de
+ RO12:44C2 57               ld   d,a
+ RO12:44C3 CD 98 44         call 4498           // A = Promoted Unit
+ RO12:44C6 A7               and  a
+ RO12:44C7 28 3E            jr   z,4507
+ RO12:44C9 5F               ld   e,a
+ RO12:44CA EF 11 3F 4D                          // All Unit Medal progress flag for unit Set as necessary
+ RO12:44CE 7A               ld   a,d
+ RO12:44CF 43               ld   b,e
+ RO12:44D0 0E 00            ld   c,00
+ RO12:44D2 CD A1 40         call 40A1           // Unit Type set to Promoted Unit
+ RO12:44D5 D5               push de
+ RO12:44D6 7A               ld   a,d
+ RO12:44D7 0E 0A            ld   c,0A
+ RO12:44D9 11 00 00         ld   de,0000
+ RO12:44DC CD BD 40         call 40BD           // EXP set to 0
+ RO12:44DF D1               pop  de
+ RO12:44E0 7B               ld   a,e
+ RO12:44E1 0E 0B            ld   c,0B
+ RO12:44E3 CD 37 40         call 4037           // A = Max Fuel
+ RO12:44E6 47               ld   b,a
+ RO12:44E7 7A               ld   a,d
+ RO12:44E8 0E 07            ld   c,07
+ RO12:44EA CD A1 40         call 40A1           // Fuel set to Max Fuel
+ RO12:44ED 7B               ld   a,e
+ RO12:44EE 0E 15            ld   c,15
+ RO12:44F0 CD 37 40         call 4037           // A = Max Primary Ammo
+ RO12:44F3 47               ld   b,a
+ RO12:44F4 7A               ld   a,d
+ RO12:44F5 0E 08            ld   c,08
+ RO12:44F7 CD A1 40         call 40A1           // Primary Ammo set to capacity
+ RO12:44FA 7B               ld   a,e
+ RO12:44FB 0E 17            ld   c,17
+ RO12:44FD CD 37 40         call 4037           // A = Max Secondary Ammo
+ RO12:4500 47               ld   b,a
+ RO12:4501 7A               ld   a,d
+ RO12:4502 0E 09            ld   c,09
+ RO12:4504 CD A1 40         call 40A1           // Secondary Ammo set to capacity
+ RO12:4507 D1               pop  de
+ RO12:4508 C1               pop  bc
+ RO12:4509 C9               ret                 // Promotion stat establishing
+ RO12:450A C5               push bc
+ RO12:450B D5               push de
+ RO12:450C E5               push hl
+ RO12:450D EA 41 CD         ld   (CD41),a       // Primary Supplying Unit #
+ RO12:4510 AF               xor  a
+ RO12:4511 EA 3A CD         ld   (CD3A),a
+ RO12:4514 FA 41 CD         ld   a,(CD41)
+ RO12:4517 0E 00            ld   c,00
+ RO12:4519 CD 66 40         call 4066
+ RO12:451C A7               and  a
+ RO12:451D 28 62            jr   z,4581         // End if unit doesn't exist
+ RO12:451F EA 42 CD         ld   (CD42),a
+ RO12:4522 0E 18            ld   c,18
+ RO12:4524 CD 37 40         call 4037
+ RO12:4527 FE 04            cp   a,04           // U-Boat?
+ RO12:4529 28 56            jr   z,4581         // End if unit is a Submarine
+ RO12:452B FA 41 CD         ld   a,(CD41)
+ RO12:452E 0E 01            ld   c,01
+ RO12:4530 CD 83 40         call 4083
+ RO12:4533 43               ld   b,e
+ RO12:4534 4A               ld   c,d            // BC holds coordinates
+ RO12:4535 1E 00            ld   e,00
+ RO12:4537 C5               push bc             // Loop begins here
+ RO12:4538 D5               push de
+ RO12:4539 D5               push de
+ RO12:453A CD D9 28         call 28D9           // BC holds relative coordinates
+ RO12:453D D1               pop  de
+ RO12:453E 38 39            jr   c,4579         // End cycle if relative coordinates doesn't exist
+ RO12:4540 CD 4E 41         call 414E           // A = unit number of primary occupying unit, -1 if there is none
+ RO12:4543 FE FF            cp   a,FF
+ RO12:4545 28 32            jr   z,4579         // End cycle if no occupying unit
+ RO12:4547 57               ld   d,a
+ RO12:4548 0E 00            ld   c,00
+ RO12:454A CD 66 40         call 4066
+ RO12:454D 47               ld   b,a            // B = Unit Type of occupying unit
+ RO12:454E E6 01            and  a,01
+ RO12:4550 4F               ld   c,a            // C = occupying unit's side
+ RO12:4551 FA 42 CD         ld   a,(CD42)
+ RO12:4554 E6 01            and  a,01           // A = primary unit's side
+ RO12:4556 B9               cp   c
+ RO12:4557 20 20            jr   nz,4579        // End cycle if sides are different
+ RO12:4559 7A               ld   a,d
+ RO12:455A 0E 08            ld   c,08
+ RO12:455C CD 66 40         call 4066
+ RO12:455F A7               and  a
+ RO12:4560 28 17            jr   z,4579         // End cycle if supplying unit is out of supplies
+ RO12:4562 FA 42 CD         ld   a,(CD42)
+ RO12:4565 CD 51 43         call 4351           // A = 0 if first unit can be resupplied by second unit, 1 otherwise
+ RO12:4568 A7               and  a
+ RO12:4569 20 0E            jr   nz,4579        // End cycle if supplying unit is not the correct one
+ RO12:456B FA 3A CD         ld   a,(CD3A)
+ RO12:456E 21 3B CD         ld   hl,CD3B
+ RO12:4571 CD BC 29         call 29BC
+ RO12:4574 72               ld   (hl),d
+ RO12:4575 21 3A CD         ld   hl,CD3A
+ RO12:4578 34               inc  (hl)           // If all conditions are satisfied, ($CD3A) is incremented and ($CD3B) group holds an additional supplying unit's #
+ RO12:4579 D1               pop  de
+ RO12:457A C1               pop  bc
+ RO12:457B 1C               inc  e
+ RO12:457C 7B               ld   a,e
+ RO12:457D FE 06            cp   a,06
+ RO12:457F 20 B6            jr   nz,4537
+ RO12:4581 E1               pop  hl
+ RO12:4582 D1               pop  de
+ RO12:4583 C1               pop  bc
+ RO12:4584 C9               ret                 // ($CD3A) holds supplying unit count, ($CD3B) to ($CD40) holds supplying units
+ RO12:4585 C5               push bc
+ RO12:4586 D5               push de
+ RO12:4587 57               ld   d,a
+ RO12:4588 0E 03            ld   c,03
+ RO12:458A CD 66 40         call 4066
+ RO12:458D CB FF            set  7,a
+ RO12:458F 47               ld   b,a
+ RO12:4590 7A               ld   a,d
+ RO12:4591 CD A1 40         call 40A1
+ RO12:4594 D1               pop  de
+ RO12:4595 C1               pop  bc
+ RO12:4596 C9               ret                 // Unit's End Turn Flag Set
+ RO12:4597 C5               push bc
+ RO12:4598 D5               push de
+ RO12:4599 E5               push hl
+ RO12:459A 16 00            ld   d,00
+ RO12:459C A7               and  a
+ RO12:459D 20 02            jr   nz,45A1
+ RO12:459F 18 02            jr   45A3
+ RO12:45A1 16 32            ld   d,32
+ RO12:45A3 F0 82            ld   a,(ff00+82)
+ RO12:45A5 F5               push af
+ RO12:45A6 3E 03            ld   a,03
+ RO12:45A8 E0 82            ld   (ff00+82),a
+ RO12:45AA E0 70            ld   (ff00+70),a
+ RO12:45AC 1E 32            ld   e,32
+ RO12:45AE 7A               ld   a,d            // Loop starts here
+ RO12:45AF CD 29 40         call 4029
+ RO12:45B2 7E               ld   a,(hl)
+ RO12:45B3 A7               and  a
+ RO12:45B4 28 1D            jr   z,45D3         // End cycle if unit doesn't exist
+ RO12:45B6 7A               ld   a,d
+ RO12:45B7 CD 29 40         call 4029
+ RO12:45BA 01 03 00         ld   bc,0003
+ RO12:45BD 09               add  hl,bc
+ RO12:45BE 7E               ld   a,(hl)
+ RO12:45BF CB BF            res  7,a
+ RO12:45C1 77               ld   (hl),a         // Unit's End Turn Flag Reset
+ RO12:45C2 7A               ld   a,d
+ RO12:45C3 CD 29 40         call 4029
+ RO12:45C6 01 01 00         ld   bc,0001
+ RO12:45C9 09               add  hl,bc
+ RO12:45CA 46               ld   b,(hl)
+ RO12:45CB 23               inc  hl
+ RO12:45CC 4E               ld   c,(hl)
+ RO12:45CD 3E 02            ld   a,02
+ RO12:45CF EF 0B BF 47                          // res 7,($D000 + B + C * 64) Terrain WRAM Bank
+ RO12:45D3 14               inc  d
+ RO12:45D4 1D               dec  e
+ RO12:45D5 20 D7            jr   nz,45AE
+ RO12:45D7 F1               pop  af
+ RO12:45D8 E0 82            ld   (ff00+82),a
+ RO12:45DA E0 70            ld   (ff00+70),a
+ RO12:45DC E1               pop  hl
+ RO12:45DD D1               pop  de
+ RO12:45DE C1               pop  bc
+ RO12:45DF C9               ret                 // Resets End Turn flags for the player's units and their respective tiles
+ RO12:45E0 C5               push bc
+ RO12:45E1 D5               push de
+ RO12:45E2 E5               push hl
+ RO12:45E3 16 00            ld   d,00
+ RO12:45E5 A7               and  a
+ RO12:45E6 20 02            jr   nz,45EA
+ RO12:45E8 18 02            jr   45EC
+ RO12:45EA 16 32            ld   d,32
+ RO12:45EC F0 82            ld   a,(ff00+82)
+ RO12:45EE F5               push af
+ RO12:45EF 3E 03            ld   a,03
+ RO12:45F1 E0 82            ld   (ff00+82),a
+ RO12:45F3 E0 70            ld   (ff00+70),a
+ RO12:45F5 1E 32            ld   e,32
+ RO12:45F7 7A               ld   a,d            // Loop starts here
+ RO12:45F8 CD 29 40         call 4029           // HL = unit's stats starting location
+ RO12:45FB 7E               ld   a,(hl)
+ RO12:45FC A7               and  a
+ RO12:45FD 28 0C            jr   z,460B         // End cycle if unit doesn't exist
+ RO12:45FF 7A               ld   a,d
+ RO12:4600 CD 29 40         call 4029
+ RO12:4603 01 03 00         ld   bc,0003
+ RO12:4606 09               add  hl,bc
+ RO12:4607 7E               ld   a,(hl)         // A = Status
+ RO12:4608 CB 97            res  2,a            // Clear Supplied flag
+ RO12:460A 77               ld   (hl),a
+ RO12:460B 14               inc  d
+ RO12:460C 1D               dec  e
+ RO12:460D 20 E8            jr   nz,45F7
+ RO12:460F F1               pop  af
+ RO12:4610 E0 82            ld   (ff00+82),a
+ RO12:4612 E0 70            ld   (ff00+70),a
+ RO12:4614 E1               pop  hl
+ RO12:4615 D1               pop  de
+ RO12:4616 C1               pop  bc
+ RO12:4617 C9               ret                 // Clears Supplied Flag for all units of given side
+ RO12:4618 C5               push bc
+ RO12:4619 D5               push de
+ RO12:461A E5               push hl
+ RO12:461B 16 00            ld   d,00
+ RO12:461D A7               and  a
+ RO12:461E 20 02            jr   nz,4622        // Skip next line if active player is White Moon
+ RO12:4620 18 02            jr   4624           // Skip next line; result of active player being Red Star
+ RO12:4622 16 32            ld   d,32           // D = 0 for Red Star, 50 for White Moon
+ RO12:4624 F0 82            ld   a,(ff00+82)
+ RO12:4626 F5               push af
+ RO12:4627 3E 03            ld   a,03
+ RO12:4629 E0 82            ld   (ff00+82),a
+ RO12:462B E0 70            ld   (ff00+70),a    // Unit stats WRAM Bank
+ RO12:462D 1E 32            ld   e,32
+ RO12:462F 06 00            ld   b,00           // B = 0, E = 50
+ RO12:4631 7A               ld   a,d            // Loop begins here
+ RO12:4632 CD 29 40         call 4029           // HL = $D000 + D * 16
+ RO12:4635 7E               ld   a,(hl)
+ RO12:4636 A7               and  a
+ RO12:4637 28 0F            jr   z,4648         // Finish Unit #'s handling if unit doesn't exist
+ RO12:4639 7A               ld   a,d
+ RO12:463A CD 29 40         call 4029
+ RO12:463D 3E 03            ld   a,03
+ RO12:463F CD BC 29         call 29BC
+ RO12:4642 7E               ld   a,(hl)
+ RO12:4643 CB 57            bit  2,a
+ RO12:4645 28 01            jr   z,4648         // End cycle if unit is already resupplied
+ RO12:4647 04               inc  b              // B = number of supplied units
+ RO12:4648 14               inc  d
+ RO12:4649 1D               dec  e
+ RO12:464A 20 E5            jr   nz,4631
+ RO12:464C F1               pop  af
+ RO12:464D E0 82            ld   (ff00+82),a
+ RO12:464F E0 70            ld   (ff00+70),a
+ RO12:4651 78               ld   a,b
+ RO12:4652 E1               pop  hl
+ RO12:4653 D1               pop  de
+ RO12:4654 C1               pop  bc
+ RO12:4655 C9               ret                 // A = number of supplied units
+ RO12:4656 C5               push bc
+ RO12:4657 D5               push de
+ RO12:4658 50               ld   d,b            // D = Unit Type
+ RO12:4659 D5               push de
+ RO12:465A 0E 01            ld   c,01
+ RO12:465C CD 83 40         call 4083           // DE = coordinates
+ RO12:465F 43               ld   b,e
+ RO12:4660 4A               ld   c,d            // BC = coordinates
+ RO12:4661 D1               pop  de             // D = Unit Type
+ RO12:4662 EF 0B 70 47                          // A = Terrain Type
+ RO12:4666 47               ld   b,a            // B = Terrain Type
+ RO12:4667 EF 0B F7 7C                          // A = 0 for owner's turn, 1 for opponent's turn, 2 for Neutral property, or 3 for non-property tile
+ RO12:466B FE 00            cp   a,00
+ RO12:466D 20 51            jr   nz,46C0        // End with A = -1 if property is not owned
+ RO12:466F 78               ld   a,b            // A = Terrain Type
+ RO12:4670 EF 0B 07 47                          // A = Terrain base ID
+ RO12:4674 47               ld   b,a            // B = Terrain base ID
+ RO12:4675 7A               ld   a,d            // A = Unit Type
+ RO12:4676 0E 18            ld   c,18
+ RO12:4678 CD 37 40         call 4037           // A = Unit Family
+ RO12:467B FE 02            cp   a,02           // Air?
+ RO12:467D 28 31            jr   z,46B0
+ RO12:467F FE 03            cp   a,03           // Ship?
+ RO12:4681 28 38            jr   z,46BB
+ RO12:4683 FE 04            cp   a,04           // U-Boat?
+ RO12:4685 28 34            jr   z,46BB
+ RO12:4687 7A               ld   a,d
+ RO12:4688 CB 3F            srl  a
+ RO12:468A FE 04            cp   a,04           // Work Car?
+ RO12:468C 28 17            jr   z,46A5
+ RO12:468E FE 05            cp   a,05           // Supply Truck?
+ RO12:4690 28 13            jr   z,46A5
+ RO12:4692 FE 06            cp   a,06           // Supply Truck+?
+ RO12:4694 28 0F            jr   z,46A5
+ RO12:4696 78               ld   a,b
+ RO12:4697 FE 01            cp   a,01           // HQ?
+ RO12:4699 28 29            jr   z,46C4
+ RO12:469B FE 02            cp   a,02           // City?
+ RO12:469D 28 25            jr   z,46C4
+ RO12:469F FE 04            cp   a,04           // Factory?
+ RO12:46A1 28 21            jr   z,46C4
+ RO12:46A3 18 1B            jr   46C0           // End with A = -1 if unit is land unit not on HQ, City, or Factory
+ RO12:46A5 78               ld   a,b
+ RO12:46A6 FE 01            cp   a,01           // HQ?
+ RO12:46A8 28 1A            jr   z,46C4
+ RO12:46AA FE 04            cp   a,04           // Factory?
+ RO12:46AC 28 16            jr   z,46C4
+ RO12:46AE 18 10            jr   46C0           // End with A = -1 if unit is Work Car or Supply Truck not on HQ or Factory
+ RO12:46B0 78               ld   a,b
+ RO12:46B1 FE 06            cp   a,06           // Airport?
+ RO12:46B3 28 0F            jr   z,46C4
+ RO12:46B5 FE 08            cp   a,08           // Simple Airport?
+ RO12:46B7 28 0B            jr   z,46C4
+ RO12:46B9 18 05            jr   46C0           // End with A = -1 if unit is air unit not on regular or Simple Airport
+ RO12:46BB 78               ld   a,b
+ RO12:46BC FE 09            cp   a,09           // Harbor?
+ RO12:46BE 28 04            jr   z,46C4         // End with A = 0 if unit is sea unit on Harbor, continues to ending with A = -1 otherwise
+ RO12:46C0 3E FF            ld   a,FF
+ RO12:46C2 18 01            jr   46C5
+ RO12:46C4 AF               xor  a
+ RO12:46C5 D1               pop  de
+ RO12:46C6 C1               pop  bc
+ RO12:46C7 C9               ret                 // A = 0 if property can provide valid supplying; -1 otherwise
+ RO12:46C8 C5               push bc
+ RO12:46C9 D5               push de
+ RO12:46CA 50               ld   d,b            // D = Unit Type
+ RO12:46CB D5               push de
+ RO12:46CC 0E 01            ld   c,01
+ RO12:46CE CD 83 40         call 4083           // DE = Coordinates
+ RO12:46D1 43               ld   b,e
+ RO12:46D2 4A               ld   c,d            // BC = Coordinates
+ RO12:46D3 D1               pop  de             // D = Unit Type
+ RO12:46D4 EF 0B 70 47                          
+ RO12:46D8 47               ld   b,a            // B = Terrain Type
+ RO12:46D9 7A               ld   a,d            // A = Unit Type
+ RO12:46DA CD E0 46         call 46E0           // A = 0 repairs valid, -1 repairs invalid
+ RO12:46DD D1               pop  de
+ RO12:46DE C1               pop  bc
+ RO12:46DF C9               ret                 // A = 0 repairs valid, -1 repairs invalid
+ RO12:46E0 C5               push bc
+ RO12:46E1 D5               push de
+ RO12:46E2 57               ld   d,a
+ RO12:46E3 78               ld   a,b            // A = Terrain Type, D = Unit Type
+ RO12:46E4 EF 0B F7 7C                          // A = 0 for owner's turn, 1 for opponent's turn, 2 for Neutral property, or 3 for non-property tile
+ RO12:46E8 FE 00            cp   a,00
+ RO12:46EA 20 4D            jr   nz,4739        // End with A = -1 if not owned property
+ RO12:46EC 78               ld   a,b
+ RO12:46ED EF 0B 07 47                          // A = Terrain Type (non-ownership)
+ RO12:46F1 47               ld   b,a
+ RO12:46F2 7A               ld   a,d            // A = Unit Type, B = Terrain Type
+ RO12:46F3 0E 18            ld   c,18           // C = 24
+ RO12:46F5 CD 37 40         call 4037           // A = Unit Family
+ RO12:46F8 FE 02            cp   a,02           // Air?
+ RO12:46FA 28 31            jr   z,472D
+ RO12:46FC FE 03            cp   a,03           // Ship?
+ RO12:46FE 28 34            jr   z,4734
+ RO12:4700 FE 04            cp   a,04           // Submarine?
+ RO12:4702 28 30            jr   z,4734
+ RO12:4704 7A               ld   a,d
+ RO12:4705 CB 3F            srl  a              // A = Unit Type
+ RO12:4707 FE 04            cp   a,04           // Work Car?
+ RO12:4709 28 17            jr   z,4722
+ RO12:470B FE 05            cp   a,05           // Supply Truck?
+ RO12:470D 28 13            jr   z,4722
+ RO12:470F FE 06            cp   a,06           // Supply Truck+?
+ RO12:4711 28 0F            jr   z,4722
+ RO12:4713 78               ld   a,b
+ RO12:4714 FE 01            cp   a,01           // HQ?
+ RO12:4716 28 25            jr   z,473D
+ RO12:4718 FE 02            cp   a,02           // City?
+ RO12:471A 28 21            jr   z,473D
+ RO12:471C FE 04            cp   a,04           // Factory?
+ RO12:471E 28 1D            jr   z,473D
+ RO12:4720 18 17            jr   4739
+ RO12:4722 78               ld   a,b
+ RO12:4723 FE 01            cp   a,01           // HQ?
+ RO12:4725 28 16            jr   z,473D
+ RO12:4727 FE 04            cp   a,04           // Factory?
+ RO12:4729 28 12            jr   z,473D
+ RO12:472B 18 0C            jr   4739
+ RO12:472D 78               ld   a,b
+ RO12:472E FE 06            cp   a,06           // Airport?
+ RO12:4730 28 0B            jr   z,473D
+ RO12:4732 18 05            jr   4739
+ RO12:4734 78               ld   a,b
+ RO12:4735 FE 09            cp   a,09           // Harbor?
+ RO12:4737 28 04            jr   z,473D
+ RO12:4739 3E FF            ld   a,FF
+ RO12:473B 18 01            jr   473E
+ RO12:473D AF               xor  a
+ RO12:473E D1               pop  de
+ RO12:473F C1               pop  bc
+ RO12:4740 C9               ret                 // A = 0 repairs valid, -1 repairs invalid
+ RO12:4741 C5               push bc
+ RO12:4742 D5               push de
+ RO12:4743 57               ld   d,a
+ RO12:4744 0E 00            ld   c,00
+ RO12:4746 CD 66 40         call 4066           // A = Unit Type
+ RO12:4749 0E 0B            ld   c,0B
+ RO12:474B CD 37 40         call 4037           // A = Max Fuel
+ RO12:474E 47               ld   b,a
+ RO12:474F 0E 07            ld   c,07
+ RO12:4751 7A               ld   a,d
+ RO12:4752 CD A1 40         call 40A1           // Gas tank full
+ RO12:4755 D1               pop  de
+ RO12:4756 C1               pop  bc
+ RO12:4757 C9               ret                 // Fills unit's Fuel
+ RO12:4758 C5               push bc
+ RO12:4759 D5               push de
+ RO12:475A 57               ld   d,a
+ RO12:475B 0E 00            ld   c,00
+ RO12:475D CD 66 40         call 4066
+ RO12:4760 5F               ld   e,a
+ RO12:4761 0E 15            ld   c,15
+ RO12:4763 CD 37 40         call 4037           // Primary Weapon Ammo
+ RO12:4766 47               ld   b,a
+ RO12:4767 7A               ld   a,d
+ RO12:4768 0E 08            ld   c,08
+ RO12:476A CD A1 40         call 40A1
+ RO12:476D 7B               ld   a,e
+ RO12:476E 0E 17            ld   c,17
+ RO12:4770 CD 37 40         call 4037           // Secondary Weapon Ammo
+ RO12:4773 47               ld   b,a
+ RO12:4774 7A               ld   a,d
+ RO12:4775 0E 09            ld   c,09
+ RO12:4777 CD A1 40         call 40A1
+ RO12:477A D1               pop  de
+ RO12:477B C1               pop  bc
+ RO12:477C C9               ret                 // Restocks unit's Ammo
+ RO12:477D C5               push bc
+ RO12:477E D5               push de
+ RO12:477F 57               ld   d,a
+ RO12:4780 0E 04            ld   c,04
+ RO12:4782 CD 66 40         call 4066
+ RO12:4785 80               add  b
+ RO12:4786 47               ld   b,a            // B = New HP
+ RO12:4787 7A               ld   a,d
+ RO12:4788 0E 00            ld   c,00
+ RO12:478A CD 66 40         call 4066
+ RO12:478D 0E 0A            ld   c,0A
+ RO12:478F CD 37 40         call 4037           // A = Unit Type's Max HP (always 10)
+ RO12:4792 B8               cp   b
+ RO12:4793 30 01            jr   nc,4796
+ RO12:4795 47               ld   b,a            // New HP ceiling of Max HP
+ RO12:4796 7A               ld   a,d
+ RO12:4797 0E 04            ld   c,04
+ RO12:4799 CD A1 40         call 40A1           // Unit's HP recovered by B
+ RO12:479C D1               pop  de
+ RO12:479D C1               pop  bc
+ RO12:479E C9               ret  
+ RO12:479F E5               push hl
+ RO12:47A0 21 A8 54         ld   hl,54A8
+ RO12:47A3 CD 93 3A         call 3A93
+ RO12:47A6 78               ld   a,b
+ RO12:47A7 CD BC 29         call 29BC
+ RO12:47AA 7E               ld   a,(hl)
+ RO12:47AB E1               pop  hl
+ RO12:47AC C9               ret                 // A = Movement Cost
+ RO12:47AD C5               push bc
+ RO12:47AE D5               push de
+ RO12:47AF 57               ld   d,a            // D = Movement Type
+ RO12:47B0 1E 00            ld   e,00
+ RO12:47B2 D5               push de             // Loop starts here
+ RO12:47B3 7B               ld   a,e
+ RO12:47B4 EF 0B 07 47                          // A = Terrain base ID
+ RO12:47B8 47               ld   b,a            // B = Terrain base ID
+ RO12:47B9 7A               ld   a,d
+ RO12:47BA CD 9F 47         call 479F           // A = Movement Cost
+ RO12:47BD 16 00            ld   d,00
+ RO12:47BF 21 43 CD         ld   hl,CD43
+ RO12:47C2 19               add  hl,de          // HL = $CD43 + E
+ RO12:47C3 77               ld   (hl),a         // ($CD43 + E) = Movement Cost
+ RO12:47C4 D1               pop  de
+ RO12:47C5 1C               inc  e
+ RO12:47C6 7B               ld   a,e
+ RO12:47C7 FE 34            cp   a,34
+ RO12:47C9 20 E7            jr   nz,47B2        // Loop for 52 terrain types
+ RO12:47CB D1               pop  de
+ RO12:47CC C1               pop  bc
+ RO12:47CD C9               ret                 // ($CD43) to ($CD76) hold Movement Costs
+ RO12:47CE C5               push bc
+ RO12:47CF D5               push de
+ RO12:47D0 21 A8 C6         ld   hl,C6A8
+ RO12:47D3 01 C8 00         ld   bc,00C8
+ RO12:47D6 AF               xor  a
+ RO12:47D7 CD 79 3B         call 3B79
+ RO12:47DA 21 A8 C6         ld   hl,C6A8
+ RO12:47DD 1E 00            ld   e,00
+ RO12:47DF D5               push de             // Loop begins here
+ RO12:47E0 7B               ld   a,e
+ RO12:47E1 0E 00            ld   c,00
+ RO12:47E3 CD 66 40         call 4066
+ RO12:47E6 A7               and  a
+ RO12:47E7 28 0E            jr   z,47F7         // End cycle if unit doesn't exist
+ RO12:47E9 22               ldi  (hl),a         // Stores Unit Type
+ RO12:47EA 7B               ld   a,e
+ RO12:47EB 0E 0A            ld   c,0A
+ RO12:47ED CD 83 40         call 4083
+ RO12:47F0 73               ld   (hl),e
+ RO12:47F1 23               inc  hl
+ RO12:47F2 72               ld   (hl),d         // Store EXP
+ RO12:47F3 23               inc  hl
+ RO12:47F4 3E FF            ld   a,FF
+ RO12:47F6 22               ldi  (hl),a
+ RO12:47F7 D1               pop  de
+ RO12:47F8 1C               inc  e
+ RO12:47F9 7B               ld   a,e
+ RO12:47FA FE 32            cp   a,32
+ RO12:47FC 20 E1            jr   nz,47DF
+ RO12:47FE D1               pop  de
+ RO12:47FF C1               pop  bc
+ RO12:4800 C9               ret                 // All units' Types and EXP stored in ($C6A8) to ($C76F)
+ RO12:4801 C5               push bc
+ RO12:4802 D5               push de
+ RO12:4803 21 A8 C6         ld   hl,C6A8
+ RO12:4806 1E 00            ld   e,00
+ RO12:4808 D5               push de             // Loop begins here
+ RO12:4809 E5               push hl
+ RO12:480A 2A               ldi  a,(hl)
+ RO12:480B A7               and  a
+ RO12:480C 28 1A            jr   z,4828         // End cycle if unit doesn't exist
+ RO12:480E 01 FF FF         ld   bc,FFFF
+ RO12:4811 CD E3 41         call 41E3           // Establishes newly created unit's stats with first available unit slot
+ RO12:4814 F5               push af
+ RO12:4815 0E 03            ld   c,03
+ RO12:4817 06 00            ld   b,00
+ RO12:4819 CB C8            set  1,b
+ RO12:481B CD A1 40         call 40A1           // Reserve Flag set
+ RO12:481E F1               pop  af
+ RO12:481F 5E               ld   e,(hl)
+ RO12:4820 23               inc  hl
+ RO12:4821 56               ld   d,(hl)
+ RO12:4822 23               inc  hl
+ RO12:4823 0E 0A            ld   c,0A
+ RO12:4825 CD BD 40         call 40BD           // EXP established
+ RO12:4828 E1               pop  hl
+ RO12:4829 D1               pop  de
+ RO12:482A 23               inc  hl
+ RO12:482B 23               inc  hl
+ RO12:482C 23               inc  hl
+ RO12:482D 23               inc  hl
+ RO12:482E 1C               inc  e
+ RO12:482F 7B               ld   a,e
+ RO12:4830 FE 32            cp   a,32
+ RO12:4832 20 D4            jr   nz,4808
+ RO12:4834 D1               pop  de
+ RO12:4835 C1               pop  bc
+ RO12:4836 C9               ret                 // Reserve Units' stats established in unit list
+ RO12:4837 C5               push bc
+ RO12:4838 D5               push de
+ RO12:4839 E5               push hl
+ RO12:483A CD 37 40         call 4037
+ RO12:483D 21 56 52         ld   hl,5256
+ RO12:4840 CD 93 3A         call 3A93           // HL = Weapon Type stats location
+ RO12:4843 54               ld   d,h
+ RO12:4844 5D               ld   e,l
+ RO12:4845 21 28 CD         ld   hl,CD28
+ RO12:4848 01 08 00         ld   bc,0008
+ RO12:484B CD 50 3B         call 3B50           // ($CD28) to ($CD2F) carries Weapon's name
+ RO12:484E 3E 00            ld   a,00
+ RO12:4850 22               ldi  (hl),a
+ RO12:4851 E1               pop  hl
+ RO12:4852 D1               pop  de
+ RO12:4853 C1               pop  bc
+ RO12:4854 C9               ret                 // ($CD28) to ($CD30) carries Weapon's name
+ RO12:4855 C5               push bc
+ RO12:4856 21 56 52         ld   hl,5256
+ RO12:4859 CD 93 3A         call 3A93
+ RO12:485C 06 00            ld   b,00
+ RO12:485E 09               add  hl,bc
+ RO12:485F 2A               ldi  a,(hl)
+ RO12:4860 C1               pop  bc
+ RO12:4861 C9               ret                 // A = used Weapon stat
+ RO12:4862 C5               push bc
+ RO12:4863 D5               push de
+ RO12:4864 E5               push hl
+ RO12:4865 EA 41 CD         ld   (CD41),a
+ RO12:4868 0E 00            ld   c,00
+ RO12:486A CD 66 40         call 4066
+ RO12:486D EA 42 CD         ld   (CD42),a       // ($CD41) = Unit #, ($CD42) = Unit Type
+ RO12:4870 FA 42 CD         ld   a,(CD42)
+ RO12:4873 0E 14            ld   c,14
+ RO12:4875 CD 37 40         call 4037           // A = Primary Weapon Type
+ RO12:4878 EA F6 CC         ld   (CCF6),a       // ($CCF6) = Primary Weapon Type
+ RO12:487B FA 42 CD         ld   a,(CD42)
+ RO12:487E 0E 14            ld   c,14
+ RO12:4880 CD 37 48         call 4837           // ($CD28) to ($CD30) carries Primary Weapon's name
+ RO12:4883 21 ED CC         ld   hl,CCED
+ RO12:4886 11 28 CD         ld   de,CD28
+ RO12:4889 01 09 00         ld   bc,0009
+ RO12:488C CD 50 3B         call 3B50           // ($CCED) to ($CCF5) carries Weapon's name
+ RO12:488F FA F6 CC         ld   a,(CCF6)
+ RO12:4892 0E 08            ld   c,08
+ RO12:4894 CD 55 48         call 4855           // A = Primary Weapon's minimum Range
+ RO12:4897 EA F8 CC         ld   (CCF8),a
+ RO12:489A 2A               ldi  a,(hl)
+ RO12:489B EA F9 CC         ld   (CCF9),a       // ($CCF8) holds minimum Range, ($CCF9) holds maximum Range
+ RO12:489E FA 41 CD         ld   a,(CD41)
+ RO12:48A1 0E 08            ld   c,08
+ RO12:48A3 CD 66 40         call 4066           // A = Unit's Primary Ammo
+ RO12:48A6 EA F7 CC         ld   (CCF7),a       // ($CCF7) = Primary Ammo left
+ RO12:48A9 FA 42 CD         ld   a,(CD42)
+ RO12:48AC 0E 15            ld   c,15
+ RO12:48AE CD 37 40         call 4037           // A = Unit Type's Primary Ammo
+ RO12:48B1 EA FA CC         ld   (CCFA),a       // ($CCFA) = Unit Type's Primary Ammo
+ RO12:48B4 FA 42 CD         ld   a,(CD42)
+ RO12:48B7 0E 16            ld   c,16
+ RO12:48B9 CD 37 40         call 4037
+ RO12:48BC EA 04 CD         ld   (CD04),a
+ RO12:48BF FA 42 CD         ld   a,(CD42)
+ RO12:48C2 0E 16            ld   c,16
+ RO12:48C4 CD 37 48         call 4837           // ($CD28) to ($CD30) carries Secondary Weapon's name
+ RO12:48C7 21 FB CC         ld   hl,CCFB
+ RO12:48CA 11 28 CD         ld   de,CD28
+ RO12:48CD 01 09 00         ld   bc,0009
+ RO12:48D0 CD 50 3B         call 3B50
+ RO12:48D3 FA 04 CD         ld   a,(CD04)
+ RO12:48D6 0E 08            ld   c,08
+ RO12:48D8 CD 55 48         call 4855           // Minimum Range
+ RO12:48DB EA 06 CD         ld   (CD06),a
+ RO12:48DE 2A               ldi  a,(hl)
+ RO12:48DF EA 07 CD         ld   (CD07),a
+ RO12:48E2 FA 41 CD         ld   a,(CD41)
+ RO12:48E5 0E 09            ld   c,09
+ RO12:48E7 CD 66 40         call 4066
+ RO12:48EA EA 05 CD         ld   (CD05),a
+ RO12:48ED FA 42 CD         ld   a,(CD42)
+ RO12:48F0 0E 17            ld   c,17
+ RO12:48F2 CD 37 40         call 4037
+ RO12:48F5 EA 08 CD         ld   (CD08),a
+ RO12:48F8 E1               pop  hl
+ RO12:48F9 D1               pop  de
+ RO12:48FA C1               pop  bc
+ RO12:48FB C9               ret                 // Establishes Unit's weapons' stats in ($CCED) to ($CD08)
+ RO12:48FC C5               push bc
+ RO12:48FD 0E 18            ld   c,18
+ RO12:48FF CD 37 40         call 4037           // A = Unit Family
+ RO12:4902 C6 0A            add  a,0A
+ RO12:4904 4F               ld   c,a
+ RO12:4905 78               ld   a,b
+ RO12:4906 CD 55 48         call 4855           // A = Weapon's used ATK
+ RO12:4909 C1               pop  bc
+ RO12:490A C9               ret  
+ RO12:490B C5               push bc
+ RO12:490C F0 82            ld   a,(ff00+82)
+ RO12:490E F5               push af
+ RO12:490F 3E 03            ld   a,03
+ RO12:4911 E0 82            ld   (ff00+82),a
+ RO12:4913 E0 70            ld   (ff00+70),a
+ RO12:4915 AF               xor  a
+ RO12:4916 21 40 D6         ld   hl,D640
+ RO12:4919 01 20 03         ld   bc,0320
+ RO12:491C CD 79 3B         call 3B79
+ RO12:491F F1               pop  af
+ RO12:4920 E0 82            ld   (ff00+82),a
+ RO12:4922 E0 70            ld   (ff00+70),a
+ RO12:4924 C1               pop  bc
+ RO12:4925 C9               ret                 // Unit WRAM Bank ($D640) to ($D95F) emptied
+ RO12:4926 C5               push bc
+ RO12:4927 D5               push de
+ RO12:4928 6F               ld   l,a
+ RO12:4929 F0 82            ld   a,(ff00+82)
+ RO12:492B F5               push af
+ RO12:492C 3E 03            ld   a,03
+ RO12:492E E0 82            ld   (ff00+82),a
+ RO12:4930 E0 70            ld   (ff00+70),a
+ RO12:4932 7D               ld   a,l
+ RO12:4933 CD 29 40         call 4029
+ RO12:4936 54               ld   d,h
+ RO12:4937 5D               ld   e,l
+ RO12:4938 78               ld   a,b
+ RO12:4939 CD 4A 49         call 494A           // HL = $D640 + B * 16
+ RO12:493C 01 10 00         ld   bc,0010
+ RO12:493F CD 50 3B         call 3B50           // Unit WRAM Bank ($D640 + B * 16)~($D64F + B * 16) holds unit's stats
+ RO12:4942 F1               pop  af
+ RO12:4943 E0 82            ld   (ff00+82),a
+ RO12:4945 E0 70            ld   (ff00+70),a
+ RO12:4947 D1               pop  de
+ RO12:4948 C1               pop  bc
+ RO12:4949 C9               ret 
+ RO12:494A D5               push de
+ RO12:494B 6F               ld   l,a
+ RO12:494C 26 00            ld   h,00
+ RO12:494E 29               add  hl,hl
+ RO12:494F 29               add  hl,hl
+ RO12:4950 29               add  hl,hl
+ RO12:4951 29               add  hl,hl          // HL = A * 16
+ RO12:4952 11 40 D6         ld   de,D640
+ RO12:4955 19               add  hl,de          // HL = $D640 + A * 16
+ RO12:4956 D1               pop  de
+ RO12:4957 C9               ret  
+ RO12:4958 A7               and  a
+ RO12:4959 20 05            jr   nz,4960
+ RO12:495B 21 00 D0         ld   hl,D000
+ RO12:495E 18 03            jr   4963
+ RO12:4960 21 20 D3         ld   hl,D320
+ RO12:4963 C5               push bc
+ RO12:4964 D5               push de
+ RO12:4965 F0 82            ld   a,(ff00+82)
+ RO12:4967 F5               push af
+ RO12:4968 3E 03            ld   a,03
+ RO12:496A E0 82            ld   (ff00+82),a
+ RO12:496C E0 70            ld   (ff00+70),a
+ RO12:496E 11 40 D6         ld   de,D640
+ RO12:4971 01 20 03         ld   bc,0320
+ RO12:4974 CD 50 3B         call 3B50
+ RO12:4977 F1               pop  af
+ RO12:4978 E0 82            ld   (ff00+82),a
+ RO12:497A E0 70            ld   (ff00+70),a
+ RO12:497C D1               pop  de
+ RO12:497D C1               pop  bc
+ RO12:497E C9               ret                 // Unit WRAM Bank ($D640) to ($D95F) updates given army's stats
+
+ RO12:497F B6 AA AA 6A EB D6 07
+
+ RO12:4986 A6 49
+ RO12:4988 A6 49
+ RO12:498A AD 49
+ RO12:498C B4 49
+ RO12:498E BB 49
+ RO12:4990 C2 49
+ RO12:4992 C9 49
+ RO12:4994 D0 49
+ RO12:4996 D7 49
+ RO12:4998 DE 49
+ RO12:499A E5 49
+ RO12:499C EC 49
+ RO12:499E F3 49
+ RO12:49A0 FA 49
+ RO12:49A2 01 4A
+ RO12:49A4 08 4A
+ 
+ RO12:49A6 02 02 00 00 00 00 00 - Grunt, Buggy
+ RO12:49AD 82 2A 00 00 00 00 00 - Add: Convoy, Humvee, APC
+ RO12:49B4 A6 2A 20 02 00 00 00 - Add: Bazooka, Supply Truck, Artillery, Hunter Tank
+ RO12:49BB A6 AA A0 0A 00 00 00 - Add: Rocket Launcher, IFV, MB Tank
+ RO12:49C2 A6 AA A2 0A 00 04 00 - Add: Anti-Air Tank, Transport Helicopter
+ RO12:49C9 B6 AA A2 0A 00 04 00 - Add: Work Car
+ RO12:49D0 B6 AA AA 0A 80 04 00 - Add: Anti-Air Missile Launcher, Gunship
+ RO12:49D7 B6 AA AA 4A 80 04 00 - Add: Lite Fighter
+ RO12:49DE B6 AA AA 4A A2 04 00 - Add: Lite Attacker, Transport Plane
+ RO12:49E5 B6 AA AA 6A AB 04 00 - Add: Fighter, Attacker, Bomber
+ RO12:49EC B6 AA AA 6A EB 04 00 - Add: Supply Plane
+ RO12:49F3 B6 AA AA 6A EB 84 01 - Add: Small Aircraft Carrier, Lander
+ RO12:49FA B6 AA AA 6A EB D4 01 - Add: Aegis Warship, Large Aircraft Carrier
+ RO12:4A01 B6 AA AA 6A EB D6 05 - Add: Ship Buster, Submarine
+ RO12:4A08 B6 AA AA 6A EB D6 07 - Add: Tanker
+ 
+ RO12:4A0F 00               nop  
+ RO12:4A10 00 00 00               nop  
+ RO12:4A13 00               nop  
+ RO12:4A14 06 00            ld   b,00
+ RO12:4A16 08 00
+ RO12:4A18 0A 00               nop  
+ RO12:4A1A 0C 00               nop  
+ RO12:4A1C 0E 00            ld   c,00
+ RO12:4A1E 10 00            stop
+ RO12:4A20 00 00               nop  
+ RO12:4A22 14 00               nop  
+ RO12:4A24 16 00            ld   d,00
+ RO12:4A26 18 00            jr   4A28
+ RO12:4A28 1A 00               nop  
+ RO12:4A2A 00 00               nop  
+ RO12:4A2C 00 1F 00               nop  
+ RO12:4A2F 00 22 00               nop  
+ RO12:4A32 00 00               nop  
+ RO12:4A34 00 00               nop  
+ RO12:4A36 28 00            jr   z,4A38
+ RO12:4A38 00               nop  
+ RO12:4A39 2B 00
+ RO12:4A3B 00 00               nop  
+ RO12:4A3D 00 00               nop  
+ RO12:4A3F 00 00               nop  
+ RO12:4A41 33 00               nop  
+
+ RO12:4A43 AD 4A
+ RO12:4A45 D2 4A
+ RO12:4A47 F7 4A
+ RO12:4A49 1C 4B
+ RO12:4A4B 41 4B
+ RO12:4A4D 66 4B
+ RO12:4A4F 8B 4B
+ RO12:4A51 B0 4B
+ RO12:4A53 D5 4B
+ RO12:4A55 FA 4B
+ RO12:4A57 1F 4C
+ RO12:4A59 44 4C
+ RO12:4A5B 69 4C
+ RO12:4A5D 8E 4C
+ RO12:4A5F B3 4C
+ RO12:4A61 D8 4C
+ RO12:4A63 FD 4C
+ RO12:4A65 22 4D
+ RO12:4A67 47 4D
+ RO12:4A69 6C 4D
+ RO12:4A6B 91 4D
+ RO12:4A6D B6 4D
+ RO12:4A6F DB 4D
+ RO12:4A71 00 4E
+ RO12:4A73 25 4E
+ RO12:4A75 4A 4E
+ RO12:4A77 6F 4E
+ RO12:4A79 94 4E
+ RO12:4A7B B9 4E
+ RO12:4A7D DE 4E
+ RO12:4A7F 03 4F
+ RO12:4A81 28 4F
+ RO12:4A83 4D 4F
+ RO12:4A85 72 4F
+ RO12:4A87 97 4F
+ RO12:4A89 BC 4F
+ RO12:4A8B E1 4F
+ RO12:4A8D 06 50
+ RO12:4A8F 2B 50
+ RO12:4A91 50 50
+ RO12:4A93 75 50
+ RO12:4A95 9A 50
+ RO12:4A97 BF 50
+ RO12:4A99 E4 50
+ RO12:4A9B 09 51
+ RO12:4A9D 2E 51
+ RO12:4A9F 53 51
+ RO12:4AA1 78 51
+ RO12:4AA3 9D 51
+ RO12:4AA5 C2 51
+ RO12:4AA7 E7 51
+ RO12:4AA9 0C 52
+ RO12:4AAB 31 52
+
+ RO12:4AAD 80 80 80 80 80 80 80 80 80 80 0A 63 06 00 05 00 63 00 63 00 01 0A 00 00 01 01 05 00 00 00 63 63 63 63 63 00 00
+ RO12:4AD2 1F 1E 03 80 80 80 80 80 80 80 0A 63 03 00 03 00 01 00 0A 00 02 09 00 00 01 00 00 01 02 04 0A 0A 0C 0A 00 0A 03
+ RO12:4AF7 21 0C 03 2A 1F 1E 03 80 80 80 0A 46 02 00 03 00 02 00 0C 00 11 01 02 06 01 00 00 01 02 04 0E 0C 10 0E 00 0D 06
+ RO12:4B1C 15 09 0D 4E 1F 1E 03 80 80 80 0A 55 04 00 03 00 06 00 0E 00 08 02 02 08 01 01 00 01 02 04 10 10 12 10 00 10 03
+ RO12:4B41 0B 04 0C 09 0D 4D 80 80 80 80 0A 32 05 00 01 00 08 00 14 00 1F 05 02 07 01 02 00 02 04 04 0E 0E 0E 0E 00 0C 02
+ RO12:4B66 1F 08 4E 04 0D 4D 80 80 80 80 0A 63 06 00 01 00 06 00 16 00 1E 05 00 00 01 02 00 02 04 04 0E 0E 0C 10 00 0C 02
+ RO12:4B8B 1F 08 4E 04 0D 4D 9D 80 80 80 0A 63 05 00 01 00 08 00 18 00 1E 08 00 00 01 02 00 02 04 04 10 10 0C 10 00 0F 03
+ RO12:4BB0 26 10 04 15 28 50 09 80 80 80 0A 32 07 01 01 00 05 00 14 00 02 07 00 00 01 03 01 02 04 04 0E 0E 0C 0E 00 0E 02
+ RO12:4BD5 26 10 04 15 28 50 09 9D 80 80 0A 3C 07 01 01 00 07 00 16 00 04 05 02 09 01 03 01 02 04 04 10 10 0C 10 00 0F 02
+ RO12:4BFA 0B 2E 3E 50 15 3E 30 51 80 80 0A 32 07 00 05 00 05 00 10 00 08 02 02 05 01 04 00 02 04 04 0C 0C 0D 0C 00 16 03
+ RO12:4C1F 0B 2E 3E 50 15 3E 30 51 9D 80 0A 2D 07 00 06 00 07 00 12 00 10 03 03 07 01 04 00 02 04 04 0F 0F 10 0F 00 19 03
+ RO12:4C44 0F 2E 15 04 0D 4D 29 4F 04 80 0A 32 07 00 04 00 07 00 11 00 10 02 02 09 01 05 00 02 04 04 0E 0E 0E 0E 00 15 03
+ RO12:4C69 0F 2E 15 04 0D 4D 29 4F 04 9D 0A 2D 06 00 05 00 08 00 13 00 10 03 04 07 01 05 00 02 04 04 11 11 10 11 00 15 03
+ RO12:4C8E 10 04 0B 04 26 10 04 0D 4D 80 0A 3C 06 01 03 00 0A 00 18 00 03 09 00 00 00 06 01 04 04 04 16 16 0A 16 00 0D 02
+ RO12:4CB3 10 04 0B 04 26 10 04 0D 4D 9D 0A 46 06 01 03 00 0C 00 1A 00 10 02 03 07 00 06 01 04 04 04 18 18 0C 18 00 0F 02
+ RO12:4CD8 9C 28 2E 12 4D 51 80 80 80 80 0A 32 05 00 01 00 2A 00 20 00 0E 05 00 00 00 06 00 04 04 04 11 11 0A 11 00 0C 02
+ RO12:4CFD 9C 28 2E 12 4D 51 9D 80 80 80 0A 32 04 00 01 00 30 00 28 00 0F 03 00 00 00 06 00 04 04 04 14 14 0C 14 00 0C 02
+ RO12:4D22 11 03 09 04 0F 2E 0D 4D 80 80 0A 3C 05 00 02 00 16 00 1E 00 15 02 05 05 00 06 00 04 04 04 12 14 14 10 00 11 03
+ RO12:4D47 27 04 1E 03 11 03 09 04 97 80 0A 3C 06 00 02 00 26 00 22 00 15 03 07 04 00 06 00 04 04 04 1E 1A 14 1E 00 13 02
+ RO12:4D6C 11 03 09 04 21 0C 03 2A 80 80 0A 32 05 00 03 00 24 00 20 00 16 05 00 00 00 06 00 04 04 04 11 11 0C 11 00 0C 02
+ RO12:4D91 11 03 09 04 21 0C 03 2A 9D 80 0A 32 04 00 03 00 2C 00 24 00 17 04 00 00 00 06 00 04 04 04 14 14 0E 14 00 0C 02
+ RO12:4DB6 35 10 04 1F 04 80 80 80 80 80 0A 32 04 00 02 00 26 00 2C 00 0C 05 00 00 00 06 00 04 04 04 12 12 0C 12 00 0A 02
+ RO12:4DDB 35 10 04 1F 04 9D 80 80 80 80 0A 32 03 00 02 00 2D 00 32 00 0D 04 00 00 00 06 00 04 04 04 15 15 0E 15 00 0B 02
+ RO12:4E00 1F 1E 03 0F 2E 15 04 0D 4D 80 0A 41 06 01 01 00 12 00 26 00 10 03 03 09 00 07 01 04 04 04 1E 1E 0E 1E 00 11 02
+ RO12:4E25 1F 1E 03 0F 2E 15 04 0D 4D 9D 0A 46 06 01 01 00 14 00 24 00 11 03 03 09 00 07 01 04 04 04 23 23 10 23 00 13 02
+ RO12:4E4A 09 12 09 0F 2E 0D 4D 80 80 80 0A 2D 06 00 01 00 14 00 20 00 09 08 03 09 00 07 00 04 04 04 23 23 10 28 00 18 04
+ RO12:4E6F 09 12 09 0F 2E 0D 4D 9D 80 80 0A 32 06 00 01 00 1C 00 2A 00 11 06 03 09 00 07 00 04 04 04 28 28 12 2D 00 19 04
+ RO12:4E94 0F 2E 0D 4D 80 80 80 80 80 80 0A 46 05 00 01 00 23 00 2E 00 0A 09 03 09 00 07 00 04 04 04 2D 2D 12 32 00 13 02
+ RO12:4EB9 27 04 1E 03 0F 2E 0D 4D 80 80 0A 3C 06 00 01 00 28 00 30 00 0B 09 03 09 00 07 00 04 04 04 34 34 16 38 00 16 02
+ RO12:4EDE 0F 2E 15 04 08 8B 80 80 80 80 0A 50 0C 00 07 06 55 00 56 00 18 05 04 07 02 08 00 03 03 03 2A 30 23 2C 00 20 02
+ RO12:4F03 0F 2E 15 04 08 8C 80 80 80 80 0A 3C 0B 00 06 05 41 00 48 00 18 04 04 08 02 08 00 03 03 03 24 2A 1E 26 00 1D 02
+ RO12:4F28 0F 2E 15 04 08 9D 80 80 80 80 0A 46 0D 00 08 06 5A 00 5E 00 19 06 18 03 02 08 00 03 03 03 32 38 28 34 00 24 02
+ RO12:4F4D 0B 04 32 08 08 8B 80 80 80 80 0A 3C 0B 00 06 05 55 00 54 00 18 02 12 03 02 08 00 03 03 03 26 2C 1C 28 00 1E 02
+ RO12:4F72 0B 04 32 08 08 8C 80 80 80 80 0A 32 09 00 05 04 3C 00 4C 00 06 09 20 04 02 09 00 03 03 03 20 26 1A 22 00 1B 02
+ RO12:4F97 0B 04 32 08 08 9D 80 80 80 80 0A 41 0A 00 07 05 78 00 60 00 12 05 00 00 02 08 00 03 03 03 37 3D 2D 39 00 1E 02
+ RO12:4FBC 3E 09 32 08 08 80 80 80 80 80 0A 63 0A 00 07 05 96 00 64 00 14 03 00 00 02 08 00 00 00 00 20 20 1E 22 00 1A 02
+ RO12:4FE1 27 04 1E 03 3E 09 32 08 08 80 0A 63 0B 00 08 05 B4 00 78 00 14 04 00 00 02 08 00 00 00 00 25 25 23 27 00 1C 02
+ RO12:5006 26 10 04 08 80 80 80 80 80 80 0A 63 08 02 05 04 37 00 64 00 00 00 00 00 02 08 02 00 00 00 12 12 12 12 00 15 02
+ RO12:502B 08 4E 04 26 08 80 80 80 80 80 0A 63 09 00 05 04 3C 00 64 00 1E 04 00 00 02 08 00 00 00 00 12 12 12 12 00 13 02
+ RO12:5050 0B 04 32 08 1E 29 80 80 80 80 0A 3C 06 00 04 03 32 00 34 00 20 05 06 07 02 0A 00 03 03 03 1B 1B 14 1C 00 18 03
+ RO12:5075 0B 04 32 08 1E 29 9D 80 80 80 0A 46 07 00 05 03 37 00 37 00 11 02 06 09 02 0A 00 03 03 03 20 20 18 23 00 1D 03
+ RO12:509A 11 03 0F 2E 1E 29 80 80 80 80 0A 32 06 00 04 03 26 00 3C 00 1C 02 03 07 02 0A 00 03 03 03 16 16 14 16 00 16 03
+ RO12:50BF 26 10 04 1E 29 80 80 80 80 80 0A 46 07 01 03 03 13 00 19 00 03 07 00 00 02 0A 01 03 03 03 14 14 12 14 00 16 03
+ RO12:50E4 26 10 04 1E 29 9D 80 80 80 80 0A 41 06 02 04 03 23 00 30 00 20 01 03 09 02 0A 01 03 03 03 17 17 14 17 00 16 02
+ RO12:5109 03 51 35 0E 07 2E 80 80 80 80 0A 63 06 00 08 00 DC 00 B4 00 1B 06 15 09 03 0C 00 00 00 00 4B 4B 4B 41 34 14 02
+ RO12:512E 27 04 1E 03 97 1D 29 32 51 15 0A 63 07 00 09 00 04 01 C8 00 13 04 17 09 03 0C 00 00 00 00 50 50 50 46 3C 18 02
+ RO12:5153 06 06 2F 11 09 04 42 80 80 80 0A 63 05 04 07 00 5E 01 DC 00 17 09 07 09 03 0C 03 00 00 00 46 46 41 3C 30 16 02
+ RO12:5178 0B 2F 11 09 04 42 80 80 80 80 0A 50 06 03 06 00 18 01 96 00 16 09 05 09 03 0C 03 00 00 00 41 41 3A 37 2A 15 02
+ RO12:519D 26 10 04 07 2E 80 80 80 80 80 0A 46 04 03 03 00 50 00 82 00 06 09 00 00 03 0B 04 00 00 00 28 28 24 23 19 11 02
+ RO12:51C2 1F 08 4E 04 11 2E 07 51 80 80 0A 5A 04 00 03 00 6E 00 8C 00 1E 09 00 00 03 0C 00 00 00 00 1E 1E 18 19 16 11 02
+ RO12:51E7 0F 2E 0E 03 07 2E 80 80 80 80 0A 3C 04 00 05 00 C8 00 A0 00 1D 03 00 00 04 0C 00 00 00 00 00 00 46 00 39 11 02
+ RO12:520C 0F 2E 0E 03 07 2E 9D 80 80 80 0A 63 05 00 06 00 18 01 B4 00 13 02 1C 04 04 0C 00 00 00 00 00 00 50 00 42 17 03
+ RO12:5231 8E 9F 97 97 A3 80 80 80 80 80 0A 63 05 00 00 00 01 00 01 00 01 09 01 09 04 0E 00 00 00 00 00 00 00 00 00 63 01
+
+ RO12:5256 98 52
+ RO12:5258 A8 52
+ RO12:525A B8 52
+ RO12:525C C8 52
+ RO12:525E D8 52
+ RO12:5260 E8 52
+ RO12:5262 F8 52
+ RO12:5264 08 53
+ RO12:5266 18 53
+ RO12:5268 28 53
+ RO12:526A 38 53
+ RO12:526C 48 53
+ RO12:526E 58 53
+ RO12:5270 68 53
+ RO12:5272 78 53
+ RO12:5274 88 53
+ RO12:5276 98 53
+ RO12:5278 A8 53
+ RO12:527A B8 53
+ RO12:527C C8 53
+ RO12:527E D8 53
+ RO12:5280 E8 53
+ RO12:5282 F8 53
+ RO12:5284 08 54 
+ RO12:5286 18 54
+ RO12:5288 28 54
+ RO12:528A 38 54
+ RO12:528C 48 54
+ RO12:528E 58 54
+ RO12:5290 68 54
+ RO12:5292 78 54
+ RO12:5294 88 54
+ RO12:5296 98 54
+ 
+ RO12:5298 80 80 80 80 80 80 80 80 00 00 00 00 00 00 00 00
+ RO12:52A8 16 0D 80 80 80 80 80 80 00 00 00 00 00 00 00 00
+ RO12:52B8 20 0D 2E 2F 2E 8C 80 80 01 01 02 0A 02 01 00 01
+ RO12:52C8 20 0D 2E 2F 2E 8B 80 80 01 01 03 10 04 01 00 02
+ RO12:52D8 08 07 2E 1F 04 8C 80 80 01 01 08 14 16 01 00 03
+ RO12:52E8 08 07 2E 1F 04 8C A7 85 01 01 0D 22 22 01 00 0C
+ RO12:52F8 08 07 2E 1F 04 8B 80 80 01 01 14 21 1E 01 00 03
+ RO12:5308 08 07 2E 1F 04 9D 80 80 01 01 12 2B 28 01 00 04
+ RO12:5318 31 2B 19 51 3D 80 80 80 01 01 0A 14 00 05 00 08
+ RO12:5328 0F 2E 0D 4D 1F 04 8C 80 01 01 1E 0D 00 0C 00 0A
+ RO12:5338 0F 2E 0D 4D 1F 04 8B 80 01 01 28 0F 00 0F 00 0C
+ RO12:5348 0F 2E 0D 4D 1F 04 9D 80 01 01 32 13 00 12 00 0D
+ RO12:5358 07 1A 2E 1F 04 8C 80 80 02 05 1E 10 00 16 00 0F
+ RO12:5368 07 1A 2E 1F 04 8B 80 80 03 06 26 18 00 1C 00 12
+ RO12:5378 2C 0A 50 15 8C 80 80 80 02 03 1B 18 00 12 00 14
+ RO12:5388 2C 0A 50 15 8B 80 80 80 03 04 1F 1C 00 14 00 16
+ RO12:5398 8B 9E 21 0C 03 2A 8C 80 01 01 24 00 00 00 00 0B
+ RO12:53A8 8B 9E 21 0C 03 2A 8B 80 01 02 20 00 00 00 00 0D
+ RO12:53B8 3E 09 39 2E 80 80 80 80 01 01 1A 1C 00 28 00 12
+ RO12:53C8 11 03 15 0D 21 0C 03 2A 03 07 00 00 00 00 00 64
+ RO12:53D8 11 03 15 0D 3E 09 39 2E 00 00 00 00 00 00 00 64
+ RO12:53E8 12 11 03 09 04 97 A7 8C 01 01 00 00 3C 00 00 28
+ RO12:53F8 12 11 03 09 04 97 A7 8B 02 03 00 00 37 00 00 2A
+ RO12:5408 12 11 03 09 04 97 A7 9D 04 06 00 00 34 00 00 2C
+ RO12:5418 11 03 09 04 97 A7 8C 80 01 01 00 00 32 00 00 28
+ RO12:5428 11 03 09 04 97 A7 8B 80 03 05 00 00 2F 00 00 2D
+ RO12:5438 11 03 09 04 97 A7 9D 80 04 07 00 00 2D 00 00 32
+ RO12:5448 11 03 07 2E 21 0C 03 2A 04 07 00 00 00 63 00 64
+ RO12:5458 08 2E 0F 13 30 4F 28 03 01 01 00 00 00 41 55 1E
+ RO12:5468 30 4F 28 03 80 80 80 80 02 04 00 00 00 32 46 23
+ RO12:5478 1F 08 4E 04 40 50 0D 80 00 00 00 00 00 00 00 32
+ RO12:5488 0D 34 03 80 80 80 80 80 00 00 00 00 00 00 00 05
+ RO12:5498 2C 0A 50 15 39 2E 80 80 01 01 12 19 00 10 00 14
+ 
+ RO12:54A8 C6 54
+ RO12:54AA DD 54
+ RO12:54AC F4 54
+ RO12:54AE 0B 55
+ RO12:54B0 22 55
+ RO12:54B2 39 55
+ RO12:54B4 50 55
+ RO12:54B6 67 55
+ RO12:54B8 7E 55
+ RO12:54BA 95 55
+ RO12:54BC AC 55
+ RO12:54BE C3 55
+ RO12:54C0 DA 55
+ RO12:54C2 F1 55
+ RO12:54C4 08 56
+ 
+ RO12:54C6 00 10 10 20 10 20 10 20 10 10 20 10 10 10 10 10 20 10 20 20 20 00 20 <-- Foot
+ RO12:54DD 00 10 10 18 10 18 10 18 10 10 18 10 10 10 10 10 20 10 18 18 20 30 20 <-- Veteran
+ RO12:54F4 00 10 10 30 10 30 10 30 10 10 30 10 18 10 10 10 00 30 30 30 00 00 00 <-- Utility
+ RO12:550B 00 10 10 20 10 20 10 20 10 10 20 10 18 10 10 10 40 18 30 20 00 00 00 <-- Convoy
+ RO12:5522 00 10 10 20 10 20 10 20 10 10 20 10 18 10 10 10 40 18 30 20 30 00 30 <-- Buggy
+ RO12:5539 00 10 10 40 10 40 10 40 10 10 40 10 10 10 10 10 40 20 20 20 30 00 20 <-- Humvee
+ RO12:5550 00 10 10 30 10 30 10 30 10 10 30 10 10 10 10 10 00 20 30 30 00 00 00 <-- Armor
+ RO12:5567 00 10 10 30 10 30 10 30 10 10 30 10 10 10 10 10 00 18 20 20 40 00 40 <-- Tank
+ RO12:557E 00 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 <-- Plane
+ RO12:5595 00 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 <-- VTOL
+ RO12:55AC 00 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 18 10 10 10 10 10 10 <-- Helicopter
+ RO12:55C3 00 00 00 00 00 00 00 00 00 10 10 00 00 00 00 00 00 00 00 00 00 10 10 <-- Lander
+ RO12:55DA 00 00 00 00 00 00 00 00 00 10 10 00 00 00 00 00 00 00 00 00 00 10 00 <-- Sea
+ RO12:55F1 00 00 00 00 00 00 00 00 00 00 00 00 18 00 00 00 00 30 30 00 00 00 00 <-- Work Car Pave
+ RO12:5608 00 10 10 10 10 10 10 10 10 10 10 10 10 10 10 10 00 18 30 30 40 00 00
+
